@@ -20,9 +20,6 @@ jobs:
                     - build
     deploy:
         working_directory: ~/project
-        branches:
-            only:
-                -master
         docker:
             - image: starefossen/ruby-node:2-8
         steps:
@@ -47,5 +44,8 @@ workflows:
         jobs:
             - build
             - deploy:
+                filters:
+                    branches:
+                        only: master
                 requires:
                     - build            
