@@ -4,9 +4,6 @@ jobs:
         docker:
             - image: starefossen/ruby-node:2-8
         steps:
-            - add_ssh_keys:
-                fingerprints:
-                    - "dc:3e:2f:44:f5:5a:ab:71:af:6c:e8:00:d9:77:d2:b1"
             - checkout
             - attach_workspace:
                 at: build
@@ -21,6 +18,23 @@ jobs:
             - run:
                 name: Build static html
                 command: bundle exec middleman build --clean
+    deploy:
+        docker:
+            - image: starefossen/ruby-node:2-8
+        steps:
+            - add_ssh_keys:
+                fingerprints:
+                    - "dc:3e:2f:44:f5:5a:ab:71:af:6c:e8:00:d9:77:d2:b1"
+            - attach_workspace:
+                at: build
             - run:
                 name: Deploy docs to gh-pages branch
                 command: gh-pages --dotfiles --message "[skip ci] Updates" --dist build
+workflows:
+    version: 2
+    build-and-deploy:
+        jobs:
+            - build
+            - deploy:
+                requires:
+                    - build            
