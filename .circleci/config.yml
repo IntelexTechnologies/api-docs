@@ -24,6 +24,7 @@ jobs:
         docker:
             - image: starefossen/ruby-node:2-8
         steps:
+            - checkout
             - add_ssh_keys:
                 fingerprints:
                     - "dc:3e:2f:44:f5:5a:ab:71:af:6c:e8:00:d9:77:d2:b1"
