@@ -1,6 +1,7 @@
 version: 2
 jobs:
     build:
+        working_directory: ~/project
         docker:
             - image: starefossen/ruby-node:2-8
         steps:
@@ -14,13 +15,14 @@ jobs:
                 name: Build static html
                 command: bundle exec middleman build --clean
             - persist_to_workspace:
-                root: .
+                root: /root/project
                 paths:
                     - build
     deploy:
-        # branches:
-        #     only:
-        #         -master
+        working_directory: ~/project
+        branches:
+            only:
+                -master
         docker:
             - image: starefossen/ruby-node:2-8
         steps:
@@ -29,7 +31,7 @@ jobs:
                 fingerprints:
                     - "dc:3e:2f:44:f5:5a:ab:71:af:6c:e8:00:d9:77:d2:b1"
             - attach_workspace:
-                at: build
+                at: /root/project
             - run:
                 name: Install and configure dependencies
                 command: |
@@ -38,7 +40,7 @@ jobs:
                     git config user.name "ci-build"
             - run:
                 name: Deploy docs to gh-pages branch
-                command: gh-pages --dotfiles --message "[skip ci] Updates" --dist .
+                command: gh-pages --dotfiles --message "[skip ci] Updates" --dist build
 workflows:
     version: 2
     build-and-deploy:
