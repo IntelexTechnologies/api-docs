@@ -2813,6 +2813,166 @@ Every object will have navigation properties that can be used to access its rela
 </tr>
 </tbody></table>
 
+<h2 id="object-merge-templates">Object Merge Templates</h2>
+
+<p>Object merge templates allow you to extract data from any Intelex object and export it into a Microsoft Word® or PDF document, depending on the configuration of the merge template. By mapping &lsquo;MergeFields&rsquo; in the Word document to data fields in a particular Intelex object, you are able to export dynamically generated files populated with object record data you need, such as employee names, hire dates, etc. You can use dot notations to drill down to child objects and populate their data.</p>
+
+<p>Intelex objects with the merge template option enabled, and at least one uploaded Merge Template, can be queried in one of two ways.</p>
+
+<ul>
+<li>Retrieve a list of records detailing all Merge Templates for that object.</li>
+<li>Request a merge document content for a specific object record.</li>
+</ul>
+
+<p>To access Merge Template details use the system reserved property: ILX.MailMergeDocs.</p>
+
+<h3 id="requesting-merge-templates">Requesting Merge Templates</h3>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://intelex_url/api/v2/object/IncidentsObject(UID)/ILX.MailMergeDocs'</span> <span class="p">};</span>
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://intelex_url/api/v2/object/IncidentsObject(UID)/ILX.MailMergeDocs"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">GET</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"@odata.context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"@odata.type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@odata.id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"@odata.editLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"DateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-08T12:32:51.28-04:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"DateModified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-08T12:32:51.28-04:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"DownloadAs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ObjectRecordId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"TemplateName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This request returns a list of all merge templates belonging to a given object. ILX.MailMergeDocs is a system reserved property for working with merge templates. Any object that has merge templates enabled will be able to access this property and request the templates that belong to the object.</p>
+
+<h4 id="get-object-intelex_object-id-ilx-mailmergedocs">GET /object/{intelex_object}({id})/ILX.MailMergeDocs</h4>
+
+<h5 id="url-parameters">URL Parameters</h5>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>intelex_object</td>
+<td>The Intelex system name of the object eg. IncidentsObject</td>
+</tr>
+<tr>
+<td>id</td>
+<td>The Intelex UID of the object record being accessed</td>
+</tr>
+</tbody></table>
+
+<h3 id="downloading-merge-documents">Downloading Merge Documents</h3>
+
+<blockquote>
+<p>Example Requests</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://intelex_url/api/v2/object/IncidentsObject(UID)/ILX.MailMergeDocs(UID)'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> 
+   <span class="p">{</span> <span class="na">accept</span><span class="p">:</span> <span class="s1">'application/octet-stream'</span> <span class="p">}</span> <span class="p">};</span>
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://intelex_url/api/v2/object/IncidentsObject(UID)/ILX.MailMergeDocs(UID)"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">GET</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"accept"</span><span class="p">,</span> <span class="s">"application/octet-stream"</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Example Responses</p>
+</blockquote>
+
+<p>By including the &lsquo;accept&rsquo; header parameter, the response will be the binary contents of the dynamically generated document file.</p>
+<pre class="highlight plaintext"><code>PK �Y�P����.customXml/item1.xml�ZYo�8~_` ...
+</code></pre>
+<p>Without the &lsquo;accept&rsquo; header, the response will be the metadata for the requested merge template record.</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"@odata.type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"@odata.id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"@odata.editLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"DateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-08T12:32:51.28-04:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"DateModified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-15T11:02:24.28-04:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"DownloadAs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ObjectRecordId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"TemplateName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>By default, this request returns the metadata of a specific Merge Template document. When you provide the Accept header value of &lsquo;application/octet-stream&rsquo;, then the binary contents of merged file itself will be returned instead.</p>
+
+<h4 id="get-object-intelex_object-id1-ilx-mailmergedocs-id2">GET /object/{intelex_object}({id1})/ILX.MailMergeDocs({id2})</h4>
+
+<h5 id="url-parameters">URL Parameters</h5>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>intelex_object</td>
+<td>The Intelex system name of the object eg. IncidentsObject</td>
+</tr>
+<tr>
+<td>id1</td>
+<td>The Intelex UID of the record being accessed</td>
+</tr>
+<tr>
+<td>id2</td>
+<td>The Intelex UID of the merge template to return</td>
+</tr>
+</tbody></table>
+
+<h5 id="header-parameters">Header Parameters</h5>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Example Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Accept</td>
+<td>Provide the content type in order to download the file</td>
+<td>application/octet-stream</td>
+</tr>
+</tbody></table>
+
 <h2 id="object-batch-requests">Object Batch Requests</h2>
 
 <blockquote>
