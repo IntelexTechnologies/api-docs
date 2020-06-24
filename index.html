@@ -2891,7 +2891,7 @@ Every object will have navigation properties that can be used to access its rela
 <h3 id="downloading-merge-documents">Downloading Merge Documents</h3>
 
 <blockquote>
-<p>Example Requests</p>
+<p>Example Request</p>
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
 
@@ -2911,12 +2911,16 @@ Every object will have navigation properties that can be used to access its rela
 <span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
 </code></pre>
 <blockquote>
-<p>Example Responses</p>
+<p>Example Response - including the &lsquo;accept&rsquo; header parameter, the response will be the binary contents of the dynamically generated document file.</p>
 </blockquote>
 
 <p>By including the &lsquo;accept&rsquo; header parameter, the response will be the binary contents of the dynamically generated document file.</p>
 <pre class="highlight plaintext"><code>PK �Y�P����.customXml/item1.xml�ZYo�8~_` ...
 </code></pre>
+<blockquote>
+<p>Example Response - without the &lsquo;accept&rsquo; header, the response will be the metadata for the requested merge template record.</p>
+</blockquote>
+
 <p>Without the &lsquo;accept&rsquo; header, the response will be the metadata for the requested merge template record.</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"@odata.type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
