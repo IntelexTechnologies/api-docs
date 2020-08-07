@@ -629,7 +629,7 @@ filter_expression | Filter expression used to query data
 
 ##### Filtering tasks assigned to you
 
-`assignedToMe()` is a function that can be used in expressions to easily filter tasks assigned to you as an individual, as a member of a location role, or member of a group. Requires Web Platform Release 6.5.XXX or higher.
+`assignedToMe()` is a function that can be used in expressions to easily filter tasks assigned to you as an individual, as a member of a location role, or member of a group. Requires Web Platform Release 6.5.131 or higher.
 
 |Description|Example Values|
 |---|---|
