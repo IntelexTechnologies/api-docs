@@ -1,5 +1,5 @@
 # API Reference
-
+# Note
 The Intelex API is organized around REST. Our API has predictable, resource-oriented URLs, and uses HTTP response codes to indicate API errors. We use built-in HTTP features, like HTTP authentication and HTTP verbs, which are understood by off-the-shelf HTTP clients. JSON is returned by all API responses, including errors.
 
 ## Getting Started
@@ -15,7 +15,7 @@ To begin using the Intelex API you will need:
 * Your own instance of the Intelex platform with the REST API enabled
 * A valid Intelex system user account
 * The full URL to your Intelex system
-* A basic understanding of the [Intelex Application model](https://community.intelex.com/library/knowledgebase/help/Content/Getting%20Started/Application%20Builder.htm). 
+* A basic understanding of the [Intelex Application model](https://community.intelex.com/library/knowledgebase/help/Content/Getting%20Started/Application%20Builder.htm).
 
 ## Authentication
 
@@ -56,10 +56,10 @@ Intelex utilizes two methods for authentication to the API- Basic and ApiKey.
 
 Basic authentication is performed via HTTP Basic Auth and your Intelex user credentials (Username:Password). The credentials are then verified by Intelex and access will be granted or denied accordingly.
 
-ApiKey authentication can be performed by generating API access key(s) from the Intelex User Profile menu (note that this page is only accessible to full-access and admins on the site). 
+ApiKey authentication can be performed by generating API access key(s) from the Intelex User Profile menu (note that this page is only accessible to full-access and admins on the site).
 The unique generated key can then be used to access the Intelex REST API and used to authenticate and prove that the user is who they claim to be.
 
-All API requests must be made over HTTPS and API requests without authentication will fail. Security on data is managed by the platform security configuration. 
+All API requests must be made over HTTPS and API requests without authentication will fail. Security on data is managed by the platform security configuration.
 API requests will maintain the same security settings you have configured in the platform for each user.
 
 ## Data Format
