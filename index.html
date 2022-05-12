@@ -340,7 +340,7 @@ API requests will maintain the same security settings you have configured in the
 </tr>
 <tr>
 <td>204</td>
-<td>No Content &ndash; Your request was successful, but we don&rsquo;t have anything more to tell you.</td>
+<td>No Content &ndash; Your request was successful, but we don&rsquo;t have anything more to tell you</td>
 </tr>
 <tr>
 <td>400</td>
@@ -363,6 +363,10 @@ API requests will maintain the same security settings you have configured in the
 <td>Method Not Allowed &ndash; We won&rsquo;t let you do that</td>
 </tr>
 <tr>
+<td>429</td>
+<td>Too Many Requests &ndash; You have sent too many requests and have to wait till you can send more</td>
+</tr>
+<tr>
 <td>500</td>
 <td>Internal Server Error &ndash; We had a problem with our server. Try again later</td>
 </tr>
@@ -375,6 +379,47 @@ API requests will maintain the same security settings you have configured in the
 <h2 id="versioning">Versioning</h2>
 
 <p>When we make backwards-incompatible changes to the API, we release new versions. The current version is <strong>v2</strong> and can be determined with our API base path <strong>/api/v2/</strong>. Read our <a href="https://community.intelex.com/library/knowledgebase/release-notes">Intelex platform release notes</a> to see our API changelog.</p>
+
+<h2 id="api-rate-limiting-quotas">API Rate Limiting / Quotas</h2>
+
+<p>To ensure Intelex Platform is reliable and has the expected performance for all users, we limit the number of API calls an API user (or application) can make within a given time period. If the limit is exceeded, the API user may be throttled and subsequent requests within the same period will fail (status code 429).</p>
+
+<h3 id="limit">Limit</h3>
+
+<p>The Intelex Platform API Rate limit is <strong>2 requests per second</strong></p>
+
+<h3 id="quota-headers">Quota headers</h3>
+
+<p>Quota details may be passed back to the API user/application via response headers.</p>
+
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Description</th>
+<th>Sample value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>X-RateLimit-Limit</td>
+<td>The request limit per specified unit of time.</td>
+<td>100</td>
+</tr>
+<tr>
+<td>X-RateLimit-Remaining</td>
+<td>The remaining number of requests that API consumers can send in the current time window.</td>
+<td>75</td>
+</tr>
+<tr>
+<td>X-RateLimit-Reset</td>
+<td>The UTC epoch timestamp indicating the time of the next quota reset. Sent only when quota remains.</td>
+<td>1521214822</td>
+</tr>
+<tr>
+<td>X-RateLimit-Next</td>
+<td>The UTC epoch timestamp indicating the time of the next quota reset. Sent only when quota is full.</td>
+<td>1521215291</td>
+</tr>
+</tbody></table>
 
           <h1 id="object-data-api">Object Data API</h1>
 
