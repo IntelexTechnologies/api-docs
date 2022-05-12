@@ -100,13 +100,13 @@ Response Code | Meaning
 When we make backwards-incompatible changes to the API, we release new versions. The current version is **v2** and can be determined with our API base path **/api/v2/**. Read our [Intelex platform release notes](https://community.intelex.com/library/knowledgebase/release-notes) to see our API changelog.
 
 ## API Rate Limiting / Quotas
-To ensure Intelex Platform is reliable, and has expected performance for all users, we limit the number of API calls an API user(or application) can make within a given time period. If the limit is exceeded, API user may be throttled and such requests will fail (status code 429).
+To ensure Intelex Platform is reliable and has the expected performance for all users, we limit the number of API calls an API user (or application) can make within a given time period. If the limit is exceeded, the API user may be throttled and subsequent requests within the same period will fail (status code 429).
 
 ### Limit
-Intelex Platform API Rate limit is **2 requests per second**
+The Intelex Platform API Rate limit is **2 requests per second**
 
 ### Quota headers
-The details about the quota might be passed back to the API user/application via response headers.
+Quota details may be passed back to the API user/application via response headers.
 
 Header | Description | Sample value
 ---------- | ------- | -------
