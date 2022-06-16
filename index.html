@@ -2553,7 +2553,7 @@ Every object will have navigation properties that can be used to access its rela
 
 <h2 id="object-attachments">Object Attachments</h2>
 
-<p>There are two types of file attachments on records. Files can be attached to the Private Document Attachment grid on a record or to the File type field of an object.  To access files in the Private Document Attachment grid use the system reserved property: ILX.Attachments.  To access files in the File type field use the system name of the field.  Currently, only downloading files from the File type field is available. Document Control uses this file type field and an example is added below showing how to access the released and effective version of document control files. </p>
+<p>There are two types of file attachments on records. Files can be attached to the Private Document Attachment grid on a record or to the File type field of an object.  To access files in the Private Document Attachment grid use the system reserved property: ILX.Attachments.  To access files in the File type field use the system name of the field. Document Control uses this file type field and an example is added below showing how to access the released and effective version of document control files. </p>
 
 <h3 id="requesting-private-documents">Requesting Private Documents</h3>
 
@@ -2893,6 +2893,163 @@ Every object will have navigation properties that can be used to access its rela
 <td>The Intelex UID of the record or document being accessed</td>
 </tr>
 </tbody></table>
+
+<h3 id="uploading-document-control-files">Uploading Document Control Files</h3>
+
+<p>The first step for File type is to upload document. The file must be attached to the request as form-data. File size is configurable via web.config setting AttachmentMaxFileSize. There are two endpoints to upload file, difference is in the responses.</p>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"fs"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://intelex_url/api/v2/FileUpload'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'</span> <span class="p">},</span>
+  <span class="na">formData</span><span class="p">:</span> 
+   <span class="p">{</span> <span class="s1">''</span><span class="p">:</span> 
+      <span class="p">{</span> <span class="na">value</span><span class="p">:</span> <span class="s1">'fs.createReadStream("C:\\Document.docx")'</span><span class="p">,</span>
+        <span class="na">options</span><span class="p">:</span> <span class="p">{</span> <span class="na">filename</span><span class="p">:</span> <span class="s1">'C:\\Document.docx'</span><span class="p">,</span> <span class="na">contentType</span><span class="p">:</span> <span class="kc">null</span> <span class="p">}</span> <span class="p">}</span> 
+    <span class="p">}</span> 
+<span class="p">};</span>
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="p">[</span> <span class="s2">"47df4cec-50ad-4da5-a820-7827985a77bb"</span> <span class="p">]</span>
+</code></pre>
+<h4 id="endpoint-1">Endpoint 1</h4>
+
+<p>This will return UID for the newly created file. The UID then can be attached to a record.</p>
+
+<h5 id="post-fileupload">POST /FileUpload</h5>
+
+<h5 id="header-parameters">Header Parameters</h5>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>content-type</td>
+<td>The multipart/form-data content type is intended to allow information providers to express file upload requests uniformly, and to provide a MIME-compatible representation for file upload responses.</td>
+<td>multipart/form-data</td>
+</tr>
+</tbody></table>
+
+<h5 id="returns">Returns</h5>
+
+<p>201 Created with Array of File UID</p>
+
+<p><br><br><br><br><br><br><br><br><br><br><br><br></p>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"fs"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://intelex_url/api/v2/object/SysFileInfoEntity'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'</span> <span class="p">},</span>
+  <span class="na">formData</span><span class="p">:</span> 
+   <span class="p">{</span> <span class="s1">''</span><span class="p">:</span> 
+      <span class="p">{</span> <span class="na">value</span><span class="p">:</span> <span class="s1">'fs.createReadStream("C:\\Document.docx")'</span><span class="p">,</span>
+        <span class="na">options</span><span class="p">:</span> <span class="p">{</span> <span class="na">filename</span><span class="p">:</span> <span class="s1">'C:\\Document.docx'</span><span class="p">,</span> <span class="na">contentType</span><span class="p">:</span> <span class="kc">null</span> <span class="p">}</span> <span class="p">}</span> 
+    <span class="p">}</span> 
+<span class="p">};</span>
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"@odata.context"</span><span class="p">:</span><span class="w"> </span><span class="err">“string”</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"@odata.type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#Intelex.SysFileInfoEntity"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"@odata.id"</span><span class="p">:</span><span class="w"> </span><span class="err">“string”</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"@odata.editLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"DateModified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"DateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Content@odata.mediaReadLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"FileExtension"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string: filename"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Size"</span><span class="p">:</span><span class="w"> </span><span class="err">number</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h4 id="endpoint-2">Endpoint 2</h4>
+
+<p>This will return Edm for the newly created file. The @data.id link then can be used to attached to a record.</p>
+
+<h5 id="post-object-sysfileinfoentity">POST /object/SysFileInfoEntity</h5>
+
+<h5 id="header-parameters">Header Parameters</h5>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>content-type</td>
+<td>The multipart/form-data content type is intended to allow information providers to express file upload requests uniformly, and to provide a MIME-compatible representation for file upload responses.</td>
+<td>multipart/form-data</td>
+</tr>
+</tbody></table>
+
+<h5 id="returns">Returns</h5>
+
+<p>201 Created with newly created SysFileInfoEntity</p>
+
+<h3 id="attaching-document-control-files">Attaching Document Control Files</h3>
+
+<p>Once you have <b>@odata.id</b> of FileInfo, you can use that to attach to an object with File field. It is similar to <a href="#modifying-object-data">Modifying Object Data</a></p>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  ....
+  "FileInput@odata.bind": "http://torwdtahmed02.intelex.com/devlogin/inspections/api/v2/object/SysFileInfoEntity(47df4cec-50ad-4da5-a820-7827985a77bb)"
+}
+</code></pre>
+<h5 id="post-object-intelex_object">POST /object/{intelex_object}</h5>
+
+<h5 id="request-parameters">Request Parameters</h5>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>intelex_object</td>
+<td>The Intelex system name of the object eg. IncidentsObject</td>
+</tr>
+</tbody></table>
+
+<h5 id="request-body">Request Body</h5>
+
+<p>If intelex object has field FileInput (of type <b>File</b>), then Post body should contain this to attach file</p>
+
+<p>&ldquo;FileInput@odata.bind&rdquo;: @odata.id from file upload response&quot;</p>
+
+<h3 id="detaching-document-control-file">Detaching Document Control File</h3>
+
+<p>It is same as detaching a reference field in <a href="#modifying-object-data">Modifying Object Data</a>.
+There is Intelex service that periodically cleans orphan files.</p>
 
 <h2 id="object-merge-templates">Object Merge Templates</h2>
 
