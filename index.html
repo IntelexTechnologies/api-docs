@@ -4701,6 +4701,127 @@ Content-Transfer-Encoding:binary
 <li>Submit support requests</li>
 </ul>
 
+          <h1 id="acts-api-reference">ACTS API Reference</h1>
+
+<p>The Intelex ACTS API provides endpoints in ACTS, with it&rsquo;s own URL for access. If you currently use the Intelex API, you will not be able to use the ACTS API unless you have Admin access to ACTS. At the same time, you can use the ACTS API without any permission for Intelex V6.  </p>
+
+<p>Our ACTS API has predictable, resource-oriented URLs, and uses HTTP response codes to indicate API errors. We use built-in HTTP features, like HTTP authentication and HTTP verbs, which are understood by off-the-shelf HTTP clients. JSON is returned by all API responses, including errors.</p>
+
+<h2 id="getting-started">Getting Started</h2>
+
+<p>To begin using the Intelex API you will need:
+*   A valid Intelex ACTS user account
+*   The full URL to your Intelex ACTS API and system
+*   A basic understanding of the Intelex ACTS API Application.</p>
+
+<blockquote>
+<p>API Endpoint - replace <strong>intelex_ACTS API url</strong> with the full URL path to your Intelex system</p>
+</blockquote>
+<pre class="highlight plaintext"><code>https://*.actsapi.intelex.com
+</code></pre>
+<h2 id="authentication">Authentication</h2>
+
+<blockquote>
+<p>Example Requests:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>
+//PostMan Body for Authentication Endpoint
+{"client_id":"Client ID Data",
+"client_secret":"Client Secret Data",
+"audience":"https://*.intelex.com/API-release",
+"grant_type":"client_credentials"}
+</code></pre>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Generated Bearer Access Token Used For Validation"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"expires_in"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Token Expiry Time In Seconds"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bearer"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Intelex&rsquo;s ACTS API uses Auth0 tokens for authentication. Only ACTS Admin users can access the API. </p>
+
+<p>During Auth0 authentication, the client passes &lsquo;client id&rsquo; and &lsquo;client secret&rsquo; to the auth0 validation endpoint, along with the audience and grant type, as shown above. The API returns a bearer-type access token with a time limit. Only ACTS admin users will be authenticated. Once authenticated, users have access to all ACTS API endpoints. </p>
+
+<p>All API requests must be made over HTTPS, and API requests without authentication will fail. Security on data is managed by the ACTS platform, and API requests will provide the same admin access available to logged in ACTS admin users. </p>
+
+<p>The user authentication endpoint uses a POST (with input parameters described above) to generate the access token [bearer token]. </p>
+
+<blockquote>
+<p>Authentication API Endpoint - https: // dev-intelex.us.auth0.com/oauth/token </p>
+</blockquote>
+
+<h2 id="data-format">Data Format</h2>
+
+<p>The ACTS API only supports <a href="http://www.json.org/">JSON</a> for requests and responses.</p>
+
+<h2 id="response-codes">Response Codes</h2>
+
+<p>The ACTS API will respond with the following HTTP status codes:</p>
+
+<table><thead>
+<tr>
+<th>Response Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>Success &ndash; Enjoy your data!</td>
+</tr>
+<tr>
+<td>201</td>
+<td>Created &ndash; We created the record!</td>
+</tr>
+<tr>
+<td>204</td>
+<td>No Content &ndash; Your request was successful, but we don&rsquo;t have anything more to tell you</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Bad Request &ndash; Something is wrong with your request</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized &ndash; Your credentials are wrong</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden &ndash; You do not have permission to access the resource</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found &ndash; The object or navigation property you are trying to access doesn&rsquo;t exist</td>
+</tr>
+<tr>
+<td>405</td>
+<td>Method Not Allowed &ndash; We won&rsquo;t let you do that</td>
+</tr>
+<tr>
+<td>429</td>
+<td>Too Many Requests &ndash; You have sent too many requests and have to wait till you can send more</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error &ndash; We had a problem with our server. Try again later</td>
+</tr>
+<tr>
+<td>501</td>
+<td>Not Implemented &ndash; What you are trying to do doesn&rsquo;t work&hellip;yet.</td>
+</tr>
+</tbody></table>
+
+<h2 id="versioning">Versioning</h2>
+
+<p>When we make backwards-incompatible changes to the API, we release new versions. The current version of the ACTS API  is v1 and can be determined with our API base path /api/v1/.</p>
+
+<blockquote>
+<p>Example API Endpoint : https://<em>.actsapi.intelex.com/API/</em>*/v1/TableName</p>
+</blockquote>
+
       </div>
       <div class="dark-box">
           <div class="lang-selector">
