@@ -4822,6 +4822,368 @@ Content-Transfer-Encoding:binary
 <p>Example API Endpoint : https://<em>.actsapi.intelex.com/API/</em>*/v1/TableName</p>
 </blockquote>
 
+          <h1 id="total-apis-and-associated-tables">Total API&rsquo;s and Associated Tables</h1>
+
+<p>This ACTS API release includes 11 GET enpoints and 4 POST endpoints, along with the authentication endpoint described above. The tables you can query and update are as follows. </p>
+
+<p>1.Tables Supporting GET requests 
+* Operation Table<br>
+* Equipment Table<br>
+* Emission Type Table<br>
+* Emission Category Table<br>
+* Equipment Status Table 
+* Unit Table 
+* Attribute Type Table 
+* Equipment Type Table 
+* Compound Table</p>
+
+<p>2.Tables Supporting POST requests 
+* Equipment Table
+* Operation Table
+* Facility Table
+* Facility Attribute Table</p>
+
+          <h1 id="types-of-apis-and-general-url">Types Of API&rsquo;s and General URL</h1>
+
+<ol>
+<li> GET API’s In the current ACTS – API release overall there have been planned for 11 GET API’s </li>
+</ol>
+
+<blockquote>
+<p>Example GET API Endpoint : https : // *actsapi.intelex.com/API-develop/v1/{Table Object}/{Fetch_Based_On_ID’s} </p>
+</blockquote>
+
+<ol>
+<li> POST API’s in the upcoming release we are including 4 POST API’s . 
+These API’s helps to edit and make updates in the respective tables.
+In the POST API the user needs to pass on the input in JSON Format  . The Input JSON body would be something like this </li>
+</ol>
+
+<blockquote>
+<p>Example Input JSON Body</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"EquipmentAttributeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"EquipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"AttributeTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"EquipmentAttribute"</span><span class="p">:</span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"DataLockTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"datetime"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"LastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"datetime"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ExternalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Comments"</span><span class="p">:</span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Example POST API Endpoint : https : // *actsapi.intelex.com/API-develop/v1/{Table Object}</p>
+</blockquote>
+
+<p>{Table Object} : Unit , Operation , Emission , Emission Category tables etc </p>
+
+<p>{API-develop} : develop is the environment </p>
+
+<p>v1 : Version , First version of the ACTS - API</p>
+
+<ol>
+<li>GET API&rsquo;s With Pagination Option 
+In this case user can specify the page number and page size where 500 is maximum size of the page. Example output with the page number and page size </li>
+</ol>
+
+<blockquote>
+<p>Example GET API Endpoint : https ://*actsapi.intelex.com/API-develop/v1/{Table Object}/{Fetch_Based_On_ID’s}/ ?PageNumber=1&amp;PageSize=50 </p>
+</blockquote>
+
+<p>{Table Object} : Unit , Operation , Emission , Emission Category tables etc </p>
+
+<p>{API-develop} : develop is the environment </p>
+
+<p>v1 : Version , First version of the ACTS - API</p>
+
+<p>{Fetched_Based_On_ID&rsquo;s} : User can specify the mentioned specific ID to get that particular data</p>
+
+<p>{Page Number} and {Page Size} : User can specify the page number and page size </p>
+
+<blockquote>
+<p>Example OutPut Response </p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"currentPage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currentPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"maxAPIPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hasPrevious"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boolean"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hasNext"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boolean"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w">
+</span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"EquipmentAttributeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"EquipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"AttributeTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"EquipmentAttribute"</span><span class="p">:</span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"DataLockTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"datetime"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"LastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"datetime"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ExternalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Comments"</span><span class="p">:</span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+          <h1 id="all-get-apis">ALL GET API&rsquo;s</h1>
+
+<p>The following GET APIs are used to fetch the data from the respective tables. </p>
+
+<h2 id="1-attribute-type-api-get-endpoint">1. Attribute Type API GET Endpoint</h2>
+
+<p>All data from the Attribute Type table will be returned from the endpoint below. You can optionally fetch specific data by including Attribute ID’s and Attribute Types. The Attribute Type endpoint supports pagination.</p>
+
+<blockquote>
+<p>Example GET Endpoint Without Pagination: </p>
+</blockquote>
+<pre class="highlight plaintext"><code>https: // *actsapi.intelex.com/API-develop/v1/AttributeType
+</code></pre>
+<blockquote>
+<p>Example GET Endpoint With Pagination: </p>
+</blockquote>
+<pre class="highlight plaintext"><code>https: // *actsapi.intelex.com/API-develop/v1/AttributeType?PageNumber=1&amp;PageSize=500&amp;attributeTypeIDs="int data"&amp;attributeTypes="string data" 
+</code></pre>
+<h2 id="2-compound-api-get-endpoint">2.Compound API GET Endpoint</h2>
+
+<p>All data from the Compound table will be returned from the endpoint below. You can optionally fetch specific data by including compound ID’s, compound Type IDs, compound status IDs, compound Names, external identifiers, or CAS number. The Compound endpoint supports pagination.</p>
+
+<blockquote>
+<p>Example GET Endpoint Without Pagination: </p>
+</blockquote>
+<pre class="highlight plaintext"><code>https: // *actsapi.intelex.com/API-develop/v1/Compound
+</code></pre>
+<blockquote>
+<p>Example GET Endpoint With Pagination: </p>
+</blockquote>
+<pre class="highlight plaintext"><code>https: // *actsapi.intelex.com/API-develop/v1/Compound? PageNumber=1&amp;PageSize=500&amp;compoundIDs="int data"&amp;compoundTypeIDs="int data"&amp;compoundstatusIDs="int data"&amp;compoundNames="string data"&amp;externalIdentifier="int"&amp;CAS="string data"
+</code></pre>
+<h2 id="3-emission-category-api-get-endpoint">3.Emission Category API GET Endpoint</h2>
+
+<p>All data from the Emission Category table will be returned from the endpoint below. You can optionally fetch specific data by including the emission category ID. The Emission Category endpoint supports pagination.</p>
+
+<blockquote>
+<p>Example GET Endpoint Without Pagination: </p>
+</blockquote>
+<pre class="highlight plaintext"><code>https: // *actsapi.intelex.com/API-develop/v1/EmissionCategory
+</code></pre>
+<blockquote>
+<p>Example GET Endpoint With Pagination and Filter Option:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>https: // *actsapi.intelex.com/API-develop/v1/EmissionCategory/{int data – Emission Category ID}
+</code></pre>
+<h2 id="4-emission-type-api-get-endpoint">4.Emission Type API GET Endpoint</h2>
+
+<p>All data from the Emission type table will be returned from the endpoint below. You can optionally fetch specific data by including the emission type ID. The Emission Type endpoint supports pagination.</p>
+
+<blockquote>
+<p>Example GET Endpoint Without Pagination: </p>
+</blockquote>
+<pre class="highlight plaintext"><code>https: // *actsapi.intelex.com/API-develop/v1/EmissionType
+</code></pre>
+<blockquote>
+<p>Example GET Endpoint With Pagination and Filter Option:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>https: //*actsapi.intelex.com/API-develop/v1/EmissionType?PageNumber=1&amp;PageSize=500&amp;emissionTypeID={int data value}
+</code></pre>
+<h2 id="5-equipment-api-get-endpoint">5.Equipment API GET Endpoint</h2>
+
+<p>All data from the Equipment table will be returned from the endpoint below. You can optionally fetch specific data by including the equipment ID. The Equipment endpoint supports pagination.</p>
+
+<blockquote>
+<p>Example GET Endpoint Without Pagination: </p>
+</blockquote>
+<pre class="highlight plaintext"><code>https: // *actsapi.intelex.com/API-develop/v1/Equipment
+</code></pre>
+<blockquote>
+<p>Example GET Endpoint With Pagination and Filter Option:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>https: //*actsapi.intelex.com/API-develop/v1/Equipment?PageNumber=1&amp;PageSize=500&amp;equipmentID={int data value}
+</code></pre>
+<h2 id="6-equipment-status-api-get-endpoint">6.Equipment Status API GET Endpoint</h2>
+
+<p>All data from the Equipment Status table will be returned from the endpoint below. You can optionally fetch specific data by including the equipment status ID and equipment status value. The Equipment Status endpoint supports pagination.</p>
+
+<blockquote>
+<p>Example GET Endpoint Without Pagination: </p>
+</blockquote>
+<pre class="highlight plaintext"><code>https: // *actsapi.intelex.com/API-develop/v1/EquipmentStatus
+</code></pre>
+<blockquote>
+<p>Example GET Endpoint With Pagination and Filter Option:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>https: // *actsapi.intelex.com/API-develop/v1/EquipmentStatus?PageNumber=1&amp;PageSize=500&amp;EquipmentStatusIDs="int data"&amp;EquipmentStatus="string data"
+</code></pre>
+<h2 id="7-equipment-type-api-get-endpoint">7.Equipment Type API GET Endpoint</h2>
+
+<p>All data from the Equipment Type table will be returned from the endpoint below. You can optionally fetch specific data by including the equipment type ID and equipment types value. The Equipment type endpoint supports pagination.</p>
+
+<blockquote>
+<p>Example GET Endpoint Without Pagination: </p>
+</blockquote>
+<pre class="highlight plaintext"><code>https: // *actsapi.intelex.com/API-develop/v1/EquipmentType
+</code></pre>
+<blockquote>
+<p>Example GET Endpoint With Pagination and Filter Option:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>https: // *actsapi.intelex.com/API-develop/v1/EquipmentType?PageNumber=1&amp;PageSize=500&amp;EquipmentTypeIDs="int data"&amp;EquipmentType="string data"
+</code></pre>
+<h2 id="8-operation-api-get-endpoint">8.Operation API GET Endpoint</h2>
+
+<p>All data from the Operation table will be returned from the endpoint below. You can optionally fetch specific data by including the operation ids, operation type ids, emission type ids, emission category ids, unit ids, equipment ids, last modified start date and last modified end date. The Operation endpoint supports pagination.</p>
+
+<blockquote>
+<p>Example GET Endpoint Without Pagination: </p>
+</blockquote>
+<pre class="highlight plaintext"><code>https: // *actsapi.intelex.com/API-develop/v1/Operation
+</code></pre>
+<blockquote>
+<p>Example GET Endpoint With Pagination and Filter Option:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>https: // *actsapi.intelex.com/API-develop/v1/ Operation?PageNumber =1&amp;PageSize=500&amp;OperationIDs="int data"&amp;OperationTypeIDs=”string data "&amp;EmissionTypeIDs="int data”&amp;EmissionCategoryIDs="int data”&amp;UnitIDs="int data"&amp;EquipmentIDs="int data"&amp;LastModifiedStartDate=”string format – date time data"&amp;LastModifiedEndDate="string format – date time data" 
+</code></pre>
+<h2 id="9-unit-api-get-endpoint">9.Unit API GET Endpoint</h2>
+
+<p>All data from the Unit table will be returned from the endpoint below. You can optionally fetch specific data by including the unit ids, unit type ids and units. The Unit type endpoint supports pagination.</p>
+
+<blockquote>
+<p>Example GET Endpoint Without Pagination: </p>
+</blockquote>
+<pre class="highlight plaintext"><code>https: // *actsapi.intelex.com/API-develop/v1/Unit
+</code></pre>
+<blockquote>
+<p>Example GET Endpoint With Pagination and Filter Option:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>https: // *actsapi.intelex.com/API-develop/v1/Unit?PageNumber=1&amp;PageSize=500&amp;UnitIDs="int data"&amp;UnitTypeIDs="int data" &amp;Units="string data"
+</code></pre>
+<h2 id="sample-result-set-of-one-of-the-api-endpoint">Sample Result Set Of One Of the API Endpoint</h2>
+
+<blockquote>
+<p>Example Output Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"currentPage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currentPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"maxAPIPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hasPrevious"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boolean"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hasNext"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boolean"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w">
+</span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"EquipmentAttributeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"EquipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"AttributeTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"EquipmentAttribute"</span><span class="p">:</span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"DataLockTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"datetime"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"LastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"datetime"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ExternalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Comments"</span><span class="p">:</span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span></code></pre>
+          <h1 id="all-post-apis">ALL POST API&rsquo;s</h1>
+
+<p>The following POST APIs are used to modify ACTS data. Options include updating existing records and inserting new records, and you can complete both in the same POST. To insert new records, the primary key is set to 0, while for updates to existing records, the primary key for the existing record is used. You can see an example for this in 4. Facility Attribute Table POST API Endpoint below. </p>
+
+<p>For large data inserts, we recommend you break data into batch POSTs of up to 500 rows. Large batch POSTs may be throttled or failed, depending on system resources. </p>
+
+<p>In the current release we have 4 POST API’s available, for the Equipment, Operation, Facility, and Facility Attribute tables. POSTs to these endpoints must be JSON format. </p>
+
+<p>As described above, to insert to a table, the primary key should be zero – 0. When the record is added to the table it will be assigned the next available incremental primary key.</p>
+
+<h2 id="1-equipment-post-api-endpoint">1.Equipment POST API Endpoint</h2>
+
+<p>Equipment records can be updated, or new records added at the following endpoint:</p>
+
+<blockquote>
+<p>Equipment POST endpoint: </p>
+</blockquote>
+<pre class="highlight plaintext"><code>https: // *actsapi.intelex.com/API-staging/DEVELOPMENT/v1/Equipment
+</code></pre>
+<h2 id="2-operation-post-api-endpoint">2.Operation POST API endpoint</h2>
+
+<p>Operation records can be updated, or new records added at the following endpoint:</p>
+
+<blockquote>
+<p>General URL Of POST Endpoint: </p>
+</blockquote>
+<pre class="highlight plaintext"><code>https: // *actsapi.intelex.com/API-staging/DEVELOPMENT/v1/Operation
+</code></pre>
+<h2 id="3-facility-post-api-endpoint">3.Facility POST API endpoint</h2>
+
+<p>Facility records can be updated, or new records added at the following endpoint:</p>
+
+<blockquote>
+<p>General URL Of POST Endpoint : </p>
+</blockquote>
+<pre class="highlight plaintext"><code>https: // *actsapi.intelex.com/API-staging/DEVELOPMENT/v1/Facility
+</code></pre>
+<h2 id="4-facility-attribute-post-api-endpoint">4.Facility Attribute POST API endpoint</h2>
+
+<p>Facility Attribute records can be updated, or new records added at the following endpoint:</p>
+
+<blockquote>
+<p>Facility Attribute POST Endpoint: </p>
+</blockquote>
+<pre class="highlight plaintext"><code>https: // *actsapi.intelex.com/API-staging/DEVELOPMENT/v1/FacilityAttribute 
+</code></pre>
+<h2 id="json-body-for-both-insert-update">JSON body for both Insert &amp; Update</h2>
+
+<p>If the primary id is zero - &ldquo;0&rdquo; then the data we are passing is handled as an insert, shown in the example below, where &ldquo;EquipmentAttributeId&rdquo; is passed as &ldquo;0&rdquo;. </p>
+
+<blockquote>
+<p>Example Input JSON Body For Insert </p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"EquipmentAttributeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"EquipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"AttributeTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"EquipmentAttribute"</span><span class="p">:</span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"DataLockTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"datetime"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"LastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"datetime"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ExternalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Comments"</span><span class="p">:</span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Example Input JSON Body For Update </p>
+</blockquote>
+
+<p>If the primary id is an existing ID - &ldquo;#####&rdquo; then the data we are passing is handled as an update, shown in the example below, where &ldquo;EquipmentAttributeId&rdquo; is passed as &ldquo;164&rdquo;. </p>
+<pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"EquipmentAttributeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">164</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"EquipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"AttributeTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"EquipmentAttribute"</span><span class="p">:</span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"DataLockTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"datetime"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"LastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"datetime"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ExternalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Comments"</span><span class="p">:</span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+          <h1 id="acts-api-developer-support">ACTS API Developer Support</h1>
+
+<p><a href="https://community.intelex.com/connect/groups/developer-community">Join the Intelex Developer group on Community</a> and:</p>
+
+<ul>
+<li>Stay up-to-date about our API</li>
+<li>Ask technical questions</li>
+<li>Give us feedback</li>
+<li>Submit support requests</li>
+</ul>
+
       </div>
       <div class="dark-box">
           <div class="lang-selector">
