@@ -15,7 +15,7 @@ Equipment records can be updated, or new records added at the following endpoint
 > Equipment POST endpoint: 
 
 ```
-https: // {tenant}actsapi.intelex.com/API-staging/DEVELOPMENT/v1/Equipment
+https: // {tenant}.actsapi.intelex.com/API-staging/DEVELOPMENT/v1/Equipment
 ```
 
 ## 2.Operation POST API endpoint 
@@ -25,7 +25,7 @@ Operation records can be updated, or new records added at the following endpoint
 > Operation POST Endpoint: 
 
 ```
-https: // {tenant}actsapi.intelex.com/API-staging/DEVELOPMENT/v1/Operation
+https: // {tenant}.actsapi.intelex.com/API-staging/DEVELOPMENT/v1/Operation
 ```
 
 ## 3.Facility POST API endpoint 
@@ -35,7 +35,7 @@ Facility records can be updated, or new records added at the following endpoint:
 > Facility POST Endpoint : 
 
 ```
-https: // {tenant}actsapi.intelex.com/API-staging/DEVELOPMENT/v1/Facility
+https: // {tenant}.actsapi.intelex.com/API-staging/DEVELOPMENT/v1/Facility
 ```
 
 ## 4.Facility Attribute POST API endpoint 
@@ -45,7 +45,7 @@ Facility Attribute records can be updated, or new records added at the following
 > Facility Attribute POST Endpoint: 
 
 ```
-https: // {tenant}actsapi.intelex.com/API-staging/DEVELOPMENT/v1/FacilityAttribute 
+https: // {tenant}.actsapi.intelex.com/API-staging/DEVELOPMENT/v1/FacilityAttribute 
 ```
 
 ## JSON body for both Insert & Update 

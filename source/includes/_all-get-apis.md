@@ -9,13 +9,13 @@ All data from the Attribute Type table will be returned from the endpoint below.
 > Example Of AttributeType GET Endpoint Without Pagination: 
 
 ```
-https: // {tenant}actsapi.intelex.com/API-develop/v1/AttributeType
+https: // {tenant}.actsapi.intelex.com/API-develop/v1/AttributeType
 ```
 
 > Example Of AttributeType GET Endpoint With Pagination and Filter Option: 
 
 ```
-https: // *actsapi.intelex.com/API-develop/v1/AttributeType?PageNumber=1&PageSize=500&attributeTypeIDs="int data"&attributeTypes="string data" 
+https: // {tenant}.actsapi.intelex.com/API-develop/v1/AttributeType?PageNumber=1&PageSize=500&attributeTypeIDs="int data"&attributeTypes="string data" 
 ```
 
 ## 2.Compound API GET Endpoint
@@ -25,13 +25,13 @@ All data from the Compound table will be returned from the endpoint below. You c
 > Example Of Compound GET Endpoint Without Pagination: 
 
 ```
-https: // {tenant}actsapi.intelex.com/API-develop/v1/Compound
+https: // {tenant}.actsapi.intelex.com/API-develop/v1/Compound
 ```
 
 > Example Of Compound GET Endpoint With Pagination and Filter Option: 
 
 ```
-https: // {tenant}actsapi.intelex.com/API-develop/v1/Compound? PageNumber=1&PageSize=500&compoundIDs="int data"&compoundTypeIDs="int data"&compoundstatusIDs="int data"&compoundNames="string data"&externalIdentifier="int"&CAS="string data"
+https: // {tenant}.actsapi.intelex.com/API-develop/v1/Compound? PageNumber=1&PageSize=500&compoundIDs="int data"&compoundTypeIDs="int data"&compoundstatusIDs="int data"&compoundNames="string data"&externalIdentifier="int"&CAS="string data"
 ```
 
 ## 3.Emission Category API GET Endpoint 
@@ -42,12 +42,12 @@ All data from the Emission Category table will be returned from the endpoint bel
 > Example Of EmissionCategory GET Endpoint Without Pagination: 
 
 ```
-https: // {tenant}actsapi.intelex.com/API-develop/v1/EmissionCategory
+https: // {tenant}.actsapi.intelex.com/API-develop/v1/EmissionCategory
 ```
 > Example Of EmissionCategory GET Endpoint With Pagination and Filter Option:
 
 ```
-https: // {tenant}actsapi.intelex.com/API-develop/v1/EmissionCategory/{int data – Emission Category ID}
+https: // {tenant}.actsapi.intelex.com/API-develop/v1/EmissionCategory/{int data – Emission Category ID}
 ```
 
 ## 4.Emission Type API GET Endpoint
@@ -57,13 +57,13 @@ All data from the Emission type table will be returned from the endpoint below. 
 > Example Of EmissionType GET Endpoint Without Pagination: 
 
 ```
-https: // {tenant}actsapi.intelex.com/API-develop/v1/EmissionType
+https: // {tenant}.actsapi.intelex.com/API-develop/v1/EmissionType
 ```
 
 > Example Of EmissionType GET Endpoint With Pagination and Filter Option:
 
 ```
-https: //{tenant}actsapi.intelex.com/API-develop/v1/EmissionType?PageNumber=1&PageSize=500&emissionTypeID={int data value}
+https: //{tenant}.actsapi.intelex.com/API-develop/v1/EmissionType?PageNumber=1&PageSize=500&emissionTypeID={int data value}
 ```
 
 ## 5.Equipment API GET Endpoint 
@@ -73,13 +73,13 @@ All data from the Equipment table will be returned from the endpoint below. You 
 > Example Of Equipment GET Endpoint Without Pagination: 
 
 ```
-https: //{tenant}actsapi.intelex.com/API-develop/v1/Equipment
+https: //{tenant}.actsapi.intelex.com/API-develop/v1/Equipment
 ``` 
 
 > Example Of Equipment GET Endpoint With Pagination and Filter Option:
 
 ```
-https: //{tenant}actsapi.intelex.com/API-develop/v1/Equipment?PageNumber=1&PageSize=500&equipmentID={int data value}
+https: //{tenant}.actsapi.intelex.com/API-develop/v1/Equipment?PageNumber=1&PageSize=500&equipmentID={int data value}
 ```
 
 ## 6.Equipment Status API GET Endpoint
@@ -89,13 +89,13 @@ All data from the Equipment Status table will be returned from the endpoint belo
 > Example Of EquipmentStatus GET Endpoint Without Pagination: 
 
 ```
-https: // {tenant}actsapi.intelex.com/API-develop/v1/EquipmentStatus
+https: // {tenant}.actsapi.intelex.com/API-develop/v1/EquipmentStatus
 ```
 
 > Example Of EquipmentStatus GET Endpoint With Pagination and Filter Option:
 
 ```
-https: // {tenant}actsapi.intelex.com/API-develop/v1/EquipmentStatus?PageNumber=1&PageSize=500&EquipmentStatusIDs="int data"&EquipmentStatus="string data"
+https: // {tenant}.actsapi.intelex.com/API-develop/v1/EquipmentStatus?PageNumber=1&PageSize=500&EquipmentStatusIDs="int data"&EquipmentStatus="string data"
 ```
 
 ## 7.Equipment Type API GET Endpoint
@@ -105,13 +105,13 @@ All data from the Equipment Type table will be returned from the endpoint below.
 > Example Of EquipmentType GET Endpoint Without Pagination: 
 
 ```
-https: // {tenant}actsapi.intelex.com/API-develop/v1/EquipmentType
+https: // {tenant}.actsapi.intelex.com/API-develop/v1/EquipmentType
 ```
 
 > Example Of EquipmentType GET Endpoint With Pagination and Filter Option:
 
 ```
-https: // {tenant}actsapi.intelex.com/API-develop/v1/EquipmentType?PageNumber=1&PageSize=500&EquipmentTypeIDs="int data"&EquipmentType="string data"
+https: // {tenant}.actsapi.intelex.com/API-develop/v1/EquipmentType?PageNumber=1&PageSize=500&EquipmentTypeIDs="int data"&EquipmentType="string data"
 ```
 
 ## 8.Operation API GET Endpoint 
@@ -121,13 +121,13 @@ All data from the Operation table will be returned from the endpoint below. You 
 > Example Of Operation GET Endpoint Without Pagination: 
 
 ```
-https: // {tenant}actsapi.intelex.com/API-develop/v1/Operation
+https: // {tenant}.actsapi.intelex.com/API-develop/v1/Operation
 ```
 
 > Example Of Operation GET Endpoint With Pagination and Filter Option:
 
 ```
-https: // {tenant}actsapi.intelex.com/API-develop/v1/ Operation?PageNumber =1&PageSize=500&OperationIDs="int data"&OperationTypeIDs=”string data "&EmissionTypeIDs="int data”&EmissionCategoryIDs="int data”&UnitIDs="int data"&EquipmentIDs="int data"&LastModifiedStartDate=”string format – date time data"&LastModifiedEndDate="string format – date time data" 
+https: // {tenant}.actsapi.intelex.com/API-develop/v1/ Operation?PageNumber =1&PageSize=500&OperationIDs="int data"&OperationTypeIDs=”string data "&EmissionTypeIDs="int data”&EmissionCategoryIDs="int data”&UnitIDs="int data"&EquipmentIDs="int data"&LastModifiedStartDate=”string format – date time data"&LastModifiedEndDate="string format – date time data" 
 ```
 
 ## 9.Unit API GET Endpoint 
@@ -137,13 +137,13 @@ All data from the Unit table will be returned from the endpoint below. You can o
 > Example Of Unit GET Endpoint Without Pagination: 
 
 ```
-https: // {tenant}actsapi.intelex.com/API-develop/v1/Unit
+https: // {tenant}.actsapi.intelex.com/API-develop/v1/Unit
 ```
 
 > Example Of Unit GET Endpoint With Pagination and Filter Option:
 
 ```
-https: // {tenant}actsapi.intelex.com/API-develop/v1/Unit?PageNumber=1&PageSize=500&UnitIDs="int data"&UnitTypeIDs="int data" &Units="string data"
+https: // {tenant}.actsapi.intelex.com/API-develop/v1/Unit?PageNumber=1&PageSize=500&UnitIDs="int data"&UnitTypeIDs="int data" &Units="string data"
 ```
 
 ## Sample Result Set Of One Of the API Endpoint 
