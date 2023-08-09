@@ -49,7 +49,7 @@ All API requests must be made over HTTPS, and API requests without authenticatio
 
 The user authentication endpoint uses a POST to generate the access token [bearer token]. 
 
->Authentication API Endpoint - https: // {auth0 Sub-Domain}.auth0.com/oauth/token 
+>Authentication API Endpoint - https: // dev-intelex.us.auth0.com/oauth/token 
 
 ## Data Format
 
