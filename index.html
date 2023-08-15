@@ -4717,7 +4717,7 @@ Content-Transfer-Encoding:binary
 <blockquote>
 <p>API Endpoint - replace <strong>intelex_ACTS API url</strong> with the full URL path to your Intelex system</p>
 </blockquote>
-<pre class="highlight plaintext"><code>https://*.actsapi.intelex.com
+<pre class="highlight plaintext"><code>https://{tenant}.actsapi.intelex.com
 </code></pre>
 <h2 id="authentication">Authentication</h2>
 
@@ -4725,10 +4725,10 @@ Content-Transfer-Encoding:binary
 <p>Example Requests:</p>
 </blockquote>
 <pre class="highlight plaintext"><code>
-//PostMan Body for Authentication Endpoint
+//JSON Body for Authentication Endpoint
 {"client_id":"Client ID Data",
 "client_secret":"Client Secret Data",
-"audience":"https://*.intelex.com/API-release",
+"audience":"https://{tenant}.intelex.com/API-release",
 "grant_type":"client_credentials"}
 </code></pre>
 <blockquote>
@@ -4748,7 +4748,7 @@ Content-Transfer-Encoding:binary
 
 <p>All API requests must be made over HTTPS, and API requests without authentication will fail. Security on data is managed by the ACTS platform, and API requests will provide the same admin access available to logged in ACTS admin users. </p>
 
-<p>The user authentication endpoint uses a POST (with input parameters described above) to generate the access token [bearer token]. </p>
+<p>The user authentication endpoint uses a POST to generate the access token [bearer token]. </p>
 
 <blockquote>
 <p>Authentication API Endpoint - https: // dev-intelex.us.auth0.com/oauth/token </p>
@@ -4819,29 +4819,35 @@ Content-Transfer-Encoding:binary
 <p>When we make backwards-incompatible changes to the API, we release new versions. The current version of the ACTS API  is v1 and can be determined with our API base path /api/v1/.</p>
 
 <blockquote>
-<p>Example API Endpoint : https://<em>.actsapi.intelex.com/API/</em>*/v1/TableName</p>
+<p>Example API Endpoint : https://{tenant}.actsapi.intelex.com/API/**/v1/TableName</p>
 </blockquote>
 
           <h1 id="total-apis-and-associated-tables">Total API&rsquo;s and Associated Tables</h1>
 
 <p>This ACTS API release includes 11 GET enpoints and 4 POST endpoints, along with the authentication endpoint described above. The tables you can query and update are as follows. </p>
 
-<p>1.Tables Supporting GET requests 
-* Operation Table<br>
-* Equipment Table<br>
-* Emission Type Table<br>
-* Emission Category Table<br>
-* Equipment Status Table 
-* Unit Table 
-* Attribute Type Table 
-* Equipment Type Table 
-* Compound Table</p>
+<p>1.Tables Supporting GET requests </p>
 
-<p>2.Tables Supporting POST requests 
-* Equipment Table
-* Operation Table
-* Facility Table
-* Facility Attribute Table</p>
+<ol>
+<li>Operation Table<br></li>
+<li>Equipment Table<br></li>
+<li>Emission Type Table<br></li>
+<li>Emission Category Table<br></li>
+<li>Equipment Status Table </li>
+<li>Unit Table </li>
+<li>Attribute Type Table </li>
+<li>Equipment Type Table </li>
+<li>Compound Table</li>
+</ol>
+
+<p>2.Tables Supporting POST requests </p>
+
+<ol>
+<li>Equipment Table</li>
+<li>Operation Table</li>
+<li>Facility Table</li>
+<li>Facility Attribute Table</li>
+</ol>
 
           <h1 id="types-of-apis-and-general-url">Types Of API&rsquo;s and General URL</h1>
 
@@ -4850,11 +4856,11 @@ Content-Transfer-Encoding:binary
 </ol>
 
 <blockquote>
-<p>Example GET API Endpoint : https : // *actsapi.intelex.com/API-develop/v1/{Table Object}/{Fetch_Based_On_ID’s} </p>
+<p>Example GET API Endpoint : https : // {tenant}.actsapi.intelex.com/API-develop/v1/{Table Object}/{Fetch_Based_On_ID’s} </p>
 </blockquote>
 
 <ol>
-<li> POST API’s in the upcoming release we are including 4 POST API’s . 
+<li> POST API’s in the current release we are including 4 POST API’s . 
 These API’s helps to edit and make updates in the respective tables.
 In the POST API the user needs to pass on the input in JSON Format  . The Input JSON body would be something like this </li>
 </ol>
@@ -4877,7 +4883,7 @@ In the POST API the user needs to pass on the input in JSON Format  . The Input 
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <blockquote>
-<p>Example POST API Endpoint : https : // *actsapi.intelex.com/API-develop/v1/{Table Object}</p>
+<p>Example POST API Endpoint : https : // {tenant}.actsapi.intelex.com/API-develop/v1/{Table Object}</p>
 </blockquote>
 
 <p>{Table Object} : Unit , Operation , Emission , Emission Category tables etc </p>
@@ -4892,7 +4898,7 @@ In this case user can specify the page number and page size where 500 is maximum
 </ol>
 
 <blockquote>
-<p>Example GET API Endpoint : https ://*actsapi.intelex.com/API-develop/v1/{Table Object}/{Fetch_Based_On_ID’s}/ ?PageNumber=1&amp;PageSize=50 </p>
+<p>Example GET API Endpoint : https ://{tenant}.actsapi.intelex.com/API-develop/v1/{Table Object}/{Fetch_Based_On_ID’s}/ ?PageNumber=1&amp;PageSize=50 </p>
 </blockquote>
 
 <p>{Table Object} : Unit , Operation , Emission , Emission Category tables etc </p>
@@ -4940,126 +4946,126 @@ In this case user can specify the page number and page size where 500 is maximum
 <p>All data from the Attribute Type table will be returned from the endpoint below. You can optionally fetch specific data by including Attribute ID’s and Attribute Types. The Attribute Type endpoint supports pagination.</p>
 
 <blockquote>
-<p>Example GET Endpoint Without Pagination: </p>
+<p>Example Of AttributeType GET Endpoint Without Pagination: </p>
 </blockquote>
-<pre class="highlight plaintext"><code>https: // *actsapi.intelex.com/API-develop/v1/AttributeType
+<pre class="highlight plaintext"><code>https: // {tenant}.actsapi.intelex.com/API-develop/v1/AttributeType
 </code></pre>
 <blockquote>
-<p>Example GET Endpoint With Pagination: </p>
+<p>Example Of AttributeType GET Endpoint With Pagination and Filter Option: </p>
 </blockquote>
-<pre class="highlight plaintext"><code>https: // *actsapi.intelex.com/API-develop/v1/AttributeType?PageNumber=1&amp;PageSize=500&amp;attributeTypeIDs="int data"&amp;attributeTypes="string data" 
+<pre class="highlight plaintext"><code>https: // {tenant}.actsapi.intelex.com/API-develop/v1/AttributeType?PageNumber=1&amp;PageSize=500&amp;attributeTypeIDs="int data"&amp;attributeTypes="string data" 
 </code></pre>
 <h2 id="2-compound-api-get-endpoint">2.Compound API GET Endpoint</h2>
 
 <p>All data from the Compound table will be returned from the endpoint below. You can optionally fetch specific data by including compound ID’s, compound Type IDs, compound status IDs, compound Names, external identifiers, or CAS number. The Compound endpoint supports pagination.</p>
 
 <blockquote>
-<p>Example GET Endpoint Without Pagination: </p>
+<p>Example Of Compound GET Endpoint Without Pagination: </p>
 </blockquote>
-<pre class="highlight plaintext"><code>https: // *actsapi.intelex.com/API-develop/v1/Compound
+<pre class="highlight plaintext"><code>https: // {tenant}.actsapi.intelex.com/API-develop/v1/Compound
 </code></pre>
 <blockquote>
-<p>Example GET Endpoint With Pagination: </p>
+<p>Example Of Compound GET Endpoint With Pagination and Filter Option: </p>
 </blockquote>
-<pre class="highlight plaintext"><code>https: // *actsapi.intelex.com/API-develop/v1/Compound? PageNumber=1&amp;PageSize=500&amp;compoundIDs="int data"&amp;compoundTypeIDs="int data"&amp;compoundstatusIDs="int data"&amp;compoundNames="string data"&amp;externalIdentifier="int"&amp;CAS="string data"
+<pre class="highlight plaintext"><code>https: // {tenant}.actsapi.intelex.com/API-develop/v1/Compound? PageNumber=1&amp;PageSize=500&amp;compoundIDs="int data"&amp;compoundTypeIDs="int data"&amp;compoundstatusIDs="int data"&amp;compoundNames="string data"&amp;externalIdentifier="int"&amp;CAS="string data"
 </code></pre>
 <h2 id="3-emission-category-api-get-endpoint">3.Emission Category API GET Endpoint</h2>
 
 <p>All data from the Emission Category table will be returned from the endpoint below. You can optionally fetch specific data by including the emission category ID. The Emission Category endpoint supports pagination.</p>
 
 <blockquote>
-<p>Example GET Endpoint Without Pagination: </p>
+<p>Example Of EmissionCategory GET Endpoint Without Pagination: </p>
 </blockquote>
-<pre class="highlight plaintext"><code>https: // *actsapi.intelex.com/API-develop/v1/EmissionCategory
+<pre class="highlight plaintext"><code>https: // {tenant}.actsapi.intelex.com/API-develop/v1/EmissionCategory
 </code></pre>
 <blockquote>
-<p>Example GET Endpoint With Pagination and Filter Option:</p>
+<p>Example Of EmissionCategory GET Endpoint With Pagination and Filter Option:</p>
 </blockquote>
-<pre class="highlight plaintext"><code>https: // *actsapi.intelex.com/API-develop/v1/EmissionCategory/{int data – Emission Category ID}
+<pre class="highlight plaintext"><code>https: // {tenant}.actsapi.intelex.com/API-develop/v1/EmissionCategory/{int data – Emission Category ID}
 </code></pre>
 <h2 id="4-emission-type-api-get-endpoint">4.Emission Type API GET Endpoint</h2>
 
 <p>All data from the Emission type table will be returned from the endpoint below. You can optionally fetch specific data by including the emission type ID. The Emission Type endpoint supports pagination.</p>
 
 <blockquote>
-<p>Example GET Endpoint Without Pagination: </p>
+<p>Example Of EmissionType GET Endpoint Without Pagination: </p>
 </blockquote>
-<pre class="highlight plaintext"><code>https: // *actsapi.intelex.com/API-develop/v1/EmissionType
+<pre class="highlight plaintext"><code>https: // {tenant}.actsapi.intelex.com/API-develop/v1/EmissionType
 </code></pre>
 <blockquote>
-<p>Example GET Endpoint With Pagination and Filter Option:</p>
+<p>Example Of EmissionType GET Endpoint With Pagination and Filter Option:</p>
 </blockquote>
-<pre class="highlight plaintext"><code>https: //*actsapi.intelex.com/API-develop/v1/EmissionType?PageNumber=1&amp;PageSize=500&amp;emissionTypeID={int data value}
+<pre class="highlight plaintext"><code>https: //{tenant}.actsapi.intelex.com/API-develop/v1/EmissionType?PageNumber=1&amp;PageSize=500&amp;emissionTypeID={int data value}
 </code></pre>
 <h2 id="5-equipment-api-get-endpoint">5.Equipment API GET Endpoint</h2>
 
 <p>All data from the Equipment table will be returned from the endpoint below. You can optionally fetch specific data by including the equipment ID. The Equipment endpoint supports pagination.</p>
 
 <blockquote>
-<p>Example GET Endpoint Without Pagination: </p>
+<p>Example Of Equipment GET Endpoint Without Pagination: </p>
 </blockquote>
-<pre class="highlight plaintext"><code>https: // *actsapi.intelex.com/API-develop/v1/Equipment
+<pre class="highlight plaintext"><code>https: //{tenant}.actsapi.intelex.com/API-develop/v1/Equipment
 </code></pre>
 <blockquote>
-<p>Example GET Endpoint With Pagination and Filter Option:</p>
+<p>Example Of Equipment GET Endpoint With Pagination and Filter Option:</p>
 </blockquote>
-<pre class="highlight plaintext"><code>https: //*actsapi.intelex.com/API-develop/v1/Equipment?PageNumber=1&amp;PageSize=500&amp;equipmentID={int data value}
+<pre class="highlight plaintext"><code>https: //{tenant}.actsapi.intelex.com/API-develop/v1/Equipment?PageNumber=1&amp;PageSize=500&amp;equipmentID={int data value}
 </code></pre>
 <h2 id="6-equipment-status-api-get-endpoint">6.Equipment Status API GET Endpoint</h2>
 
 <p>All data from the Equipment Status table will be returned from the endpoint below. You can optionally fetch specific data by including the equipment status ID and equipment status value. The Equipment Status endpoint supports pagination.</p>
 
 <blockquote>
-<p>Example GET Endpoint Without Pagination: </p>
+<p>Example Of EquipmentStatus GET Endpoint Without Pagination: </p>
 </blockquote>
-<pre class="highlight plaintext"><code>https: // *actsapi.intelex.com/API-develop/v1/EquipmentStatus
+<pre class="highlight plaintext"><code>https: // {tenant}.actsapi.intelex.com/API-develop/v1/EquipmentStatus
 </code></pre>
 <blockquote>
-<p>Example GET Endpoint With Pagination and Filter Option:</p>
+<p>Example Of EquipmentStatus GET Endpoint With Pagination and Filter Option:</p>
 </blockquote>
-<pre class="highlight plaintext"><code>https: // *actsapi.intelex.com/API-develop/v1/EquipmentStatus?PageNumber=1&amp;PageSize=500&amp;EquipmentStatusIDs="int data"&amp;EquipmentStatus="string data"
+<pre class="highlight plaintext"><code>https: // {tenant}.actsapi.intelex.com/API-develop/v1/EquipmentStatus?PageNumber=1&amp;PageSize=500&amp;EquipmentStatusIDs="int data"&amp;EquipmentStatus="string data"
 </code></pre>
 <h2 id="7-equipment-type-api-get-endpoint">7.Equipment Type API GET Endpoint</h2>
 
 <p>All data from the Equipment Type table will be returned from the endpoint below. You can optionally fetch specific data by including the equipment type ID and equipment types value. The Equipment type endpoint supports pagination.</p>
 
 <blockquote>
-<p>Example GET Endpoint Without Pagination: </p>
+<p>Example Of EquipmentType GET Endpoint Without Pagination: </p>
 </blockquote>
-<pre class="highlight plaintext"><code>https: // *actsapi.intelex.com/API-develop/v1/EquipmentType
+<pre class="highlight plaintext"><code>https: // {tenant}.actsapi.intelex.com/API-develop/v1/EquipmentType
 </code></pre>
 <blockquote>
-<p>Example GET Endpoint With Pagination and Filter Option:</p>
+<p>Example Of EquipmentType GET Endpoint With Pagination and Filter Option:</p>
 </blockquote>
-<pre class="highlight plaintext"><code>https: // *actsapi.intelex.com/API-develop/v1/EquipmentType?PageNumber=1&amp;PageSize=500&amp;EquipmentTypeIDs="int data"&amp;EquipmentType="string data"
+<pre class="highlight plaintext"><code>https: // {tenant}.actsapi.intelex.com/API-develop/v1/EquipmentType?PageNumber=1&amp;PageSize=500&amp;EquipmentTypeIDs="int data"&amp;EquipmentType="string data"
 </code></pre>
 <h2 id="8-operation-api-get-endpoint">8.Operation API GET Endpoint</h2>
 
 <p>All data from the Operation table will be returned from the endpoint below. You can optionally fetch specific data by including the operation ids, operation type ids, emission type ids, emission category ids, unit ids, equipment ids, last modified start date and last modified end date. The Operation endpoint supports pagination.</p>
 
 <blockquote>
-<p>Example GET Endpoint Without Pagination: </p>
+<p>Example Of Operation GET Endpoint Without Pagination: </p>
 </blockquote>
-<pre class="highlight plaintext"><code>https: // *actsapi.intelex.com/API-develop/v1/Operation
+<pre class="highlight plaintext"><code>https: // {tenant}.actsapi.intelex.com/API-develop/v1/Operation
 </code></pre>
 <blockquote>
-<p>Example GET Endpoint With Pagination and Filter Option:</p>
+<p>Example Of Operation GET Endpoint With Pagination and Filter Option:</p>
 </blockquote>
-<pre class="highlight plaintext"><code>https: // *actsapi.intelex.com/API-develop/v1/ Operation?PageNumber =1&amp;PageSize=500&amp;OperationIDs="int data"&amp;OperationTypeIDs=”string data "&amp;EmissionTypeIDs="int data”&amp;EmissionCategoryIDs="int data”&amp;UnitIDs="int data"&amp;EquipmentIDs="int data"&amp;LastModifiedStartDate=”string format – date time data"&amp;LastModifiedEndDate="string format – date time data" 
+<pre class="highlight plaintext"><code>https: // {tenant}.actsapi.intelex.com/API-develop/v1/ Operation?PageNumber =1&amp;PageSize=500&amp;OperationIDs="int data"&amp;OperationTypeIDs=”string data "&amp;EmissionTypeIDs="int data”&amp;EmissionCategoryIDs="int data”&amp;UnitIDs="int data"&amp;EquipmentIDs="int data"&amp;LastModifiedStartDate=”string format – date time data"&amp;LastModifiedEndDate="string format – date time data" 
 </code></pre>
 <h2 id="9-unit-api-get-endpoint">9.Unit API GET Endpoint</h2>
 
 <p>All data from the Unit table will be returned from the endpoint below. You can optionally fetch specific data by including the unit ids, unit type ids and units. The Unit type endpoint supports pagination.</p>
 
 <blockquote>
-<p>Example GET Endpoint Without Pagination: </p>
+<p>Example Of Unit GET Endpoint Without Pagination: </p>
 </blockquote>
-<pre class="highlight plaintext"><code>https: // *actsapi.intelex.com/API-develop/v1/Unit
+<pre class="highlight plaintext"><code>https: // {tenant}.actsapi.intelex.com/API-develop/v1/Unit
 </code></pre>
 <blockquote>
-<p>Example GET Endpoint With Pagination and Filter Option:</p>
+<p>Example Of Unit GET Endpoint With Pagination and Filter Option:</p>
 </blockquote>
-<pre class="highlight plaintext"><code>https: // *actsapi.intelex.com/API-develop/v1/Unit?PageNumber=1&amp;PageSize=500&amp;UnitIDs="int data"&amp;UnitTypeIDs="int data" &amp;Units="string data"
+<pre class="highlight plaintext"><code>https: // {tenant}.actsapi.intelex.com/API-develop/v1/Unit?PageNumber=1&amp;PageSize=500&amp;UnitIDs="int data"&amp;UnitTypeIDs="int data" &amp;Units="string data"
 </code></pre>
 <h2 id="sample-result-set-of-one-of-the-api-endpoint">Sample Result Set Of One Of the API Endpoint</h2>
 
@@ -5104,25 +5110,25 @@ In this case user can specify the page number and page size where 500 is maximum
 <blockquote>
 <p>Equipment POST endpoint: </p>
 </blockquote>
-<pre class="highlight plaintext"><code>https: // *actsapi.intelex.com/API-staging/DEVELOPMENT/v1/Equipment
+<pre class="highlight plaintext"><code>https: // {tenant}.actsapi.intelex.com/API-staging/DEVELOPMENT/v1/Equipment
 </code></pre>
 <h2 id="2-operation-post-api-endpoint">2.Operation POST API endpoint</h2>
 
 <p>Operation records can be updated, or new records added at the following endpoint:</p>
 
 <blockquote>
-<p>General URL Of POST Endpoint: </p>
+<p>Operation POST Endpoint: </p>
 </blockquote>
-<pre class="highlight plaintext"><code>https: // *actsapi.intelex.com/API-staging/DEVELOPMENT/v1/Operation
+<pre class="highlight plaintext"><code>https: // {tenant}.actsapi.intelex.com/API-staging/DEVELOPMENT/v1/Operation
 </code></pre>
 <h2 id="3-facility-post-api-endpoint">3.Facility POST API endpoint</h2>
 
 <p>Facility records can be updated, or new records added at the following endpoint:</p>
 
 <blockquote>
-<p>General URL Of POST Endpoint : </p>
+<p>Facility POST Endpoint : </p>
 </blockquote>
-<pre class="highlight plaintext"><code>https: // *actsapi.intelex.com/API-staging/DEVELOPMENT/v1/Facility
+<pre class="highlight plaintext"><code>https: // {tenant}.actsapi.intelex.com/API-staging/DEVELOPMENT/v1/Facility
 </code></pre>
 <h2 id="4-facility-attribute-post-api-endpoint">4.Facility Attribute POST API endpoint</h2>
 
@@ -5131,7 +5137,7 @@ In this case user can specify the page number and page size where 500 is maximum
 <blockquote>
 <p>Facility Attribute POST Endpoint: </p>
 </blockquote>
-<pre class="highlight plaintext"><code>https: // *actsapi.intelex.com/API-staging/DEVELOPMENT/v1/FacilityAttribute 
+<pre class="highlight plaintext"><code>https: // {tenant}.actsapi.intelex.com/API-staging/DEVELOPMENT/v1/FacilityAttribute 
 </code></pre>
 <h2 id="json-body-for-both-insert-update">JSON body for both Insert &amp; Update</h2>
 
@@ -5173,6 +5179,29 @@ In this case user can specify the page number and page size where 500 is maximum
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
+<blockquote>
+<p>Example Output For Both Update and Insert 
+&ldquo;`
+{
+    &quot;insertedRowCount&rdquo; : 2 , 
+    &ldquo;updatedRowCount&rdquo; : 3 ,
+    &ldquo;failureCount&rdquo; : 0 ,
+    &ldquo;errorMessage&rdquo; : []</p>
+</blockquote>
+
+<p>}</p>
+<pre class="highlight plaintext"><code>
+&gt; Example Output For When Data Get's Failed To Insert or Update
+</code></pre>
+<p>{
+    &ldquo;insertedRowCount&rdquo; : 0 , 
+    &ldquo;updatedRowCount&rdquo; : 1 ,
+    &ldquo;failureCount&rdquo; : 1 ,
+    &ldquo;errorMessage&rdquo; : [
+     &ldquo;Operation ID : 0, Error: An error occurred while saving the entity changes. See the inner exception for details &rdquo;
+    ]
+}</p>
+<pre class="highlight plaintext"><code></code></pre>
           <h1 id="acts-api-developer-support">ACTS API Developer Support</h1>
 
 <p><a href="https://community.intelex.com/connect/groups/developer-community">Join the Intelex Developer group on Community</a> and:</p>
