@@ -93,7 +93,7 @@ If the primary id is an existing ID - "#####" then the data we are passing is ha
 
 > Example Output For Both Update and Insert 
 
-```
+```json
 {
 	"insertedRowCount" : 2 , 
 	"updatedRowCount" : 3 ,
@@ -106,7 +106,7 @@ If the primary id is an existing ID - "#####" then the data we are passing is ha
 
 > Example Output For When Data Get's Failed To Insert or Update
 
-```
+```json
 {
 	"insertedRowCount" : 0 , 
 	"updatedRowCount" : 1 ,
