@@ -92,6 +92,7 @@ If the primary id is an existing ID - "#####" then the data we are passing is ha
 ```
 
 > Example Output For Both Update and Insert 
+
 ```
 {
 	"insertedRowCount" : 2 , 
@@ -104,6 +105,7 @@ If the primary id is an existing ID - "#####" then the data we are passing is ha
 ```
 
 > Example Output For When Data Get's Failed To Insert or Update
+
 ```
 {
 	"insertedRowCount" : 0 , 

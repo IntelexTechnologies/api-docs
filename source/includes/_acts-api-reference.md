@@ -7,6 +7,7 @@ Our ACTS API has predictable, resource-oriented URLs, and uses HTTP response cod
 ## Getting Started
 
 To begin using the Intelex API you will need:
+
 *	A valid Intelex ACTS user account
 *	The full URL to your Intelex ACTS API and system
 *	A basic understanding of the Intelex ACTS API Application.
@@ -41,9 +42,9 @@ https://{tenant}.actsapi.intelex.com
 }
 ```
 
-Intelex's ACTS API uses Auth0 tokens for authentication. Only ACTS Admin users can access the API. 
+Intelex's ACTS API uses tokens for authentication. Only ACTS Admin users can access the API. 
 
-During Auth0 authentication, the client passes 'client id' and 'client secret' to the auth0 validation endpoint, along with the audience and grant type, as shown above. The API returns a bearer-type access token with a time limit. Only ACTS admin users will be authenticated. Once authenticated, users have access to all ACTS API endpoints. 
+During authentication, the client passes 'client id' and 'client secret' to the validation endpoint, along with the audience and grant type, as shown above. The API returns a bearer-type access token with a time limit. Only ACTS admin users will be authenticated. Once authenticated, users have access to all ACTS API endpoints. 
 
 All API requests must be made over HTTPS, and API requests without authentication will fail. Security on data is managed by the ACTS platform, and API requests will provide the same admin access available to logged in ACTS admin users. 
 
