@@ -9,8 +9,11 @@ includes:
   - api-reference
   - object-data-api
   - task-api
+  - acts-api
+  - acts/reference
+  - acts/get_api
+  - acts/post_api
   - dev-support
-  - _acts-api-reference
 
   
 search: true
