@@ -2,7 +2,7 @@
 
 The following GET APIs are used to fetch the data from the respective tables. 
 
-### 1. Attribute Type API GET Endpoint 
+### 1. Retrieve Attribute Data 
 
 All data from the Attribute Type table will be returned from the endpoint below. You can optionally fetch specific data by including Attribute ID’s and Attribute Types. The Attribute Type endpoint supports pagination.
 
