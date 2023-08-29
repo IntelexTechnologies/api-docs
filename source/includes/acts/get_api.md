@@ -6,23 +6,57 @@ The following GET APIs are used to fetch the data from the respective tables.
 
 All data from the Attribute Type table will be returned from the endpoint below. You can optionally fetch specific data by including Attribute ID’s and Attribute Types. The Attribute Type endpoint supports pagination.
 
-#### Attribute Type API's Filter Option 
+**AttributeType GET Endpoint Without Pagination**
+
+`GET api/v1/attributetype`
+
+**AttributeType GET Endpoint With Pagination and Filter Option:**
+
+`GET api/v1/attributetype?pagenumber=1&pagesize=500&attributeTypeIDs="int data"&attributeTypes="string data"`
+
+**Filter Option**
 
 Parameter | Description
 --------- | -----------
-AttributeID  | Attribute ID is one of the filter parameter is a integer data type 
-AttributeTypes | Attribute Types is also one of the option for filter parameter is a string data type 
+PageNumber | Integer
+PageSize | Integer
+AttributeID  | Integer
+AttributeTypes | String
 
-> Example Of AttributeType GET Endpoint Without Pagination: 
 
+> Example Request
+
+```javascript
+var request = require("request");
+
+var options = { method: 'GET',
+  url: 'https://intelex_url/api/v1/attributetype' };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
-https: // {tenant}.actsapi.intelex.com/API-develop/v1/AttributeType
+
+```csharp
+var client = new RestClient("https://intelex_url/api/v1/attributetype");
+var request = new RestRequest(Method.GET);
+IRestResponse response = client.Execute(request);
 ```
 
-> Example Of AttributeType GET Endpoint With Pagination and Filter Option: 
+> Example Response
 
-```
-https: // {tenant}.actsapi.intelex.com/API-develop/v1/AttributeType?PageNumber=1&PageSize=500&attributeTypeIDs="int data"&attributeTypes="string data" 
+```json
+{
+	"value": [
+	  {
+		"name": "string",
+		"kind": "string",
+		"url": "string"
+	  }
+	]
+}
 ```
 
 ### 2.Retrieve Compound Table Data
