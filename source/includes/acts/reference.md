@@ -1,10 +1,16 @@
-## ACTS API Reference
+## Reference
 
 The Intelex ACTS API provides endpoints in ACTS, with it's own URL for access. If you currently use the Intelex API, you will not be able to use the ACTS API unless you have Admin access to ACTS. At the same time, you can use the ACTS API without any permission for Intelex V6.  
 
 Our API has predictable, resource-oriented URLs, and uses HTTP response codes to indicate API errors. We use built-in HTTP features, Token based authentication and HTTP verbs, which are understood by off-the-shelf HTTP clients. JSON is returned by all API responses, including errors.
 
 ### Getting Started with ACTS API
+
+>API Endpoint - replace **intelex_acts_api_url** with the full URL path to your Intelex system
+
+```
+https://intelex_acts_api_url/api/v1
+```
 
 To begin using the Intelex API you will need:
 
@@ -13,12 +19,6 @@ To begin using the Intelex API you will need:
 * A basic understanding of the Intelex ACTS API Application.
 
 ### ACTS API Authentication
-
->API Endpoint - replace **intelex_ACTS API url** with the full URL path to your Intelex system
-
-```
-https://{tenant}.actsapi.intelex.com
-```
 
 >Example Requests:
 
@@ -29,6 +29,7 @@ https://{tenant}.actsapi.intelex.com
 "audience":"https://{tenant}.intelex.com/API-release",
 "grant_type":"client_credentials"}
 ```
+
 >Example Response:
 
 ```json
@@ -49,7 +50,7 @@ The user authentication endpoint uses a POST to generate the access token [beare
 
 >Authentication API Endpoint - https: // dev-intelex.us.auth0.com/oauth/token 
 
-### ACTS Versioning
+### ACTS API Versioning
 
 When we make backwards-incompatible changes to the API, we release new versions. The current version of the ACTS API  is v1 and can be determined with our API base path /api/v1/.
 
@@ -57,7 +58,7 @@ When we make backwards-incompatible changes to the API, we release new versions.
 
 ### API's and Associated Database Tables 
 
-This ACTS API release includes 11 GET enpoints and 4 POST endpoints, along with the authentication endpoint described above. The tables you can query and update are as follows. 
+This ACTS API release includes 11 GET enpoints and 4 POST endpoints, along with the authentication endpoint described above. The tables that can be queried and updated are as follows. 
 
 Database Tables Supporting GET requests 
 
