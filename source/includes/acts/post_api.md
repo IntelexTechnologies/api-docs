@@ -1,106 +1,56 @@
-## POST API's 
+## POST API's Endpoints
 
-The following POST APIs are used to modify ACTS data. Options include updating existing records and inserting new records, and you can complete both in the same POST. To insert new records, the primary key is set to 0, while for updates to existing records, the primary key for the existing record is used. You can see an example for this in 4. Facility Attribute Table POST API Endpoint below. 
+This section outlines the available POST APIs designed for modifying ACTS data. These APIs offer options for updating existing records and inserting new ones. 
 
-For large data inserts, we recommend you break data into batch POSTs of up to 500 rows. Large batch POSTs may be throttled or failed, depending on system resources. 
+* To insert new records, set the primary key to 0
+* To updates to existing records, use the primary key of the record. 
 
-In the current release we have 4 POST API’s available, for the Equipment, Operation, Facility, and Facility Attribute tables. POSTs to these endpoints must be JSON format. 
+<aside class="notice">
+For efficient handling of larger data inserts, it is recommended to perform batch POSTs containing up to 500 rows each. 
 
-As described above, to insert to a table, the primary key should be zero – 0. When the record is added to the table it will be assigned the next available incremental primary key.
+Note that excessively large batch POSTs may encounter throttling or failure, depending on system resources.
+</aside>
 
-### 1.Equipment POST API Endpoint 
+In the current release, four POST APIs End points are provided to add or update following table 
 
-Equipment records can be updated, or new records added at the following endpoint:
+* Equipment
+* Operation
+* Facility
+* Facility Attribute 
+ 
+POST requests to these endpoints should be formatted in JSON.
 
-> Equipment POST endpoint: 
+### 1. Add or Modify Equipment Table 
 
-```
-https: // {tenant}.actsapi.intelex.com/API-staging/DEVELOPMENT/v1/Equipment
-```
+This section guides you through the process of modifying existing equipment records or adding new entries to the Equipment table using the designated API endpoint.
 
-> Example Output For Both Update and Insert Of Equipment Table 
+**Equipment POST endpoint**
 
-```json
-{
-	"insertedRowCount" : 5 , 
-	"updatedRowCount" : 10 ,
-	"failureCount" : 0 ,
-	"errorMessage" : []
+`POST api/development/v1/equipment`
 
-}
+### 2. Add or Modify Operation Table 
 
-```
+This section outlines the process of adding new entries or modifying existing records within the Operation table using the dedicated API endpoint.
 
-> Example Output For When Data Get's Failed To Insert or Update to Equipment Table 
+**Operation POST Endpoint**
 
-```json
-{
-	"insertedRowCount" : 0 , 
-	"updatedRowCount" : 1 ,
-	"failureCount" : 1 ,
-	"errorMessage" : [
-	 "Equipment ID : 0, Error: An error occurred while saving the entity changes. See the inner exception for details "
-	]
-}
+`POST api/development/v1/Operation`
 
-```
+### 3. Add or Modify Facility Table 
 
-### 2.Operation POST API endpoint 
+This section outlines the process of adding new entries or modifying existing records within the Facility table using the dedicated API endpoint.
 
-Operation records can be updated, or new records added at the following endpoint:
+**Facility POST Endpoint**
 
-> Operation POST Endpoint: 
+`POST api/deelopment/v1/Facility`
 
-```
-https: // {tenant}.actsapi.intelex.com/API-staging/DEVELOPMENT/v1/Operation
-```
+### 4. Add or Modify Facility Attribute Table 
 
-> Example Output For Both Update and Insert Of Operation Table 
+This section outlines the process of adding new entries or modifying existing records within the Facility Attribute table using the dedicated API endpoint.
 
-```json
-{
-	"insertedRowCount" : 5 , 
-	"updatedRowCount" : 10 ,
-	"failureCount" : 0 ,
-	"errorMessage" : []
+**Facility Attribute POST Endpoint**
 
-}
-
-```
-
-> Example Output For When Data Get's Failed To Insert or Update to Operation Table 
-
-```json
-{
-	"insertedRowCount" : 0 , 
-	"updatedRowCount" : 1 ,
-	"failureCount" : 1 ,
-	"errorMessage" : [
-	 "Operation ID : 0, Error: An error occurred while saving the entity changes. See the inner exception for details "
-	]
-}
-
-```
-
-### 3.Facility POST API endpoint 
-
-Facility records can be updated, or new records added at the following endpoint:
-
-> Facility POST Endpoint : 
-
-```
-https: // {tenant}.actsapi.intelex.com/API-staging/DEVELOPMENT/v1/Facility
-```
-
-### 4.Facility Attribute POST API endpoint 
-
-Facility Attribute records can be updated, or new records added at the following endpoint:
-
-> Facility Attribute POST Endpoint: 
-
-```
-https: // {tenant}.actsapi.intelex.com/API-staging/DEVELOPMENT/v1/FacilityAttribute 
-```
+`POST api/DEVELOPMENT/v1/FacilityAttribute`
 
 ### JSON body for both Insert & Update 
 
@@ -146,8 +96,7 @@ If the primary id is an existing ID - "#####" then the data we are passing is ha
 ```
 
 > Example Output For Both Update and Insert 
-
-```json
+```
 {
 	"insertedRowCount" : 2 , 
 	"updatedRowCount" : 3 ,
@@ -159,8 +108,7 @@ If the primary id is an existing ID - "#####" then the data we are passing is ha
 ```
 
 > Example Output For When Data Get's Failed To Insert or Update
-
-```json
+```
 {
 	"insertedRowCount" : 0 , 
 	"updatedRowCount" : 1 ,
