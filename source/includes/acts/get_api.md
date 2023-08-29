@@ -47,7 +47,7 @@ IRestResponse response = client.Execute(request);
 
 **API Endpoints with pagination and filters**
 
-`GET` /api/v1/AttributeType?PageNumber=1&PageSize=500&attributeTypeIDs="int data"&attributeTypes="string data"
+`GET` /api/v1/AttributeType?pagenumber={int data value}&pagesize={int data value}&attributeTypeIDs={int data value}&attributeTypes={string data value}
 
 ***Query parameters***<br />
 
@@ -103,20 +103,20 @@ IRestResponse response = client.Execute(request);
 
 **API Endpoints with pagination and filters**
 
-`GET` /api/v1/compound?pagenumber=1&pagesize=500&compoundIDs="int data"&compoundTypeIDs="int data"&compoundstatusIDs="int data"&compoundNames="string data"&externalIdentifier="int"&CAS="string data"
+`GET` /api/v1/compound?pagenumber={int data value}&pagesize={int data value}&compoundIDs={int data value}&compoundTypeIDs={int data value}&compoundstatusIDs={int data value}&compoundNames={string data value}&externalIdentifier={int data value}&CAS={string data value}
 
 ***Query parameters***<br />
 
-Attribute | Description
---------- | -----------
-PageNumber | int, requested page number
-PageSize | int, number of records per page
-compoundIDs | int
-compoundTypeIDs | int
-compoundstatusIDs | int
-compoundNames | string
-externalIdentifier | int
-CAS | string
+Attribute | Type | Description
+--------- | ---- | -----------
+PageNumber | int | Page number of the results to fetch.
+PageSize | int | The number of results per page
+compoundIDs | int |
+compoundTypeIDs | int |
+compoundstatusIDs | int |
+compoundNames | string |
+externalIdentifier | int |
+CAS | string |
 
 ### 3. Emission Category Data Retrieval
 
@@ -132,10 +132,13 @@ var options = { method: 'GET',
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
+```
 
-> Example Of EmissionCategory GET Endpoint With Pagination and Filter Option:
-
-
+```csharp
+var client = new RestClient("https://intelex_acts_api_url/api/v1/emissioncategory");
+var request = new RestRequest(Method.GET);
+IRestResponse response = client.Execute(request);
+```
 
 > Example Response
 
@@ -155,18 +158,17 @@ request(options, function (error, response, body) {
 
 `GET` /api/v1/emissioncategory
 
-
 **API Endpoints with pagination and filters**
 
-`GET` /api/v1/emissioncategory/PageNumber=1&PageSize=500&emissionCategoryID={int data value}
+`GET` /api/v1/emissioncategory/pagenumber={int data value}&pagesize={int data value}&emissionCategoryID={int data value}
 
 ***Query parameters***<br />
 
-Attribute | Description
---------- | -----------
-PageNumber | int, requested page number
-PageSize | int, number of records per page
-emissionCategoryID | int
+Attribute | Type | Description
+--------- | ---- | -----------
+PageNumber | int | Page number of the results to fetch.
+PageSize | int | The number of results per page
+emissionCategoryID | int |
 
 ### 4. Emission Type Data Retrieval
 
@@ -213,15 +215,15 @@ IRestResponse response = client.Execute(request);
 
 **API Endpoints with pagination and filters**
 
-`GET` /api/v1/emissiontype?PageNumber=1&PageSize=500&emissionTypeID={int data value}
+`GET` /api/v1/emissiontype?pagenumber={int data value}&pagesize={int data value}&emissionTypeID={int data value}
 
 ***Query parameters***<br />
 
-Attribute | Description
---------- | -----------
-PageNumber | int, requested page number
-PageSize | int, number of records per page
-emissionTypeID | int
+Attribute | Type | Description
+--------- | ---- | -----------
+PageNumber | int | Page number of the results to fetch.
+PageSize | int | The number of results per page
+emissionTypeID | int |
 
 ### 5. Equipment Data Retrieval
 
@@ -268,15 +270,15 @@ IRestResponse response = client.Execute(request);
 
 **API Endpoints with pagination and filters**
 
-`GET` /api/v1/equipment?PageNumber=1&PageSize=500&equipmentID={int data value}
+`GET` /api/v1/equipment?pagenumber={int data value}&pagesize={int data value}&equipmentID={int data value}
 
 ***Query parameters***<br />
 
-Attribute | Description
---------- | -----------
-PageNumber | int, requested page number
-PageSize | int, number of records per page
-equipmentID | int
+Attribute | Type | Description
+--------- | ---- | -----------
+PageNumber | int | Page number of the results to fetch.
+PageSize | int | The number of results per page
+equipmentID | int |
 
 
 ### 6. Equipment Status Data Retrieval
@@ -324,16 +326,16 @@ IRestResponse response = client.Execute(request);
 
 **API Endpoints with pagination and filters**
 
-`GET` /api/v1/equipmentstatus?PageNumber=1&PageSize=500&equipmentStatusIDs="int data"&equipmentStatus="string data"
+`GET` /api/v1/equipmentstatus?pagenumber={int data value}&pagesize={int data value}&equipmentStatusIDs={int data value}&equipmentStatus="{string data value}
 
 ***Query parameters***<br />
 
-Attribute | Description
---------- | -----------
-PageNumber | int, requested page number
-PageSize | int, number of records per page
-equipmentStatusIDs | int
-equipmentStatus | string
+Attribute | Type | Description
+--------- | ---- | -----------
+PageNumber | int | Page number of the results to fetch.
+PageSize | int | The number of results per page
+equipmentStatusIDs | int |
+equipmentStatus | string |
 
 ### 7. Equipment Type Data Retrieval
 
@@ -380,16 +382,16 @@ IRestResponse response = client.Execute(request);
 
 **API Endpoints with pagination and filters**
 
-`GET` /api/v1/equipmenttype?PageNumber=1&PageSize=500&equipmentTypeIDs="int data"&equipmentType="string data"
+`GET` /api/v1/equipmenttype?pagenumber={int data value}&pagesize={int data value}&equipmentTypeIDs={int data value}&equipmentType={string data value}
 
 ***Query parameters***<br />
 
-Attribute | Description
---------- | -----------
-PageNumber | int, requested page number
-PageSize | int, number of records per page
-equipmentTypeIDs | int
-equipmentType | string
+Attribute | Type | Description
+--------- | ---- | -----------
+PageNumber | int | Page number of the results to fetch.
+PageSize | int | The number of results per page
+equipmentTypeIDs | int |
+equipmentType | string |
 
 ### 8. Operation Data Retrieval
 
@@ -436,22 +438,22 @@ IRestResponse response = client.Execute(request);
 
 **API Endpoints with pagination and filters**
 
-`GET` /api/v1/operation?PageNumber =1&PageSize=500&operationIDs="int data"&operationTypeIDs=”string data "&emissionTypeIDs="int data”&emissionCategoryIDs="int data”&unitIDs="int data"&equipmentIDs="int data"&lastModifiedStartDate=”string format – date time data"&lastModifiedEndDate="string format – date time data"
+`GET` /api/v1/operation?pagenumber={int data value}&pagesize={int data value}&operationIDs={int data value}&operationTypeIDs={string data value}&emissionTypeIDs={int data value}&emissionCategoryIDs={int data value}&unitIDs={int data value}&equipmentIDs={int data value}&lastModifiedStartDate={string data value}&lastModifiedEndDate={string data value}
 
 ***Query parameters***<br />
 
-Attribute | Description
---------- | -----------
-PageNumber | int, requested page number
-PageSize | int, number of records per page
-operationIDs | int
-operationTypeIDs | string
-emissionTypeIDs | int
-emissionCategoryIDs | int
-unitIDs | int
-equipmentIDs | int
-lastModifiedStartDate | string - date time format "mm/dd/yyyy"
-lastModifiedEndDate | string - date time format "mm/dd/yyyy"
+Attribute | Type | Description
+--------- | ---- | -----------
+PageNumber | int | Page number of the results to fetch.
+PageSize | int | The number of results per page
+operationIDs | int |
+operationTypeIDs | string |
+emissionTypeIDs | int |
+emissionCategoryIDs | int |
+unitIDs | int |
+equipmentIDs | int |
+lastModifiedStartDate | string | Date time format "mm/dd/yyyy"
+lastModifiedEndDate | string | Date time format "mm/dd/yyyy"
 
 ### 9. Unit Data Retrieval
 
@@ -498,14 +500,14 @@ IRestResponse response = client.Execute(request);
 
 **API Endpoints with pagination and filters**
 
-`GET` /api/v1/unit?PageNumber=1&PageSize=500&unitIDs="int data"&unitTypeIDs="int data" &units="string data"
+`GET` /api/v1/unit?pagenumber={int data value}&pagesize={int data value}&unitIDs={int data value}&unitTypeIDs={int data value}&units={string data value}
 
 ***Query parameters***<br />
 
-Attribute | Description
---------- | -----------
-PageNumber | int, requested page number
-PageSize | int, number of records per page
-unitIDs | int
-unitTypeIDs | int
-units | string
+Attribute | Type | Description
+--------- | ---- | -----------
+PageNumber | int | Page number of the results to fetch.
+PageSize | int | The number of results per page
+unitIDs | int |
+unitTypeIDs | int |
+units | string |
