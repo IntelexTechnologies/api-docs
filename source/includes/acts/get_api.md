@@ -12,7 +12,7 @@ This section outlines the process of retrieving data from the Attribute Type tab
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://{tenant}.actsapi.intelex.com/api/v1/attributetype' };
+  url: 'https://intelex_acts_api_url/api/v1/attributetype' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -22,53 +22,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://{tenant}.actsapi.intelex.com/api/v1/attributetype");
-var request = new RestRequest(Method.GET);
-IRestResponse response = client.Execute(request);
-```
-
-> Example Response
-
-```
-https: // {tenant}.actsapi.intelex.com/API-develop/v1/AttributeType?PageNumber=1&PageSize=500&attributeTypeIDs="int data"&attributeTypes="string data" 
-```
-
-**API Endpoints**
-
-`GET /api/v1/AttributeType`
-
-**API Endpoints with pagination and filters**
-
-`GET /api/v1/AttributeType?PageNumber=1&PageSize=500&attributeTypeIDs="int data"&attributeTypes="string data"`
-
-Attribute | Description
---------- | -----------
-PageNumber | int, requested page number
-PageSize | int, number of records per page
-attributeTypeIDs | int
-attributeTypes | string
-
-### 2. Compound API Data Retrieval
-
-This section guides you through the process of fetching data from the Compound table using the dedicated API endpoint. The endpoint offers the flexibility to retrieve all data from the Compound table or selectively acquire information by including Compound IDs, Compound Type IDs, Compound Status IDs, Compound Names, External Identifiers, or CAS Numbers. Additionally, the Compound endpoint is equipped with pagination capabilities to facilitate efficient management of substantial datasets.
-
-> Example Request
-
-```javascript
-var request = require("request");
-
-var options = { method: 'GET',
-  url: 'https://{tenant}.actsapi.intelex.com/api/v1/compound' };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-```
-
-```csharp
-var client = new RestClient("https://{tenant}.actsapi.intelex.com/api/v1/compound");
+var client = new RestClient("https://intelex_acts_api_url/api/v1/attributetype");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -89,11 +43,69 @@ IRestResponse response = client.Execute(request);
 
 **API Endpoints**
 
-`GET /api/v1/compound`
+`GET` /api/v1/AttributeType
 
 **API Endpoints with pagination and filters**
 
-`GET /api/v1/compound?pagenumber=1&pagesize=500&compoundIDs="int data"&compoundTypeIDs="int data"&compoundstatusIDs="int data"&compoundNames="string data"&externalIdentifier="int"&CAS="string data"`
+`GET` /api/v1/AttributeType?PageNumber=1&PageSize=500&attributeTypeIDs="int data"&attributeTypes="string data"
+
+***Query parameters***<br />
+
+Attribute | Type | Description
+--------- | ---- | -----------
+PageNumber | int | Page number of the results to fetch.
+PageSize | int | The number of results per page
+attributeTypeIDs | int |
+attributeTypes | string |
+
+### 2. Compound API Data Retrieval
+
+This section guides you through the process of fetching data from the Compound table using the dedicated API endpoint. The endpoint offers the flexibility to retrieve all data from the Compound table or selectively acquire information by including Compound IDs, Compound Type IDs, Compound Status IDs, Compound Names, External Identifiers, or CAS Numbers. Additionally, the Compound endpoint is equipped with pagination capabilities to facilitate efficient management of substantial datasets.
+
+> Example Request
+
+```javascript
+var request = require("request");
+
+var options = { method: 'GET',
+  url: 'https://intelex_acts_api_url/api/v1/compound' };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+```csharp
+var client = new RestClient("https://intelex_acts_api_url/api/v1/compound");
+var request = new RestRequest(Method.GET);
+IRestResponse response = client.Execute(request);
+```
+
+> Example Response
+
+```json
+{
+	"value": [
+	  {
+		"name": "string",
+		"kind": "string",
+		"url": "string"
+	  }
+	]
+}
+```
+
+**API Endpoints**
+
+`GET` /api/v1/compound
+
+**API Endpoints with pagination and filters**
+
+`GET` /api/v1/compound?pagenumber=1&pagesize=500&compoundIDs="int data"&compoundTypeIDs="int data"&compoundstatusIDs="int data"&compoundNames="string data"&externalIdentifier="int"&CAS="string data"
+
+***Query parameters***<br />
 
 Attribute | Description
 --------- | -----------
@@ -116,17 +128,14 @@ This section elaborates on how to obtain data from the Emission Category table u
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://{tenant}.actsapi.intelex.com/api/v1/emissioncategory' };
+  url: 'https://intelex_acts_api_url/api/v1/emissioncategory' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
 
-```
-https: // {tenant}.actsapi.intelex.com/API-develop/v1/EmissionCategory
-```
 > Example Of EmissionCategory GET Endpoint With Pagination and Filter Option:
 
-```
+
 
 > Example Response
 
@@ -144,12 +153,14 @@ https: // {tenant}.actsapi.intelex.com/API-develop/v1/EmissionCategory
 
 **API Endpoints**
 
-`GET /api/v1/emissioncategory`
+`GET` /api/v1/emissioncategory
 
 
 **API Endpoints with pagination and filters**
 
-`GET /api/v1/emissioncategory/PageNumber=1&PageSize=500&emissionCategoryID={int data value}`
+`GET` /api/v1/emissioncategory/PageNumber=1&PageSize=500&emissionCategoryID={int data value}
+
+***Query parameters***<br />
 
 Attribute | Description
 --------- | -----------
@@ -167,7 +178,7 @@ This section guides you through the process of fetching data from the Emission T
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://{tenant}.actsapi.intelex.com/api/v1/emissiontype' };
+  url: 'https://intelex_acts_api_url/api/v1/emissiontype' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -177,7 +188,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://{tenant}.actsapi.intelex.com/api/v1/emissiontype");
+var client = new RestClient("https://intelex_acts_api_url/api/v1/emissiontype");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -198,11 +209,13 @@ IRestResponse response = client.Execute(request);
 
 **API Endpoints**
 
-`GET /api/v1/emissiontype`
+`GET` /api/v1/emissiontype
 
 **API Endpoints with pagination and filters**
 
-`GET /api/v1/emissiontype?PageNumber=1&PageSize=500&emissionTypeID={int data value}`
+`GET` /api/v1/emissiontype?PageNumber=1&PageSize=500&emissionTypeID={int data value}
+
+***Query parameters***<br />
 
 Attribute | Description
 --------- | -----------
@@ -220,7 +233,7 @@ This section provides guidance on retrieving data from the Equipment table using
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://{tenant}.actsapi.intelex.com/api/v1/equipment' };
+  url: 'https://intelex_acts_api_url/api/v1/equipment' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -230,7 +243,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://{tenant}.actsapi.intelex.com/api/v1/equipment");
+var client = new RestClient("https://intelex_acts_api_url/api/v1/equipment");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -251,11 +264,13 @@ IRestResponse response = client.Execute(request);
 
 **API Endpoints**
 
-`GET /api/v1/equipment`
+`GET` /api/v1/equipment
 
 **API Endpoints with pagination and filters**
 
-`GET /api/v1/equipment?PageNumber=1&PageSize=500&equipmentID={int data value}`
+`GET` /api/v1/equipment?PageNumber=1&PageSize=500&equipmentID={int data value}
+
+***Query parameters***<br />
 
 Attribute | Description
 --------- | -----------
@@ -274,7 +289,7 @@ All data from the Equipment Status table will be returned from the endpoint belo
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://{tenant}.actsapi.intelex.com/api/v1/equipmentstatus' };
+  url: 'https://intelex_acts_api_url/api/v1/equipmentstatus' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -284,7 +299,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://{tenant}.actsapi.intelex.com/api/v1/equipmentstatus");
+var client = new RestClient("https://intelex_acts_api_url/api/v1/equipmentstatus");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -305,11 +320,13 @@ IRestResponse response = client.Execute(request);
 
 **API Endpoints**
 
-`GET /api/v1/equipmentstatus`
+`GET` /api/v1/equipmentstatus
 
 **API Endpoints with pagination and filters**
 
-`GET /api/v1/equipmentstatus?PageNumber=1&PageSize=500&equipmentStatusIDs="int data"&equipmentStatus="string data"`
+`GET` /api/v1/equipmentstatus?PageNumber=1&PageSize=500&equipmentStatusIDs="int data"&equipmentStatus="string data"
+
+***Query parameters***<br />
 
 Attribute | Description
 --------- | -----------
@@ -328,7 +345,7 @@ All data from the Equipment Type table will be returned from the endpoint below.
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://{tenant}.actsapi.intelex.com/api/v1/equipmenttype' };
+  url: 'https://intelex_acts_api_url/api/v1/equipmenttype' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -338,7 +355,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://{tenant}.actsapi.intelex.com/api/v1/equipmenttype");
+var client = new RestClient("https://intelex_acts_api_url/api/v1/equipmenttype");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -359,11 +376,13 @@ IRestResponse response = client.Execute(request);
 
 **API Endpoints**
 
-`GET /api/v1/equipmenttype`
+`GET` /api/v1/equipmenttype
 
 **API Endpoints with pagination and filters**
 
-`GET /api/v1/equipmenttype?PageNumber=1&PageSize=500&equipmentTypeIDs="int data"&equipmentType="string data"`
+`GET` /api/v1/equipmenttype?PageNumber=1&PageSize=500&equipmentTypeIDs="int data"&equipmentType="string data"
+
+***Query parameters***<br />
 
 Attribute | Description
 --------- | -----------
@@ -382,7 +401,7 @@ All data from the Operation table will be returned from the endpoint below. You 
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://{tenant}.actsapi.intelex.com/api/v1/operation' };
+  url: 'https://intelex_acts_api_url/api/v1/operation' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -392,7 +411,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://{tenant}.actsapi.intelex.com/api/v1/operation");
+var client = new RestClient("https://intelex_acts_api_url/api/v1/operation");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -413,11 +432,13 @@ IRestResponse response = client.Execute(request);
 
 **API Endpoints**
 
-`GET /api/v1/operation`
+`GET` /api/v1/operation
 
 **API Endpoints with pagination and filters**
 
-`GET /api/v1/operation?PageNumber =1&PageSize=500&operationIDs="int data"&operationTypeIDs=”string data "&emissionTypeIDs="int data”&emissionCategoryIDs="int data”&unitIDs="int data"&equipmentIDs="int data"&lastModifiedStartDate=”string format – date time data"&lastModifiedEndDate="string format – date time data"`
+`GET` /api/v1/operation?PageNumber =1&PageSize=500&operationIDs="int data"&operationTypeIDs=”string data "&emissionTypeIDs="int data”&emissionCategoryIDs="int data”&unitIDs="int data"&equipmentIDs="int data"&lastModifiedStartDate=”string format – date time data"&lastModifiedEndDate="string format – date time data"
+
+***Query parameters***<br />
 
 Attribute | Description
 --------- | -----------
@@ -442,7 +463,7 @@ This section outlines how to retrieve data from the Unit table using the provide
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://{tenant}.actsapi.intelex.com/api/v1/unit' };
+  url: 'https://intelex_acts_api_url/api/v1/unit' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -452,7 +473,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://{tenant}.actsapi.intelex.com/api/v1/unit");
+var client = new RestClient("https://intelex_acts_api_url/api/v1/unit");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -473,11 +494,13 @@ IRestResponse response = client.Execute(request);
 
 **API Endpoints**
 
-`GET /api/v1/unit`
+`GET` /api/v1/unit
 
 **API Endpoints with pagination and filters**
 
-`GET /api/v1/unit?PageNumber=1&PageSize=500&unitIDs="int data"&unitTypeIDs="int data" &units="string data"`
+`GET` /api/v1/unit?PageNumber=1&PageSize=500&unitIDs="int data"&unitTypeIDs="int data" &units="string data"
+
+***Query parameters***<br />
 
 Attribute | Description
 --------- | -----------

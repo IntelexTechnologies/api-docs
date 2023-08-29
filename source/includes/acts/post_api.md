@@ -26,7 +26,7 @@ This section guides you through the process of modifying existing equipment reco
 
 **Equipment POST endpoint**
 
-`POST api/development/v1/equipment`
+`POST` api/development/v1/equipment
 
 ### 2. Add or Modify Operation Table 
 
@@ -34,7 +34,7 @@ This section outlines the process of adding new entries or modifying existing re
 
 **Operation POST Endpoint**
 
-`POST api/development/v1/Operation`
+`POST` api/development/v1/Operation
 
 ### 3. Add or Modify Facility Table 
 
@@ -42,7 +42,7 @@ This section outlines the process of adding new entries or modifying existing re
 
 **Facility POST Endpoint**
 
-`POST api/deelopment/v1/Facility`
+`POST` api/deelopment/v1/Facility
 
 ### 4. Add or Modify Facility Attribute Table 
 
@@ -50,7 +50,7 @@ This section outlines the process of adding new entries or modifying existing re
 
 **Facility Attribute POST Endpoint**
 
-`POST api/DEVELOPMENT/v1/FacilityAttribute`
+`POST` api/DEVELOPMENT/v1/FacilityAttribute
 
 ### JSON body for both Insert & Update 
 
