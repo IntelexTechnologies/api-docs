@@ -55,6 +55,33 @@ Operation records can be updated, or new records added at the following endpoint
 https: // {tenant}.actsapi.intelex.com/API-staging/DEVELOPMENT/v1/Operation
 ```
 
+> Example Output For Both Update and Insert Of Operation Table 
+
+```json
+{
+	"insertedRowCount" : 5 , 
+	"updatedRowCount" : 10 ,
+	"failureCount" : 0 ,
+	"errorMessage" : []
+
+}
+
+```
+
+> Example Output For When Data Get's Failed To Insert or Update to Operation Table 
+
+```json
+{
+	"insertedRowCount" : 0 , 
+	"updatedRowCount" : 1 ,
+	"failureCount" : 1 ,
+	"errorMessage" : [
+	 "Operation ID : 0, Error: An error occurred while saving the entity changes. See the inner exception for details "
+	]
+}
+
+```
+
 ### 3.Facility POST API endpoint 
 
 Facility records can be updated, or new records added at the following endpoint:
