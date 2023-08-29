@@ -18,6 +18,33 @@ Equipment records can be updated, or new records added at the following endpoint
 https: // {tenant}.actsapi.intelex.com/API-staging/DEVELOPMENT/v1/Equipment
 ```
 
+> Example Output For Both Update and Insert Of Equipment Table 
+
+```json
+{
+	"insertedRowCount" : 5 , 
+	"updatedRowCount" : 10 ,
+	"failureCount" : 0 ,
+	"errorMessage" : []
+
+}
+
+```
+
+> Example Output For When Data Get's Failed To Insert or Update to Equipment Table 
+
+```json
+{
+	"insertedRowCount" : 0 , 
+	"updatedRowCount" : 1 ,
+	"failureCount" : 1 ,
+	"errorMessage" : [
+	 "Equipment ID : 0, Error: An error occurred while saving the entity changes. See the inner exception for details "
+	]
+}
+
+```
+
 ### 2.Operation POST API endpoint 
 
 Operation records can be updated, or new records added at the following endpoint:
@@ -92,7 +119,8 @@ If the primary id is an existing ID - "#####" then the data we are passing is ha
 ```
 
 > Example Output For Both Update and Insert 
-```
+
+```json
 {
 	"insertedRowCount" : 2 , 
 	"updatedRowCount" : 3 ,
@@ -104,7 +132,8 @@ If the primary id is an existing ID - "#####" then the data we are passing is ha
 ```
 
 > Example Output For When Data Get's Failed To Insert or Update
-```
+
+```json
 {
 	"insertedRowCount" : 0 , 
 	"updatedRowCount" : 1 ,
