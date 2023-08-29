@@ -29,16 +29,8 @@ IRestResponse response = client.Execute(request);
 
 > Example Response
 
-```json
-{
-	"value": [
-	  {
-		"name": "string",
-		"kind": "string",
-		"url": "string"
-	  }
-	]
-}
+```
+https: // {tenant}.actsapi.intelex.com/API-develop/v1/AttributeType?PageNumber=1&PageSize=500&attributeTypeIDs="int data"&attributeTypes="string data" 
 ```
 
 **API Endpoints**
@@ -129,14 +121,11 @@ var options = { method: 'GET',
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
 
-  console.log(body);
-});
 ```
+https: // {tenant}.actsapi.intelex.com/API-develop/v1/EmissionCategory
+```
+> Example Of EmissionCategory GET Endpoint With Pagination and Filter Option:
 
-```csharp
-var client = new RestClient("https://{tenant}.actsapi.intelex.com/api/v1/emissioncategory");
-var request = new RestRequest(Method.GET);
-IRestResponse response = client.Execute(request);
 ```
 
 > Example Response
