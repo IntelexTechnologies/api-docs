@@ -2,7 +2,7 @@
 
 The following GET APIs are used to fetch the data from the respective tables. 
 
-### 1. Retrieve Attribute Data 
+### 1. Retrieve Attribute Table Data 
 
 All data from the Attribute Type table will be returned from the endpoint below. You can optionally fetch specific data by including Attribute ID’s and Attribute Types. The Attribute Type endpoint supports pagination.
 
@@ -25,7 +25,7 @@ https: // {tenant}.actsapi.intelex.com/API-develop/v1/AttributeType
 https: // {tenant}.actsapi.intelex.com/API-develop/v1/AttributeType?PageNumber=1&PageSize=500&attributeTypeIDs="int data"&attributeTypes="string data" 
 ```
 
-### 2.Compound API GET Endpoint
+### 2.Retrieve Compound Table Data
 
 All data from the Compound table will be returned from the endpoint below. You can optionally fetch specific data by including compound ID’s, compound Type IDs, compound status IDs, compound Names, external identifiers, or CAS number. The Compound endpoint supports pagination.
 
