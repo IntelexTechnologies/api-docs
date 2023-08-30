@@ -45,11 +45,7 @@ IRestResponse response = client.Execute(request);
 
 `GET` /api/v1/AttributeType
 
-**API Endpoints with pagination and filters**
-
-`GET` /api/v1/AttributeType?pagenumber={int data value}&pagesize={int data value}&attributeTypeIDs={int data value}&attributeTypes={string data value}
-
-***Query parameters***<br />
+**Query parameters**
 
 Attribute | Type | Description
 --------- | ---- | -----------
@@ -101,11 +97,7 @@ IRestResponse response = client.Execute(request);
 
 `GET` /api/v1/compound
 
-**API Endpoints with pagination and filters**
-
-`GET` /api/v1/compound?pagenumber={int data value}&pagesize={int data value}&compoundIDs={int data value}&compoundTypeIDs={int data value}&compoundstatusIDs={int data value}&compoundNames={string data value}&externalIdentifier={int data value}&CAS={string data value}
-
-***Query parameters***<br />
+**Query parameters**
 
 Attribute | Type | Description
 --------- | ---- | -----------
@@ -158,11 +150,7 @@ IRestResponse response = client.Execute(request);
 
 `GET` /api/v1/emissioncategory
 
-**API Endpoints with pagination and filters**
-
-`GET` /api/v1/emissioncategory/pagenumber={int data value}&pagesize={int data value}&emissionCategoryID={int data value}
-
-***Query parameters***<br />
+**Query parameters**
 
 Attribute | Type | Description
 --------- | ---- | -----------
@@ -213,11 +201,7 @@ IRestResponse response = client.Execute(request);
 
 `GET` /api/v1/emissiontype
 
-**API Endpoints with pagination and filters**
-
-`GET` /api/v1/emissiontype?pagenumber={int data value}&pagesize={int data value}&emissionTypeID={int data value}
-
-***Query parameters***<br />
+**Query parameters**
 
 Attribute | Type | Description
 --------- | ---- | -----------
@@ -268,11 +252,7 @@ IRestResponse response = client.Execute(request);
 
 `GET` /api/v1/equipment
 
-**API Endpoints with pagination and filters**
-
-`GET` /api/v1/equipment?pagenumber={int data value}&pagesize={int data value}&equipmentID={int data value}
-
-***Query parameters***<br />
+**Query parameters**
 
 Attribute | Type | Description
 --------- | ---- | -----------
@@ -324,11 +304,7 @@ IRestResponse response = client.Execute(request);
 
 `GET` /api/v1/equipmentstatus
 
-**API Endpoints with pagination and filters**
-
-`GET` /api/v1/equipmentstatus?pagenumber={int data value}&pagesize={int data value}&equipmentStatusIDs={int data value}&equipmentStatus="{string data value}
-
-***Query parameters***<br />
+**Query parameters**
 
 Attribute | Type | Description
 --------- | ---- | -----------
@@ -380,11 +356,7 @@ IRestResponse response = client.Execute(request);
 
 `GET` /api/v1/equipmenttype
 
-**API Endpoints with pagination and filters**
-
-`GET` /api/v1/equipmenttype?pagenumber={int data value}&pagesize={int data value}&equipmentTypeIDs={int data value}&equipmentType={string data value}
-
-***Query parameters***<br />
+**Query parameters**
 
 Attribute | Type | Description
 --------- | ---- | -----------
@@ -436,11 +408,7 @@ IRestResponse response = client.Execute(request);
 
 `GET` /api/v1/operation
 
-**API Endpoints with pagination and filters**
-
-`GET` /api/v1/operation?pagenumber={int data value}&pagesize={int data value}&operationIDs={int data value}&operationTypeIDs={string data value}&emissionTypeIDs={int data value}&emissionCategoryIDs={int data value}&unitIDs={int data value}&equipmentIDs={int data value}&lastModifiedStartDate={string data value}&lastModifiedEndDate={string data value}
-
-***Query parameters***<br />
+**Query parameters**
 
 Attribute | Type | Description
 --------- | ---- | -----------
@@ -498,11 +466,7 @@ IRestResponse response = client.Execute(request);
 
 `GET` /api/v1/unit
 
-**API Endpoints with pagination and filters**
-
-`GET` /api/v1/unit?pagenumber={int data value}&pagesize={int data value}&unitIDs={int data value}&unitTypeIDs={int data value}&units={string data value}
-
-***Query parameters***<br />
+**Query parameters**
 
 Attribute | Type | Description
 --------- | ---- | -----------
