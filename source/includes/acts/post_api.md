@@ -1,4 +1,4 @@
-## POST API's Endpoints
+## Add or Modify Database Table
 
 This section outlines the available POST APIs designed for modifying ACTS data. These APIs offer options for updating existing records and inserting new ones. 
 
@@ -20,7 +20,7 @@ In the current release, four POST APIs End points are provided to add or update 
  
 POST requests to these endpoints should be formatted in JSON.
 
-### 1. Add or Modify Equipment Table 
+### 1. Equipment Table 
 
 This section guides you through the process of modifying existing equipment records or adding new entries to the Equipment table using the designated API endpoint.
 
@@ -28,7 +28,7 @@ This section guides you through the process of modifying existing equipment reco
 
 `POST` api/development/v1/equipment
 
-### 2. Add or Modify Operation Table 
+### 2. Operation Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Operation table using the dedicated API endpoint.
 
@@ -36,7 +36,7 @@ This section outlines the process of adding new entries or modifying existing re
 
 `POST` api/development/v1/Operation
 
-### 3. Add or Modify Facility Table 
+### 3. Facility Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Facility table using the dedicated API endpoint.
 
@@ -44,7 +44,7 @@ This section outlines the process of adding new entries or modifying existing re
 
 `POST` api/deelopment/v1/Facility
 
-### 4. Add or Modify Facility Attribute Table 
+### 4. Facility Attribute Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Facility Attribute table using the dedicated API endpoint.
 

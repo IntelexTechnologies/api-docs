@@ -1,8 +1,8 @@
-## GET API's Endpoints
+## Retrieve data from Database Table
 
 This section outlines the various GET APIs available for fetching data from different tables. Each API provides the capability to retrieve specific data based on provided parameters. Pagination support is available for managing large datasets effectively.
 
-### 1. Attribute Type Data Retrieval 
+### 1. Attribute Type Table 
 
 This section outlines the process of retrieving data from the Attribute Type table using the dedicated API endpoint. The endpoint facilitates the retrieval of all data from the Attribute Type table or enables the selection of specific information by including Attribute IDs and Attribute Types. Additionally, the Attribute Type endpoint supports pagination to effectively manage larger datasets.
 
@@ -58,7 +58,7 @@ PageSize | int | The number of results per page
 attributeTypeIDs | int |
 attributeTypes | string |
 
-### 2. Compound API Data Retrieval
+### 2. Compound API Table
 
 This section guides you through the process of fetching data from the Compound table using the dedicated API endpoint. The endpoint offers the flexibility to retrieve all data from the Compound table or selectively acquire information by including Compound IDs, Compound Type IDs, Compound Status IDs, Compound Names, External Identifiers, or CAS Numbers. Additionally, the Compound endpoint is equipped with pagination capabilities to facilitate efficient management of substantial datasets.
 
@@ -118,7 +118,7 @@ compoundNames | string |
 externalIdentifier | int |
 CAS | string |
 
-### 3. Emission Category Data Retrieval
+### 3. Emission Category Table
 
 This section elaborates on how to obtain data from the Emission Category table using the designated API endpoint. The endpoint allows you to retrieve all data from the Emission Category table or selectively acquire information by providing the Emission Category ID. Moreover, the Emission Category endpoint features pagination to facilitate efficient management of substantial datasets.
 
@@ -170,7 +170,7 @@ PageNumber | int | Page number of the results to fetch.
 PageSize | int | The number of results per page
 emissionCategoryID | int |
 
-### 4. Emission Type Data Retrieval
+### 4. Emission Type Table
 
 This section guides you through the process of fetching data from the Emission Type table using the dedicated API endpoint. The endpoint enables you to retrieve data from the entire Emission Type table or selectively obtain information by including Emission Type IDs. Additionally, the Emission Type endpoint is equipped with pagination capabilities to facilitate the handling of extensive datasets.
 
@@ -225,7 +225,7 @@ PageNumber | int | Page number of the results to fetch.
 PageSize | int | The number of results per page
 emissionTypeID | int |
 
-### 5. Equipment Data Retrieval
+### 5. Equipment Table
 
 This section provides guidance on retrieving data from the Equipment table using the designated API endpoint. The endpoint allows you to retrieve all data from the Equipment table or specify specific data based on equipment IDs. Additionally, the Equipment endpoint offers pagination support to facilitate the handling of substantial datasets.
 
@@ -281,7 +281,7 @@ PageSize | int | The number of results per page
 equipmentID | int |
 
 
-### 6. Equipment Status Data Retrieval
+### 6. Equipment Status Table
 
 All data from the Equipment Status table will be returned from the endpoint below. You can optionally fetch specific data by including the equipment status ID and equipment status value. The Equipment Status endpoint supports pagination.
 
@@ -337,7 +337,7 @@ PageSize | int | The number of results per page
 equipmentStatusIDs | int |
 equipmentStatus | string |
 
-### 7. Equipment Type Data Retrieval
+### 7. Equipment Type Table
 
 All data from the Equipment Type table will be returned from the endpoint below. You can optionally fetch specific data by including the equipment type ID and equipment types value. The Equipment type endpoint supports pagination.
 
@@ -393,7 +393,7 @@ PageSize | int | The number of results per page
 equipmentTypeIDs | int |
 equipmentType | string |
 
-### 8. Operation Data Retrieval
+### 8. Operation Table
 
 All data from the Operation table will be returned from the endpoint below. You can optionally fetch specific data by including the operation ids, operation type ids, emission type ids, emission category ids, unit ids, equipment ids, last modified start date and last modified end date. The Operation endpoint supports pagination.
 
@@ -455,7 +455,7 @@ equipmentIDs | int |
 lastModifiedStartDate | string | Date time format "mm/dd/yyyy"
 lastModifiedEndDate | string | Date time format "mm/dd/yyyy"
 
-### 9. Unit Data Retrieval
+### 9. Unit Table
 
 This section outlines how to retrieve data from the Unit table using the provided endpoint. You have the flexibility to fetch specific data by including unit IDs, unit type IDs, and units. The Unit type endpoint also supports pagination for managing large datasets effectively.
 
