@@ -24,6 +24,55 @@ POST requests to these endpoints should be formatted in JSON.
 
 This section guides you through the process of modifying existing equipment records or adding new entries to the Equipment table using the designated API endpoint.
 
+> Example Request
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://intelex_url/api/v2/object/IncidentsObject',
+  headers: { 'content-type': 'application/json' },
+  body:
+   { ActionsTaken: 'string',
+     Date: '2017-02-13T22:15:30.203Z',
+     Description: 'string',
+     IncidentNo: 0,
+     ReportedDate: '2017-02-13T22:15:30.203Z',
+     SuspectedCause: 'string' },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+```csharp
+var client = new RestClient("https://intelex_url/api/v2/object/IncidentsObject");
+var request = new RestRequest(Method.POST);
+request.AddHeader("content-type", "application/json");
+request.AddParameter("application/json", "{\r\n    \"ActionsTaken\": \"string\",\r\n    \"Date\": \"2017-02-13T22:15:30.203Z\",\r\n    \"Description\": \"string\",\r\n    \"IncidentNo\": 0,\r\n    \"ReportedDate\": \"2017-02-13T22:15:30.203Z\",\r\n    \"SuspectedCause\": \"string\"\r\n}", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+```
+
+> Example Response
+
+```json
+{
+	"@odata.type": "string",
+	"@odata.id": "string",
+	"@odata.editLink": "string",
+	"Id": "string",
+	"ActionsTaken": "string",
+	"Date": "2017-02-13T22:15:30.203Z",
+	"Description": "string",
+	"IncidentNo": 0,
+	"ReportedDate": "2017-02-13T22:15:30.203Z",
+	"SuspectedCause": "string"
+}
+```
+
 **Equipment POST endpoint**
 
 `POST` api/development/v1/equipment
@@ -32,6 +81,54 @@ This section guides you through the process of modifying existing equipment reco
 
 This section outlines the process of adding new entries or modifying existing records within the Operation table using the dedicated API endpoint.
 
+> Example Request
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://intelex_url/api/v2/object/IncidentsObject',
+  headers: { 'content-type': 'application/json' },
+  body:
+   { ActionsTaken: 'string',
+     Date: '2017-02-13T22:15:30.203Z',
+     Description: 'string',
+     IncidentNo: 0,
+     ReportedDate: '2017-02-13T22:15:30.203Z',
+     SuspectedCause: 'string' },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+```csharp
+var client = new RestClient("https://intelex_url/api/v2/object/IncidentsObject");
+var request = new RestRequest(Method.POST);
+request.AddHeader("content-type", "application/json");
+request.AddParameter("application/json", "{\r\n    \"ActionsTaken\": \"string\",\r\n    \"Date\": \"2017-02-13T22:15:30.203Z\",\r\n    \"Description\": \"string\",\r\n    \"IncidentNo\": 0,\r\n    \"ReportedDate\": \"2017-02-13T22:15:30.203Z\",\r\n    \"SuspectedCause\": \"string\"\r\n}", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+```
+
+> Example Response
+
+```json
+{
+	"@odata.type": "string",
+	"@odata.id": "string",
+	"@odata.editLink": "string",
+	"Id": "string",
+	"ActionsTaken": "string",
+	"Date": "2017-02-13T22:15:30.203Z",
+	"Description": "string",
+	"IncidentNo": 0,
+	"ReportedDate": "2017-02-13T22:15:30.203Z",
+	"SuspectedCause": "string"
+}
+```
 **Operation POST Endpoint**
 
 `POST` api/development/v1/Operation
@@ -40,13 +137,111 @@ This section outlines the process of adding new entries or modifying existing re
 
 This section outlines the process of adding new entries or modifying existing records within the Facility table using the dedicated API endpoint.
 
+> Example Request
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://intelex_url/api/v2/object/IncidentsObject',
+  headers: { 'content-type': 'application/json' },
+  body:
+   { ActionsTaken: 'string',
+     Date: '2017-02-13T22:15:30.203Z',
+     Description: 'string',
+     IncidentNo: 0,
+     ReportedDate: '2017-02-13T22:15:30.203Z',
+     SuspectedCause: 'string' },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+```csharp
+var client = new RestClient("https://intelex_url/api/v2/object/IncidentsObject");
+var request = new RestRequest(Method.POST);
+request.AddHeader("content-type", "application/json");
+request.AddParameter("application/json", "{\r\n    \"ActionsTaken\": \"string\",\r\n    \"Date\": \"2017-02-13T22:15:30.203Z\",\r\n    \"Description\": \"string\",\r\n    \"IncidentNo\": 0,\r\n    \"ReportedDate\": \"2017-02-13T22:15:30.203Z\",\r\n    \"SuspectedCause\": \"string\"\r\n}", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+```
+
+> Example Response
+
+```json
+{
+	"@odata.type": "string",
+	"@odata.id": "string",
+	"@odata.editLink": "string",
+	"Id": "string",
+	"ActionsTaken": "string",
+	"Date": "2017-02-13T22:15:30.203Z",
+	"Description": "string",
+	"IncidentNo": 0,
+	"ReportedDate": "2017-02-13T22:15:30.203Z",
+	"SuspectedCause": "string"
+}
+```
+
 **Facility POST Endpoint**
 
 `POST` api/deelopment/v1/Facility
 
 ### 4. Facility Attribute Table 
 
-This section outlines the process of adding new entries or modifying existing records within the Facility Attribute table using the dedicated API endpoint.
+This section outlines the process of adding new entries or modifying existing records within the Facility Attribute table using the dedicated API endpoint.\
+
+> Example Request
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://intelex_url/api/v2/object/IncidentsObject',
+  headers: { 'content-type': 'application/json' },
+  body:
+   { ActionsTaken: 'string',
+     Date: '2017-02-13T22:15:30.203Z',
+     Description: 'string',
+     IncidentNo: 0,
+     ReportedDate: '2017-02-13T22:15:30.203Z',
+     SuspectedCause: 'string' },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+```csharp
+var client = new RestClient("https://intelex_url/api/v2/object/IncidentsObject");
+var request = new RestRequest(Method.POST);
+request.AddHeader("content-type", "application/json");
+request.AddParameter("application/json", "{\r\n    \"ActionsTaken\": \"string\",\r\n    \"Date\": \"2017-02-13T22:15:30.203Z\",\r\n    \"Description\": \"string\",\r\n    \"IncidentNo\": 0,\r\n    \"ReportedDate\": \"2017-02-13T22:15:30.203Z\",\r\n    \"SuspectedCause\": \"string\"\r\n}", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+```
+
+> Example Response
+
+```json
+{
+	"@odata.type": "string",
+	"@odata.id": "string",
+	"@odata.editLink": "string",
+	"Id": "string",
+	"ActionsTaken": "string",
+	"Date": "2017-02-13T22:15:30.203Z",
+	"Description": "string",
+	"IncidentNo": 0,
+	"ReportedDate": "2017-02-13T22:15:30.203Z",
+	"SuspectedCause": "string"
+}
+```
 
 **Facility Attribute POST Endpoint**
 
