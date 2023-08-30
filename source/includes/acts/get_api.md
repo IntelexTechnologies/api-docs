@@ -27,7 +27,7 @@ var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
 
-> Example Response
+> Response Schema
 
 ```json
 {
@@ -83,7 +83,7 @@ var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
 
-> Example Response
+> Response Schema
 
 ```json
 {
@@ -140,7 +140,7 @@ var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
 
-> Example Response
+> Response Schema
 
 ```json
 {
@@ -195,7 +195,7 @@ var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
 
-> Example Response
+> Response Schema
 
 ```json
 {
@@ -250,7 +250,7 @@ var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
 
-> Example Response
+> Response Schema
 
 ```json
 {
@@ -306,7 +306,7 @@ var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
 
-> Example Response
+> Response Schema
 
 ```json
 {
@@ -362,7 +362,7 @@ var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
 
-> Example Response
+> Response Schema
 
 ```json
 {
@@ -418,7 +418,7 @@ var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
 
-> Example Response
+> Response Schema
 
 ```json
 {
@@ -480,7 +480,7 @@ var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
 
-> Example Response
+> Response Schema
 
 ```json
 {
