@@ -51,8 +51,8 @@ Attribute | Type | Description
 --------- | ---- | -----------
 PageNumber | int | Page number of the results to fetch.
 PageSize | int | The number of results per page
-attributeTypeIDs | int |
-attributeTypes | string |
+attributeTypeIDs | int | Attribute ID is one of the filter parameter is a integer data type
+attributeTypes | string | Attribute Types is for the project detail type
 
 ### 2. Compound API Table
 
@@ -103,12 +103,12 @@ Attribute | Type | Description
 --------- | ---- | -----------
 PageNumber | int | Page number of the results to fetch.
 PageSize | int | The number of results per page
-compoundIDs | int |
-compoundTypeIDs | int |
-compoundstatusIDs | int |
-compoundNames | string |
-externalIdentifier | int |
-CAS | string |
+compoundIDs | int | Compound ID is one of the unique identifier for this compound record 
+compoundTypeIDs | int | Compound TYpe IDs is the associated compound type and is a second filter parameter option
+compoundstatusIDs | int | Compound Status IDs is associated with compound status
+compoundNames | string | Compound Names The name of the compound which is a string type data and is one among the parameter for filter option
+externalIdentifier | int | External Identifiers is a unique identifier for this record to an external data system
+CAS | string | CAS Number is a Chemical Abstract Service number for the compound 
 
 ### 3. Emission Category Table
 
@@ -156,7 +156,7 @@ Attribute | Type | Description
 --------- | ---- | -----------
 PageNumber | int | Page number of the results to fetch.
 PageSize | int | The number of results per page
-emissionCategoryID | int |
+emissionCategoryID | int | Emission Category ID is one of the unique identifier for this emission category record and is one of the filter option provided for Emission Category
 
 ### 4. Emission Type Table
 
@@ -207,7 +207,7 @@ Attribute | Type | Description
 --------- | ---- | -----------
 PageNumber | int | Page number of the results to fetch.
 PageSize | int | The number of results per page
-emissionTypeID | int |
+emissionTypeID | int | Emission Type ID is one of the type of emissions and is the one of the filter option provided for Emission Type
 
 ### 5. Equipment Table
 
@@ -258,7 +258,7 @@ Attribute | Type | Description
 --------- | ---- | -----------
 PageNumber | int | Page number of the results to fetch.
 PageSize | int | The number of results per page
-equipmentID | int |
+equipmentID | int | Equipment ID is one of the unique identifier for this equipment record
 
 
 ### 6. Equipment Status Table
@@ -310,8 +310,8 @@ Attribute | Type | Description
 --------- | ---- | -----------
 PageNumber | int | Page number of the results to fetch.
 PageSize | int | The number of results per page
-equipmentStatusIDs | int |
-equipmentStatus | string |
+equipmentStatusIDs | int | Equipment Status ID is one of the unique identifier for this equipment status record
+equipmentStatus | string | Equipment Status is one of the identifier for the status of the equipment
 
 ### 7. Equipment Type Table
 
@@ -362,8 +362,8 @@ Attribute | Type | Description
 --------- | ---- | -----------
 PageNumber | int | Page number of the results to fetch.
 PageSize | int | The number of results per page
-equipmentTypeIDs | int |
-equipmentType | string |
+equipmentTypeIDs | int | Equipment Type ID is one of the unique identifier for this equipment type record
+equipmentType | string | Equipment Types is one of the filter option and the parameter is for the type of the equipment
 
 ### 8. Operation Table
 
@@ -394,13 +394,37 @@ IRestResponse response = client.Execute(request);
 
 ```json
 {
-	"value": [
-	  {
-		"name": "string",
-		"kind": "string",
-		"url": "string"
-	  }
-	]
+	 "currentPage": 1,
+    "totalPages": 1,
+    "currentPageSize": 500,
+    "maxAPIPageSize": 500,
+    "totalCount": 337,
+    "hasPrevious": false,
+    "hasNext": true,
+    "data": [
+        {
+            "operationId": "number",
+			"equipmentId": "number",
+			"emissionTypeId": "number",
+			"emissionCategoryId": "number",
+			"operationTypeId": "number",
+			"activeDate": "2023-06-25T04:00:00Z",
+			"unitId": "number",
+			"controlledInd": "string 1 Byte Y or N",
+			"estimatedInd": "string 1 Byte Y or N",
+			"invalidInd": "string 1 Byte Y or N",
+			"calculateEmissionsInd": "string 1 Byte Y or N",
+			"collectionDate": "2023-06-25T04:00:00Z",
+			"fieldEventId": "number",
+			"inactiveDate": "2023-06-25T04:00:00Z",
+			"dataLockTypeId": "number",
+			"lastModifiedDate": "2023-06-25T04:00:00Z",
+			"externalIdentifier": "string",
+			"comments": "string",
+			"badDataFlag": "number(0,1)",
+			"operationAmount": "number"
+        }
+		    ]
 }
 ```
 
@@ -414,12 +438,12 @@ Attribute | Type | Description
 --------- | ---- | -----------
 PageNumber | int | Page number of the results to fetch.
 PageSize | int | The number of results per page
-operationIDs | int |
-operationTypeIDs | string |
-emissionTypeIDs | int |
-emissionCategoryIDs | int |
-unitIDs | int |
-equipmentIDs | int |
+operationIDs | int | Operation Ids are unique identifier for this operation type record
+operationTypeIDs | string | Operation Type IDs is one of the filter option and the parameter is for the type of the Operation Type
+emissionTypeIDs | int | The unique identifier of the associated emission type
+emissionCategoryIDs | int | The unique identifier of the associated emission category
+unitIDs | int | The unique identifier of the associated unit 
+equipmentIDs | int | The unique identifier of the associated equipment
 lastModifiedStartDate | string | Date time format "mm/dd/yyyy"
 lastModifiedEndDate | string | Date time format "mm/dd/yyyy"
 
@@ -452,14 +476,29 @@ IRestResponse response = client.Execute(request);
 
 ```json
 {
-	"value": [
-	  {
-		"name": "string",
-		"kind": "string",
-		"url": "string"
-	  }
-	]
+    "currentPage": 1,
+    "totalPages": 1,
+    "currentPageSize": 500,
+    "maxAPIPageSize": 500,
+    "totalCount": 337,
+    "hasPrevious": false,
+    "hasNext": true,
+    "data": [
+        {
+            "unitId": "number",
+            "unit": "string",
+            "unitTypeId": 0,
+            "description": "string",
+            "alternateNames": "string",
+            "sortOrder": "number",
+            "lastModifiedDate": "2017-02-13T22:15:30.203Z",
+            "externalIdentifier": "string",
+            "comments": "string",
+            "refId": "string"
+        }
+		    ]
 }
+
 ```
 
 **API Endpoints**
@@ -472,6 +511,6 @@ Attribute | Type | Description
 --------- | ---- | -----------
 PageNumber | int | Page number of the results to fetch.
 PageSize | int | The number of results per page
-unitIDs | int |
-unitTypeIDs | int |
-units | string |
+unitIDs | int | Unit ID is one of the unique identifier for this Unit record
+unitTypeIDs | int | Unit Type IDs is the unique identifier of the associated unit type
+units | string | Units is one of the filter option and the parameter is for the Name of the Unit
