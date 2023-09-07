@@ -4690,470 +4690,1268 @@ Content-Transfer-Encoding:binary
 </tr>
 </tbody></table>
 
-          <h1 id="developer-support">Developer Support</h1>
+          <h1 id="acts-api">ACTS API</h1>
 
-<p><a href="https://community.intelex.com/connect/groups/developer-community">Join the Intelex Developer group on Community</a> and:</p>
+<p>The ACTS API gives you the ability to retrieve or update data of selected database tables in ACTS product. </p>
 
-<ul>
-<li>Stay up-to-date about our API</li>
-<li>Ask technical questions</li>
-<li>Give us feedback</li>
-<li>Submit support requests</li>
-</ul>
+<p>The ACTS API is currently in beta. This means that we might make changes to the data returned or how requests are made with future releases. Once the beta tag is removed, breaking changes to this API will be <a href="#acts-api-versioning">versioned</a>.</p>
 
-          <h1 id="acts-api-reference">ACTS API Reference</h1>
+          <h2 id="reference">Reference</h2>
 
 <p>The Intelex ACTS API provides endpoints in ACTS, with it&rsquo;s own URL for access. If you currently use the Intelex API, you will not be able to use the ACTS API unless you have Admin access to ACTS. At the same time, you can use the ACTS API without any permission for Intelex V6.  </p>
 
-<p>Our ACTS API has predictable, resource-oriented URLs, and uses HTTP response codes to indicate API errors. We use built-in HTTP features, like HTTP authentication and HTTP verbs, which are understood by off-the-shelf HTTP clients. JSON is returned by all API responses, including errors.</p>
+<p>Our API has predictable, resource-oriented URLs, and uses HTTP response codes to indicate API errors. We use built-in HTTP features, Token based authentication and HTTP verbs, which are understood by off-the-shelf HTTP clients. JSON is returned by all API responses, including errors.</p>
 
-<h2 id="getting-started">Getting Started</h2>
-
-<p>To begin using the Intelex API you will need:
-*   A valid Intelex ACTS user account
-*   The full URL to your Intelex ACTS API and system
-*   A basic understanding of the Intelex ACTS API Application.</p>
+<h3 id="getting-started-with-acts-api">Getting Started with ACTS API</h3>
 
 <blockquote>
-<p>API Endpoint - replace <strong>intelex_ACTS API url</strong> with the full URL path to your Intelex system</p>
+<p>API Endpoint - replace <strong>intelex_acts_api_url</strong> with the full URL path to your Intelex ACTS API system</p>
 </blockquote>
-<pre class="highlight plaintext"><code>https://{tenant}.actsapi.intelex.com
+<pre class="highlight plaintext"><code>https://intelex_acts_api_url/api/v1
 </code></pre>
-<h2 id="authentication">Authentication</h2>
+<p>To begin using the Intelex API you will need:</p>
+
+<ul>
+<li>A valid Intelex ACTS user account</li>
+<li>The full URL to your Intelex ACTS API and system</li>
+<li>The full URL to authentication endpoint</li>
+<li>Understanding of the Intelex ACTS Application.</li>
+</ul>
+
+<h3 id="acts-api-authentication">ACTS API Authentication</h3>
 
 <blockquote>
 <p>Example Requests:</p>
 </blockquote>
-<pre class="highlight plaintext"><code>
-//JSON Body for Authentication Endpoint
+<pre class="highlight plaintext"><code>//JSON Body for Authentication Endpoint
 {"client_id":"Client ID Data",
 "client_secret":"Client Secret Data",
-"audience":"https://{tenant}.intelex.com/API-release",
+"audience":"https://intelex_acts_api_url/api",
 "grant_type":"client_credentials"}
 </code></pre>
 <blockquote>
 <p>Example Response:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="w">
-
-</span><span class="p">{</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Generated Bearer Access Token Used For Validation"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"expires_in"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Token Expiry Time In Seconds"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bearer"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Intelex&rsquo;s ACTS API uses Auth0 tokens for authentication. Only ACTS Admin users can access the API. </p>
+<p>Intelex&rsquo;s ACTS API uses tokens based authentication. Only ACTS Admin users can access the API. </p>
 
-<p>During Auth0 authentication, the client passes &lsquo;client id&rsquo; and &lsquo;client secret&rsquo; to the auth0 validation endpoint, along with the audience and grant type, as shown above. The API returns a bearer-type access token with a time limit. Only ACTS admin users will be authenticated. Once authenticated, users have access to all ACTS API endpoints. </p>
+<p>During the authentication process, the client provides the &lsquo;client id&rsquo; and &lsquo;client secret&rsquo; to the authentication endpoint, along with the audience and grant type, as demonstrated above. In response, the API furnishes an access token that comes with a specified time limit. This authentication is exclusively applicable to admin users. After successful authentication, users gain unrestricted access to all ACTS API endpoints.</p>
 
-<p>All API requests must be made over HTTPS, and API requests without authentication will fail. Security on data is managed by the ACTS platform, and API requests will provide the same admin access available to logged in ACTS admin users. </p>
+<p>All interactions with the API are required to occur via HTTPS, and any API requests lacking proper authentication will result in failure. Data security is meticulously overseen by the ACTS platform, ensuring that API requests grant identical administrative access as enjoyed by authenticated ACTS admin users.</p>
 
-<p>The user authentication endpoint uses a POST to generate the access token [bearer token]. </p>
+<p>The user authentication endpoint uses a POST to generate the access token [bearer token].</p>
 
-<blockquote>
-<p>Authentication API Endpoint - https: // dev-intelex.us.auth0.com/oauth/token </p>
-</blockquote>
-
-<h2 id="data-format">Data Format</h2>
-
-<p>The ACTS API only supports <a href="http://www.json.org/">JSON</a> for requests and responses.</p>
-
-<h2 id="response-codes">Response Codes</h2>
-
-<p>The ACTS API will respond with the following HTTP status codes:</p>
-
-<table><thead>
-<tr>
-<th>Response Code</th>
-<th>Meaning</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>Success &ndash; Enjoy your data!</td>
-</tr>
-<tr>
-<td>201</td>
-<td>Created &ndash; We created the record!</td>
-</tr>
-<tr>
-<td>204</td>
-<td>No Content &ndash; Your request was successful, but we don&rsquo;t have anything more to tell you</td>
-</tr>
-<tr>
-<td>400</td>
-<td>Bad Request &ndash; Something is wrong with your request</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized &ndash; Your credentials are wrong</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden &ndash; You do not have permission to access the resource</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Not Found &ndash; The object or navigation property you are trying to access doesn&rsquo;t exist</td>
-</tr>
-<tr>
-<td>405</td>
-<td>Method Not Allowed &ndash; We won&rsquo;t let you do that</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests &ndash; You have sent too many requests and have to wait till you can send more</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error &ndash; We had a problem with our server. Try again later</td>
-</tr>
-<tr>
-<td>501</td>
-<td>Not Implemented &ndash; What you are trying to do doesn&rsquo;t work&hellip;yet.</td>
-</tr>
-</tbody></table>
-
-<h2 id="versioning">Versioning</h2>
+<h3 id="acts-api-versioning">ACTS API Versioning</h3>
 
 <p>When we make backwards-incompatible changes to the API, we release new versions. The current version of the ACTS API  is v1 and can be determined with our API base path /api/v1/.</p>
 
 <blockquote>
-<p>Example API Endpoint : https://{tenant}.actsapi.intelex.com/API/**/v1/TableName</p>
+<p>Example API endpoint : https://intelex_acts_api_url/api/v1</p>
 </blockquote>
 
-          <h1 id="total-apis-and-associated-tables">Total API&rsquo;s and Associated Tables</h1>
+<h3 id="apis-and-associated-database-tables">API&rsquo;s and Associated Database Tables</h3>
 
-<p>This ACTS API release includes 11 GET enpoints and 4 POST endpoints, along with the authentication endpoint described above. The tables you can query and update are as follows. </p>
+<p>This ACTS API release includes 11 GET enpoints and 4 POST endpoints, along with the authentication endpoint described above. The tables that can be queried and updated are as follows. </p>
 
-<p>1.Tables Supporting GET requests </p>
-
-<ol>
-<li>Operation Table<br></li>
-<li>Equipment Table<br></li>
-<li>Emission Type Table<br></li>
-<li>Emission Category Table<br></li>
-<li>Equipment Status Table </li>
-<li>Unit Table </li>
-<li>Attribute Type Table </li>
-<li>Equipment Type Table </li>
-<li>Compound Table</li>
-</ol>
-
-<p>2.Tables Supporting POST requests </p>
+<p>Database Tables supporting GET requests </p>
 
 <ol>
-<li>Equipment Table</li>
-<li>Operation Table</li>
-<li>Facility Table</li>
-<li>Facility Attribute Table</li>
+<li>Operation<br></li>
+<li>Equipment<br></li>
+<li>Emission Type<br></li>
+<li>Emission Category</li>
+<li>Equipment Status</li>
+<li>Unit</li>
+<li>Attribute Type </li>
+<li>Equipment Type</li>
+<li>Compound</li>
 </ol>
 
-          <h1 id="types-of-apis-and-general-url">Types Of API&rsquo;s and General URL</h1>
+<p>Database Tables supporting POST requests </p>
 
 <ol>
-<li> GET API’s In the current ACTS – API release overall there have been planned for 11 GET API’s </li>
+<li>Equipment</li>
+<li>Operation</li>
+<li>Facility</li>
+<li>Facility Attribute</li>
 </ol>
+
+          <h2 id="retrieve-data-from-database-table">Retrieve data from Database Table</h2>
+
+<p>This section outlines the various GET APIs available for fetching data from different tables. Each API provides the capability to retrieve specific data based on provided parameters. Pagination support is available for managing large datasets effectively.</p>
+
+<h3 id="1-attribute-type-table">1. Attribute Type Table</h3>
+
+<p>This section outlines the process of retrieving data from the Attribute Type table using the dedicated API endpoint. The endpoint facilitates the retrieval of all data from the Attribute Type table or enables the selection of specific information by including Attribute IDs and Attribute Types. Additionally, the Attribute Type endpoint supports pagination to effectively manage larger datasets.</p>
 
 <blockquote>
-<p>Example GET API Endpoint : https : // {tenant}.actsapi.intelex.com/API-develop/v1/{Table Object}/{Fetch_Based_On_ID’s} </p>
+<p>Example Request</p>
 </blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
 
-<ol>
-<li> POST API’s in the current release we are including 4 POST API’s . 
-These API’s helps to edit and make updates in the respective tables.
-In the POST API the user needs to pass on the input in JSON Format  . The Input JSON body would be something like this </li>
-</ol>
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://intelex_acts_api_url/api/v1/attributetype'</span> <span class="p">};</span>
 
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://intelex_acts_api_url/api/v1/attributetype"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">GET</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+</code></pre>
 <blockquote>
-<p>Example Input JSON Body</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="w">
-</span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"EquipmentAttributeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"EquipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"AttributeTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"EquipmentAttribute"</span><span class="p">:</span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"DataLockTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"datetime"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"LastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"datetime"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"ExternalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"Comments"</span><span class="p">:</span><span class="s2">"string"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-<blockquote>
-<p>Example POST API Endpoint : https : // {tenant}.actsapi.intelex.com/API-develop/v1/{Table Object}</p>
-</blockquote>
-
-<p>{Table Object} : Unit , Operation , Emission , Emission Category tables etc </p>
-
-<p>{API-develop} : develop is the environment </p>
-
-<p>v1 : Version , First version of the ACTS - API</p>
-
-<ol>
-<li>GET API&rsquo;s With Pagination Option 
-In this case user can specify the page number and page size where 500 is maximum size of the page. Example output with the page number and page size </li>
-</ol>
-
-<blockquote>
-<p>Example GET API Endpoint : https ://{tenant}.actsapi.intelex.com/API-develop/v1/{Table Object}/{Fetch_Based_On_ID’s}/ ?PageNumber=1&amp;PageSize=50 </p>
-</blockquote>
-
-<p>{Table Object} : Unit , Operation , Emission , Emission Category tables etc </p>
-
-<p>{API-develop} : develop is the environment </p>
-
-<p>v1 : Version , First version of the ACTS - API</p>
-
-<p>{Fetched_Based_On_ID&rsquo;s} : User can specify the mentioned specific ID to get that particular data</p>
-
-<p>{Page Number} and {Page Size} : User can specify the page number and page size </p>
-
-<blockquote>
-<p>Example OutPut Response </p>
+<p>Response Schema</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"currentPage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"currentPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"maxAPIPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"totalCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"hasPrevious"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boolean"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"hasNext"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boolean"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w">
-</span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"EquipmentAttributeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"EquipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"AttributeTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"EquipmentAttribute"</span><span class="p">:</span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"DataLockTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"datetime"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"LastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"datetime"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"ExternalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"Comments"</span><span class="p">:</span><span class="s2">"string"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-          <h1 id="all-get-apis">ALL GET API&rsquo;s</h1>
+<p><strong>API Endpoints</strong></p>
 
-<p>The following GET APIs are used to fetch the data from the respective tables. </p>
+<p><code class="prettyprint">GET</code> /api/v1/AttributeType</p>
 
-<h2 id="1-attribute-type-api-get-endpoint">1. Attribute Type API GET Endpoint</h2>
+<p><strong>Query parameters</strong></p>
 
-<p>All data from the Attribute Type table will be returned from the endpoint below. You can optionally fetch specific data by including Attribute ID’s and Attribute Types. The Attribute Type endpoint supports pagination.</p>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>PageNumber</td>
+<td>int</td>
+<td>Page number of the results to fetch.</td>
+</tr>
+<tr>
+<td>PageSize</td>
+<td>int</td>
+<td>The number of results per page</td>
+</tr>
+<tr>
+<td>attributeTypeIDs</td>
+<td>int</td>
+<td>Attribute ID is one of the filter parameter is a integer data type</td>
+</tr>
+<tr>
+<td>attributeTypes</td>
+<td>string</td>
+<td>Attribute Types is for the project detail type</td>
+</tr>
+</tbody></table>
 
-<blockquote>
-<p>Example Of AttributeType GET Endpoint Without Pagination: </p>
-</blockquote>
-<pre class="highlight plaintext"><code>https: // {tenant}.actsapi.intelex.com/API-develop/v1/AttributeType
-</code></pre>
-<blockquote>
-<p>Example Of AttributeType GET Endpoint With Pagination and Filter Option: </p>
-</blockquote>
-<pre class="highlight plaintext"><code>https: // {tenant}.actsapi.intelex.com/API-develop/v1/AttributeType?PageNumber=1&amp;PageSize=500&amp;attributeTypeIDs="int data"&amp;attributeTypes="string data" 
-</code></pre>
-<h2 id="2-compound-api-get-endpoint">2.Compound API GET Endpoint</h2>
+<h3 id="2-compound-api-table">2. Compound API Table</h3>
 
-<p>All data from the Compound table will be returned from the endpoint below. You can optionally fetch specific data by including compound ID’s, compound Type IDs, compound status IDs, compound Names, external identifiers, or CAS number. The Compound endpoint supports pagination.</p>
-
-<blockquote>
-<p>Example Of Compound GET Endpoint Without Pagination: </p>
-</blockquote>
-<pre class="highlight plaintext"><code>https: // {tenant}.actsapi.intelex.com/API-develop/v1/Compound
-</code></pre>
-<blockquote>
-<p>Example Of Compound GET Endpoint With Pagination and Filter Option: </p>
-</blockquote>
-<pre class="highlight plaintext"><code>https: // {tenant}.actsapi.intelex.com/API-develop/v1/Compound? PageNumber=1&amp;PageSize=500&amp;compoundIDs="int data"&amp;compoundTypeIDs="int data"&amp;compoundstatusIDs="int data"&amp;compoundNames="string data"&amp;externalIdentifier="int"&amp;CAS="string data"
-</code></pre>
-<h2 id="3-emission-category-api-get-endpoint">3.Emission Category API GET Endpoint</h2>
-
-<p>All data from the Emission Category table will be returned from the endpoint below. You can optionally fetch specific data by including the emission category ID. The Emission Category endpoint supports pagination.</p>
-
-<blockquote>
-<p>Example Of EmissionCategory GET Endpoint Without Pagination: </p>
-</blockquote>
-<pre class="highlight plaintext"><code>https: // {tenant}.actsapi.intelex.com/API-develop/v1/EmissionCategory
-</code></pre>
-<blockquote>
-<p>Example Of EmissionCategory GET Endpoint With Pagination and Filter Option:</p>
-</blockquote>
-<pre class="highlight plaintext"><code>https: // {tenant}.actsapi.intelex.com/API-develop/v1/EmissionCategory/{int data – Emission Category ID}
-</code></pre>
-<h2 id="4-emission-type-api-get-endpoint">4.Emission Type API GET Endpoint</h2>
-
-<p>All data from the Emission type table will be returned from the endpoint below. You can optionally fetch specific data by including the emission type ID. The Emission Type endpoint supports pagination.</p>
+<p>This section guides you through the process of fetching data from the Compound table using the dedicated API endpoint. The endpoint offers the flexibility to retrieve all data from the Compound table or selectively acquire information by including Compound IDs, Compound Type IDs, Compound Status IDs, Compound Names, External Identifiers, or CAS Numbers. Additionally, the Compound endpoint is equipped with pagination capabilities to facilitate efficient management of substantial datasets.</p>
 
 <blockquote>
-<p>Example Of EmissionType GET Endpoint Without Pagination: </p>
+<p>Example Request</p>
 </blockquote>
-<pre class="highlight plaintext"><code>https: // {tenant}.actsapi.intelex.com/API-develop/v1/EmissionType
-</code></pre>
-<blockquote>
-<p>Example Of EmissionType GET Endpoint With Pagination and Filter Option:</p>
-</blockquote>
-<pre class="highlight plaintext"><code>https: //{tenant}.actsapi.intelex.com/API-develop/v1/EmissionType?PageNumber=1&amp;PageSize=500&amp;emissionTypeID={int data value}
-</code></pre>
-<h2 id="5-equipment-api-get-endpoint">5.Equipment API GET Endpoint</h2>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
 
-<p>All data from the Equipment table will be returned from the endpoint below. You can optionally fetch specific data by including the equipment ID. The Equipment endpoint supports pagination.</p>
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://intelex_acts_api_url/api/v1/compound'</span> <span class="p">};</span>
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://intelex_acts_api_url/api/v1/compound"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">GET</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Response Schema</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>API Endpoints</strong></p>
+
+<p><code class="prettyprint">GET</code> /api/v1/compound</p>
+
+<p><strong>Query parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>PageNumber</td>
+<td>int</td>
+<td>Page number of the results to fetch.</td>
+</tr>
+<tr>
+<td>PageSize</td>
+<td>int</td>
+<td>The number of results per page</td>
+</tr>
+<tr>
+<td>compoundIDs</td>
+<td>int</td>
+<td>Compound ID is one of the unique identifier for this compound record</td>
+</tr>
+<tr>
+<td>compoundTypeIDs</td>
+<td>int</td>
+<td>Compound TYpe IDs is the associated compound type and is a second filter parameter option</td>
+</tr>
+<tr>
+<td>compoundstatusIDs</td>
+<td>int</td>
+<td>Compound Status IDs is associated with compound status</td>
+</tr>
+<tr>
+<td>compoundNames</td>
+<td>string</td>
+<td>Compound Names The name of the compound which is a string type data and is one among the parameter for filter option</td>
+</tr>
+<tr>
+<td>externalIdentifier</td>
+<td>int</td>
+<td>External Identifiers is a unique identifier for this record to an external data system</td>
+</tr>
+<tr>
+<td>CAS</td>
+<td>string</td>
+<td>CAS Number is a Chemical Abstract Service number for the compound</td>
+</tr>
+</tbody></table>
+
+<h3 id="3-emission-category-table">3. Emission Category Table</h3>
+
+<p>This section elaborates on how to obtain data from the Emission Category table using the designated API endpoint. The endpoint allows you to retrieve all data from the Emission Category table or selectively acquire information by providing the Emission Category ID. Moreover, the Emission Category endpoint features pagination to facilitate efficient management of substantial datasets.</p>
 
 <blockquote>
-<p>Example Of Equipment GET Endpoint Without Pagination: </p>
+<p>Example Request</p>
 </blockquote>
-<pre class="highlight plaintext"><code>https: //{tenant}.actsapi.intelex.com/API-develop/v1/Equipment
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://intelex_acts_api_url/api/v1/emissioncategory'</span> <span class="p">};</span>
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://intelex_acts_api_url/api/v1/emissioncategory"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">GET</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
 </code></pre>
 <blockquote>
-<p>Example Of Equipment GET Endpoint With Pagination and Filter Option:</p>
+<p>Response Schema</p>
 </blockquote>
-<pre class="highlight plaintext"><code>https: //{tenant}.actsapi.intelex.com/API-develop/v1/Equipment?PageNumber=1&amp;PageSize=500&amp;equipmentID={int data value}
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>API Endpoints</strong></p>
+
+<p><code class="prettyprint">GET</code> /api/v1/emissioncategory</p>
+
+<p><strong>Query parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>PageNumber</td>
+<td>int</td>
+<td>Page number of the results to fetch.</td>
+</tr>
+<tr>
+<td>PageSize</td>
+<td>int</td>
+<td>The number of results per page</td>
+</tr>
+<tr>
+<td>emissionCategoryID</td>
+<td>int</td>
+<td>Emission Category ID is one of the unique identifier for this emission category record and is one of the filter option provided for Emission Category</td>
+</tr>
+</tbody></table>
+
+<h3 id="4-emission-type-table">4. Emission Type Table</h3>
+
+<p>This section guides you through the process of fetching data from the Emission Type table using the dedicated API endpoint. The endpoint enables you to retrieve data from the entire Emission Type table or selectively obtain information by including Emission Type IDs. Additionally, the Emission Type endpoint is equipped with pagination capabilities to facilitate the handling of extensive datasets.</p>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://intelex_acts_api_url/api/v1/emissiontype'</span> <span class="p">};</span>
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://intelex_acts_api_url/api/v1/emissiontype"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">GET</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
 </code></pre>
-<h2 id="6-equipment-status-api-get-endpoint">6.Equipment Status API GET Endpoint</h2>
+<blockquote>
+<p>Response Schema</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>API Endpoints</strong></p>
+
+<p><code class="prettyprint">GET</code> /api/v1/emissiontype</p>
+
+<p><strong>Query parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>PageNumber</td>
+<td>int</td>
+<td>Page number of the results to fetch.</td>
+</tr>
+<tr>
+<td>PageSize</td>
+<td>int</td>
+<td>The number of results per page</td>
+</tr>
+<tr>
+<td>emissionTypeID</td>
+<td>int</td>
+<td>Emission Type ID is one of the type of emissions and is the one of the filter option provided for Emission Type</td>
+</tr>
+</tbody></table>
+
+<h3 id="5-equipment-table">5. Equipment Table</h3>
+
+<p>This section provides guidance on retrieving data from the Equipment table using the designated API endpoint. The endpoint allows you to retrieve all data from the Equipment table or specify specific data based on equipment IDs. Additionally, the Equipment endpoint offers pagination support to facilitate the handling of substantial datasets.</p>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://intelex_acts_api_url/api/v1/equipment'</span> <span class="p">};</span>
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://intelex_acts_api_url/api/v1/equipment"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">GET</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Response Schema</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>API Endpoints</strong></p>
+
+<p><code class="prettyprint">GET</code> /api/v1/equipment</p>
+
+<p><strong>Query parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>PageNumber</td>
+<td>int</td>
+<td>Page number of the results to fetch.</td>
+</tr>
+<tr>
+<td>PageSize</td>
+<td>int</td>
+<td>The number of results per page</td>
+</tr>
+<tr>
+<td>equipmentID</td>
+<td>int</td>
+<td>Equipment ID is one of the unique identifier for this equipment record</td>
+</tr>
+</tbody></table>
+
+<h3 id="6-equipment-status-table">6. Equipment Status Table</h3>
 
 <p>All data from the Equipment Status table will be returned from the endpoint below. You can optionally fetch specific data by including the equipment status ID and equipment status value. The Equipment Status endpoint supports pagination.</p>
 
 <blockquote>
-<p>Example Of EquipmentStatus GET Endpoint Without Pagination: </p>
+<p>Example Request</p>
 </blockquote>
-<pre class="highlight plaintext"><code>https: // {tenant}.actsapi.intelex.com/API-develop/v1/EquipmentStatus
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://intelex_acts_api_url/api/v1/equipmentstatus'</span> <span class="p">};</span>
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://intelex_acts_api_url/api/v1/equipmentstatus"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">GET</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
 </code></pre>
 <blockquote>
-<p>Example Of EquipmentStatus GET Endpoint With Pagination and Filter Option:</p>
+<p>Response Schema</p>
 </blockquote>
-<pre class="highlight plaintext"><code>https: // {tenant}.actsapi.intelex.com/API-develop/v1/EquipmentStatus?PageNumber=1&amp;PageSize=500&amp;EquipmentStatusIDs="int data"&amp;EquipmentStatus="string data"
-</code></pre>
-<h2 id="7-equipment-type-api-get-endpoint">7.Equipment Type API GET Endpoint</h2>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>API Endpoints</strong></p>
+
+<p><code class="prettyprint">GET</code> /api/v1/equipmentstatus</p>
+
+<p><strong>Query parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>PageNumber</td>
+<td>int</td>
+<td>Page number of the results to fetch.</td>
+</tr>
+<tr>
+<td>PageSize</td>
+<td>int</td>
+<td>The number of results per page</td>
+</tr>
+<tr>
+<td>equipmentStatusIDs</td>
+<td>int</td>
+<td>Equipment Status ID is one of the unique identifier for this equipment status record</td>
+</tr>
+<tr>
+<td>equipmentStatus</td>
+<td>string</td>
+<td>Equipment Status is one of the identifier for the status of the equipment</td>
+</tr>
+</tbody></table>
+
+<h3 id="7-equipment-type-table">7. Equipment Type Table</h3>
 
 <p>All data from the Equipment Type table will be returned from the endpoint below. You can optionally fetch specific data by including the equipment type ID and equipment types value. The Equipment type endpoint supports pagination.</p>
 
 <blockquote>
-<p>Example Of EquipmentType GET Endpoint Without Pagination: </p>
+<p>Example Request</p>
 </blockquote>
-<pre class="highlight plaintext"><code>https: // {tenant}.actsapi.intelex.com/API-develop/v1/EquipmentType
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://intelex_acts_api_url/api/v1/equipmenttype'</span> <span class="p">};</span>
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://intelex_acts_api_url/api/v1/equipmenttype"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">GET</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
 </code></pre>
 <blockquote>
-<p>Example Of EquipmentType GET Endpoint With Pagination and Filter Option:</p>
+<p>Response Schema</p>
 </blockquote>
-<pre class="highlight plaintext"><code>https: // {tenant}.actsapi.intelex.com/API-develop/v1/EquipmentType?PageNumber=1&amp;PageSize=500&amp;EquipmentTypeIDs="int data"&amp;EquipmentType="string data"
-</code></pre>
-<h2 id="8-operation-api-get-endpoint">8.Operation API GET Endpoint</h2>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>API Endpoints</strong></p>
+
+<p><code class="prettyprint">GET</code> /api/v1/equipmenttype</p>
+
+<p><strong>Query parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>PageNumber</td>
+<td>int</td>
+<td>Page number of the results to fetch.</td>
+</tr>
+<tr>
+<td>PageSize</td>
+<td>int</td>
+<td>The number of results per page</td>
+</tr>
+<tr>
+<td>equipmentTypeIDs</td>
+<td>int</td>
+<td>Equipment Type ID is one of the unique identifier for this equipment type record</td>
+</tr>
+<tr>
+<td>equipmentType</td>
+<td>string</td>
+<td>Equipment Types is one of the filter option and the parameter is for the type of the equipment</td>
+</tr>
+</tbody></table>
+
+<h3 id="8-operation-table">8. Operation Table</h3>
 
 <p>All data from the Operation table will be returned from the endpoint below. You can optionally fetch specific data by including the operation ids, operation type ids, emission type ids, emission category ids, unit ids, equipment ids, last modified start date and last modified end date. The Operation endpoint supports pagination.</p>
 
 <blockquote>
-<p>Example Of Operation GET Endpoint Without Pagination: </p>
+<p>Example Request</p>
 </blockquote>
-<pre class="highlight plaintext"><code>https: // {tenant}.actsapi.intelex.com/API-develop/v1/Operation
-</code></pre>
-<blockquote>
-<p>Example Of Operation GET Endpoint With Pagination and Filter Option:</p>
-</blockquote>
-<pre class="highlight plaintext"><code>https: // {tenant}.actsapi.intelex.com/API-develop/v1/ Operation?PageNumber =1&amp;PageSize=500&amp;OperationIDs="int data"&amp;OperationTypeIDs=”string data "&amp;EmissionTypeIDs="int data”&amp;EmissionCategoryIDs="int data”&amp;UnitIDs="int data"&amp;EquipmentIDs="int data"&amp;LastModifiedStartDate=”string format – date time data"&amp;LastModifiedEndDate="string format – date time data" 
-</code></pre>
-<h2 id="9-unit-api-get-endpoint">9.Unit API GET Endpoint</h2>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
 
-<p>All data from the Unit table will be returned from the endpoint below. You can optionally fetch specific data by including the unit ids, unit type ids and units. The Unit type endpoint supports pagination.</p>
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://intelex_acts_api_url/api/v1/operation'</span> <span class="p">};</span>
 
-<blockquote>
-<p>Example Of Unit GET Endpoint Without Pagination: </p>
-</blockquote>
-<pre class="highlight plaintext"><code>https: // {tenant}.actsapi.intelex.com/API-develop/v1/Unit
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://intelex_acts_api_url/api/v1/operation"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">GET</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
 </code></pre>
 <blockquote>
-<p>Example Of Unit GET Endpoint With Pagination and Filter Option:</p>
+<p>Response Schema</p>
 </blockquote>
-<pre class="highlight plaintext"><code>https: // {tenant}.actsapi.intelex.com/API-develop/v1/Unit?PageNumber=1&amp;PageSize=500&amp;UnitIDs="int data"&amp;UnitTypeIDs="int data" &amp;Units="string data"
-</code></pre>
-<h2 id="sample-result-set-of-one-of-the-api-endpoint">Sample Result Set Of One Of the API Endpoint</h2>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+     </span><span class="s2">"currentPage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currentPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"maxAPIPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">337</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hasPrevious"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hasNext"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"operationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"equipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"emissionTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"emissionCategoryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"operationTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"activeDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"controlledInd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string 1 Byte Y or N"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"estimatedInd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string 1 Byte Y or N"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"invalidInd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string 1 Byte Y or N"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"calculateEmissionsInd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string 1 Byte Y or N"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"collectionDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fieldEventId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"inactiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"dataLockTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"lastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"externalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"badDataFlag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number(0,1)"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"operationAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>API Endpoints</strong></p>
+
+<p><code class="prettyprint">GET</code> /api/v1/operation</p>
+
+<p><strong>Query parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>PageNumber</td>
+<td>int</td>
+<td>Page number of the results to fetch.</td>
+</tr>
+<tr>
+<td>PageSize</td>
+<td>int</td>
+<td>The number of results per page</td>
+</tr>
+<tr>
+<td>operationIDs</td>
+<td>int</td>
+<td>Operation Ids are unique identifier for this operation type record</td>
+</tr>
+<tr>
+<td>operationTypeIDs</td>
+<td>string</td>
+<td>Operation Type IDs is one of the filter option and the parameter is for the type of the Operation Type</td>
+</tr>
+<tr>
+<td>emissionTypeIDs</td>
+<td>int</td>
+<td>The unique identifier of the associated emission type</td>
+</tr>
+<tr>
+<td>emissionCategoryIDs</td>
+<td>int</td>
+<td>The unique identifier of the associated emission category</td>
+</tr>
+<tr>
+<td>unitIDs</td>
+<td>int</td>
+<td>The unique identifier of the associated unit</td>
+</tr>
+<tr>
+<td>equipmentIDs</td>
+<td>int</td>
+<td>The unique identifier of the associated equipment</td>
+</tr>
+<tr>
+<td>lastModifiedStartDate</td>
+<td>string</td>
+<td>Date time format &ldquo;mm/dd/yyyy&rdquo;</td>
+</tr>
+<tr>
+<td>lastModifiedEndDate</td>
+<td>string</td>
+<td>Date time format &ldquo;mm/dd/yyyy&rdquo;</td>
+</tr>
+</tbody></table>
+
+<h3 id="9-unit-table">9. Unit Table</h3>
+
+<p>This section outlines how to retrieve data from the Unit table using the provided endpoint. You have the flexibility to fetch specific data by including unit IDs, unit type IDs, and units. The Unit type endpoint also supports pagination for managing large datasets effectively.</p>
 
 <blockquote>
-<p>Example Output Response</p>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://intelex_acts_api_url/api/v1/unit'</span> <span class="p">};</span>
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://intelex_acts_api_url/api/v1/unit"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">GET</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Response Schema</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"currentPage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"currentPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
     </span><span class="s2">"maxAPIPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"totalCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"hasPrevious"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boolean"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"hasNext"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boolean"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w">
-</span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"EquipmentAttributeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"EquipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"AttributeTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"EquipmentAttribute"</span><span class="p">:</span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"DataLockTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"datetime"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"LastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"datetime"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"ExternalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"Comments"</span><span class="p">:</span><span class="s2">"string"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="s2">"totalCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">337</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hasPrevious"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hasNext"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"unitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unitTypeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"alternateNames"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sortOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"lastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-13T22:15:30.203Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"externalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"refId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
 </span></code></pre>
-          <h1 id="all-post-apis">ALL POST API&rsquo;s</h1>
+<p><strong>API Endpoints</strong></p>
 
-<p>The following POST APIs are used to modify ACTS data. Options include updating existing records and inserting new records, and you can complete both in the same POST. To insert new records, the primary key is set to 0, while for updates to existing records, the primary key for the existing record is used. You can see an example for this in 4. Facility Attribute Table POST API Endpoint below. </p>
+<p><code class="prettyprint">GET</code> /api/v1/unit</p>
 
-<p>For large data inserts, we recommend you break data into batch POSTs of up to 500 rows. Large batch POSTs may be throttled or failed, depending on system resources. </p>
+<p><strong>Query parameters</strong></p>
 
-<p>In the current release we have 4 POST API’s available, for the Equipment, Operation, Facility, and Facility Attribute tables. POSTs to these endpoints must be JSON format. </p>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>PageNumber</td>
+<td>int</td>
+<td>Page number of the results to fetch.</td>
+</tr>
+<tr>
+<td>PageSize</td>
+<td>int</td>
+<td>The number of results per page</td>
+</tr>
+<tr>
+<td>unitIDs</td>
+<td>int</td>
+<td>Unit ID is one of the unique identifier for this Unit record</td>
+</tr>
+<tr>
+<td>unitTypeIDs</td>
+<td>int</td>
+<td>Unit Type IDs is the unique identifier of the associated unit type</td>
+</tr>
+<tr>
+<td>units</td>
+<td>string</td>
+<td>Units is one of the filter option and the parameter is for the Name of the Unit</td>
+</tr>
+</tbody></table>
 
-<p>As described above, to insert to a table, the primary key should be zero – 0. When the record is added to the table it will be assigned the next available incremental primary key.</p>
+          <h2 id="add-or-modify-database-table">Add or Modify Database Table</h2>
 
-<h2 id="1-equipment-post-api-endpoint">1.Equipment POST API Endpoint</h2>
+<p>This section outlines the available POST APIs designed for modifying ACTS data. These APIs offer options for updating existing records and inserting new ones. </p>
 
-<p>Equipment records can be updated, or new records added at the following endpoint:</p>
+<ul>
+<li>To insert new records, set the primary key to 0</li>
+<li>To updates to existing records, use the primary key of the record. </li>
+</ul>
+
+<aside class="notice">
+For efficient handling of larger data inserts, it is recommended to perform batch POSTs containing up to 500 rows each. 
+
+Note that excessively large batch POSTs may encounter throttling or failure, depending on system resources.
+</aside>
+
+<p>In the current release, four POST APIs End points are provided to add or update following table </p>
+
+<ul>
+<li>Equipment</li>
+<li>Operation</li>
+<li>Facility</li>
+<li>Facility Attribute </li>
+</ul>
+
+<p>POST requests to these endpoints should be formatted in JSON.</p>
+
+<h3 id="1-equipment-table">1. Equipment Table</h3>
+
+<p>This section guides you through the process of modifying existing equipment records or adding new entries to the Equipment table using the designated API endpoint.</p>
+
+<p><strong>Equipment POST endpoint</strong></p>
+
+<p><code class="prettyprint">POST</code> api/development/v1/equipment</p>
 
 <blockquote>
-<p>Equipment POST endpoint: </p>
+<p>Example Request &amp; JSON Input Body </p>
 </blockquote>
-<pre class="highlight plaintext"><code>https: // {tenant}.actsapi.intelex.com/API-staging/DEVELOPMENT/v1/Equipment
-</code></pre>
-<h2 id="2-operation-post-api-endpoint">2.Operation POST API endpoint</h2>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
 
-<p>Operation records can be updated, or new records added at the following endpoint:</p>
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://intelex_url/api/v1/equipment'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span> <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span>
+   <span class="p">{</span> <span class="na">EquipmentID</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
+     <span class="na">areaId</span><span class="p">:</span> <span class="s1">'2017-02-13T22:15:30.203Z'</span><span class="p">,</span>
+     <span class="na">facilityId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
+     <span class="na">equipmentTypeId</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+     <span class="na">sourceName</span><span class="p">:</span> <span class="s1">'string'</span><span class="p">,</span>
+     <span class="na">equipmentStatusId</span><span class="p">:</span> <span class="s1">'number'</span> <span class="p">,</span>
+     <span class="na">modelId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
+     <span class="na">ownershipId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
+     <span class="na">ownerId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
+     <span class="na">facilityTypeId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
+     <span class="na">serialNumber</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
+     <span class="na">manufactureDate</span><span class="p">:</span> <span class="s1">'2023-06-25T04:00:00Z'</span><span class="p">,</span>
+     <span class="na">internalName</span><span class="p">:</span> <span class="s1">'string'</span><span class="p">,</span>
+     <span class="na">alternateName</span><span class="p">:</span> <span class="s1">'string'</span><span class="p">,</span>
+     <span class="na">design</span><span class="p">:</span> <span class="s1">'string'</span><span class="p">,</span>
+     <span class="na">originalSurveyDate</span><span class="p">:</span> <span class="s1">'2023-06-25T04:00:00Z'</span><span class="p">,</span>
+     <span class="na">activeDate</span><span class="p">:</span> <span class="s1">'2023-08-25T04:00:00Z'</span><span class="p">,</span>
+     <span class="na">inactiveDate</span><span class="p">:</span> <span class="s1">'2023-08-25T04:00:00Z'</span><span class="p">,</span>
+     <span class="na">dataLockTypeId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
+     <span class="na">lastModifiedDate</span><span class="p">:</span> <span class="s1">'2023-06-25T04:00:00Z'</span><span class="p">,</span>
+     <span class="na">externalIdentifier</span><span class="p">:</span> <span class="s1">'string'</span><span class="p">,</span>
+     <span class="na">comments</span><span class="p">:</span> <span class="s1">'string'</span>
+     <span class="p">},</span>
+  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://intelex_url/api/v1/equipment"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"{\r\n    \"EquipmentID\": \"number\",\r\n    \"Date\": \"2017-02-13T22:15:30.203Z\",\r\n    \"Description\": \"string\",\r\n    \"IncidentNo\": 0,\r\n    \"ReportedDate\": \"2017-02-13T22:15:30.203Z\",\r\n    \"SuspectedCause\": \"string\"\r\n}"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Input JSON Body</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"equipmentID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"areaId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"facilityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"equipmentTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sourceName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string "</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"equipmentStatusId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"modelId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ownershipId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ownerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"facilityTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"serialNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"manufactureDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"internalName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"alternateName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"design"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"originalSurveyDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"activeDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"inactiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dataLockTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"externalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"insertedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"updatedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"failureCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errorMessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<blockquote>
+<p>Example Output For When Data Get&rsquo;s Failed To Insert or Update</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"insertedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"updatedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"failureCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errorMessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+     </span><span class="s2">"Equipment ID : 0, Error: An error occurred while saving the entity changes. See the inner exception for details "</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<h3 id="2-operation-table">2. Operation Table</h3>
+
+<p>This section outlines the process of adding new entries or modifying existing records within the Operation table using the dedicated API endpoint.</p>
+
+<p><strong>Operation POST Endpoint</strong></p>
+
+<p><code class="prettyprint">POST</code> api/development/v1/operation</p>
 
 <blockquote>
-<p>Operation POST Endpoint: </p>
+<p>Example Request &amp; JSON Input Body </p>
 </blockquote>
-<pre class="highlight plaintext"><code>https: // {tenant}.actsapi.intelex.com/API-staging/DEVELOPMENT/v1/Operation
-</code></pre>
-<h2 id="3-facility-post-api-endpoint">3.Facility POST API endpoint</h2>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
 
-<p>Facility records can be updated, or new records added at the following endpoint:</p>
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://intelex_url/api/v1/operation'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span> <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span>
+   <span class="p">{</span> <span class="na">operationId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
+     <span class="na">equipmentId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
+     <span class="na">emissionTypeId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
+     <span class="na">emissionCategoryId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
+     <span class="na">operationTypeId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
+     <span class="na">activeDate</span><span class="p">:</span> <span class="s1">'2023-06-25T04:00:00Z'</span><span class="p">,</span>
+     <span class="na">unitId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
+     <span class="na">controlledInd</span><span class="p">:</span> <span class="s1">'string'</span><span class="p">,</span>
+     <span class="na">estimatedInd</span><span class="p">:</span> <span class="s1">'string'</span><span class="p">,</span>
+     <span class="na">invalidInd</span><span class="p">:</span> <span class="s1">'string'</span><span class="p">,</span>
+     <span class="na">calculateEmissionsInd</span><span class="p">:</span> <span class="s1">'string'</span><span class="p">,</span>
+     <span class="na">collectionDate</span><span class="p">:</span> <span class="s1">'2023-06-25T04:00:00Z'</span><span class="p">,</span>
+     <span class="na">fieldEventId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
+     <span class="na">inactiveDate</span><span class="p">:</span> <span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span>
+     <span class="na">dataLockTypeId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
+     <span class="na">lastModifiedDate</span><span class="p">:</span> <span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span>
+     <span class="na">externalIdentifier</span><span class="p">:</span> <span class="s1">'string'</span><span class="p">,</span>
+     <span class="na">comments</span><span class="p">:</span> <span class="s1">'string'</span><span class="p">,</span>
+     <span class="na">badDataFlag</span><span class="p">:</span> <span class="s1">'number(1,0)'</span><span class="p">,</span>
+     <span class="na">operationAmount</span><span class="p">:</span> <span class="s1">'number'</span> <span class="p">},</span>
+  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://intelex_url/api/v1/operation"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"{\r\n    \"ActionsTaken\": \"string\",\r\n    \"Date\": \"2017-02-13T22:15:30.203Z\",\r\n    \"Description\": \"string\",\r\n    \"IncidentNo\": 0,\r\n    \"ReportedDate\": \"2017-02-13T22:15:30.203Z\",\r\n    \"SuspectedCause\": \"string\"\r\n}"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Input JSON Body</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"operationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"equipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"emissionTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"emissionCategoryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"operationTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"activeDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"unitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"controlledInd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"estimatedInd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"invalidInd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"calculateEmissionsInd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"collectionDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fieldEventId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"inactiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dataLockTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"externalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"badDataFlag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number(1,0)"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"operationAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="w">
+  </span><span class="p">}</span><span class="w"> 
+</span><span class="p">]</span><span class="w">
+
+</span></code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"insertedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"updatedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"failureCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errorMessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<blockquote>
+<p>Example Output For When Data Get&rsquo;s Failed To Insert or Update</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"insertedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"updatedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"failureCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errorMessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+     </span><span class="s2">"Operation ID : 0, Error: An error occurred while saving the entity changes. See the inner exception for details "</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<h3 id="3-facility-table">3. Facility Table</h3>
+
+<p>This section outlines the process of adding new entries or modifying existing records within the Facility table using the dedicated API endpoint.</p>
+
+<p><strong>Facility POST Endpoint</strong></p>
+
+<p><code class="prettyprint">POST</code> api/development/v1/facility</p>
 
 <blockquote>
-<p>Facility POST Endpoint : </p>
+<p>Example Request &amp; JSON Input Body </p>
 </blockquote>
-<pre class="highlight plaintext"><code>https: // {tenant}.actsapi.intelex.com/API-staging/DEVELOPMENT/v1/Facility
-</code></pre>
-<h2 id="4-facility-attribute-post-api-endpoint">4.Facility Attribute POST API endpoint</h2>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
 
-<p>Facility Attribute records can be updated, or new records added at the following endpoint:</p>
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://intelex_url/api/v1/facility'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span> <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span>
+   <span class="p">{</span> <span class="na">ActionsTaken</span><span class="p">:</span> <span class="s1">'string'</span><span class="p">,</span>
+     <span class="na">Date</span><span class="p">:</span> <span class="s1">'2017-02-13T22:15:30.203Z'</span><span class="p">,</span>
+     <span class="na">Description</span><span class="p">:</span> <span class="s1">'string'</span><span class="p">,</span>
+     <span class="na">IncidentNo</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+     <span class="na">ReportedDate</span><span class="p">:</span> <span class="s1">'2017-02-13T22:15:30.203Z'</span><span class="p">,</span>
+     <span class="na">SuspectedCause</span><span class="p">:</span> <span class="s1">'string'</span> <span class="p">},</span>
+  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://intelex_url/api/v1/operation"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"{\r\n    \"ActionsTaken\": \"string\",\r\n    \"Date\": \"2017-02-13T22:15:30.203Z\",\r\n    \"Description\": \"string\",\r\n    \"IncidentNo\": 0,\r\n    \"ReportedDate\": \"2017-02-13T22:15:30.203Z\",\r\n    \"SuspectedCause\": \"string\"\r\n}"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Input JSON Body </p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"facilityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"facilityName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"emissionTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"areaId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"facilityTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"facilityStatusId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sortOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"facilityOwnershipId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"facilityOwnerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"landOwnerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"operatorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"countryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"countyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"offshoreBlockId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"meteorologicalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"businessEntityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"businessUnitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"alternateName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"purchaseDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"previousOwnerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"soldDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"soldToId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"activeDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"inactiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dataLockTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"externalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">}</span><span class="w"> 
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"insertedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"updatedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"failureCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errorMessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<blockquote>
+<p>Example Output For When Data Get&rsquo;s Failed To Insert or Update</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"insertedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"updatedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"failureCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errorMessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+     </span><span class="s2">"Facility ID : 0, Error: An error occurred while saving the entity changes. See the inner exception for details "</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<h3 id="4-facility-attribute-table">4. Facility Attribute Table</h3>
+
+<p>This section outlines the process of adding new entries or modifying existing records within the Facility Attribute table using the dedicated API endpoint.</p>
+
+<p><strong>Facility Attribute POST Endpoint</strong></p>
+
+<p><code class="prettyprint">POST</code> api/development/v1/facilityattribute</p>
 
 <blockquote>
-<p>Facility Attribute POST Endpoint: </p>
+<p>Example Request &amp; JSON Input Body </p>
 </blockquote>
-<pre class="highlight plaintext"><code>https: // {tenant}.actsapi.intelex.com/API-staging/DEVELOPMENT/v1/FacilityAttribute 
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://intelex_url/api/v1/facilityattribute'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span> <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span>
+   <span class="p">{</span> <span class="na">FacilityAttributeId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
+     <span class="na">FacilityId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
+     <span class="na">AttributeTypeId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
+     <span class="na">FacilityAttribute</span><span class="p">:</span><span class="s2">"string"</span><span class="p">,</span>
+     <span class="na">DataLockTypeId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
+     <span class="na">LastModifiedDate</span><span class="p">:</span> <span class="s1">'2023-03-30T07:27:06.295Z'</span><span class="p">,</span>
+     <span class="na">ExternalIdentifier</span><span class="p">:</span> <span class="s1">'string'</span><span class="p">,</span>
+     <span class="na">Comments</span><span class="p">:</span><span class="s1">'string'</span><span class="p">},</span>
+  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://intelex_url/api/v1/facilityattribute"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"{\r\n    \"FacilityAttributeId\": \"number\",\r\n    \"FacilityId\": \"number\",\r\n    \"AttributeTypeId\": \"number\",\r\n    \"FacilityAttribute\": \"string\",\r\n    \"DataLockTypeId\": \"number\",\r\n    \"LastModifiedDate\": \"2023-03-30T07:27:06.295Z\",\r\n    \"ExternalIdentifier\": \"string\",\r\n    \"Comments\": \"string\"}"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
 </code></pre>
-<h2 id="json-body-for-both-insert-update">JSON body for both Insert &amp; Update</h2>
+<blockquote>
+<p>Input JSON Body </p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w"> 
+    </span><span class="s2">"FacilityAttributeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"FacilityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"AttributeTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"FacilityAttribute"</span><span class="p">:</span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"DataLockTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"LastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-03-30T07:27:06.295Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ExternalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Comments"</span><span class="p">:</span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"insertedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"updatedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"failureCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errorMessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<blockquote>
+<p>Example Output For When Data Get&rsquo;s Failed To Insert or Update</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"insertedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"updatedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"failureCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errorMessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+     </span><span class="s2">"FacilityAttribute ID : 0, Error: An error occurred while saving the entity changes. See the inner exception for details "</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<h3 id="json-body-for-both-insert-update">JSON body for both Insert &amp; Update</h3>
+
+<h4 id="json-input-body-for-insert">JSON Input body for Insert</h4>
 
 <p>If the primary id is zero - &ldquo;0&rdquo; then the data we are passing is handled as an insert, shown in the example below, where &ldquo;EquipmentAttributeId&rdquo; is passed as &ldquo;0&rdquo;. </p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>EquipmentAttributeId</td>
+<td>EquipmentAttributeId for insert we do pass the input as zero &ldquo;0&rdquo;</td>
+</tr>
+<tr>
+<td>EquipmentId</td>
+<td>EquipmentId accepts the numbers as input</td>
+</tr>
+<tr>
+<td>AttributeTypeId</td>
+<td>AttributeTypeId accepts the numbers as input</td>
+</tr>
+<tr>
+<td>EquipmentAttribute</td>
+<td>EquipmentAttribute accepts the string data as input</td>
+</tr>
+<tr>
+<td>DataLockTypeId</td>
+<td>DataLockTypeId accepts the numbers as input</td>
+</tr>
+<tr>
+<td>LastModifiedDate</td>
+<td>LastModifiedDate is given in a date and time format</td>
+</tr>
+<tr>
+<td>ExternalIdentifier</td>
+<td>ExternalIdentifier accepts the string data as input</td>
+</tr>
+<tr>
+<td>Comments</td>
+<td>Comments accepts the string data as input</td>
+</tr>
+</tbody></table>
 
 <blockquote>
 <p>Example Input JSON Body For Insert </p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="w">
-</span><span class="p">[</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="s2">"EquipmentAttributeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"EquipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"AttributeTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"EquipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"AttributeTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"EquipmentAttribute"</span><span class="p">:</span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"DataLockTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"datetime"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"DataLockTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"LastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"datetime"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"ExternalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Comments"</span><span class="p">:</span><span class="s2">"string"</span><span class="w">
@@ -5164,15 +5962,56 @@ In this case user can specify the page number and page size where 500 is maximum
 <p>Example Input JSON Body For Update </p>
 </blockquote>
 
+<h4 id="json-input-body-for-update">JSON Input body for Update</h4>
+
 <p>If the primary id is an existing ID - &ldquo;#####&rdquo; then the data we are passing is handled as an update, shown in the example below, where &ldquo;EquipmentAttributeId&rdquo; is passed as &ldquo;164&rdquo;. </p>
-<pre class="highlight json tab-json"><code><span class="w">
-</span><span class="p">[</span><span class="w">
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>EquipmentAttributeId</td>
+<td>EquipmentAttributeId for insert we do pass the input as integer like &ldquo;164&rdquo;</td>
+</tr>
+<tr>
+<td>EquipmentId</td>
+<td>EquipmentId accepts the numbers as input</td>
+</tr>
+<tr>
+<td>AttributeTypeId</td>
+<td>AttributeTypeId accepts the numbers as input</td>
+</tr>
+<tr>
+<td>EquipmentAttribute</td>
+<td>EquipmentAttribute accepts the string data as input</td>
+</tr>
+<tr>
+<td>DataLockTypeId</td>
+<td>DataLockTypeId accepts the numbers as input</td>
+</tr>
+<tr>
+<td>LastModifiedDate</td>
+<td>LastModifiedDate is given in a date and time format</td>
+</tr>
+<tr>
+<td>ExternalIdentifier</td>
+<td>ExternalIdentifier accepts the string data as input</td>
+</tr>
+<tr>
+<td>Comments</td>
+<td>Comments accepts the string data as input</td>
+</tr>
+</tbody></table>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="s2">"EquipmentAttributeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">164</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"EquipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"AttributeTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"EquipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"AttributeTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"EquipmentAttribute"</span><span class="p">:</span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"DataLockTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"datetime"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"DataLockTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"LastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"datetime"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"ExternalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Comments"</span><span class="p">:</span><span class="s2">"string"</span><span class="w">
@@ -5180,29 +6019,31 @@ In this case user can specify the page number and page size where 500 is maximum
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <blockquote>
-<p>Example Output For Both Update and Insert 
-&ldquo;`
-{
-    &quot;insertedRowCount&rdquo; : 2 , 
-    &ldquo;updatedRowCount&rdquo; : 3 ,
-    &ldquo;failureCount&rdquo; : 0 ,
-    &ldquo;errorMessage&rdquo; : []</p>
+<p>Example Output For Both Update and Insert </p>
 </blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"insertedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"updatedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"failureCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errorMessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
 
-<p>}</p>
-<pre class="highlight plaintext"><code>
-&gt; Example Output For When Data Get's Failed To Insert or Update
-</code></pre>
-<p>{
-    &ldquo;insertedRowCount&rdquo; : 0 , 
-    &ldquo;updatedRowCount&rdquo; : 1 ,
-    &ldquo;failureCount&rdquo; : 1 ,
-    &ldquo;errorMessage&rdquo; : [
-     &ldquo;Operation ID : 0, Error: An error occurred while saving the entity changes. See the inner exception for details &rdquo;
-    ]
-}</p>
-<pre class="highlight plaintext"><code></code></pre>
-          <h1 id="acts-api-developer-support">ACTS API Developer Support</h1>
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<blockquote>
+<p>Example Output For When Data Get&rsquo;s Failed To Insert or Update</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"insertedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"updatedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"failureCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errorMessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+     </span><span class="s2">"Operation ID : 0, Error: An error occurred while saving the entity changes. See the inner exception for details "</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+          <h1 id="developer-support">Developer Support</h1>
 
 <p><a href="https://community.intelex.com/connect/groups/developer-community">Join the Intelex Developer group on Community</a> and:</p>
 
