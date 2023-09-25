@@ -4810,12 +4810,38 @@ Content-Transfer-Encoding:binary
 <p>Response Schema</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+    </span><span class="s2">"currentPage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currentPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"maxAPIPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1346</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hasPrevious"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hasNext"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"attribute_type_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"attribute_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"data_type_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"data_type_size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"data_type_precision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"data_type_filter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"readonly_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"searchable_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"remote_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"default_value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"always_evaluate_default_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"display_condition"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"disabled_condition"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"validation_condition"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"validation_error_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"view_column_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"activedate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2011-07-04t17:42:43"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"inactive_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2010-07-04t17:42:43"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"lastmodifieddate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-10t10:01:19"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"externalidentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"refid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -4879,13 +4905,58 @@ Content-Transfer-Encoding:binary
 <p>Response Schema</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+    </span><span class="s2">"currentPage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currentPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"maxAPIPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1346</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hasPrevious"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hasNext"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"compoundId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"compound"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"compoundTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"compoundStatusId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"activeDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2011-07-04T17:42:43"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"alternateNames"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"cas"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"formula"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"molecularWeight"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"vpMolecularWeight"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"vp40"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"vp50"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"vp60"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"vp70"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"vp80"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"vp90"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"vp100"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"vpCoefA"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"vpCoefB"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"vpCoefC"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"vp2A"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"vp2B"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"reid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"astmSlope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"vpA"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"vpB"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"vpXMin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"vpXMax"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"density"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"specificGravity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"supplier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"manufacturerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"epaTanksCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"epaTanksId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"inactiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sortOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"lastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-10T10:01:19"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"externalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"refId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">   
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>API Endpoints</strong></p>
@@ -4965,12 +5036,24 @@ Content-Transfer-Encoding:binary
 <p>Response Schema</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+    </span><span class="s2">"currentPage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currentPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"maxAPIPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1346</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hasPrevious"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hasNext"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"emission_category_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"emission_category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sort_order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last_modified_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-10t10:01:19"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"external_identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ref_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+
+        </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -5029,12 +5112,24 @@ Content-Transfer-Encoding:binary
 <p>Response Schema</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+    </span><span class="s2">"currentPage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currentPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"maxAPIPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1346</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hasPrevious"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hasNext"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"emission_type_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"emission_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sort_order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last_modified_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-10t10:01:19"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"external_identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ref_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+
+        </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -5093,14 +5188,41 @@ Content-Transfer-Encoding:binary
 <p>Response Schema</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+    </span><span class="s2">"currentPage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currentPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"maxAPIPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1346</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hasPrevious"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hasNext"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"equipment_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"area_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"facility_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"equipment_type_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"source_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"equipment_status_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"model_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ownership_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"serial_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"manufacture_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-10t10:01:19"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"internal_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"alternate_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"design"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"original_survey_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-09-10t10:01:19"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"active_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-09-10t10:01:19"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"inactive_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-10t10:01:19"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"data_lock_type_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last_modified_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-11t10:01:19"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"external_identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+
+        </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
+
 </span></code></pre>
 <p><strong>API Endpoints</strong></p>
 
@@ -5157,12 +5279,23 @@ Content-Transfer-Encoding:binary
 <p>Response Schema</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+    </span><span class="s2">"currentPage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currentPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"maxAPIPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1346</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hasPrevious"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hasNext"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"emission_status_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"emission_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"color_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sort_order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last_modified_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-10t10:01:19"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"external_identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -5226,12 +5359,44 @@ Content-Transfer-Encoding:binary
 <p>Response Schema</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+    </span><span class="s2">"currentPage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currentPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"maxAPIPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1346</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hasPrevious"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hasNext"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"equipment_type_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"equipment_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"visible_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"equipment_attributes_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"emission_calculations_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"containment_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"geometry_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"emission_factors_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sample_locations_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"equipment_associations_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"facility_associations_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"location_information_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fuel_use_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"people_associations_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"service_schedule_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"service_history_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"operational_data_collectn_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"pte_operational_data_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"schedule_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"correspondence_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"requirements_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"file_attachments_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"view_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sort_order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w"> 
+            </span><span class="s2">"last_modified_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-10t10:01:19"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"external_identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ref_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -5295,7 +5460,7 @@ Content-Transfer-Encoding:binary
 <p>Response Schema</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-     </span><span class="s2">"currentPage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currentPage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"currentPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
     </span><span class="s2">"maxAPIPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
@@ -5325,7 +5490,7 @@ Content-Transfer-Encoding:binary
             </span><span class="s2">"badDataFlag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number(0,1)"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"operationAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="w">
         </span><span class="p">}</span><span class="w">
-            </span><span class="p">]</span><span class="w">
+    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>API Endpoints</strong></p>
@@ -5438,7 +5603,7 @@ Content-Transfer-Encoding:binary
             </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"refId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
         </span><span class="p">}</span><span class="w">
-            </span><span class="p">]</span><span class="w">
+    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
@@ -5503,7 +5668,8 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 <li>Equipment</li>
 <li>Operation</li>
 <li>Facility</li>
-<li>Facility Attribute </li>
+<li>Facility Attribute</li>
+<li>Equipment Attribute</li>
 </ul>
 
 <p>POST requests to these endpoints should be formatted in JSON.</p>
@@ -5636,7 +5802,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
    <span class="p">{</span> <span class="na">operationId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
      <span class="na">equipmentId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
      <span class="na">emissionTypeId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
-     <span class="na">emissionCategoryId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
+       <span class="na">emissionCategoryId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
      <span class="na">operationTypeId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
      <span class="na">activeDate</span><span class="p">:</span> <span class="s1">'2023-06-25T04:00:00Z'</span><span class="p">,</span>
      <span class="na">unitId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
@@ -5766,23 +5932,23 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
     </span><span class="s2">"emissionTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"areaId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"facilityTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"facilityStatusId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"sortOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"facilityOwnershipId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"facilityOwnerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"landOwnerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"operatorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"countryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"countyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"offshoreBlockId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"meteorologicalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"businessEntityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"businessUnitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"alternateName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"purchaseDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"previousOwnerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"soldDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"soldToId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"facilityStatusId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sortOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"facilityOwnershipId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"facilityOwnerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"landOwnerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"operatorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"countryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"countyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"offshoreBlockId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"meteorologicalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"businessEntityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"businessUnitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"alternateName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"purchaseDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"previousOwnerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"soldDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"soldToId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"activeDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"inactiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"dataLockTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
@@ -5896,6 +6062,85 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
+<h3 id="5-equipment-attribute-table">5. Equipment Attribute Table</h3>
+
+<p>This section outlines the process of adding new entries or modifying existing records within the Equipment Attribute table using the dedicated API endpoint.</p>
+
+<p><strong>Equipment Attribute POST Endpoint</strong></p>
+
+<p><code class="prettyprint">POST</code> api/development/v1/equipmentattribute</p>
+
+<blockquote>
+<p>Example Request &amp; JSON Input Body </p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://intelex_url/api/v1/equipmentattribute'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span> <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span>
+   <span class="p">{</span> <span class="na">EquipmentAttributeId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
+     <span class="na">EquipmentId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
+     <span class="na">AttributeTypeId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
+     <span class="na">EquipmentAttribute</span><span class="p">:</span><span class="s2">"string"</span><span class="p">,</span>
+     <span class="na">DataLockTypeId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
+     <span class="na">LastModifiedDate</span><span class="p">:</span> <span class="s1">'2023-03-30T07:27:06.295Z'</span><span class="p">,</span>
+     <span class="na">ExternalIdentifier</span><span class="p">:</span> <span class="s1">'string'</span><span class="p">,</span>
+     <span class="na">Comments</span><span class="p">:</span><span class="s1">'string'</span><span class="p">},</span>
+  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://intelex_url/api/v1/equipmentattribute"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"{\r\n    \"EquipmentAttributeId\": \"number\",\r\n    \"EquipmentId\": \"number\",\r\n    \"AttributeTypeId\": \"number\",\r\n    \"EquipmentAttribute\": \"string\",\r\n    \"DataLockTypeId\": \"number\",\r\n    \"LastModifiedDate\": \"2023-03-30T07:27:06.295Z\",\r\n    \"ExternalIdentifier\": \"string\",\r\n    \"Comments\": \"string\"}"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Input JSON Body </p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w"> 
+     </span><span class="s2">"EquipmentAttributeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"EquipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"AttributeTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"EquipmentAttribute"</span><span class="p">:</span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"DataLockTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"LastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-03-30T07:27:06.295Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ExternalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Comments"</span><span class="p">:</span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"insertedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"updatedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"failureCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errorMessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<blockquote>
+<p>Example Output For When Data Get&rsquo;s Failed To Insert or Update</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"insertedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"updatedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"failureCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errorMessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+     </span><span class="s2">"EquipmentAttribute ID : 0, Error: An error occurred while saving the entity changes. See the inner exception for details "</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
 <h3 id="json-body-for-both-insert-update">JSON body for both Insert &amp; Update</h3>
 
 <h4 id="json-input-body-for-insert">JSON Input body for Insert</h4>
@@ -5950,11 +6195,11 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
         </span><span class="s2">"EquipmentAttributeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="s2">"EquipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"AttributeTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"EquipmentAttribute"</span><span class="p">:</span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"EquipmentAttribute"</span><span class="p">:</span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"DataLockTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"LastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"datetime"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"ExternalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"Comments"</span><span class="p">:</span><span class="s2">"string"</span><span class="w">
+            </span><span class="s2">"Comments"</span><span class="p">:</span><span class="s2">"string"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -6010,11 +6255,11 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
         </span><span class="s2">"EquipmentAttributeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">164</span><span class="p">,</span><span class="w">
         </span><span class="s2">"EquipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"AttributeTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"EquipmentAttribute"</span><span class="p">:</span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"EquipmentAttribute"</span><span class="p">:</span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"DataLockTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"LastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"datetime"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"ExternalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"Comments"</span><span class="p">:</span><span class="s2">"string"</span><span class="w">
+            </span><span class="s2">"Comments"</span><span class="p">:</span><span class="s2">"string"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -6043,6 +6288,72 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
+          <h2 id="remove-or-delete-data-from-database-table">Remove or Delete data from Database Table</h2>
+
+<p>This section outlines the available Delete APIs designed for modifying ACTS data by deleteing or removing the data. These APIs offer options for removing existing records from the mentioned tables. </p>
+
+<ul>
+<li>To remove the existing records, use the primary key of the record.</li>
+</ul>
+
+<p>In the current release, one DELETE API End point is provided to remove or delete from the following table </p>
+
+<ul>
+<li>Operation</li>
+</ul>
+
+<p>DELETE requests to these endpoints should be formatted in JSON.</p>
+
+<h3 id="1-operation-table">1. Operation Table</h3>
+
+<p>This section guides you through the process of removing/deleting the existing records from the Operation table using the designated API endpoint.</p>
+
+<p><strong>Operation DELETE endpoint</strong></p>
+
+<p><code class="prettyprint">DELETE</code> api/development/v1/operation</p>
+
+<blockquote>
+<p>Example Request &amp; JSON Input Body </p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'DELETE'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://intelex_url/api/v1/operation'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span> <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span>
+   <span class="p">{</span> <span class="na">operationId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
+     <span class="na">equipmentId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
+     <span class="na">emissionTypeId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
+       <span class="na">emissionCategoryId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
+     <span class="na">operationTypeId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
+     <span class="na">activeDate</span><span class="p">:</span> <span class="s1">'2023-06-25T04:00:00Z'</span><span class="p">,</span>
+     <span class="na">unitId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
+     <span class="na">controlledInd</span><span class="p">:</span> <span class="s1">'string'</span><span class="p">,</span>
+     <span class="na">estimatedInd</span><span class="p">:</span> <span class="s1">'string'</span><span class="p">,</span>
+     <span class="na">invalidInd</span><span class="p">:</span> <span class="s1">'string'</span><span class="p">,</span>
+     <span class="na">calculateEmissionsInd</span><span class="p">:</span> <span class="s1">'string'</span><span class="p">,</span>
+     <span class="na">collectionDate</span><span class="p">:</span> <span class="s1">'2023-06-25T04:00:00Z'</span><span class="p">,</span>
+     <span class="na">fieldEventId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
+     <span class="na">inactiveDate</span><span class="p">:</span> <span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span>
+     <span class="na">dataLockTypeId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
+     <span class="na">lastModifiedDate</span><span class="p">:</span> <span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span>
+     <span class="na">externalIdentifier</span><span class="p">:</span> <span class="s1">'string'</span><span class="p">,</span>
+     <span class="na">comments</span><span class="p">:</span> <span class="s1">'string'</span><span class="p">,</span>
+     <span class="na">badDataFlag</span><span class="p">:</span> <span class="s1">'number(1,0)'</span><span class="p">,</span>
+     <span class="na">operationAmount</span><span class="p">:</span> <span class="s1">'number'</span> <span class="p">},</span>
+  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://intelex_url/api/v1/operation"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">DELETE</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"{\r\n    \"ActionsTaken\": \"string\",\r\n    \"Date\": \"2017-02-13T22:15:30.203Z\",\r\n    \"Description\": \"string\",\r\n    \"IncidentNo\": 0,\r\n    \"ReportedDate\": \"2017-02-13T22:15:30.203Z\",\r\n    \"SuspectedCause\": \"string\"\r\n}"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+</code></pre>
           <h1 id="developer-support">Developer Support</h1>
 
 <p><a href="https://community.intelex.com/connect/groups/developer-community">Join the Intelex Developer group on Community</a> and:</p>

@@ -27,12 +27,38 @@
 <p>Response Schema</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+    </span><span class="s2">"currentPage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currentPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"maxAPIPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1346</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hasPrevious"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hasNext"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"attribute_type_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"attribute_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"data_type_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"data_type_size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"data_type_precision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"data_type_filter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"readonly_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"searchable_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"remote_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"default_value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"always_evaluate_default_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"display_condition"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"disabled_condition"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"validation_condition"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"validation_error_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"view_column_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"activedate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2011-07-04t17:42:43"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"inactive_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2010-07-04t17:42:43"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"lastmodifieddate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-10t10:01:19"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"externalidentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"refid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -96,13 +122,58 @@
 <p>Response Schema</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+    </span><span class="s2">"currentPage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currentPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"maxAPIPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1346</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hasPrevious"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hasNext"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"compoundId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"compound"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"compoundTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"compoundStatusId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"activeDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2011-07-04T17:42:43"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"alternateNames"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"cas"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"formula"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"molecularWeight"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"vpMolecularWeight"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"vp40"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"vp50"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"vp60"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"vp70"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"vp80"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"vp90"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"vp100"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"vpCoefA"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"vpCoefB"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"vpCoefC"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"vp2A"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"vp2B"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"reid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"astmSlope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"vpA"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"vpB"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"vpXMin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"vpXMax"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"density"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"specificGravity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"supplier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"manufacturerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"epaTanksCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"epaTanksId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"inactiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sortOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"lastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-10T10:01:19"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"externalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"refId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">   
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>API Endpoints</strong></p>
@@ -182,12 +253,24 @@
 <p>Response Schema</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+    </span><span class="s2">"currentPage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currentPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"maxAPIPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1346</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hasPrevious"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hasNext"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"emission_category_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"emission_category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sort_order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last_modified_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-10t10:01:19"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"external_identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ref_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+
+        </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -246,12 +329,24 @@
 <p>Response Schema</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+    </span><span class="s2">"currentPage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currentPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"maxAPIPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1346</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hasPrevious"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hasNext"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"emission_type_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"emission_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sort_order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last_modified_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-10t10:01:19"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"external_identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ref_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+
+        </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -310,14 +405,41 @@
 <p>Response Schema</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+    </span><span class="s2">"currentPage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currentPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"maxAPIPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1346</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hasPrevious"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hasNext"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"equipment_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"area_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"facility_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"equipment_type_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"source_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"equipment_status_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"model_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ownership_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"serial_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"manufacture_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-10t10:01:19"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"internal_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"alternate_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"design"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"original_survey_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-09-10t10:01:19"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"active_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-09-10t10:01:19"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"inactive_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-10t10:01:19"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"data_lock_type_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last_modified_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-11t10:01:19"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"external_identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+
+        </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
+
 </span></code></pre>
 <p><strong>API Endpoints</strong></p>
 
@@ -374,12 +496,23 @@
 <p>Response Schema</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+    </span><span class="s2">"currentPage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currentPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"maxAPIPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1346</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hasPrevious"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hasNext"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"emission_status_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"emission_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"color_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sort_order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last_modified_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-10t10:01:19"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"external_identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -443,12 +576,44 @@
 <p>Response Schema</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+    </span><span class="s2">"currentPage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currentPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"maxAPIPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1346</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hasPrevious"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hasNext"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"equipment_type_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"equipment_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"visible_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"equipment_attributes_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"emission_calculations_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"containment_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"geometry_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"emission_factors_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sample_locations_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"equipment_associations_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"facility_associations_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"location_information_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fuel_use_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"people_associations_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"service_schedule_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"service_history_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"operational_data_collectn_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"pte_operational_data_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"schedule_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"correspondence_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"requirements_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"file_attachments_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"view_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sort_order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w"> 
+            </span><span class="s2">"last_modified_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-10t10:01:19"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"external_identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ref_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -512,7 +677,7 @@
 <p>Response Schema</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-     </span><span class="s2">"currentPage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currentPage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"currentPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
     </span><span class="s2">"maxAPIPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
@@ -542,7 +707,7 @@
             </span><span class="s2">"badDataFlag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number(0,1)"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"operationAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="w">
         </span><span class="p">}</span><span class="w">
-            </span><span class="p">]</span><span class="w">
+    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>API Endpoints</strong></p>
@@ -655,7 +820,7 @@
             </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"refId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
         </span><span class="p">}</span><span class="w">
-            </span><span class="p">]</span><span class="w">
+    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
