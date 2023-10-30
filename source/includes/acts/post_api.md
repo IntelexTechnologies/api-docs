@@ -35,30 +35,30 @@ This section guides you through the process of modifying existing equipment reco
 var request = require("request");
 
 var options = { method: 'POST',
-  url: 'https://intelex_url/api/v1/equipment',
+  url: 'https://tenant.actsapi.intelex.com/v1/equipment',
   headers: { 'content-type': 'application/json' },
   body:
-   { EquipmentID: 'number',
-     areaId: '2017-02-13T22:15:30.203Z',
-     facilityId: 'number',
-     equipmentTypeId: 0,
-     sourceName: 'string',
-     equipmentStatusId: 'number' ,
-	 modelId: 'number',
-	 ownershipId: 'number',
-	 ownerId: 'number',
-	 facilityTypeId: 'number',
-	 serialNumber: 'number',
-	 manufactureDate: '2023-06-25T04:00:00Z',
-	 internalName: 'string',
-	 alternateName: 'string',
-	 design: 'string',
-	 originalSurveyDate: '2023-06-25T04:00:00Z',
-	 activeDate: '2023-08-25T04:00:00Z',
-	 inactiveDate: '2023-08-25T04:00:00Z',
-	 dataLockTypeId: 'number',
-	 lastModifiedDate: '2023-06-25T04:00:00Z',
-     externalIdentifier: 'string',
+    { EquipmentID: 'number',
+      areaId: '2017-02-13T22:15:30.203Z',
+      facilityId: 'number',
+      equipmentTypeId: 0,
+      sourceName: 'string',
+      equipmentStatusId: 'number' ,
+      modelId: 'number',
+      ownershipId: 'number',
+      ownerId: 'number',
+      facilityTypeId: 'number',
+      serialNumber: 'number',
+      manufactureDate: '2023-06-25T04:00:00Z',
+      internalName: 'string',
+      alternateName: 'string',
+      design: 'string',
+      originalSurveyDate: '2023-06-25T04:00:00Z',
+      activeDate: '2023-08-25T04:00:00Z',
+      inactiveDate: '2023-08-25T04:00:00Z',
+      dataLockTypeId: 'number',
+      lastModifiedDate: '2023-06-25T04:00:00Z',
+      externalIdentifier: 'string',
      comments: 'string'
 	 },
   json: true };
@@ -71,7 +71,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v1/equipment");
+var client = new RestClient("https://tenant.actsapi.intelex.com/v1/equipment");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{\r\n    \"EquipmentID\": \"number\",\r\n    \"Date\": \"2017-02-13T22:15:30.203Z\",\r\n    \"Description\": \"string\",\r\n    \"IncidentNo\": 0,\r\n    \"ReportedDate\": \"2017-02-13T22:15:30.203Z\",\r\n    \"SuspectedCause\": \"string\"\r\n}", ParameterType.RequestBody);
@@ -84,24 +84,24 @@ IRestResponse response = client.Execute(request);
 [
   {
     "equipmentID": "number",
-	"areaId": "number",
-	"facilityId": "number",
-	"equipmentTypeId": "number",
+    "areaId": "number",
+    "facilityId": "number",
+    "equipmentTypeId": "number",
     "sourceName": "string ",
     "equipmentStatusId": "number",
     "modelId": "number",
-	"ownershipId": "number",
-	"ownerId": "number",
+    "ownershipId": "number",
+    "ownerId": "number",
     "facilityTypeId": "number",
-	"serialNumber": "number",
-	"manufactureDate": "2023-06-25T04:00:00Z",
-	"internalName": "string",
-	"alternateName": "string",
-	"design": "string",
-	"originalSurveyDate": "2023-06-25T04:00:00Z",
-	"activeDate": "2023-06-25T04:00:00Z",
+    "serialNumber": "number",
+    "manufactureDate": "2023-06-25T04:00:00Z",
+    "internalName": "string",
+    "alternateName": "string",
+    "design": "string",
+    "originalSurveyDate": "2023-06-25T04:00:00Z",
+    "activeDate": "2023-06-25T04:00:00Z",
     "inactiveDate": "2023-06-25T04:00:00Z",
-	"dataLockTypeId": "number",
+	  "dataLockTypeId": "number",
     "lastModifiedDate": "2023-06-25T04:00:00Z",
     "externalIdentifier": "string",
     "comments": "string"
@@ -149,7 +149,7 @@ This section outlines the process of adding new entries or modifying existing re
 var request = require("request");
 
 var options = { method: 'POST',
-  url: 'https://intelex_url/api/v1/operation',
+  url: 'https://tenant.actsapi.intelex.com/v1/operation',
   headers: { 'content-type': 'application/json' },
   body:
    { operationId: 'number',
@@ -182,7 +182,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v1/operation");
+var client = new RestClient("https://tenant.actsapi.intelex.com/v1/operation");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{\r\n    \"ActionsTaken\": \"string\",\r\n    \"Date\": \"2017-02-13T22:15:30.203Z\",\r\n    \"Description\": \"string\",\r\n    \"IncidentNo\": 0,\r\n    \"ReportedDate\": \"2017-02-13T22:15:30.203Z\",\r\n    \"SuspectedCause\": \"string\"\r\n}", ParameterType.RequestBody);
@@ -259,7 +259,7 @@ This section outlines the process of adding new entries or modifying existing re
 var request = require("request");
 
 var options = { method: 'POST',
-  url: 'https://intelex_url/api/v1/facility',
+  url: 'https://tenant.actsapi.intelex.com/v1/facility',
   headers: { 'content-type': 'application/json' },
   body:
    { ActionsTaken: 'string',
@@ -278,7 +278,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v1/operation");
+var client = new RestClient("https://tenant.actsapi.intelex.com/v1/operation");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{\r\n    \"ActionsTaken\": \"string\",\r\n    \"Date\": \"2017-02-13T22:15:30.203Z\",\r\n    \"Description\": \"string\",\r\n    \"IncidentNo\": 0,\r\n    \"ReportedDate\": \"2017-02-13T22:15:30.203Z\",\r\n    \"SuspectedCause\": \"string\"\r\n}", ParameterType.RequestBody);
@@ -363,7 +363,7 @@ This section outlines the process of adding new entries or modifying existing re
 var request = require("request");
 
 var options = { method: 'POST',
-  url: 'https://intelex_url/api/v1/facilityattribute',
+  url: 'https://tenant.actsapi.intelex.com/v1/facilityattribute',
   headers: { 'content-type': 'application/json' },
   body:
    { FacilityAttributeId: 'number',
@@ -384,7 +384,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v1/facilityattribute");
+var client = new RestClient("https://tenant.actsapi.intelex.com/v1/facilityattribute");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{\r\n    \"FacilityAttributeId\": \"number\",\r\n    \"FacilityId\": \"number\",\r\n    \"AttributeTypeId\": \"number\",\r\n    \"FacilityAttribute\": \"string\",\r\n    \"DataLockTypeId\": \"number\",\r\n    \"LastModifiedDate\": \"2023-03-30T07:27:06.295Z\",\r\n    \"ExternalIdentifier\": \"string\",\r\n    \"Comments\": \"string\"}", ParameterType.RequestBody);
@@ -396,7 +396,7 @@ IRestResponse response = client.Execute(request);
 ```json
 [
   { 
-	"FacilityAttributeId": "number",
+	  "FacilityAttributeId": "number",
     "FacilityId": "number",
     "AttributeTypeId": "number",
     "FacilityAttribute":"string",
@@ -448,7 +448,7 @@ This section outlines the process of adding new entries or modifying existing re
 var request = require("request");
 
 var options = { method: 'POST',
-  url: 'https://intelex_url/api/v1/equipmentattribute',
+  url: 'https://tenant.actsapi.intelex.com/v1/equipmentattribute',
   headers: { 'content-type': 'application/json' },
   body:
    { EquipmentAttributeId: 'number',
@@ -469,7 +469,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v1/equipmentattribute");
+var client = new RestClient("https://tenant.actsapi.intelex.com/v1/equipmentattribute");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{\r\n    \"EquipmentAttributeId\": \"number\",\r\n    \"EquipmentId\": \"number\",\r\n    \"AttributeTypeId\": \"number\",\r\n    \"EquipmentAttribute\": \"string\",\r\n    \"DataLockTypeId\": \"number\",\r\n    \"LastModifiedDate\": \"2023-03-30T07:27:06.295Z\",\r\n    \"ExternalIdentifier\": \"string\",\r\n    \"Comments\": \"string\"}", ParameterType.RequestBody);
@@ -481,7 +481,7 @@ IRestResponse response = client.Execute(request);
 ```json
 [
   { 
-	 "EquipmentAttributeId": "number",
+	  "EquipmentAttributeId": "number",
     "EquipmentId": "number",
     "AttributeTypeId": "number",
     "EquipmentAttribute":"string",
@@ -509,10 +509,10 @@ IRestResponse response = client.Execute(request);
 
 ```json
 {
-	"insertedRowCount" : 0 , 
-	"updatedRowCount" : 1 ,
-	"failureCount" : 1 ,
-	"errorMessage" : [
+    "insertedRowCount" : 0 , 
+    "updatedRowCount" : 1 ,
+    "failureCount" : 1 ,
+    "errorMessage" : [
 	 "EquipmentAttribute ID : 0, Error: An error occurred while saving the entity changes. See the inner exception for details "
 	]
 }
