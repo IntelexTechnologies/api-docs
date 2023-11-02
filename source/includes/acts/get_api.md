@@ -691,7 +691,7 @@ units | string | Units is one of the filter option and the parameter is for the 
 
 ### 10. Operation Type Table
 
-All data from the Operation Type table will be returned from the endpoint below. You can optionally fetch specific data by including the operation ids, operation type ids, emission type ids, emission category ids, unit ids, equipment ids, last modified start date and last modified end date. The Operation endpoint supports pagination.
+All data from the Operation Type table will be returned from the endpoint below. You can optionally fetch specific data by including the operation type ids, operation types . The Operation Type endpoint supports pagination.
 
 > Example Request
 
@@ -755,12 +755,11 @@ PageNumber | int | Page number of the results to fetch.
 PageSize | int | The number of results per page
 operationTypeIDs | int | The unique identifier for this operation type record
 operationTypes | int | The type of operational data
-units | string | Units is one of the filter option and the parameter is for the Name of the Unit
 
 
 ### 11. Facility Table
 
-All data from the Facility table will be returned from the endpoint below. You can optionally fetch specific data by including the facility ids, facility names, emission type ids, facility type ids, unit ids, equipment ids, last modified start date and last modified end date. The facility endpoint supports pagination.
+All data from the Facility table will be returned from the endpoint below. You can optionally fetch specific data by including the facility ids, facility names, emission type ids, facility type ids, facility status ids, county ids, last modified start date and last modified end date. The facility endpoint supports pagination.
 
 > Example Request
 
