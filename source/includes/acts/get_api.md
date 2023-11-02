@@ -12,7 +12,7 @@ This section outlines the process of retrieving data from the Attribute Type tab
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://tenant.actsapi.intelex.com/v1/attributetype' };
+  url: 'https://[tenant].actsapi.intelex.com/v1/attributetype' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -22,7 +22,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://tenant.actsapi.intelex.com/v1/attributetype");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/attributetype");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -90,7 +90,7 @@ This section guides you through the process of fetching data from the Compound t
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://tenant.actsapi.intelex.com/v1/compound' };
+  url: 'https://[tenant].actsapi.intelex.com/v1/compound' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -100,7 +100,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://tenant.actsapi.intelex.com/v1/compound");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/compound");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -191,14 +191,14 @@ This section elaborates on how to obtain data from the Emission Category table u
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://tenant.actsapi.intelex.com/v1/emissioncategory' };
+  url: 'https://[tenant].actsapi.intelex.com/v1/emissioncategory' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
 ```
 
 ```csharp
-var client = new RestClient("https://tenant.actsapi.intelex.com/v1/emissioncategory");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/emissioncategory");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -251,7 +251,7 @@ This section guides you through the process of fetching data from the Emission T
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://tenant.actsapi.intelex.com/v1/emissiontype' };
+  url: 'https://[tenant].actsapi.intelex.com/v1/emissiontype' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -261,7 +261,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://tenant.actsapi.intelex.com/v1/emissiontype");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/emissiontype");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -314,7 +314,7 @@ This section provides guidance on retrieving data from the Equipment table using
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://tenant.actsapi.intelex.com/v1/equipment' };
+  url: 'https://[tenant].actsapi.intelex.com/v1/equipment' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -324,7 +324,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://tenant.actsapi.intelex.com/v1/equipment");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/equipment");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -401,7 +401,7 @@ All data from the Equipment Status table will be returned from the endpoint belo
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://tenant.actsapi.intelex.com/v1/equipmentstatus' };
+  url: 'https://[tenant].actsapi.intelex.com/v1/equipmentstatus' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -411,7 +411,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://tenant.actsapi.intelex.com/v1/equipmentstatus");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/equipmentstatus");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -464,7 +464,7 @@ All data from the Equipment Type table will be returned from the endpoint below.
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://tenant.actsapi.intelex.com/v1/equipmenttype' };
+  url: 'https://[tenant].actsapi.intelex.com/v1/equipmenttype' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -474,7 +474,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://tenant.actsapi.intelex.com/v1/equipmenttype");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/equipmenttype");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -548,7 +548,7 @@ All data from the Operation table will be returned from the endpoint below. You 
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://tenant.actsapi.intelex.com/v1/operation' };
+  url: 'https://[tenant].actsapi.intelex.com/v1/operation' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -558,7 +558,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://tenant.actsapi.intelex.com/v1/operation");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/operation");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -630,7 +630,7 @@ This section outlines how to retrieve data from the Unit table using the provide
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://tenant.actsapi.intelex.com/v1/unit' };
+  url: 'https://[tenant].actsapi.intelex.com/v1/unit' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -640,7 +640,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://tenant.actsapi.intelex.com/v1/unit");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/unit");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -699,7 +699,7 @@ All data from the Operation Type table will be returned from the endpoint below.
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://tenant.actsapi.intelex.com/v1/operationtype' };
+  url: 'https://[tenant].actsapi.intelex.com/v1/operationtype' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -709,7 +709,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://tenant.actsapi.intelex.com/v1/operationtype");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/operationtype");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -768,7 +768,7 @@ All data from the Facility table will be returned from the endpoint below. You c
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://tenant.actsapi.intelex.com/v1/facility' };
+  url: 'https://[tenant].actsapi.intelex.com/v1/facility' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -778,7 +778,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://tenant.actsapi.intelex.com/v1/facility");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/facility");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -841,8 +841,15 @@ Attribute | Type | Description
 PageNumber | int | Page number of the results to fetch.
 PageSize | int | The number of results per page
 facilityIds | int | Facility ID is one of the unique identifier for this Facility record
+facilityTypeIds | int | Facility Type ID is one of the unique identifier for this Facility record
+facilityStatusIds | int | Facility Status ID is one of the unique identifier for this Facility record
+countyIds | int | County ID is one of the unique identifier for this Facility record
 facilityNames | string | Facility Name is the unique identifier of the associated facility type
-emissionTypeIds | int | Emission Type ID is one of the filter option and the parameter is for the Emission Type 
+alternateNames | string | Alternate Name is the unique identifier of the associated facility 
+externalidentifier | string | External Identifier a unique identifier for this record to an external data system
+areaIds | int | Area ID is one of the unique identifier for this Facility record to determine the region 
+lastModifiedStartDate | string | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+lastModifiedEndDate | string | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 
 
 ### 12. Facility Attribute Table
@@ -855,7 +862,7 @@ All data from the Facility Attribute table will be returned from the endpoint be
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://tenant.actsapi.intelex.com/v1/facilityattribute' };
+  url: 'https://[tenant].actsapi.intelex.com/v1/facilityattribute' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -865,7 +872,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://tenant.actsapi.intelex.com/v1/facilityattribute");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/facilityattribute");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -911,11 +918,16 @@ facilityAttributeIds | int | Facility ID is one of the unique identifier for thi
 facilityIds | int | Facility Name is the unique identifier of the associated facility type
 attributetypeIds | int | Attribute Type ID is the unique identifier of the associated attribute type
 facilityattributes | string | Facility Attribute is one of the filter option and the parameter is for the Facility Attribute Type 
+datalocktypeIds | int | Data Lock Type ID the unique identifier of the associated data lock type
+lastModifiedStartDate | string | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+lastModifiedEndDate | string | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+externalidentifier | string | External Identifier a unique identifier for this record to an external data system
+comments | string | Comments any comments associated with this record
 
 
 ### 13. Equipment Attribute Table
 
-All data from the Equipment Attribute table will be returned from the endpoint below. You can optionally fetch specific data by including the facility attribute ids, facility names, emission type ids, facility typ ids, unit ids, equipment ids, last modified start date and last modified end date. The facility attribute endpoint supports pagination.
+All data from the Equipment Attribute table will be returned from the endpoint below. You can optionally fetch specific data by including the facility attribute ids, facility names, emission type ids, facility type ids, unit ids, equipment ids, last modified start date and last modified end date. The facility attribute endpoint supports pagination.
 
 > Example Request
 
@@ -923,7 +935,7 @@ All data from the Equipment Attribute table will be returned from the endpoint b
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://tenant.actsapi.intelex.com/v1/equipmentattribute' };
+  url: 'https://[tenant].actsapi.intelex.com/v1/equipmentattribute' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -933,7 +945,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://tenant.actsapi.intelex.com/v1/equipmentattribute");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/equipmentattribute");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -976,6 +988,11 @@ Attribute | Type | Description
 PageNumber | int | Page number of the results to fetch.
 PageSize | int | The number of results per page
 equipmentAttributeIds | int | EquipmentAttributeId one of the unique identifier for this Equipment record
-facilityIds | int |  EquipmentId accepts the numbers as input 
+equipmentIds | int |  EquipmentId accepts the numbers as input 
 attributetypeIds | int | AttributeTypeId accepts the numbers as input
-facilityattributes | string | Facility Attribute is one of the filter option and the parameter is for the Facility Attribute Type 
+equipmentattributes | string | Equipment Attribute is one of the filter option and the parameter is for the Equipment Attribute Type 
+datalocktypeIds | int | Data Lock Type ID the unique identifier of the associated data lock type
+lastModifiedStartDate | string | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+lastModifiedEndDate | string | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+externalidentifier | string | External Identifier a unique identifier for this record to an external data system
+comments | string | Comments any comments associated with this record
