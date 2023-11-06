@@ -14,10 +14,10 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 In the current release, four POST APIs End points are provided to add or update following table 
 
 * Equipment
-* Operation
+* Equipment Attribute
 * Facility
 * Facility Attribute
-* Equipment Attribute
+* Operation
  
 POST requests to these endpoints should be formatted in JSON.
 
@@ -135,13 +135,13 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 2. Operation Table 
+### 2. Equipment Attribute Table 
 
-This section outlines the process of adding new entries or modifying existing records within the Operation table using the dedicated API endpoint.
+This section outlines the process of adding new entries or modifying existing records within the Equipment Attribute table using the dedicated API endpoint.
 
-**Operation POST Endpoint**
+**Equipment Attribute POST Endpoint**
 
-`POST` api/v1/operation
+`POST` api/v1/equipmentattribute
 
 > Example Request & JSON Input Body 
 
@@ -149,29 +149,18 @@ This section outlines the process of adding new entries or modifying existing re
 var request = require("request");
 
 var options = { method: 'POST',
-  url: 'https://[tenant].actsapi.intelex.com/v1/operation',
+  url: 'https://[tenant].actsapi.intelex.com/v1/equipmentattribute',
   headers: { 'content-type': 'application/json' },
   body:
-   { operationId: 'number',
-     equipmentId: 'number',
-     emissionTypeId: 'number',
-	   emissionCategoryId: 'number',
-     operationTypeId: 'number',
-     activeDate: '2023-06-25T04:00:00Z',
-     unitId: 'number',
-     controlledInd: 'string',
-     estimatedInd: 'string',
-     invalidInd: 'string',
-     calculateEmissionsInd: 'string',
-     collectionDate: '2023-06-25T04:00:00Z',
-     fieldEventId: 'number',
-     inactiveDate: "2023-06-25T04:00:00Z",
-     dataLockTypeId: 'number',
-     lastModifiedDate: "2023-06-25T04:00:00Z",
-     externalIdentifier: 'string',
-     comments: 'string',
-     badDataFlag: 'number(1,0)',
-     operationAmount: 'number' },
+      { 
+          EquipmentAttributeId: 'number',
+          EquipmentId: 'number',
+          AttributeTypeId: 'number',
+          EquipmentAttribute:"string",
+          DataLockTypeId: 'number',
+          LastModifiedDate: '2023-03-30T07:27:06.295Z',
+          ExternalIdentifier: 'string',
+          Comments:'string'},
   json: true };
 
 request(options, function (error, response, body) {
@@ -182,42 +171,29 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/operation");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/equipmentattribute");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
-request.AddParameter("application/json", "{\r\n    \"ActionsTaken\": \"string\",\r\n    \"Date\": \"2017-02-13T22:15:30.203Z\",\r\n    \"Description\": \"string\",\r\n    \"IncidentNo\": 0,\r\n    \"ReportedDate\": \"2017-02-13T22:15:30.203Z\",\r\n    \"SuspectedCause\": \"string\"\r\n}", ParameterType.RequestBody);
+request.AddParameter("application/json", "{\r\n    \"EquipmentAttributeId\": \"number\",\r\n    \"EquipmentId\": \"number\",\r\n    \"AttributeTypeId\": \"number\",\r\n    \"EquipmentAttribute\": \"string\",\r\n    \"DataLockTypeId\": \"number\",\r\n    \"LastModifiedDate\": \"2023-03-30T07:27:06.295Z\",\r\n    \"ExternalIdentifier\": \"string\",\r\n    \"Comments\": \"string\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
-> Input JSON Body
+
+> Input JSON Body 
 
 ```json
 [
-  {
-    "operationId": "number",
-    "equipmentId": "number",
-    "emissionTypeId": "number",
-    "emissionCategoryId": "number",
-    "operationTypeId": "number",
-    "activeDate": "2023-06-25T04:00:00Z",
-    "unitId": "number",
-    "controlledInd": "string",
-    "estimatedInd": "string",
-    "invalidInd": "string",
-    "calculateEmissionsInd": "string",
-    "collectionDate": "2023-06-25T04:00:00Z",
-    "fieldEventId": "number",
-    "inactiveDate": "2023-06-25T04:00:00Z",
-    "dataLockTypeId": "number",
-    "lastModifiedDate": "2023-06-25T04:00:00Z",
-    "externalIdentifier": "string",
-    "comments": "string",
-    "badDataFlag": "number(1,0)",
-    "operationAmount": "number"
-  } 
+  { 
+	  "EquipmentAttributeId": "number",
+    "EquipmentId": "number",
+    "AttributeTypeId": "number",
+    "EquipmentAttribute":"string",
+    "DataLockTypeId": "number",
+    "LastModifiedDate": "2023-03-30T07:27:06.295Z",
+    "ExternalIdentifier": "string",
+    "Comments":"string"
+  }
 ]
-
 ```
-
 > Example Response
 
 ```json
@@ -235,11 +211,11 @@ IRestResponse response = client.Execute(request);
 
 ```json
 {
-	"insertedRowCount" : 0 , 
-	"updatedRowCount" : 1 ,
-	"failureCount" : 1 ,
-	"errorMessage" : [
-	 "Operation ID : 0, Error: An error occurred while saving the entity changes. See the inner exception for details "
+    "insertedRowCount" : 0 , 
+    "updatedRowCount" : 1 ,
+    "failureCount" : 1 ,
+    "errorMessage" : [
+	 "EquipmentAttribute ID : 0, Error: An error occurred while saving the entity changes. See the inner exception for details "
 	]
 }
 
@@ -366,14 +342,15 @@ var options = { method: 'POST',
   url: 'https://[tenant].actsapi.intelex.com/v1/facilityattribute',
   headers: { 'content-type': 'application/json' },
   body:
-   { FacilityAttributeId: 'number',
-     FacilityId: 'number',
-     AttributeTypeId: 'number',
-     FacilityAttribute:"string",
-     DataLockTypeId: 'number',
-     LastModifiedDate: '2023-03-30T07:27:06.295Z',
-     ExternalIdentifier: 'string',
-     Comments:'string'},
+   { 
+      FacilityAttributeId: 'number',
+      FacilityId: 'number',
+      AttributeTypeId: 'number',
+      FacilityAttribute:"string",
+      DataLockTypeId: 'number',
+      LastModifiedDate: '2023-03-30T07:27:06.295Z',
+      ExternalIdentifier: 'string',
+      Comments:'string'},
   json: true };
 
 request(options, function (error, response, body) {
@@ -434,13 +411,13 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 5. Equipment Attribute Table 
+### 5. Operation Table 
 
-This section outlines the process of adding new entries or modifying existing records within the Equipment Attribute table using the dedicated API endpoint.
+This section outlines the process of adding new entries or modifying existing records within the Operation table using the dedicated API endpoint.
 
-**Equipment Attribute POST Endpoint**
+**Operation POST Endpoint**
 
-`POST` api/v1/equipmentattribute
+`POST` api/v1/operation
 
 > Example Request & JSON Input Body 
 
@@ -448,17 +425,29 @@ This section outlines the process of adding new entries or modifying existing re
 var request = require("request");
 
 var options = { method: 'POST',
-  url: 'https://[tenant].actsapi.intelex.com/v1/equipmentattribute',
+  url: 'https://[tenant].actsapi.intelex.com/v1/operation',
   headers: { 'content-type': 'application/json' },
   body:
-   { EquipmentAttributeId: 'number',
-     EquipmentId: 'number',
-     AttributeTypeId: 'number',
-     EquipmentAttribute:"string",
-     DataLockTypeId: 'number',
-     LastModifiedDate: '2023-03-30T07:27:06.295Z',
-     ExternalIdentifier: 'string',
-     Comments:'string'},
+   { operationId: 'number',
+     equipmentId: 'number',
+     emissionTypeId: 'number',
+	   emissionCategoryId: 'number',
+     operationTypeId: 'number',
+     activeDate: '2023-06-25T04:00:00Z',
+     unitId: 'number',
+     controlledInd: 'string',
+     estimatedInd: 'string',
+     invalidInd: 'string',
+     calculateEmissionsInd: 'string',
+     collectionDate: '2023-06-25T04:00:00Z',
+     fieldEventId: 'number',
+     inactiveDate: "2023-06-25T04:00:00Z",
+     dataLockTypeId: 'number',
+     lastModifiedDate: "2023-06-25T04:00:00Z",
+     externalIdentifier: 'string',
+     comments: 'string',
+     badDataFlag: 'number(1,0)',
+     operationAmount: 'number' },
   json: true };
 
 request(options, function (error, response, body) {
@@ -469,29 +458,42 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/equipmentattribute");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/operation");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
-request.AddParameter("application/json", "{\r\n    \"EquipmentAttributeId\": \"number\",\r\n    \"EquipmentId\": \"number\",\r\n    \"AttributeTypeId\": \"number\",\r\n    \"EquipmentAttribute\": \"string\",\r\n    \"DataLockTypeId\": \"number\",\r\n    \"LastModifiedDate\": \"2023-03-30T07:27:06.295Z\",\r\n    \"ExternalIdentifier\": \"string\",\r\n    \"Comments\": \"string\"}", ParameterType.RequestBody);
+request.AddParameter("application/json", "{\r\n    \"ActionsTaken\": \"string\",\r\n    \"Date\": \"2017-02-13T22:15:30.203Z\",\r\n    \"Description\": \"string\",\r\n    \"IncidentNo\": 0,\r\n    \"ReportedDate\": \"2017-02-13T22:15:30.203Z\",\r\n    \"SuspectedCause\": \"string\"\r\n}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
-
-> Input JSON Body 
+> Input JSON Body
 
 ```json
 [
-  { 
-	  "EquipmentAttributeId": "number",
-    "EquipmentId": "number",
-    "AttributeTypeId": "number",
-    "EquipmentAttribute":"string",
-    "DataLockTypeId": "number",
-    "LastModifiedDate": "2023-03-30T07:27:06.295Z",
-    "ExternalIdentifier": "string",
-    "Comments":"string"
-  }
+  {
+    "operationId": "number",
+    "equipmentId": "number",
+    "emissionTypeId": "number",
+    "emissionCategoryId": "number",
+    "operationTypeId": "number",
+    "activeDate": "2023-06-25T04:00:00Z",
+    "unitId": "number",
+    "controlledInd": "string",
+    "estimatedInd": "string",
+    "invalidInd": "string",
+    "calculateEmissionsInd": "string",
+    "collectionDate": "2023-06-25T04:00:00Z",
+    "fieldEventId": "number",
+    "inactiveDate": "2023-06-25T04:00:00Z",
+    "dataLockTypeId": "number",
+    "lastModifiedDate": "2023-06-25T04:00:00Z",
+    "externalIdentifier": "string",
+    "comments": "string",
+    "badDataFlag": "number(1,0)",
+    "operationAmount": "number"
+  } 
 ]
+
 ```
+
 > Example Response
 
 ```json
@@ -509,11 +511,11 @@ IRestResponse response = client.Execute(request);
 
 ```json
 {
-    "insertedRowCount" : 0 , 
-    "updatedRowCount" : 1 ,
-    "failureCount" : 1 ,
-    "errorMessage" : [
-	 "EquipmentAttribute ID : 0, Error: An error occurred while saving the entity changes. See the inner exception for details "
+	"insertedRowCount" : 0 , 
+	"updatedRowCount" : 1 ,
+	"failureCount" : 1 ,
+	"errorMessage" : [
+	 "Operation ID : 0, Error: An error occurred while saving the entity changes. See the inner exception for details "
 	]
 }
 
@@ -612,3 +614,4 @@ Comments  | Comments accepts the string data as input
 }
 
 ```
+

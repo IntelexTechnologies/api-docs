@@ -61,24 +61,24 @@ This ACTS API release includes 13 GET enpoints and 5 POST endpoints, along with 
 
 Database Tables supporting GET requests 
 
-1. Operation 					   
-2. Equipment				    
+1. Attribute Type					   
+2. Compound 				    
 3. Emission Type			     
 4. Emission Category
-5. Equipment Status
-6. Unit
-7. Attribute Type 
+5. Equipment 
+6. Equipment Status
+7. Equipment Attribute 
 8. Equipment Type
-9. Compound
-10. Operation Type
-11. Facility 
-12. Facility Attribute
-13. Equipment Attribute
+9. Facility
+10. Facility Attribute
+11. Operation 
+12. Operation Type
+13. Unit
 
 Database Tables supporting POST requests 
 
 1. Equipment
-2. Operation
+2. Equipment Attribute
 3. Facility
 4. Facility Attribute
-5. Equipment Attribute
+5. Operation
