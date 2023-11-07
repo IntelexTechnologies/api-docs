@@ -57,6 +57,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
+
 var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/operation");
 var request = new RestRequest(Method.DELETE);
 request.AddHeader("content-type", "application/json");
