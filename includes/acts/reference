@@ -25,10 +25,10 @@
 <blockquote>
 <p>Example Requests:</p>
 </blockquote>
-<pre class="highlight plaintext"><code>//JSON Body for Authentication Endpoint
+<pre class="highlight plaintext"><code>Body for Authentication Endpoint
 {"client_id":"Client ID Data",
 "client_secret":"Client Secret Data",
-"audience":"https://intelex_acts_api_url/api",
+"audience":"https://tenant.actsapi.intelex.com/v1/api",
 "grant_type":"client_credentials"}
 </code></pre>
 <blockquote>
@@ -53,32 +53,37 @@
 <p>When we make backwards-incompatible changes to the API, we release new versions. The current version of the ACTS API  is v1 and can be determined with our API base path /api/v1/.</p>
 
 <blockquote>
-<p>Example API endpoint : https://intelex_acts_api_url/api/v1</p>
+<p>Example API endpoint : https://tenant.actsapi.intelex.com/v1/</p>
 </blockquote>
 
 <h3 id="apis-and-associated-database-tables">API&rsquo;s and Associated Database Tables</h3>
 
-<p>This ACTS API release includes 11 GET enpoints and 4 POST endpoints, along with the authentication endpoint described above. The tables that can be queried and updated are as follows. </p>
+<p>This ACTS API release includes 13 GET enpoints and 5 POST endpoints, along with the authentication endpoint described above. The tables that can be queried and updated are as follows. </p>
 
 <p>Database Tables supporting GET requests </p>
 
 <ol>
-<li>Operation<br></li>
-<li>Equipment<br></li>
+<li>Attribute Type<br></li>
+<li>Compound<br></li>
 <li>Emission Type<br></li>
 <li>Emission Category</li>
+<li>Equipment </li>
 <li>Equipment Status</li>
-<li>Unit</li>
-<li>Attribute Type </li>
+<li>Equipment Attribute </li>
 <li>Equipment Type</li>
-<li>Compound</li>
+<li>Facility</li>
+<li>Facility Attribute</li>
+<li>Operation </li>
+<li>Operation Type</li>
+<li>Unit</li>
 </ol>
 
 <p>Database Tables supporting POST requests </p>
 
 <ol>
 <li>Equipment</li>
-<li>Operation</li>
+<li>Equipment Attribute</li>
 <li>Facility</li>
 <li>Facility Attribute</li>
+<li>Operation</li>
 </ol>
