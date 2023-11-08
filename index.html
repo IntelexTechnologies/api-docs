@@ -4694,8 +4694,6 @@ Content-Transfer-Encoding:binary
 
 <p>The ACTS API gives you the ability to retrieve or update data of selected database tables in ACTS product. </p>
 
-<p>The ACTS API is currently in beta. This means that we might make changes to the data returned or how requests are made with future releases. Once the beta tag is removed, breaking changes to this API will be <a href="#acts-api-versioning">versioned</a>.</p>
-
           <h2 id="reference">Reference</h2>
 
 <p>The Intelex ACTS API provides endpoints in ACTS, with it&rsquo;s own URL for access. If you currently use the Intelex API, you will not be able to use the ACTS API unless you have Admin access to ACTS. At the same time, you can use the ACTS API without any permission for Intelex V6.  </p>
@@ -4705,9 +4703,9 @@ Content-Transfer-Encoding:binary
 <h3 id="getting-started-with-acts-api">Getting Started with ACTS API</h3>
 
 <blockquote>
-<p>API Endpoint - replace <strong>intelex_acts_api_url</strong> with the full URL path to your Intelex ACTS API system</p>
+<p>API Endpoint - In the URL the tenant is the individual unique tenants based on the tenants they are specifying </p>
 </blockquote>
-<pre class="highlight plaintext"><code>https://intelex_acts_api_url/api/v1
+<pre class="highlight plaintext"><code>https://[tenant].actsapi.intelex.com/v1/api/
 </code></pre>
 <p>To begin using the Intelex API you will need:</p>
 
@@ -4726,7 +4724,7 @@ Content-Transfer-Encoding:binary
 <pre class="highlight plaintext"><code>Body for Authentication Endpoint
 {"client_id":"Client ID Data",
 "client_secret":"Client Secret Data",
-"audience":"https://tenant.actsapi.intelex.com/v1/api",
+"audience":"https://*.intelex.com/API-release",
 "grant_type":"client_credentials"}
 </code></pre>
 <blockquote>
@@ -4738,9 +4736,9 @@ Content-Transfer-Encoding:binary
     </span><span class="s2">"token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bearer"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Intelex&rsquo;s ACTS API uses tokens based authentication. Only ACTS Admin users can access the API. </p>
+<p>Intelex ACTS API uses tokens based authentication. Only ACTS Admin users can access the API. </p>
 
-<p>During the authentication process, the client provides the &lsquo;client id&rsquo; and &lsquo;client secret&rsquo; to the authentication endpoint, along with the audience and grant type, as demonstrated above. In response, the API furnishes an access token that comes with a specified time limit. This authentication is exclusively applicable to admin users. After successful authentication, users gain unrestricted access to all ACTS API endpoints.</p>
+<p>During the authentication process, the client provides the &lsquo;client id&rsquo; and &lsquo;client secret&rsquo; to the authentication endpoint, along with the audience and grant type, as demonstrated above. In response, the API furnishes an access token that comes with a specified time limit. This authentication is exclusively applicable to admin users. After successful authentication, users gain unrestricted access to all ACTS API endpoints till the token expiration.</p>
 
 <p>All interactions with the API are required to occur via HTTPS, and any API requests lacking proper authentication will result in failure. Data security is meticulously overseen by the ACTS platform, ensuring that API requests grant identical administrative access as enjoyed by authenticated ACTS admin users.</p>
 
@@ -4748,15 +4746,15 @@ Content-Transfer-Encoding:binary
 
 <h3 id="acts-api-versioning">ACTS API Versioning</h3>
 
-<p>When we make backwards-incompatible changes to the API, we release new versions. The current version of the ACTS API  is v1 and can be determined with our API base path /api/v1/.</p>
+<p>When we make any new changes to the API, we release new versions. The current version of the ACTS API  is v1 and can be determined with our API base path /api/v1/.</p>
 
 <blockquote>
-<p>Example API endpoint : https://tenant.actsapi.intelex.com/v1/</p>
+<p>Example API endpoint : https://[tenant].actsapi.intelex.com/v1/[endpoint-name]</p>
 </blockquote>
 
 <h3 id="apis-and-associated-database-tables">API&rsquo;s and Associated Database Tables</h3>
 
-<p>This ACTS API release includes 13 GET enpoints and 5 POST endpoints, along with the authentication endpoint described above. The tables that can be queried and updated are as follows. </p>
+<p>This ACTS API release includes 13 GET enpoints and 5 POST endpoints, along with the authentication endpoint described earlier. The tables that can be queried and updated are as follows. </p>
 
 <p>Database Tables supporting GET requests </p>
 
@@ -4788,11 +4786,11 @@ Content-Transfer-Encoding:binary
 
           <h2 id="retrieve-data-from-database-table">Retrieve data from Database Table</h2>
 
-<p>This section outlines the various GET APIs available for fetching data from different tables. Each API provides the capability to retrieve specific data based on provided parameters. Pagination support is available for managing large datasets effectively.</p>
+<p>This section outlines the various GET APIs available for fetching data from different tables. Each API provides the capability to retrieve specific data based on provided parameters. Pagination support is available for managing large datasets effectively.The user can pass the set of parameters of same or different filter options at once .</p>
 
 <h3 id="1-attribute-type-table">1. Attribute Type Table</h3>
 
-<p>This section outlines the process of retrieving data from the Attribute Type table using the dedicated API endpoint. The endpoint facilitates the retrieval of all data from the Attribute Type table or enables the selection of specific information by including Attribute IDs and Attribute Types. Additionally, the Attribute Type endpoint supports pagination to effectively manage larger datasets.</p>
+<p>This section outlines the process of retrieving data from the Attribute Type table using the dedicated API endpoint. The endpoint facilitates the retrieval of all data from the Attribute Type table or enables the selection of specific information by including Attribute Ids and Attribute Types. Additionally, the Attribute Type endpoint supports pagination to effectively manage larger datasets.</p>
 
 <blockquote>
 <p>Example Request</p>
@@ -4874,7 +4872,7 @@ Content-Transfer-Encoding:binary
 <td>The number of results per page</td>
 </tr>
 <tr>
-<td>attributeTypeIDs</td>
+<td>attributeTypeIds</td>
 <td>int</td>
 <td>Attribute ID is one of the filter parameter is a integer data type</td>
 </tr>
@@ -4887,7 +4885,7 @@ Content-Transfer-Encoding:binary
 
 <h3 id="2-compound-api-table">2. Compound API Table</h3>
 
-<p>This section guides you through the process of fetching data from the Compound table using the dedicated API endpoint. The endpoint offers the flexibility to retrieve all data from the Compound table or selectively acquire information by including Compound IDs, Compound Type IDs, Compound Status IDs, Compound Names, External Identifiers, or CAS Numbers. Additionally, the Compound endpoint is equipped with pagination capabilities to facilitate efficient management of substantial datasets.</p>
+<p>This section guides you through the process of fetching data from the Compound table using the dedicated API endpoint. The endpoint offers the flexibility to retrieve all data from the Compound table or selectively acquire information by including Compound Ids, Compound Type Ids, Compound Status Ids, Compound Names, External Identifiers, or CAS Numbers. Additionally, the Compound endpoint is equipped with pagination capabilities to facilitate efficient management of substantial datasets.</p>
 
 <blockquote>
 <p>Example Request</p>
@@ -4988,19 +4986,19 @@ Content-Transfer-Encoding:binary
 <td>The number of results per page</td>
 </tr>
 <tr>
-<td>compoundIDs</td>
+<td>compoundIds</td>
 <td>int</td>
 <td>Compound ID is one of the unique identifier for this compound record</td>
 </tr>
 <tr>
-<td>compoundTypeIDs</td>
+<td>compoundTypeIds</td>
 <td>int</td>
-<td>Compound TYpe IDs is the associated compound type and is a second filter parameter option</td>
+<td>Compound Type Ids is the associated compound type and is a second filter parameter option</td>
 </tr>
 <tr>
-<td>compoundstatusIDs</td>
+<td>compoundstatusIds</td>
 <td>int</td>
-<td>Compound Status IDs is associated with compound status</td>
+<td>Compound Status Ids is associated with compound status</td>
 </tr>
 <tr>
 <td>compoundNames</td>
@@ -5085,15 +5083,20 @@ Content-Transfer-Encoding:binary
 <td>The number of results per page</td>
 </tr>
 <tr>
-<td>emissionCategoryIDs</td>
+<td>emissionCategoryIds</td>
 <td>int</td>
 <td>Emission Category ID is one of the unique identifier for this emission category record and is one of the filter option provided for Emission Category</td>
+</tr>
+<tr>
+<td>emissionCategoryTypes</td>
+<td>string</td>
+<td>Emission Category Types is for the project to emission category detail types</td>
 </tr>
 </tbody></table>
 
 <h3 id="4-emission-type-table">4. Emission Type Table</h3>
 
-<p>This section guides you through the process of fetching data from the Emission Type table using the dedicated API endpoint. The endpoint enables you to retrieve data from the entire Emission Type table or selectively obtain information by including Emission Type IDs. Additionally, the Emission Type endpoint is equipped with pagination capabilities to facilitate the handling of extensive datasets.</p>
+<p>This section guides you through the process of fetching data from the Emission Type table using the dedicated API endpoint. The endpoint enables you to retrieve data from the entire Emission Type table or selectively obtain information by including Emission Type Ids. Additionally, the Emission Type endpoint is equipped with pagination capabilities to facilitate the handling of extensive datasets.</p>
 
 <blockquote>
 <p>Example Request</p>
@@ -5160,15 +5163,20 @@ Content-Transfer-Encoding:binary
 <td>The number of results per page</td>
 </tr>
 <tr>
-<td>emissionTypeIDs</td>
+<td>emissionTypeIds</td>
 <td>int</td>
 <td>Emission Type ID is one of the type of emissions and is the one of the filter option provided for Emission Type</td>
+</tr>
+<tr>
+<td>emissionTypes</td>
+<td>string</td>
+<td>Emission Types is for the project to emission detail types</td>
 </tr>
 </tbody></table>
 
 <h3 id="5-equipment-table">5. Equipment Table</h3>
 
-<p>This section provides guidance on retrieving data from the Equipment table using the designated API endpoint. The endpoint allows you to retrieve all data from the Equipment table or specify specific data based on equipment IDs. Additionally, the Equipment endpoint offers pagination support to facilitate the handling of substantial datasets.</p>
+<p>This section provides guidance on retrieving data from the Equipment table using the designated API endpoint. The endpoint allows you to retrieve all data from the Equipment table or specify specific data based on equipment Ids. Additionally, the Equipment endpoint offers pagination support to facilitate the handling of substantial datasets.</p>
 
 <blockquote>
 <p>Example Request</p>
@@ -5250,38 +5258,38 @@ Content-Transfer-Encoding:binary
 <td>The number of results per page</td>
 </tr>
 <tr>
-<td>equipmentIDs</td>
+<td>equipmentIds</td>
 <td>int</td>
 <td>Equipment ID is one of the unique identifier for this equipment record</td>
 </tr>
 <tr>
-<td>equipmentTypeIDs</td>
+<td>equipmentTypeIds</td>
 <td>int</td>
 <td>Equipment Type ID is one of the unique identifier for this equipment type record</td>
 </tr>
 <tr>
-<td>equipmentStatusIDs</td>
+<td>equipmentStatusIds</td>
 <td>int</td>
 <td>Equipment Status ID is one of the unique identifier for this equipment status record</td>
 </tr>
 <tr>
-<td>facilityIDs</td>
+<td>facilityIds</td>
 <td>int</td>
 <td>Facility ID is one of the unique identifier for this equipment status record</td>
 </tr>
 <tr>
 <td>sourceNames</td>
-<td>strings</td>
+<td>string</td>
 <td>Source Names is one of the unique identifier for this equipment record</td>
 </tr>
 <tr>
 <td>internalNames</td>
-<td>strings</td>
+<td>string</td>
 <td>Internal Names is one of the unique identifier for this equipment record</td>
 </tr>
 <tr>
 <td>alternateNames</td>
-<td>strings</td>
+<td>string</td>
 <td>Alternate Names is one of the unique identifier for this equipment record</td>
 </tr>
 <tr>
@@ -5365,7 +5373,7 @@ Content-Transfer-Encoding:binary
 <td>The number of results per page</td>
 </tr>
 <tr>
-<td>equipmentStatusIDs</td>
+<td>equipmentStatusIds</td>
 <td>int</td>
 <td>Equipment Status ID is one of the unique identifier for this equipment status record</td>
 </tr>
@@ -5378,7 +5386,7 @@ Content-Transfer-Encoding:binary
 
 <h3 id="7-equipment-attribute-table">7. Equipment Attribute Table</h3>
 
-<p>All data from the Equipment Attribute table will be returned from the endpoint below. You can optionally fetch specific data by including the facility attribute ids, facility names, emission type ids, facility type ids, unit ids, equipment ids, last modified start date and last modified end date. The facility attribute endpoint supports pagination.</p>
+<p>All data from the Equipment Attribute table will be returned from the endpoint below. You can optionally fetch specific data by including the facility attribute Ids, facility names, emission type Ids, facility type Ids, unit Ids, equipment Ids, last modified start date and last modified end date. The facility attribute endpoint supports pagination.</p>
 
 <blockquote>
 <p>Example Request</p>
@@ -5583,7 +5591,7 @@ Content-Transfer-Encoding:binary
 <td>The number of results per page</td>
 </tr>
 <tr>
-<td>equipmentTypeIDs</td>
+<td>equipmentTypeIds</td>
 <td>int</td>
 <td>Equipment Type ID is one of the unique identifier for this equipment type record</td>
 </tr>
@@ -5596,7 +5604,7 @@ Content-Transfer-Encoding:binary
 
 <h3 id="9-facility-table">9. Facility Table</h3>
 
-<p>All data from the Facility table will be returned from the endpoint below. You can optionally fetch specific data by including the facility ids, facility names, emission type ids, facility type ids, facility status ids, county ids, last modified start date and last modified end date. The facility endpoint supports pagination.</p>
+<p>All data from the Facility table will be returned from the endpoint below. You can optionally fetch specific data by including the facility Ids, facility names, emission type Ids, facility type Ids, facility status Ids, county Ids, last modified start date and last modified end date. The facility endpoint supports pagination.</p>
 
 <blockquote>
 <p>Example Request</p>
@@ -5605,7 +5613,6 @@ Content-Transfer-Encoding:binary
 
 <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">url</span><span class="p">:</span> <span class="s1">'https://[tenant].actsapi.intelex.com/v1/facility'</span> <span class="p">};</span>
-
 <span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
 
@@ -5738,7 +5745,7 @@ Content-Transfer-Encoding:binary
 
 <h3 id="10-facility-attribute-table">10. Facility Attribute Table</h3>
 
-<p>All data from the Facility Attribute table will be returned from the endpoint below. You can optionally fetch specific data by including the facility attribute ids, facility names, emission type ids, facility type ids, facility attribute and last modified end date. The facility attribute endpoint supports pagination.</p>
+<p>All data from the Facility Attribute table will be returned from the endpoint below. You can optionally fetch specific data by including the facility attribute Ids, facility names, emission type Ids, facility type Ids, facility attribute and last modified end date. The facility attribute endpoint supports pagination.</p>
 
 <blockquote>
 <p>Example Request</p>
@@ -5855,7 +5862,7 @@ Content-Transfer-Encoding:binary
 
 <h3 id="11-operation-table">11. Operation Table</h3>
 
-<p>All data from the Operation table will be returned from the endpoint below. You can optionally fetch specific data by including the operation ids, operation type ids, emission type ids, emission category ids, unit ids, equipment ids, last modified start date and last modified end date. The Operation endpoint supports pagination.</p>
+<p>All data from the Operation table will be returned from the endpoint below. You can optionally fetch specific data by including the operation Ids, operation type Ids, emission type Ids, emission category Ids, unit Ids, equipment Ids, last modified start date and last modified end date. The Operation endpoint supports pagination.</p>
 
 <blockquote>
 <p>Example Request</p>
@@ -5935,32 +5942,32 @@ Content-Transfer-Encoding:binary
 <td>The number of results per page</td>
 </tr>
 <tr>
-<td>operationIDs</td>
+<td>operationIds</td>
 <td>int</td>
 <td>Operation Ids are unique identifier for this operation type record</td>
 </tr>
 <tr>
-<td>operationTypeIDs</td>
+<td>operationTypeIds</td>
 <td>string</td>
-<td>Operation Type IDs is one of the filter option and the parameter is for the type of the Operation Type</td>
+<td>Operation Type Ids is one of the filter option and the parameter is for the type of the Operation Type</td>
 </tr>
 <tr>
-<td>emissionTypeIDs</td>
+<td>emissionTypeIds</td>
 <td>int</td>
 <td>The unique identifier of the associated emission type</td>
 </tr>
 <tr>
-<td>emissionCategoryIDs</td>
+<td>emissionCategoryIds</td>
 <td>int</td>
 <td>The unique identifier of the associated emission category</td>
 </tr>
 <tr>
-<td>unitIDs</td>
+<td>unitIds</td>
 <td>int</td>
 <td>The unique identifier of the associated unit</td>
 </tr>
 <tr>
-<td>equipmentIDs</td>
+<td>equipmentIds</td>
 <td>int</td>
 <td>The unique identifier of the associated equipment</td>
 </tr>
@@ -6062,7 +6069,90 @@ Content-Transfer-Encoding:binary
 
 <h3 id="13-unit-table">13. Unit Table</h3>
 
-<p>This section outlines how to retrieve data from the Unit table using the provided endpoint. You have the flexibility to fetch specific data by including unit IDs, unit type IDs, and units. The Unit type endpoint also supports pagination for managing large datasets effectively.</p>
+<p>All data from the Operation Type table will be returned from the endpoint below. You can optionally fetch specific data by including the operation type Ids, operation types . The Operation Type endpoint supports pagination.</p>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://[tenant].actsapi.intelex.com/v1/operationtype'</span> <span class="p">};</span>
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://[tenant].actsapi.intelex.com/v1/operationtype"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">GET</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Response Schema</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"currentPage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currentPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"maxAPIPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">337</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hasPrevious"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hasNext"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"operationTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"operationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"parentOperationTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"compoundId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"applicabilityFormula"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sortOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"lastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-01T15:55:25"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"externalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"refId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p><strong>API Endpoints</strong></p>
+
+<p><code class="prettyprint">GET</code> /api/v1/operationtype</p>
+
+<p><strong>Query parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>PageNumber</td>
+<td>int</td>
+<td>Page number of the results to fetch.</td>
+</tr>
+<tr>
+<td>PageSize</td>
+<td>int</td>
+<td>The number of results per page</td>
+</tr>
+<tr>
+<td>operationTypeIds</td>
+<td>int</td>
+<td>The unique identifier for this operation type record</td>
+</tr>
+<tr>
+<td>operationTypes</td>
+<td>string</td>
+<td>The type of operational data</td>
+</tr>
+</tbody></table>
+
+<h3 id="13-unit-table">13. Unit Table</h3>
+
+<p>This section outlines how to retrieve data from the Unit table using the provided endpoint. You have the flexibility to fetch specific data by including unit Ids, unit type Ids, and units. The Unit type endpoint also supports pagination for managing large datasets effectively.</p>
 
 <blockquote>
 <p>Example Request</p>
@@ -6133,14 +6223,14 @@ Content-Transfer-Encoding:binary
 <td>The number of results per page</td>
 </tr>
 <tr>
-<td>unitIDs</td>
+<td>unitIds</td>
 <td>int</td>
 <td>Unit ID is one of the unique identifier for this Unit record</td>
 </tr>
 <tr>
-<td>unitTypeIDs</td>
+<td>unitTypeIds</td>
 <td>int</td>
-<td>Unit Type IDs is the unique identifier of the associated unit type</td>
+<td>Unit Type Ids is the unique identifier of the associated unit type</td>
 </tr>
 <tr>
 <td>units</td>
@@ -6310,7 +6400,8 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
           <span class="na">LastModifiedDate</span><span class="p">:</span> <span class="s1">'2023-03-30T07:27:06.295Z'</span><span class="p">,</span>
           <span class="na">ExternalIdentifier</span><span class="p">:</span> <span class="s1">'string'</span><span class="p">,</span>
           <span class="na">Comments</span><span class="p">:</span><span class="s1">'string'</span><span class="p">},</span>
-  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
+          <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
+
 
 <span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
@@ -6387,7 +6478,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
      <span class="na">IncidentNo</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
      <span class="na">ReportedDate</span><span class="p">:</span> <span class="s1">'2017-02-13T22:15:30.203Z'</span><span class="p">,</span>
      <span class="na">SuspectedCause</span><span class="p">:</span> <span class="s1">'string'</span> <span class="p">},</span>
-  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
+     <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
 
 <span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
@@ -6487,7 +6578,8 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
       <span class="na">LastModifiedDate</span><span class="p">:</span> <span class="s1">'2023-03-30T07:27:06.295Z'</span><span class="p">,</span>
       <span class="na">ExternalIdentifier</span><span class="p">:</span> <span class="s1">'string'</span><span class="p">,</span>
       <span class="na">Comments</span><span class="p">:</span><span class="s1">'string'</span><span class="p">},</span>
-  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
+      <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
+
 
 <span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
@@ -6578,7 +6670,8 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
      <span class="na">comments</span><span class="p">:</span> <span class="s1">'string'</span><span class="p">,</span>
      <span class="na">badDataFlag</span><span class="p">:</span> <span class="s1">'number(1,0)'</span><span class="p">,</span>
      <span class="na">operationAmount</span><span class="p">:</span> <span class="s1">'number'</span> <span class="p">},</span>
-  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
+     <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
+
 
 <span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
