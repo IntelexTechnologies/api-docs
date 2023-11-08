@@ -223,8 +223,7 @@ IRestResponse response = client.Execute(request);
             "external_identifier": "string",
             "comments": "string",
             "ref_id": "string"
-			
-        }
+		    }
 	]
 }
 ```
@@ -287,8 +286,7 @@ IRestResponse response = client.Execute(request);
             "external_identifier": "string",
             "comments": "string",
             "ref_id": "string"
-			
-        }
+		    }
 	]
 }
 ```
@@ -365,7 +363,6 @@ IRestResponse response = client.Execute(request);
             "last_modified_date": "2023-09-11t10:01:19",
             "external_identifier": "string",
             "comments": "string"
-			
         }
 	]
 }
