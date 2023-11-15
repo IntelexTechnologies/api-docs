@@ -66,12 +66,20 @@ var request = new RestRequest(Method.GET);
 request.AddHeader("Authorization", "Bearer [insert Access token here]");
 ```
 
-Intelex utilizes two methods for authentication to the API- Basic and ApiKey.
+Intelex utilizes three methods for authentication to the API- Basic, ApiKey and Secure.
 
 Basic authentication is performed via HTTP Basic Auth and your Intelex user credentials (Username:Password). The credentials are then verified by Intelex and access will be granted or denied accordingly.
 
 ApiKey authentication can be performed by generating API access key(s) from the Intelex User Profile menu (note that this page is only accessible to full-access and admins on the site). 
 The unique generated key can then be used to access the Intelex REST API and used to authenticate and prove that the user is who they claim to be.
+
+Intelex V6 API uses secure token based authentication. Only V6 Admin users can access the API.
+
+During the authentication process, the client provides the ‘client id’ and ‘client secret’ to the authentication endpoint, along with the audience and grant type, as demonstrated above. In response, the API furnishes an access token that comes with a specified time limit. This authentication is exclusively applicable to admin users. After successful authentication, users gain unrestricted access to all V6 API endpoints till the token expiration.
+
+All interactions with the API are required to occur via HTTPS, and any API requests lacking proper authentication will result in failure. Data security is meticulously overseen by the V6 platform, ensuring that API requests grant identical administrative access as enjoyed by authenticated V6 admin users.
+
+The user authentication endpoint uses a POST to generate the access token [bearer token].
 
 All API requests must be made over HTTPS and API requests without authentication will fail. Security on data is managed by the platform security configuration. 
 API requests will maintain the same security settings you have configured in the platform for each user.
@@ -95,14 +103,6 @@ Body for Authentication Endpoint
     "token_type": "Bearer"
 }
 ```
-
-Intelex V6 API uses tokens based authentication. Only V6 Admin users can access the API.
-
-During the authentication process, the client provides the ‘client id’ and ‘client secret’ to the authentication endpoint, along with the audience and grant type, as demonstrated above. In response, the API furnishes an access token that comes with a specified time limit. This authentication is exclusively applicable to admin users. After successful authentication, users gain unrestricted access to all V6 API endpoints till the token expiration.
-
-All interactions with the API are required to occur via HTTPS, and any API requests lacking proper authentication will result in failure. Data security is meticulously overseen by the V6 platform, ensuring that API requests grant identical administrative access as enjoyed by authenticated V6 admin users.
-
-The user authentication endpoint uses a POST to generate the access token [bearer token].
 
 ## Data Format
 
