@@ -38,7 +38,7 @@ var options = {
   };
 
 
-// Access Token Authentication
+// Secure Access Token Authentication
 var request = require("request");
 
 var options = {
@@ -60,7 +60,7 @@ var request = new RestRequest(Method.GET);
 request.AddHeader("Authorization", "ApiKey [insert key here]");
 
 
-// Access Token Authentication
+// Secure Access Token Authentication
 var request = new RestRequest(Method.GET);
  
 request.AddHeader("Authorization", "Bearer [insert Access token here]");
@@ -73,24 +73,26 @@ Basic authentication is performed via HTTP Basic Auth and your Intelex user cred
 ApiKey authentication can be performed by generating API access key(s) from the Intelex User Profile menu (note that this page is only accessible to full-access and admins on the site). 
 The unique generated key can then be used to access the Intelex REST API and used to authenticate and prove that the user is who they claim to be.
 
-Intelex V6 API uses secure token based authentication. Only V6 Admin users can access the API.
+Secure token based authentication is supported in V6 API. Only dedicated users can access the API.
 
-During the authentication process, the client provides the ‘client id’ and ‘client secret’ to the authentication endpoint, along with the audience and grant type, as demonstrated above. In response, the API furnishes an access token that comes with a specified time limit. This authentication is exclusively applicable to admin users. After successful authentication, users gain unrestricted access to all V6 API endpoints till the token expiration.
-
-All interactions with the API are required to occur via HTTPS, and any API requests lacking proper authentication will result in failure. Data security is meticulously overseen by the V6 platform, ensuring that API requests grant identical administrative access as enjoyed by authenticated V6 admin users.
-
-The user authentication endpoint uses a POST to generate the access token [bearer token].
+During the authentication process, the client provides the ‘client id’ and ‘client secret’ to the authentication endpoint, along with the audience and grant type, as demonstrated above. In response, the API furnishes an access token that comes with a specified time limit. This authentication is exclusively applicable to dedicated users. After successful authentication, users gain access to V6 API endpoints till the token expiration.
 
 All API requests must be made over HTTPS and API requests without authentication will fail. Security on data is managed by the platform security configuration. 
 API requests will maintain the same security settings you have configured in the platform for each user.
 
+
+>auth0 API Endpoint - In the URL the region is the unique region based on the regions they are specifying 
+
+```
+https://intelex-[region]-prd.[region].auth0.com/oauth/token
+```
 >Example Requests:
 
 ```CSharp 
 Body for Authentication Endpoint
 {"client_id":"Client ID Data",
 "client_secret":"Client Secret Data",
-"audience":"https://tenant.v6.intelex.com/v1/api",
+"audience":"https://*.intelex.com/v6api",
 "grant_type":"client_credentials"}
 ```
 
@@ -103,6 +105,17 @@ Body for Authentication Endpoint
     "token_type": "Bearer"
 }
 ```
+
+### Get secured client id and client secret
+
+Login to the V6 application. Navigate to System Administration, User Administration, and then Navigate to API Access.
+Select the secured API from the API Access page; the client id and client secret will be displayed on the details page. Use these to obtain an access token via the auth0 end point.
+
+### Generate secured access token
+
+Use the auth0 API with the client id, client secret, audience and grant type, the token will be generated with a specified time limit of token expiration.
+
+The user authentication endpoint uses a POST to generate the access token [bearer token].
 
 ## Data Format
 
