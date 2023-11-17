@@ -109,11 +109,11 @@ Body for Authentication Endpoint
 ### Get secured client id and client secret
 
 Login to the V6 application. Navigate to System Administration, User Administration, and then Navigate to API Access.
-Select the secured API from the API Access page; the client id and client secret will be displayed on the details page. Use these to obtain an access token via the auth0 end point.
+Select the secured API from the API Access page; the client id and client secret will be displayed on the details page. Use these to obtain an access token via API end point.
 
 ### Generate secured access token
 
-Use the auth0 API with the client id, client secret, audience and grant type, the token will be generated with a specified time limit of token expiration.
+Use the API with the client id, client secret, audience and grant type, the token will be generated with a specified time limit of token expiration.
 
 The user authentication endpoint uses a POST to generate the access token [bearer token].
 
