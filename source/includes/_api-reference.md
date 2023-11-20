@@ -80,12 +80,6 @@ During the authentication process, the client provides the ‘client id’ and �
 All API requests must be made over HTTPS and API requests without authentication will fail. Security on data is managed by the platform security configuration. 
 API requests will maintain the same security settings you have configured in the platform for each user.
 
-
->auth0 API Endpoint - In the URL the region is the unique region based on the regions they are specifying 
-
-```
-https://intelex-[region]-prd.[region].auth0.com/oauth/token
-```
 >Example Requests:
 
 ```CSharp 
@@ -106,10 +100,10 @@ Body for Authentication Endpoint
 }
 ```
 
-### Get secured client id and client secret
+### Get endpoint, secured client id and client secret
 
 Login to the V6 application. Navigate to System Administration, User Administration, and then Navigate to API Access.
-Select the secured API from the API Access page; the client id and client secret will be displayed on the details page. Use these to obtain an access token via API end point.
+Select the secured API from the API Access page; the endpoint, client id and client secret will be displayed on the details page. Use these to obtain an access token via API end point.
 
 ### Generate secured access token
 
