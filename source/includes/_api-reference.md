@@ -73,9 +73,11 @@ Basic authentication is performed via HTTP Basic Auth and your Intelex user cred
 ApiKey authentication can be performed by generating API access key(s) from the Intelex User Profile menu (note that this page is only accessible to full-access and admins on the site). 
 The unique generated key can then be used to access the Intelex REST API and used to authenticate and prove that the user is who they claim to be.
 
-Secure token based authentication is supported in V6 API. Only dedicated users can access the API.
+For both HTTP Basic Auth and ApiKey authentication, access to Intelex apps and data is constrained by the user's existing access, set up and managed in Intelex. 
 
-During the authentication process, the client provides the ‘client id’ and ‘client secret’ to the authentication endpoint, along with the audience and grant type, as demonstrated above. In response, the API furnishes an access token that comes with a specified time limit. This authentication is exclusively applicable to dedicated users. After successful authentication, users gain access to V6 API endpoints till the token expiration.
+Secure token based authentication is supported in V6 API. Only Admin or dedicated users can access the API.
+
+During the authentication process, the client provides the ‘client id’ and ‘client secret’ to the authentication endpoint, along with the audience and grant type, as demonstrated above. In response, the API furnishes an access token that comes with a specified time limit of the token expiration. After successful authentication, clients gain access to V6 API endpoints.
 
 All API requests must be made over HTTPS and API requests without authentication will fail. Security on data is managed by the platform security configuration. 
 API requests will maintain the same security settings you have configured in the platform for each user.
@@ -104,12 +106,6 @@ Body for Authentication Endpoint
 
 Login to the V6 application. Navigate to System Administration, User Administration, and then Navigate to API Access.
 Select the secured API from the API Access page; the endpoint, client id and client secret will be displayed on the details page. Use these to obtain an access token via API end point.
-
-### Generate secured access token
-
-Use the API with the client id, client secret, audience and grant type, the token will be generated with a specified time limit of token expiration.
-
-The user authentication endpoint uses a POST to generate the access token [bearer token].
 
 ## Data Format
 
