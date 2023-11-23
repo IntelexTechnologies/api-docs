@@ -88,7 +88,7 @@ API requests will maintain the same security settings you have configured in the
 Body for Authentication Endpoint
 {"client_id":"Client ID Data",
 "client_secret":"Client Secret Data",
-"audience":"https://*.intelex.com/v6api",
+"audience":"https://api.intelex.com/v6/",
 "grant_type":"client_credentials"}
 ```
 
