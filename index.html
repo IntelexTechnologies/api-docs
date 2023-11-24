@@ -284,6 +284,14 @@
 <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="na">Authorization</span><span class="p">:</span> <span class="s2">"ApiKey [insert key here]"</span> <span class="p">}</span>
   <span class="p">};</span>
+
+
+<span class="c1">// Secure Access Token Authentication</span>
+<span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="na">Authorization</span><span class="p">:</span> <span class="s2">"Bearer [insert Access token here]"</span> <span class="p">}</span>
+  <span class="p">};</span>
 </code></pre><pre class="highlight csharp tab-csharp"><code>
 <span class="c1">// Basic Authentication</span>
 <span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">GET</span><span class="p">);</span>
@@ -295,16 +303,51 @@
 <span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">GET</span><span class="p">);</span>
 
 <span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"Authorization"</span><span class="p">,</span> <span class="s">"ApiKey [insert key here]"</span><span class="p">);</span>
+
+
+<span class="c1">// Secure Access Token Authentication</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">GET</span><span class="p">);</span>
+
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"Authorization"</span><span class="p">,</span> <span class="s">"Bearer [insert Access token here]"</span><span class="p">);</span>
 </code></pre>
-<p>Intelex utilizes two methods for authentication to the API- Basic and ApiKey.</p>
+<p>Intelex utilizes three methods for authentication to the API- Basic, ApiKey and Secure.</p>
 
 <p>Basic authentication is performed via HTTP Basic Auth and your Intelex user credentials (Username:Password). The credentials are then verified by Intelex and access will be granted or denied accordingly.</p>
 
 <p>ApiKey authentication can be performed by generating API access key(s) from the Intelex User Profile menu (note that this page is only accessible to full-access and admins on the site). 
 The unique generated key can then be used to access the Intelex REST API and used to authenticate and prove that the user is who they claim to be.</p>
 
+<p>For both HTTP Basic Auth and ApiKey authentication, access to Intelex apps and data is constrained by the user&rsquo;s existing access, set up and managed in Intelex. </p>
+
+<p>Secure token based authentication is supported in V6 API. Only Admin or dedicated users can access the API.</p>
+
+<p>During the authentication process, the client provides the ‘client id’ and ‘client secret’ to the authentication endpoint, along with the audience and grant type, as shown in the example. In response, the API furnishes an access token that comes with a specified time limit of the token expiration. After successful authentication, clients gain access to V6 API endpoints.</p>
+
 <p>All API requests must be made over HTTPS and API requests without authentication will fail. Security on data is managed by the platform security configuration. 
 API requests will maintain the same security settings you have configured in the platform for each user.</p>
+
+<blockquote>
+<p>Example Requests:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>Body for Authentication Endpoint
+{"client_id":"Client ID Data",
+"client_secret":"Client Secret Data",
+"audience":"https://api.intelex.com/v6/",
+"grant_type":"client_credentials"}
+</code></pre>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Generated Bearer Access Token Used For Validation"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"expires_in"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Token Expiry Time In Seconds"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bearer"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="get-endpoint-secured-client-id-and-client-secret">Get endpoint, secured client id and client secret</h3>
+
+<p>Login to the V6 application. Navigate to System Administration, User Administration, and then Navigate to API Access.
+Select the secured API from the API Access page; the endpoint, client id and client secret will be displayed on the details page. Use these to obtain an access token via API end point.</p>
 
 <h2 id="data-format">Data Format</h2>
 
