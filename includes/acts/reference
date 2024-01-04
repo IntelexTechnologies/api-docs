@@ -76,6 +76,13 @@
 <li>Operation </li>
 <li>Operation Type</li>
 <li>Unit</li>
+<li>Workflow </li>
+<li>Workflow Answer</li>
+<li>Workflow Equipment</li>
+<li>Workflow Facility</li>
+<li>Workflow Person</li>
+<li>Workflow Question</li>
+<li>Workflow Type</li>
 </ol>
 
 <p>Database Tables supporting POST requests </p>
