@@ -304,6 +304,7 @@ PageSize | int | The number of results per page
 emissionTypeIds | int | Emission Type ID is one of the type of emissions and is the one of the filter option provided for Emission Type
 emissionTypes | string | Emission Types is for the project to emission detail types
 
+
 ### 5. Equipment Table
 
 This section provides guidance on retrieving data from the Equipment table using the designated API endpoint. The endpoint allows you to retrieve all data from the Equipment table or specify specific data based on equipment Ids. Additionally, the Equipment endpoint offers pagination support to facilitate the handling of substantial datasets.
@@ -623,7 +624,6 @@ var request = require("request");
 
 var options = { method: 'GET',
   url: 'https://[tenant].actsapi.intelex.com/v1/facility' };
-
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
 
@@ -864,7 +864,7 @@ lastModifiedEndDate | string | Date time format "yyyy/mm/dd T hours:min:secZ - E
 
 ### 12. Operation Type Table
 
-All data from the Operation Type table will be returned from the endpoint below. You can optionally fetch specific data by including the operation type Ids, operation types . The Operation Type endpoint supports pagination.
+All data from the Operation Type table will be returned from the endpoint below. You can optionally fetch specific data by including the operation type ids, operation types . The Operation Type endpoint supports pagination.
 
 > Example Request
 
@@ -874,6 +874,73 @@ var request = require("request");
 var options = { method: 'GET',
   url: 'https://[tenant].actsapi.intelex.com/v1/operationtype' };
 
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+```csharp
+var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/operationtype");
+var request = new RestRequest(Method.GET);
+IRestResponse response = client.Execute(request);
+```
+
+> Response Schema
+
+```json
+{
+    "currentPage": 1,
+    "totalPages": 1,
+    "currentPageSize": 500,
+    "maxAPIPageSize": 500,
+    "totalCount": 337,
+    "hasPrevious": false,
+    "hasNext": true,
+    "data": [
+        {
+            "operationTypeId": "number",
+            "operationType": "string",
+            "parentOperationTypeId": "number",
+            "compoundId": "number",
+            "applicabilityFormula": "string",
+            "sortOrder": "number",
+            "lastModifiedDate": "2020-09-01T15:55:25",
+            "externalIdentifier": "number",
+            "comments": "number",
+            "refId": "number"
+        }
+	]
+}
+
+```
+
+**API Endpoints**
+
+`GET` /api/v1/operationtype
+
+**Query parameters**
+
+Attribute | Type | Description
+--------- | ---- | -----------
+PageNumber | int | Page number of the results to fetch.
+PageSize | int | The number of results per page
+operationTypeIDs | int | The unique identifier for this operation type record
+operationTypes | int | The type of operational data
+
+
+### 13. Unit Table
+
+All data from the Operation Type table will be returned from the endpoint below. You can optionally fetch specific data by including the operation type Ids, operation types . The Operation Type endpoint supports pagination.
+
+> Example Request
+
+```javascript
+var request = require("request");
+
+var options = { method: 'GET',
+  url: 'https://[tenant].actsapi.intelex.com/v1/operationtype' };
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
 
