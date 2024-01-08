@@ -929,7 +929,7 @@ operationTypes | int | The type of operational data
 
 ### 13. Unit Table
 
-All data from the Operation Type table will be returned from the endpoint below. You can optionally fetch specific data by including the operation type Ids, operation types . The Operation Type endpoint supports pagination.
+This section outlines how to retrieve data from the Unit table using the provided endpoint. You have the flexibility to fetch specific data by including unit Ids, unit type Ids, and units. The Unit type endpoint also supports pagination for managing large datasets effectively.
 
 > Example Request
 
@@ -937,7 +937,8 @@ All data from the Operation Type table will be returned from the endpoint below.
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://[tenant].actsapi.intelex.com/v1/operationtype' };
+  url: 'https://[tenant].actsapi.intelex.com/v1/unit' };
+
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
 
@@ -946,7 +947,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/operationtype");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/unit");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -964,16 +965,16 @@ IRestResponse response = client.Execute(request);
     "hasNext": true,
     "data": [
         {
-            "operationTypeId": "number",
-            "operationType": "string",
-            "parentOperationTypeId": "number",
-            "compoundId": "number",
-            "applicabilityFormula": "string",
+            "unitId": "number",
+            "unit": "string",
+            "unitTypeId": 0,
+            "description": "string",
+            "alternateNames": "string",
             "sortOrder": "number",
-            "lastModifiedDate": "2020-09-01T15:55:25",
-            "externalIdentifier": "number",
-            "comments": "number",
-            "refId": "number"
+            "lastModifiedDate": "2017-02-13T22:15:30.203Z",
+            "externalIdentifier": "string",
+            "comments": "string",
+            "refId": "string"
         }
 	]
 }
@@ -982,7 +983,7 @@ IRestResponse response = client.Execute(request);
 
 **API Endpoints**
 
-`GET` /api/v1/operationtype
+`GET` /api/v1/unit
 
 **Query parameters**
 
@@ -990,8 +991,9 @@ Attribute | Type | Description
 --------- | ---- | -----------
 PageNumber | int | Page number of the results to fetch.
 PageSize | int | The number of results per page
-operationTypeIds | int | The unique identifier for this operation type record
-operationTypes | string | The type of operational data
+unitIds | int | Unit ID is one of the unique identifier for this Unit record
+unitTypeIds | int | Unit Type Ids is the unique identifier of the associated unit type
+units | string | Units is one of the filter option and the parameter is for the Name of the Unit
 
 ### 14. Workflow Table
 
