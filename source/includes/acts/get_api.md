@@ -517,9 +517,9 @@ Attribute | Type | Description
 --------- | ---- | -----------
 PageNumber | int | Page number of the results to fetch.
 PageSize | int | The number of results per page
-equipmentAttributeIds | int | EquipmentAttributeId one of the unique identifier for this Equipment record
-equipmentIds | int |  EquipmentId accepts the numbers as input 
-attributetypeIds | int | AttributeTypeId accepts the numbers as input
+equipmentAttributeIds | int | EquipmentAttributeId one of the unique identifier for this Equipment record.
+equipmentIds | int |  EquipmentId must be numeric.
+attributetypeIds | int | AttributeTypeId must be numeric.
 equipmentattributes | string | Equipment Attribute is one of the filter option and the parameter is for the Equipment Attribute Type 
 lastModifiedStartDate | string | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 lastModifiedEndDate | string | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
@@ -1065,7 +1065,7 @@ workflow | string | Units is one of the filter option and the parameter is for t
 
 ### 15. Workflow Answer Table
 
-This section outlines how to retrieve data from the Workflow Answer table using the provided endpoint. You have the flexibility to fetch specific data by including workflow Answer Ids, workflow Ids, workflow question Ids, category Answer Index, category Revision Index, question Answer Index, question Revision Index, workflow Answer, lastModifiedStartDate and lastModifiedEndDate. The Unit type endpoint also supports pagination for managing large datasets effectively.
+This section outlines how to retrieve data from the Workflow Answer table using the provided endpoint. You have the flexibility to fetch specific data by including workflow Answer Ids, workflow Ids, workflow question Ids, category Answer Index, category Revision Index, question Answer Index, question Revision Index, workflow Answer, lastModifiedStartDate and lastModifiedEndDate. The Workflow Answer endpoint also supports pagination for managing large datasets effectively.
 
 > Example Request
 
@@ -1130,20 +1130,20 @@ Attribute | Type | Description
 --------- | ---- | -----------
 PageNumber | int | Page number of the results to fetch.
 PageSize | int | The number of results per page
-workflowAnswerIds | int | Workflow Answer Id is the unique identifier of the associated workflow type.
-workflowIds | int | Workflow ID is one of the unique identifier of the associated workflow.
-workflowQuestionIds | int | Wokflow Question Ids is the unique identifier of the associated workflow question.
-categoryAnswerIndex | int | Category Answer Index is one of the index of the answer for the category (used for categories that repeat).
-categoryRevisionIndex | int | Category Revision Index is one of the revision index of the answer for the category (used for categories that can be revised).
-questionAnswerIndex | int | Question Answer Index is one of the index of the answer (used for questions with multiple responses).
-questionRevisionIndex | int | Question Revision Index is one of the revision index of the answer (used for questions that can be revised).
+workflowAnswerIds | int | Workflow Answer IDs are the unique identifiers for the answers in the workflow. Answer IDs are associated with a unique Question ID.
+workflowIds | int | Workflow IDs are the unique identifier for workflows (the named form or workflow type+date completed).
+workflowQuestionIds | int | Workflow Question IDs are the unique identifiers for questions in the workflow. Question IDs are associated with a unique Workflow ID.
+categoryAnswerIndex | int | Category Answer Index is the index for answers in the category.
+categoryRevisionIndex | int | Category Revision Index is the list of category revisions. If the workflow itself is updated a new category revision ID is assigned.
+questionAnswerIndex | int | QQuestion Answer Index is the index for answers to a question. Answer IDs are associated with a unique Question ID.
+questionRevisionIndex | int | Question Revision Index is the index for questions with revisions. If the question itself is updated a question revision ID is assigned.
 workflowAnswer | string | Wokflow Answer is the answer to the question..
 lastModifiedStartDate | dateTime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 lastModifiedEndDate | dateTime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 
 ### 16. Workflow Equipment Table
 
-This section outlines how to retrieve data from the Workflow Equipment table using the provided endpoint. You have the flexibility to fetch specific data by including workflow Equipment Ids, workflow Ids, and Equipment Ids. The Workflow Equipment endpoint also supports pagination for managing large datasets effectively.
+This section outlines how to retrieve data from the Workflow Equipment table using the provided endpoint. Equipment workflows are typically labeled Inspection. You have the flexibility to fetch specific data by including workflow Equipment Ids, workflow Ids, and Equipment Ids. The Workflow Equipment endpoint also supports pagination for managing large datasets effectively.
 
 > Example Request
 
@@ -1202,13 +1202,13 @@ Attribute | Type | Description
 --------- | ---- | -----------
 PageNumber | int | Page number of the results to fetch.
 PageSize | int | The number of results per page
-workflowEquipmentIds | int | Workflow Equipment ID is one of the unique identifier for this workflow equipment record.
+workflowEquipmentIds | int | Workflow Equipment ID is the unique identifier for the associated equipment within the workflow.
 workflowIds | int | Workflow Ids is the unique identifier of the associated workflow.
-equipmentIds | string | Equipment Id one of the filter option and the unique identifier of the associated equipment.
+equipmentIds | string | Equipment IDs are the unique identifier of the associated equipment.
 
 ### 17. Workflow Facility Table
 
-This section outlines how to retrieve data from the Workflow Facility table using the provided endpoint. You have the flexibility to fetch specific data by including workflow Facility Ids, workflow Ids and facility Ids. The Unit type endpoint also supports pagination for managing large datasets effectively.
+This section outlines how to retrieve data from the Workflow Facility table using the provided endpoint. Facility workflows are typically labeled Inspection. You have the flexibility to fetch specific data by including workflow Facility Ids, workflow Ids and facility Ids. The Workflow Facility endpoint also supports pagination for managing large datasets effectively.
 
 > Example Request
 
@@ -1268,15 +1268,15 @@ Attribute | Type | Description
 --------- | ---- | -----------
 PageNumber | int | Page number of the results to fetch.
 PageSize | int | The number of results per page
-workflowFacilityIds | int | workflow Facility ID is one of the unique identifier for this workflow facility record.
-workflowIds | int | Unit Type Ids is the unique identifier of the associated workflow.
-facilityIds | int | Units is one of he unique identifier of the associated facility.
+workflowFacilityIds | int | Workflow Facility IDs are the unique identifier for the associated facility within the workflow.
+workflowIds | int | Workflow IDs are the unique identifier for workflows (the named form or workflow type+date completed).
+facilityIds | int | Facility IDs are the unique identifier for the associated facility.
 
 
 
 ### 18. Workflow Person Table
 
-This section outlines how to retrieve data from the Workflow Person table using the provided endpoint. You have the flexibility to fetch specific data by including worfflow person Ids, workflow Ids and person Ids. The Unit type endpoint also supports pagination for managing large datasets effectively.
+This section outlines how to retrieve data from the Workflow Person table using the provided endpoint. You have the flexibility to fetch specific data by including workflow person Ids, workflow Ids and person Ids. The Unit type endpoint also supports pagination for managing large datasets effectively.
 
 > Example Request
 
@@ -1335,9 +1335,9 @@ Attribute | Type | Description
 --------- | ---- | -----------
 PageNumber | int | Page number of the results to fetch.
 PageSize | int | The number of results per page
-workflowPersonIds | int | Workflow Person ID is one of the unique identifier for this workflow person record.
-workflowIds | int | workflow Ids is the unique identifier of the associated workflow.
-personIds | int | Person Ids is one of the filter option and is the unique identifier of the associated person.
+workflowPersonIds | int | Workflow Person ID is the unique identifier for the associated person within the workflow.
+workflowIds | int | Workflow IDs are the unique identifier for workflows (the named form or workflow type+date completed).
+personIds | int | Person IDs are the assigned values for associated person(s) and can be used as a filter.
 
 ### 19. Workflow Question Table
 
@@ -1425,11 +1425,11 @@ Attribute | Type | Description
 --------- | ---- | -----------
 PageNumber | int | Page number of the results to fetch.
 PageSize | int | The number of results per page
-workflowQuestionIds | int | workflow Question ID is one of the unique identifier for this workflow question record.
-workflowQuestionCategoryIds | int | workflow Question Category Ids is the unique identifier of the associated workflow question category.
-dataTypeIds | int | Data Type Ids is the unique identifier of the associated data type.
-requiredInds | string | Required Inds is the value If an answer is required before saving the form.
-questions | string | questions is one of the form Question
+workflowQuestionIds | int | Workflow Question ID are the unique identifiers for the workflow question record.
+workflowQuestionCategoryIds | int | Workflow Question Category Ids are the unique identifiers for the associated workflow question category.
+dataTypeIds | int | Data Type IDs are the unique identifiers for the associated data type.
+requiredInds | string | Required Inds is the value if an answer is required before saving the form.
+questions | string | quQuestions are the question content values included on the form.
 
 
 ### 20. Workflow Type Table
@@ -1502,9 +1502,9 @@ Attribute | Type | Description
 --------- | ---- | -----------
 PageNumber | int | Page number of the results to fetch.
 PageSize | int | The number of results per page
-workflowTypeIds | int | Workflow Type ID is one of the unique identifier for this workflow type record.
-workflowCategoryIds | int | Wokflow Category Ids is he unique identifier of the associated workflow category.
-workflowTypes | string | Workflow Types is one of the filter option and the type of form.
+workflowTypeIds | int | Workflow Type IDs are the unique identifier for a workflow type.
+workflowCategoryIds | int | Workflow Category IDs are the unique identifier for the associated workflow category.
+workflowTypes | string | Workflow Types are the assigned values for the type of workflow and can be used as a filter.
 
 
 
