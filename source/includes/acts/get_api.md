@@ -517,15 +517,12 @@ Attribute | Type | Description
 --------- | ---- | -----------
 PageNumber | int | Page number of the results to fetch.
 PageSize | int | The number of results per page
-equipmentAttributeIds | int | EquipmentAttributeId one of the unique identifier for this Equipment record
-equipmentIds | int |  EquipmentId accepts the numbers as input 
-attributetypeIds | int | AttributeTypeId accepts the numbers as input
+equipmentAttributeIds | int | EquipmentAttributeId one of the unique identifier for this Equipment record.
+equipmentIds | int |  EquipmentId must be numeric.
+attributetypeIds | int | AttributeTypeId must be numeric.
 equipmentattributes | string | Equipment Attribute is one of the filter option and the parameter is for the Equipment Attribute Type 
-datalocktypeIds | int | Data Lock Type ID the unique identifier of the associated data lock type
 lastModifiedStartDate | string | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 lastModifiedEndDate | string | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
-externalidentifier | string | External Identifier a unique identifier for this record to an external data system
-comments | string | Comments any comments associated with this record
 
 
 ### 8. Equipment Type Table
@@ -932,73 +929,6 @@ operationTypes | int | The type of operational data
 
 ### 13. Unit Table
 
-All data from the Operation Type table will be returned from the endpoint below. You can optionally fetch specific data by including the operation type Ids, operation types . The Operation Type endpoint supports pagination.
-
-> Example Request
-
-```javascript
-var request = require("request");
-
-var options = { method: 'GET',
-  url: 'https://[tenant].actsapi.intelex.com/v1/operationtype' };
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-```
-
-```csharp
-var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/operationtype");
-var request = new RestRequest(Method.GET);
-IRestResponse response = client.Execute(request);
-```
-
-> Response Schema
-
-```json
-{
-    "currentPage": 1,
-    "totalPages": 1,
-    "currentPageSize": 500,
-    "maxAPIPageSize": 500,
-    "totalCount": 337,
-    "hasPrevious": false,
-    "hasNext": true,
-    "data": [
-        {
-            "operationTypeId": "number",
-            "operationType": "string",
-            "parentOperationTypeId": "number",
-            "compoundId": "number",
-            "applicabilityFormula": "string",
-            "sortOrder": "number",
-            "lastModifiedDate": "2020-09-01T15:55:25",
-            "externalIdentifier": "number",
-            "comments": "number",
-            "refId": "number"
-        }
-	]
-}
-
-```
-
-**API Endpoints**
-
-`GET` /api/v1/operationtype
-
-**Query parameters**
-
-Attribute | Type | Description
---------- | ---- | -----------
-PageNumber | int | Page number of the results to fetch.
-PageSize | int | The number of results per page
-operationTypeIds | int | The unique identifier for this operation type record
-operationTypes | string | The type of operational data
-
-
-### 13. Unit Table
-
 This section outlines how to retrieve data from the Unit table using the provided endpoint. You have the flexibility to fetch specific data by including unit Ids, unit type Ids, and units. The Unit type endpoint also supports pagination for managing large datasets effectively.
 
 > Example Request
@@ -1135,7 +1065,7 @@ workflow | string | Units is one of the filter option and the parameter is for t
 
 ### 15. Workflow Answer Table
 
-This section outlines how to retrieve data from the Workflow Answer table using the provided endpoint. You have the flexibility to fetch specific data by including workflow Ids, workflow type Ids, and workflows. The Unit type endpoint also supports pagination for managing large datasets effectively.
+This section outlines how to retrieve data from the Workflow Answer table using the provided endpoint. You have the flexibility to fetch specific data by including workflow Answer Ids, workflow Ids, workflow question Ids, category Answer Index, category Revision Index, question Answer Index, question Revision Index, workflow Answer, lastModifiedStartDate and lastModifiedEndDate. The Workflow Answer endpoint also supports pagination for managing large datasets effectively.
 
 > Example Request
 
@@ -1171,16 +1101,19 @@ IRestResponse response = client.Execute(request);
     "hasNext": true,
     "data": [
         {
+            "workflowAnswerId": "number",
             "workflowId": "number",
-            "workflow": "string",
-            "workflowTypeId": 0,
-            "description": "string",
-            "alternateNames": "string",
-            "sortOrder": "number",
+            "workflowQuestionId": "number",
+            "categoryAnswerIndex": "number",
+            "categoryRevisionIndex": "number",
+            "questionAnswerIndex": "number",
+            "questionRevisionIndex": "number",
+            "workflowAnswer": "2016-03-23",
+            "dataLockTypeId": "number",
+            "personId": "number",
             "lastModifiedDate": "2017-02-13T22:15:30.203Z",
             "externalIdentifier": "string",
-            "comments": "string",
-            "refId": "string"
+            "comments": "string"
         }
 	]
 }
@@ -1197,14 +1130,20 @@ Attribute | Type | Description
 --------- | ---- | -----------
 PageNumber | int | Page number of the results to fetch.
 PageSize | int | The number of results per page
-workflowIds | int | Unit ID is one of the unique identifier for this Unit record
-workflowAnswerIds | int | Unit Type Ids is the unique identifier of the associated unit type
-workflow | string | Units is one of the filter option and the parameter is for the Name of the Unit
-
+workflowAnswerIds | int | Workflow Answer IDs are the unique identifiers for the answers in the workflow. Answer IDs are associated with a unique Question ID.
+workflowIds | int | Workflow IDs are the unique identifier for workflows (the named form or workflow type+date completed).
+workflowQuestionIds | int | Workflow Question IDs are the unique identifiers for questions in the workflow. Question IDs are associated with a unique Workflow ID.
+categoryAnswerIndex | int | Category Answer Index is the index for answers in the category.
+categoryRevisionIndex | int | Category Revision Index is the list of category revisions. If the workflow itself is updated a new category revision ID is assigned.
+questionAnswerIndex | int | QQuestion Answer Index is the index for answers to a question. Answer IDs are associated with a unique Question ID.
+questionRevisionIndex | int | Question Revision Index is the index for questions with revisions. If the question itself is updated a question revision ID is assigned.
+workflowAnswer | string | Wokflow Answer is the answer to the question..
+lastModifiedStartDate | dateTime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+lastModifiedEndDate | dateTime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 
 ### 16. Workflow Equipment Table
 
-This section outlines how to retrieve data from the Workflow Answer table using the provided endpoint. You have the flexibility to fetch specific data by including workflow Ids, workflow type Ids, and workflows. The Unit type endpoint also supports pagination for managing large datasets effectively.
+This section outlines how to retrieve data from the Workflow Equipment table using the provided endpoint. Equipment workflows are typically labeled Inspection. You have the flexibility to fetch specific data by including workflow Equipment Ids, workflow Ids, and Equipment Ids. The Workflow Equipment endpoint also supports pagination for managing large datasets effectively.
 
 > Example Request
 
@@ -1212,7 +1151,7 @@ This section outlines how to retrieve data from the Workflow Answer table using 
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://[tenant].actsapi.intelex.com/v1/workflowequipment' };
+  url: 'https://[tenant].actsapi.intelex.com/v1/workflowEquipment' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -1222,7 +1161,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/workflowequipment");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/workflowEquipment");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -1240,16 +1179,13 @@ IRestResponse response = client.Execute(request);
     "hasNext": true,
     "data": [
         {
+            "workflowEquipmentId": "number",
             "workflowId": "number",
-            "workflow": "string",
-            "workflowTypeId": 0,
-            "description": "string",
-            "alternateNames": "string",
-            "sortOrder": "number",
+            "equipmentId": "number",
+            "workflowQuestionId": "number",
             "lastModifiedDate": "2017-02-13T22:15:30.203Z",
             "externalIdentifier": "string",
-            "comments": "string",
-            "refId": "string"
+            "comments": "string"
         }
 	]
 }
@@ -1258,7 +1194,7 @@ IRestResponse response = client.Execute(request);
 
 **API Endpoints**
 
-`GET` /api/v1/workflowequipment
+`GET` /api/v1/workflowEquipment
 
 **Query parameters**
 
@@ -1266,14 +1202,13 @@ Attribute | Type | Description
 --------- | ---- | -----------
 PageNumber | int | Page number of the results to fetch.
 PageSize | int | The number of results per page
-workflowIds | int | Unit ID is one of the unique identifier for this Unit record
-workflowTypeIds | int | Unit Type Ids is the unique identifier of the associated unit type
-workflow | string | Units is one of the filter option and the parameter is for the Name of the Unit
-
+workflowEquipmentIds | int | Workflow Equipment ID is the unique identifier for the associated equipment within the workflow.
+workflowIds | int | Workflow Ids is the unique identifier of the associated workflow.
+equipmentIds | string | Equipment IDs are the unique identifier of the associated equipment.
 
 ### 17. Workflow Facility Table
 
-This section outlines how to retrieve data from the Workflow Answer table using the provided endpoint. You have the flexibility to fetch specific data by including workflow Ids, workflow type Ids, and workflows. The Unit type endpoint also supports pagination for managing large datasets effectively.
+This section outlines how to retrieve data from the Workflow Facility table using the provided endpoint. Facility workflows are typically labeled Inspection. You have the flexibility to fetch specific data by including workflow Facility Ids, workflow Ids and facility Ids. The Workflow Facility endpoint also supports pagination for managing large datasets effectively.
 
 > Example Request
 
@@ -1309,12 +1244,10 @@ IRestResponse response = client.Execute(request);
     "hasNext": true,
     "data": [
         {
+            "workflowFacilityId": "number",
             "workflowId": "number",
-            "workflow": "string",
-            "workflowTypeId": 0,
-            "description": "string",
-            "alternateNames": "string",
-            "sortOrder": "number",
+            "facilityId": "number",
+            "workflowQuestionId": "number",
             "lastModifiedDate": "2017-02-13T22:15:30.203Z",
             "externalIdentifier": "string",
             "comments": "string",
@@ -1335,15 +1268,15 @@ Attribute | Type | Description
 --------- | ---- | -----------
 PageNumber | int | Page number of the results to fetch.
 PageSize | int | The number of results per page
-workflowIds | int | Unit ID is one of the unique identifier for this Unit record
-workflowTypeIds | int | Unit Type Ids is the unique identifier of the associated unit type
-workflow | string | Units is one of the filter option and the parameter is for the Name of the Unit
+workflowFacilityIds | int | Workflow Facility IDs are the unique identifier for the associated facility within the workflow.
+workflowIds | int | Workflow IDs are the unique identifier for workflows (the named form or workflow type+date completed).
+facilityIds | int | Facility IDs are the unique identifier for the associated facility.
 
 
 
 ### 18. Workflow Person Table
 
-This section outlines how to retrieve data from the Workflow Answer table using the provided endpoint. You have the flexibility to fetch specific data by including workflow Ids, workflow type Ids, and workflows. The Unit type endpoint also supports pagination for managing large datasets effectively.
+This section outlines how to retrieve data from the Workflow Person table using the provided endpoint. You have the flexibility to fetch specific data by including workflow person Ids, workflow Ids and person Ids. The Unit type endpoint also supports pagination for managing large datasets effectively.
 
 > Example Request
 
@@ -1379,16 +1312,13 @@ IRestResponse response = client.Execute(request);
     "hasNext": true,
     "data": [
         {
+            "workflowPersonId": "number",
             "workflowId": "number",
-            "workflow": "string",
-            "workflowTypeId": 0,
-            "description": "string",
-            "alternateNames": "string",
-            "sortOrder": "number",
+            "personId": "number",
+            "workflowQuestionId": "number",
             "lastModifiedDate": "2017-02-13T22:15:30.203Z",
             "externalIdentifier": "string",
-            "comments": "string",
-            "refId": "string"
+            "comments": "string"
         }
 	]
 }
@@ -1405,14 +1335,13 @@ Attribute | Type | Description
 --------- | ---- | -----------
 PageNumber | int | Page number of the results to fetch.
 PageSize | int | The number of results per page
-workflowIds | int | Unit ID is one of the unique identifier for this Unit record
-workflowTypeIds | int | Unit Type Ids is the unique identifier of the associated unit type
-workflow | string | Units is one of the filter option and the parameter is for the Name of the Unit
-
+workflowPersonIds | int | Workflow Person ID is the unique identifier for the associated person within the workflow.
+workflowIds | int | Workflow IDs are the unique identifier for workflows (the named form or workflow type+date completed).
+personIds | int | Person IDs are the assigned values for associated person(s) and can be used as a filter.
 
 ### 19. Workflow Question Table
 
-This section outlines how to retrieve data from the Workflow Answer table using the provided endpoint. You have the flexibility to fetch specific data by including workflow Ids, workflow type Ids, and workflows. The Unit type endpoint also supports pagination for managing large datasets effectively.
+This section outlines how to retrieve data from the Workflow Question table using the provided endpoint. You have the flexibility to fetch specific data by including workflow Question Ids, workflow question categoy Ids, data type Ids, required Inds and questions. The Workflow Question endpoint also supports pagination for managing large datasets effectively.
 
 > Example Request
 
@@ -1448,16 +1377,38 @@ IRestResponse response = client.Execute(request);
     "hasNext": true,
     "data": [
         {
-            "workflowId": "number",
-            "workflow": "string",
-            "workflowTypeId": 0,
-            "description": "string",
-            "alternateNames": "string",
+            "workflowQuestionId": "number",
+            "workflowQuestionCategoryId": "number",
+            "question": "string",
+            "dataTypeId": "number",
+            "dataTypeSize": "number",
+            "dataTypePrecision": "number",
+            "dataTypeFilter": "string",
+            "workflowAnswerListId": "number",
+            "workflowAnswerList": "string",
+            "defaultValue": "string",
+            "alwaysEvaluateDefaultInd": "string",
+            "displayInd": "string",
+            "displayCondition": "string",
+            "disabledInd": "string",
+            "disabledCondition": "string",
+            "requiredInd": "string",
+            "validationCondition": "string",
+            "validationErrorText": "string",
+            "repeatInd": "string",
+            "repeatDeleteInd": "string",
+            "repeatDeleteConfirmInd": "string",
+            "reviseInd": "string",
+            "associateEntityInd": "string",
+            "allowCopyInd": "string",
+            "workflowTypeId": "number",
+            "viewColumnName": "string",
+            "sensitiveDataInd": "string",
+            "xmlDescription": "string",
             "sortOrder": "number",
             "lastModifiedDate": "2017-02-13T22:15:30.203Z",
             "externalIdentifier": "string",
-            "comments": "string",
-            "refId": "string"
+            "comments": "string"
         }
 	]
 }
@@ -1474,9 +1425,11 @@ Attribute | Type | Description
 --------- | ---- | -----------
 PageNumber | int | Page number of the results to fetch.
 PageSize | int | The number of results per page
-workflowIds | int | Unit ID is one of the unique identifier for this Unit record
-workflowTypeIds | int | Unit Type Ids is the unique identifier of the associated unit type
-workflow | string | Units is one of the filter option and the parameter is for the Name of the Unit
+workflowQuestionIds | int | Workflow Question ID are the unique identifiers for the workflow question record.
+workflowQuestionCategoryIds | int | Workflow Question Category Ids are the unique identifiers for the associated workflow question category.
+dataTypeIds | int | Data Type IDs are the unique identifiers for the associated data type.
+requiredInds | string | Required Inds is the value if an answer is required before saving the form.
+questions | string | quQuestions are the question content values included on the form.
 
 
 ### 20. Workflow Type Table
@@ -1517,11 +1470,17 @@ IRestResponse response = client.Execute(request);
     "hasNext": true,
     "data": [
         {
-            "workflowId": "number",
-            "workflow": "string",
-            "workflowTypeId": 0,
-            "description": "string",
-            "alternateNames": "string",
+           "workflowTypeId": "number",
+            "workflowType": "string",
+            "workflowCategoryId": "number",
+            "remoteInd": "string",
+            "addCondition": "string",
+            "openCondition": "string",
+            "workflowAssociationsInd": "string",
+            "fileAttachmentsInd": "string",
+            "allowCopyInd": "string",
+            "viewName": "string",
+            "xmlDescription": "string",
             "sortOrder": "number",
             "lastModifiedDate": "2017-02-13T22:15:30.203Z",
             "externalIdentifier": "string",
@@ -1543,8 +1502,9 @@ Attribute | Type | Description
 --------- | ---- | -----------
 PageNumber | int | Page number of the results to fetch.
 PageSize | int | The number of results per page
-workflowIds | int | Unit ID is one of the unique identifier for this Unit record
-workflowTypeIds | int | Unit Type Ids is the unique identifier of the associated unit type
-workflow | string | Units is one of the filter option and the parameter is for the Name of the Unit
+workflowTypeIds | int | Workflow Type IDs are the unique identifier for a workflow type.
+workflowCategoryIds | int | Workflow Category IDs are the unique identifier for the associated workflow category.
+workflowTypes | string | Workflow Types are the assigned values for the type of workflow and can be used as a filter.
+
 
 
