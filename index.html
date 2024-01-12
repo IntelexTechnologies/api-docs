@@ -5507,27 +5507,22 @@ Content-Transfer-Encoding:binary
 <tr>
 <td>equipmentAttributeIds</td>
 <td>int</td>
-<td>EquipmentAttributeId one of the unique identifier for this Equipment record</td>
+<td>EquipmentAttributeId one of the unique identifier for this Equipment record.</td>
 </tr>
 <tr>
 <td>equipmentIds</td>
 <td>int</td>
-<td>EquipmentId accepts the numbers as input</td>
+<td>EquipmentId must be numeric.</td>
 </tr>
 <tr>
 <td>attributetypeIds</td>
 <td>int</td>
-<td>AttributeTypeId accepts the numbers as input</td>
+<td>AttributeTypeId must be numeric.</td>
 </tr>
 <tr>
 <td>equipmentattributes</td>
 <td>string</td>
 <td>Equipment Attribute is one of the filter option and the parameter is for the Equipment Attribute Type</td>
-</tr>
-<tr>
-<td>datalocktypeIds</td>
-<td>int</td>
-<td>Data Lock Type ID the unique identifier of the associated data lock type</td>
 </tr>
 <tr>
 <td>lastModifiedStartDate</td>
@@ -5538,16 +5533,6 @@ Content-Transfer-Encoding:binary
 <td>lastModifiedEndDate</td>
 <td>string</td>
 <td>Date time format &ldquo;yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z&rdquo;</td>
-</tr>
-<tr>
-<td>externalidentifier</td>
-<td>string</td>
-<td>External Identifier a unique identifier for this record to an external data system</td>
-</tr>
-<tr>
-<td>comments</td>
-<td>string</td>
-<td>Comments any comments associated with this record</td>
 </tr>
 </tbody></table>
 
@@ -6119,89 +6104,6 @@ Content-Transfer-Encoding:binary
 
 <h3 id="13-unit-table">13. Unit Table</h3>
 
-<p>All data from the Operation Type table will be returned from the endpoint below. You can optionally fetch specific data by including the operation type Ids, operation types . The Operation Type endpoint supports pagination.</p>
-
-<blockquote>
-<p>Example Request</p>
-</blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
-
-<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://[tenant].actsapi.intelex.com/v1/operationtype'</span> <span class="p">};</span>
-<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
-<span class="p">});</span>
-</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://[tenant].actsapi.intelex.com/v1/operationtype"</span><span class="p">);</span>
-<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">GET</span><span class="p">);</span>
-<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
-</code></pre>
-<blockquote>
-<p>Response Schema</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"currentPage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"currentPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"maxAPIPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"totalCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">337</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"hasPrevious"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"hasNext"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"operationTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"operationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"parentOperationTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"compoundId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"applicabilityFormula"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"sortOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"lastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-01T15:55:25"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"externalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"refId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
-<p><strong>API Endpoints</strong></p>
-
-<p><code class="prettyprint">GET</code> /api/v1/operationtype</p>
-
-<p><strong>Query parameters</strong></p>
-
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>PageNumber</td>
-<td>int</td>
-<td>Page number of the results to fetch.</td>
-</tr>
-<tr>
-<td>PageSize</td>
-<td>int</td>
-<td>The number of results per page</td>
-</tr>
-<tr>
-<td>operationTypeIds</td>
-<td>int</td>
-<td>The unique identifier for this operation type record</td>
-</tr>
-<tr>
-<td>operationTypes</td>
-<td>string</td>
-<td>The type of operational data</td>
-</tr>
-</tbody></table>
-
-<h3 id="13-unit-table">13. Unit Table</h3>
-
 <p>This section outlines how to retrieve data from the Unit table using the provided endpoint. You have the flexibility to fetch specific data by including unit Ids, unit type Ids, and units. The Unit type endpoint also supports pagination for managing large datasets effectively.</p>
 
 <blockquote>
@@ -6379,7 +6281,7 @@ Content-Transfer-Encoding:binary
 
 <h3 id="15-workflow-answer-table">15. Workflow Answer Table</h3>
 
-<p>This section outlines how to retrieve data from the Workflow Answer table using the provided endpoint. You have the flexibility to fetch specific data by including workflow Ids, workflow type Ids, and workflows. The Unit type endpoint also supports pagination for managing large datasets effectively.</p>
+<p>This section outlines how to retrieve data from the Workflow Answer table using the provided endpoint. You have the flexibility to fetch specific data by including workflow Answer Ids, workflow Ids, workflow question Ids, category Answer Index, category Revision Index, question Answer Index, question Revision Index, workflow Answer, lastModifiedStartDate and lastModifiedEndDate. The Workflow Answer endpoint also supports pagination for managing large datasets effectively.</p>
 
 <blockquote>
 <p>Example Request</p>
@@ -6411,16 +6313,19 @@ Content-Transfer-Encoding:binary
     </span><span class="s2">"hasNext"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"workflowAnswerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"workflowId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"workflow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"workflowTypeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"alternateNames"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"sortOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"workflowQuestionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"categoryAnswerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"categoryRevisionIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"questionAnswerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"questionRevisionIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"workflowAnswer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-23"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"dataLockTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"personId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"lastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-13T22:15:30.203Z"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"externalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"refId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -6450,25 +6355,60 @@ Content-Transfer-Encoding:binary
 <td>The number of results per page</td>
 </tr>
 <tr>
-<td>workflowIds</td>
-<td>int</td>
-<td>Unit ID is one of the unique identifier for this Unit record</td>
-</tr>
-<tr>
 <td>workflowAnswerIds</td>
 <td>int</td>
-<td>Unit Type Ids is the unique identifier of the associated unit type</td>
+<td>Workflow Answer IDs are the unique identifiers for the answers in the workflow. Answer IDs are associated with a unique Question ID.</td>
 </tr>
 <tr>
-<td>workflow</td>
+<td>workflowIds</td>
+<td>int</td>
+<td>Workflow IDs are the unique identifier for workflows (the named form or workflow type+date completed).</td>
+</tr>
+<tr>
+<td>workflowQuestionIds</td>
+<td>int</td>
+<td>Workflow Question IDs are the unique identifiers for questions in the workflow. Question IDs are associated with a unique Workflow ID.</td>
+</tr>
+<tr>
+<td>categoryAnswerIndex</td>
+<td>int</td>
+<td>Category Answer Index is the index for answers in the category.</td>
+</tr>
+<tr>
+<td>categoryRevisionIndex</td>
+<td>int</td>
+<td>Category Revision Index is the list of category revisions. If the workflow itself is updated a new category revision ID is assigned.</td>
+</tr>
+<tr>
+<td>questionAnswerIndex</td>
+<td>int</td>
+<td>QQuestion Answer Index is the index for answers to a question. Answer IDs are associated with a unique Question ID.</td>
+</tr>
+<tr>
+<td>questionRevisionIndex</td>
+<td>int</td>
+<td>Question Revision Index is the index for questions with revisions. If the question itself is updated a question revision ID is assigned.</td>
+</tr>
+<tr>
+<td>workflowAnswer</td>
 <td>string</td>
-<td>Units is one of the filter option and the parameter is for the Name of the Unit</td>
+<td>Wokflow Answer is the answer to the question..</td>
+</tr>
+<tr>
+<td>lastModifiedStartDate</td>
+<td>dateTime</td>
+<td>Date time format &ldquo;yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z&rdquo;</td>
+</tr>
+<tr>
+<td>lastModifiedEndDate</td>
+<td>dateTime</td>
+<td>Date time format &ldquo;yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z&rdquo;</td>
 </tr>
 </tbody></table>
 
 <h3 id="16-workflow-equipment-table">16. Workflow Equipment Table</h3>
 
-<p>This section outlines how to retrieve data from the Workflow Answer table using the provided endpoint. You have the flexibility to fetch specific data by including workflow Ids, workflow type Ids, and workflows. The Unit type endpoint also supports pagination for managing large datasets effectively.</p>
+<p>This section outlines how to retrieve data from the Workflow Equipment table using the provided endpoint. Equipment workflows are typically labeled Inspection. You have the flexibility to fetch specific data by including workflow Equipment Ids, workflow Ids, and Equipment Ids. The Workflow Equipment endpoint also supports pagination for managing large datasets effectively.</p>
 
 <blockquote>
 <p>Example Request</p>
@@ -6476,14 +6416,14 @@ Content-Transfer-Encoding:binary
 <pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
 
 <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://[tenant].actsapi.intelex.com/v1/workflowequipment'</span> <span class="p">};</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://[tenant].actsapi.intelex.com/v1/workflowEquipment'</span> <span class="p">};</span>
 
 <span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
 
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
 <span class="p">});</span>
-</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://[tenant].actsapi.intelex.com/v1/workflowequipment"</span><span class="p">);</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://[tenant].actsapi.intelex.com/v1/workflowEquipment"</span><span class="p">);</span>
 <span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">GET</span><span class="p">);</span>
 <span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
 </code></pre>
@@ -6500,16 +6440,13 @@ Content-Transfer-Encoding:binary
     </span><span class="s2">"hasNext"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"workflowEquipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"workflowId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"workflow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"workflowTypeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"alternateNames"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"sortOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"equipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"workflowQuestionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"lastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-13T22:15:30.203Z"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"externalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"refId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -6517,7 +6454,7 @@ Content-Transfer-Encoding:binary
 </span></code></pre>
 <p><strong>API Endpoints</strong></p>
 
-<p><code class="prettyprint">GET</code> /api/v1/workflowequipment</p>
+<p><code class="prettyprint">GET</code> /api/v1/workflowEquipment</p>
 
 <p><strong>Query parameters</strong></p>
 
@@ -6539,25 +6476,25 @@ Content-Transfer-Encoding:binary
 <td>The number of results per page</td>
 </tr>
 <tr>
+<td>workflowEquipmentIds</td>
+<td>int</td>
+<td>Workflow Equipment ID is the unique identifier for the associated equipment within the workflow.</td>
+</tr>
+<tr>
 <td>workflowIds</td>
 <td>int</td>
-<td>Unit ID is one of the unique identifier for this Unit record</td>
+<td>Workflow Ids is the unique identifier of the associated workflow.</td>
 </tr>
 <tr>
-<td>workflowTypeIds</td>
-<td>int</td>
-<td>Unit Type Ids is the unique identifier of the associated unit type</td>
-</tr>
-<tr>
-<td>workflow</td>
+<td>equipmentIds</td>
 <td>string</td>
-<td>Units is one of the filter option and the parameter is for the Name of the Unit</td>
+<td>Equipment IDs are the unique identifier of the associated equipment.</td>
 </tr>
 </tbody></table>
 
 <h3 id="17-workflow-facility-table">17. Workflow Facility Table</h3>
 
-<p>This section outlines how to retrieve data from the Workflow Answer table using the provided endpoint. You have the flexibility to fetch specific data by including workflow Ids, workflow type Ids, and workflows. The Unit type endpoint also supports pagination for managing large datasets effectively.</p>
+<p>This section outlines how to retrieve data from the Workflow Facility table using the provided endpoint. Facility workflows are typically labeled Inspection. You have the flexibility to fetch specific data by including workflow Facility Ids, workflow Ids and facility Ids. The Workflow Facility endpoint also supports pagination for managing large datasets effectively.</p>
 
 <blockquote>
 <p>Example Request</p>
@@ -6589,12 +6526,10 @@ Content-Transfer-Encoding:binary
     </span><span class="s2">"hasNext"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"workflowFacilityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"workflowId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"workflow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"workflowTypeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"alternateNames"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"sortOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"facilityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"workflowQuestionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"lastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-13T22:15:30.203Z"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"externalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -6628,25 +6563,25 @@ Content-Transfer-Encoding:binary
 <td>The number of results per page</td>
 </tr>
 <tr>
+<td>workflowFacilityIds</td>
+<td>int</td>
+<td>Workflow Facility IDs are the unique identifier for the associated facility within the workflow.</td>
+</tr>
+<tr>
 <td>workflowIds</td>
 <td>int</td>
-<td>Unit ID is one of the unique identifier for this Unit record</td>
+<td>Workflow IDs are the unique identifier for workflows (the named form or workflow type+date completed).</td>
 </tr>
 <tr>
-<td>workflowTypeIds</td>
+<td>facilityIds</td>
 <td>int</td>
-<td>Unit Type Ids is the unique identifier of the associated unit type</td>
-</tr>
-<tr>
-<td>workflow</td>
-<td>string</td>
-<td>Units is one of the filter option and the parameter is for the Name of the Unit</td>
+<td>Facility IDs are the unique identifier for the associated facility.</td>
 </tr>
 </tbody></table>
 
 <h3 id="18-workflow-person-table">18. Workflow Person Table</h3>
 
-<p>This section outlines how to retrieve data from the Workflow Answer table using the provided endpoint. You have the flexibility to fetch specific data by including workflow Ids, workflow type Ids, and workflows. The Unit type endpoint also supports pagination for managing large datasets effectively.</p>
+<p>This section outlines how to retrieve data from the Workflow Person table using the provided endpoint. You have the flexibility to fetch specific data by including workflow person Ids, workflow Ids and person Ids. The Unit type endpoint also supports pagination for managing large datasets effectively.</p>
 
 <blockquote>
 <p>Example Request</p>
@@ -6678,16 +6613,13 @@ Content-Transfer-Encoding:binary
     </span><span class="s2">"hasNext"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"workflowPersonId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"workflowId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"workflow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"workflowTypeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"alternateNames"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"sortOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"personId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"workflowQuestionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"lastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-13T22:15:30.203Z"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"externalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"refId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -6717,25 +6649,25 @@ Content-Transfer-Encoding:binary
 <td>The number of results per page</td>
 </tr>
 <tr>
+<td>workflowPersonIds</td>
+<td>int</td>
+<td>Workflow Person ID is the unique identifier for the associated person within the workflow.</td>
+</tr>
+<tr>
 <td>workflowIds</td>
 <td>int</td>
-<td>Unit ID is one of the unique identifier for this Unit record</td>
+<td>Workflow IDs are the unique identifier for workflows (the named form or workflow type+date completed).</td>
 </tr>
 <tr>
-<td>workflowTypeIds</td>
+<td>personIds</td>
 <td>int</td>
-<td>Unit Type Ids is the unique identifier of the associated unit type</td>
-</tr>
-<tr>
-<td>workflow</td>
-<td>string</td>
-<td>Units is one of the filter option and the parameter is for the Name of the Unit</td>
+<td>Person IDs are the assigned values for associated person(s) and can be used as a filter.</td>
 </tr>
 </tbody></table>
 
 <h3 id="19-workflow-question-table">19. Workflow Question Table</h3>
 
-<p>This section outlines how to retrieve data from the Workflow Answer table using the provided endpoint. You have the flexibility to fetch specific data by including workflow Ids, workflow type Ids, and workflows. The Unit type endpoint also supports pagination for managing large datasets effectively.</p>
+<p>This section outlines how to retrieve data from the Workflow Question table using the provided endpoint. You have the flexibility to fetch specific data by including workflow Question Ids, workflow question categoy Ids, data type Ids, required Inds and questions. The Workflow Question endpoint also supports pagination for managing large datasets effectively.</p>
 
 <blockquote>
 <p>Example Request</p>
@@ -6767,16 +6699,38 @@ Content-Transfer-Encoding:binary
     </span><span class="s2">"hasNext"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"workflowId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"workflow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"workflowTypeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"alternateNames"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"workflowQuestionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"workflowQuestionCategoryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"question"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"dataTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"dataTypeSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"dataTypePrecision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"dataTypeFilter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"workflowAnswerListId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"workflowAnswerList"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"defaultValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"alwaysEvaluateDefaultInd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"displayInd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"displayCondition"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"disabledInd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"disabledCondition"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"requiredInd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"validationCondition"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"validationErrorText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"repeatInd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"repeatDeleteInd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"repeatDeleteConfirmInd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"reviseInd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"associateEntityInd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"allowCopyInd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"workflowTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"viewColumnName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sensitiveDataInd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"xmlDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"sortOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"lastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-13T22:15:30.203Z"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"externalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"refId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -6806,19 +6760,29 @@ Content-Transfer-Encoding:binary
 <td>The number of results per page</td>
 </tr>
 <tr>
-<td>workflowIds</td>
+<td>workflowQuestionIds</td>
 <td>int</td>
-<td>Unit ID is one of the unique identifier for this Unit record</td>
+<td>Workflow Question ID are the unique identifiers for the workflow question record.</td>
 </tr>
 <tr>
-<td>workflowTypeIds</td>
+<td>workflowQuestionCategoryIds</td>
 <td>int</td>
-<td>Unit Type Ids is the unique identifier of the associated unit type</td>
+<td>Workflow Question Category Ids are the unique identifiers for the associated workflow question category.</td>
 </tr>
 <tr>
-<td>workflow</td>
+<td>dataTypeIds</td>
+<td>int</td>
+<td>Data Type IDs are the unique identifiers for the associated data type.</td>
+</tr>
+<tr>
+<td>requiredInds</td>
 <td>string</td>
-<td>Units is one of the filter option and the parameter is for the Name of the Unit</td>
+<td>Required Inds is the value if an answer is required before saving the form.</td>
+</tr>
+<tr>
+<td>questions</td>
+<td>string</td>
+<td>quQuestions are the question content values included on the form.</td>
 </tr>
 </tbody></table>
 
@@ -6856,11 +6820,17 @@ Content-Transfer-Encoding:binary
     </span><span class="s2">"hasNext"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"workflowId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"workflow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"workflowTypeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"alternateNames"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+           </span><span class="s2">"workflowTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"workflowType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"workflowCategoryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"remoteInd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"addCondition"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"openCondition"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"workflowAssociationsInd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fileAttachmentsInd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"allowCopyInd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"viewName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"xmlDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"sortOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"lastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-13T22:15:30.203Z"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"externalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -6895,19 +6865,19 @@ Content-Transfer-Encoding:binary
 <td>The number of results per page</td>
 </tr>
 <tr>
-<td>workflowIds</td>
-<td>int</td>
-<td>Unit ID is one of the unique identifier for this Unit record</td>
-</tr>
-<tr>
 <td>workflowTypeIds</td>
 <td>int</td>
-<td>Unit Type Ids is the unique identifier of the associated unit type</td>
+<td>Workflow Type IDs are the unique identifier for a workflow type.</td>
 </tr>
 <tr>
-<td>workflow</td>
+<td>workflowCategoryIds</td>
+<td>int</td>
+<td>Workflow Category IDs are the unique identifier for the associated workflow category.</td>
+</tr>
+<tr>
+<td>workflowTypes</td>
 <td>string</td>
-<td>Units is one of the filter option and the parameter is for the Name of the Unit</td>
+<td>Workflow Types are the assigned values for the type of workflow and can be used as a filter.</td>
 </tr>
 </tbody></table>
 
@@ -7406,6 +7376,415 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
     </span><span class="s2">"failureCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">,</span><span class="w">
     </span><span class="s2">"errorMessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
      </span><span class="s2">"Operation ID : 0, Error: An error occurred while saving the entity changes. See the inner exception for details "</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<h3 id="6-workflow-table">6. Workflow Table</h3>
+
+<p>This section outlines the process of adding new entries or modifying existing records within the Workflow table using the dedicated API endpoint.</p>
+
+<p><strong>Workflow POST Endpoint</strong></p>
+
+<p><code class="prettyprint">POST</code> api/v1/workflow</p>
+
+<blockquote>
+<p>Example Request &amp; JSON Input Body </p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://[tenant].actsapi.intelex.com/v1/workflow'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span> <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span>
+      <span class="p">{</span>
+        <span class="s2">"workflowId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+        <span class="s2">"workflowTypeId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+        <span class="s2">"workflowDate"</span><span class="p">:</span> <span class="s2">"2024-01-03T08:16:24.155Z"</span><span class="p">,</span>
+        <span class="s2">"dataLockTypeId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+        <span class="s2">"lastModifiedDate"</span><span class="p">:</span> <span class="s2">"2024-01-03T08:16:24.155Z"</span><span class="p">,</span>
+        <span class="s2">"externalIdentifier"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
+        <span class="s2">"comments"</span><span class="p">:</span> <span class="s2">"string"</span>
+      <span class="p">};</span>
+
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://[tenant].actsapi.intelex.com/v1/workflow"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"{\r\n    \"WorkflowId\": \"number\",\r\n    \"WorkflowTypeId\": \"number\",\r\n    \"WorkflowDate\": \"2023-03-30T07:27:06.295Z\",\r\n    \"DataLockTypeId\": \"number\",\r\n    \"LastModifiedDate\": \"2023-03-30T07:27:06.295Z\",\r\n    \"ExternalIdentifier\": \"string\",\r\n    \"Comments\": \"string\"}"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Input JSON Body </p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"WorkflowId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"WorkflowTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"WorkflowDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-01-03T08:16:24.155Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"DataLockTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"LastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-01-03T08:16:24.155Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ExternalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"insertedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"updatedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"failureCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errorMessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<blockquote>
+<p>Example Output For When Data Get&rsquo;s Failed To Insert or Update</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"insertedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"updatedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"failureCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errorMessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+     </span><span class="s2">"Workflow Id : 0, Error: An error occurred while saving the entity changes. See the inner exception for details "</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<h3 id="7-workflow-answer-table">7. Workflow Answer Table</h3>
+
+<p>This section outlines the process of adding new entries or modifying existing records within the Workflow Answer table using the dedicated API endpoint.</p>
+
+<p><strong>Workflow Answer POST Endpoint</strong></p>
+
+<p><code class="prettyprint">POST</code> api/v1/workflowAnswer</p>
+
+<blockquote>
+<p>Example Request &amp; JSON Input Body </p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://[tenant].actsapi.intelex.com/v1/workflowAnswer'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span> <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span>
+      <span class="p">{</span>
+       <span class="s2">"workflowAnswerId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+        <span class="s2">"workflowId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+        <span class="s2">"workflowQuestionId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+        <span class="s2">"categoryAnswerIndex"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+        <span class="s2">"categoryRevisionIndex"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+        <span class="s2">"questionAnswerIndex"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+        <span class="s2">"questionRevisionIndex"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+        <span class="s2">"workflowAnswer"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
+        <span class="s2">"dataLockTypeId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+        <span class="s2">"personId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+        <span class="s2">"lastModifiedDate"</span><span class="p">:</span> <span class="s2">"2024-01-03T08:16:24.155Z"</span><span class="p">,</span>
+        <span class="s2">"externalIdentifier"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
+        <span class="s2">"comments"</span><span class="p">:</span> <span class="s2">"string"</span>
+      <span class="p">};</span>
+
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://[tenant].actsapi.intelex.com/v1/workflowAnswer"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"{\r\n    \"WorkflowAnswerId\": \"number\",\r\n    \"WorkflowId\": \"number\",\r\n    \"WorkflowQuestionId\": \"number\",\r\n    \"CategoryAnswerIndex\": \"number\",\r\n    \"CategoryRevisionIndex\": \"number\",\r\n     \"QuestionAnswerIndex\": \"number\",\r\n     \"QuestionRevisionIndex\": \"number\",\r\n     \"WorkflowAnswer\": \"string\",\r\n    \"DataLockTypeId\": \"number\",\r\n    \"PersonId\": \"number\",\r\n    \"LastModifiedDate\": \"2023-03-30T07:27:06.295Z\",\r\n    \"ExternalIdentifier\": \"string\",\r\n    \"Comments\": \"string\"}"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Input JSON Body </p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"WorkflowAnswerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"WorkflowId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"WorkflowQuestionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"CategoryAnswerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"CategoryRevisionIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"QuestionAnswerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"QuestionRevisionIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"WorkflowAnswer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"DataLockTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"PersonId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"LastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-01-03T08:16:24.155Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ExternalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"insertedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"updatedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"failureCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errorMessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<blockquote>
+<p>Example Output For When Data Get&rsquo;s Failed To Insert or Update</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"insertedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"updatedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"failureCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errorMessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+     </span><span class="s2">"Workflow Answer Id : 0, Error: An error occurred while saving the entity changes. See the inner exception for details "</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<h3 id="8-workflow-equipment-table">8. Workflow Equipment Table</h3>
+
+<p>This section outlines the process of adding new entries or modifying existing records within the Workflow Equipment table using the dedicated API endpoint.</p>
+
+<p><strong>Workflow Equipment POST Endpoint</strong></p>
+
+<p><code class="prettyprint">POST</code> api/v1/workflowEquipment</p>
+
+<blockquote>
+<p>Example Request &amp; JSON Input Body </p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://[tenant].actsapi.intelex.com/v1/workflowEquipment'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span> <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span>
+      <span class="p">{</span>
+        <span class="s2">"workflowEquipmentId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+        <span class="s2">"workflowId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+        <span class="s2">"equipmentId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+        <span class="s2">"workflowQuestionId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+        <span class="s2">"lastModifiedDate"</span><span class="p">:</span> <span class="s2">"2024-01-03T08:16:24.155Z"</span><span class="p">,</span>
+        <span class="s2">"externalIdentifier"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
+        <span class="s2">"comments"</span><span class="p">:</span> <span class="s2">"string"</span>
+      <span class="p">};</span>
+
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://[tenant].actsapi.intelex.com/v1/workflowEquipment"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"{\r\n    \"WorkflowEquipmentId\": \"number\",\r\n    \"WorkflowId\": \"number\",\r\n    \"EquipmentId\": \"number\",\r\n    \"WorkflowQuestionId\": \"number\",\r\n    \"LastModifiedDate\": \"2023-03-30T07:27:06.295Z\",\r\n    \"ExternalIdentifier\": \"string\",\r\n    \"Comments\": \"string\"}"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Input JSON Body </p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"WorkflowEquipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"WorkflowId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"EquipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"WorkflowQuestionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"LastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-01-03T08:16:24.155Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ExternalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"insertedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"updatedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"failureCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errorMessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<blockquote>
+<p>Example Output For When Data Get&rsquo;s Failed To Insert or Update</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"insertedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"updatedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"failureCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errorMessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+     </span><span class="s2">"Workflow Equipment Id : 0, Error: An error occurred while saving the entity changes. See the inner exception for details "</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<h3 id="9-workflow-facility-table">9. Workflow Facility Table</h3>
+
+<p>This section outlines the process of adding new entries or modifying existing records within the Workflow Facility table using the dedicated API endpoint.</p>
+
+<p><strong>Workflow Facility POST Endpoint</strong></p>
+
+<p><code class="prettyprint">POST</code> api/v1/workflowFacility</p>
+
+<blockquote>
+<p>Example Request &amp; JSON Input Body </p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://[tenant].actsapi.intelex.com/v1/workflowFacility'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span> <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span>
+      <span class="p">{</span>
+        <span class="s2">"workflowFacilityId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+        <span class="s2">"workflowId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+        <span class="s2">"facilityId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+        <span class="s2">"workflowQuestionId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+        <span class="s2">"lastModifiedDate"</span><span class="p">:</span> <span class="s2">"2024-01-03T08:16:24.155Z"</span><span class="p">,</span>
+        <span class="s2">"externalIdentifier"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
+        <span class="s2">"comments"</span><span class="p">:</span> <span class="s2">"string"</span>
+      <span class="p">};</span>
+
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://[tenant].actsapi.intelex.com/v1/workflowFacility"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"{\r\n    \"WorkflowFacilityId\": \"number\",\r\n    \"WorkflowId\": \"number\",\r\n    \"FacilityId\": \"number\",\r\n    \"WorkflowQuestionId\": \"number\",\r\n    \"LastModifiedDate\": \"2023-03-30T07:27:06.295Z\",\r\n    \"ExternalIdentifier\": \"string\",\r\n    \"Comments\": \"string\"}"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Input JSON Body </p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"WorkflowFacilityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"WorkflowId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"FacilityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"WorkflowQuestionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"LastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-01-03T08:16:24.155Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ExternalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"insertedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"updatedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"failureCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errorMessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<blockquote>
+<p>Example Output For When Data Get&rsquo;s Failed To Insert or Update</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"insertedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"updatedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"failureCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errorMessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+     </span><span class="s2">"Workflow Facility Id : 0, Error: An error occurred while saving the entity changes. See the inner exception for details "</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<h3 id="10-workflow-person-table">10. Workflow Person Table</h3>
+
+<p>This section outlines the process of adding new entries or modifying existing records within the Workflow Person table using the dedicated API endpoint.</p>
+
+<p><strong>Workflow Person POST Endpoint</strong></p>
+
+<p><code class="prettyprint">POST</code> api/v1/workflowPerson</p>
+
+<blockquote>
+<p>Example Request &amp; JSON Input Body </p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://[tenant].actsapi.intelex.com/v1/workflowPerson'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span> <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span>
+      <span class="p">{</span>
+        <span class="s2">"workflowPersonId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+        <span class="s2">"workflowId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+        <span class="s2">"personId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+        <span class="s2">"workflowQuestionId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+        <span class="s2">"lastModifiedDate"</span><span class="p">:</span> <span class="s2">"2024-01-03T08:16:24.155Z"</span><span class="p">,</span>
+        <span class="s2">"externalIdentifier"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
+        <span class="s2">"comments"</span><span class="p">:</span> <span class="s2">"string"</span>
+      <span class="p">};</span>
+
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://[tenant].actsapi.intelex.com/v1/WorkflowPerson"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"{\r\n    \"WorkflowPersonId\": \"number\",\r\n    \"WorkflowId\": \"number\",\r\n    \"PersonId\": \"number\",\r\n    \"WorkflowQuestionId\": \"number\",\r\n    \"LastModifiedDate\": \"2023-03-30T07:27:06.295Z\",\r\n    \"ExternalIdentifier\": \"string\",\r\n    \"Comments\": \"string\"}"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Input JSON Body </p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"WorkflowPersonId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"WorkflowId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"PersonId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"WorkflowQuestionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"LastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-01-03T08:16:24.155Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ExternalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"insertedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"updatedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"failureCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errorMessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<blockquote>
+<p>Example Output For When Data Get&rsquo;s Failed To Insert or Update</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"insertedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"updatedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"failureCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errorMessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+     </span><span class="s2">"Workflow Person Id : 0, Error: An error occurred while saving the entity changes. See the inner exception for details "</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
