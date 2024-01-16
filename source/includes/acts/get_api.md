@@ -1037,8 +1037,6 @@ IRestResponse response = client.Execute(request);
             "workflowTypeId": "number",
             "workflowDate": "2017-02-13T22:15:30.203Z",
             "dataLockTypeId": "1",
-            "alternateNames": "string",
-            "sortOrder": "number",
             "lastModifiedDate": "2017-02-13T22:15:30.203Z",
             "externalIdentifier": "string",
             "comments": "string"
@@ -1058,10 +1056,12 @@ Attribute | Type | Description
 --------- | ---- | -----------
 PageNumber | int | Page number of the results to fetch.
 PageSize | int | The number of results per page
-workflowIds | int | Unit ID is one of the unique identifier for this Unit record
-workflowTypeIds | int | Unit Type Ids is the unique identifier of the associated unit type
-workflow | string | Units is one of the filter option and the parameter is for the Name of the Unit
-
+workflowIds | int | Workflow IDs are the unique identifier for workflows.
+workflowTypeIds | int | Workflow Type IDs are the unique identifier for a workflow type.
+workflowStartDate | dateTime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+workflowEndDate | dateTime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+lastModifiedStartDate | dateTime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+lastModifiedEndDate | dateTime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 
 ### 15. Workflow Answer Table
 
@@ -1135,7 +1135,7 @@ workflowIds | int | Workflow IDs are the unique identifier for workflows (the na
 workflowQuestionIds | int | Workflow Question IDs are the unique identifiers for questions in the workflow. Question IDs are associated with a unique Workflow ID.
 categoryAnswerIndex | int | Category Answer Index is the index for answers in the category.
 categoryRevisionIndex | int | Category Revision Index is the list of category revisions. If the workflow itself is updated a new category revision ID is assigned.
-questionAnswerIndex | int | QQuestion Answer Index is the index for answers to a question. Answer IDs are associated with a unique Question ID.
+questionAnswerIndex | int | Question Answer Index is the index for answers to a question. Answer IDs are associated with a unique Question ID.
 questionRevisionIndex | int | Question Revision Index is the index for questions with revisions. If the question itself is updated a question revision ID is assigned.
 workflowAnswer | string | Wokflow Answer is the answer to the question..
 lastModifiedStartDate | dateTime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
@@ -1429,8 +1429,7 @@ workflowQuestionIds | int | Workflow Question ID are the unique identifiers for 
 workflowQuestionCategoryIds | int | Workflow Question Category Ids are the unique identifiers for the associated workflow question category.
 dataTypeIds | int | Data Type IDs are the unique identifiers for the associated data type.
 requiredInds | string | Required Inds is the value if an answer is required before saving the form.
-questions | string | quQuestions are the question content values included on the form.
-
+questions | string | Questions are the question content values included on the form.
 
 ### 20. Workflow Type Table
 
