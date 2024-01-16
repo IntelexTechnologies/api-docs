@@ -1431,7 +1431,6 @@ dataTypeIds | int | Data Type IDs are the unique identifiers for the associated 
 requiredInds | string | Required Inds is the value if an answer is required before saving the form.
 questions | string | Questions are the question content values included on the form.
 
-
 ### 20. Workflow Type Table
 
 This section outlines how to retrieve data from the Workflow Type table using the provided endpoint. You have the flexibility to fetch specific data by including workflow Ids, workflow type Ids, and workflows. The Unit type endpoint also supports pagination for managing large datasets effectively.
