@@ -1393,8 +1393,6 @@
             </span><span class="s2">"workflowTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"workflowDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-13T22:15:30.203Z"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"dataLockTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"alternateNames"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"sortOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"lastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-13T22:15:30.203Z"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"externalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -1429,17 +1427,32 @@
 <tr>
 <td>workflowIds</td>
 <td>int</td>
-<td>Unit ID is one of the unique identifier for this Unit record</td>
+<td>Workflow IDs are the unique identifier for workflows.</td>
 </tr>
 <tr>
 <td>workflowTypeIds</td>
 <td>int</td>
-<td>Unit Type Ids is the unique identifier of the associated unit type</td>
+<td>Workflow Type IDs are the unique identifier for a workflow type.</td>
 </tr>
 <tr>
-<td>workflow</td>
-<td>string</td>
-<td>Units is one of the filter option and the parameter is for the Name of the Unit</td>
+<td>workflowStartDate</td>
+<td>dateTime</td>
+<td>Date time format &ldquo;yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z&rdquo;</td>
+</tr>
+<tr>
+<td>workflowEndDate</td>
+<td>dateTime</td>
+<td>Date time format &ldquo;yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z&rdquo;</td>
+</tr>
+<tr>
+<td>lastModifiedStartDate</td>
+<td>dateTime</td>
+<td>Date time format &ldquo;yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z&rdquo;</td>
+</tr>
+<tr>
+<td>lastModifiedEndDate</td>
+<td>dateTime</td>
+<td>Date time format &ldquo;yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z&rdquo;</td>
 </tr>
 </tbody></table>
 
@@ -1546,7 +1559,7 @@
 <tr>
 <td>questionAnswerIndex</td>
 <td>int</td>
-<td>QQuestion Answer Index is the index for answers to a question. Answer IDs are associated with a unique Question ID.</td>
+<td>Question Answer Index is the index for answers to a question. Answer IDs are associated with a unique Question ID.</td>
 </tr>
 <tr>
 <td>questionRevisionIndex</td>
@@ -1946,7 +1959,7 @@
 <tr>
 <td>questions</td>
 <td>string</td>
-<td>quQuestions are the question content values included on the form.</td>
+<td>Questions are the question content values included on the form.</td>
 </tr>
 </tbody></table>
 
