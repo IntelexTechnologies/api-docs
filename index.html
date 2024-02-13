@@ -310,21 +310,15 @@
 
 <span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"Authorization"</span><span class="p">,</span> <span class="s">"Bearer [insert Access token here]"</span><span class="p">);</span>
 </code></pre>
-<p>Intelex utilizes three methods for authentication to the API- Basic, ApiKey and Secure.</p>
+<p>The Intelex API supports three methods for authentication: Basic, ApiKey, and Secure. All API requests must be made over HTTPS and API requests without authentication will fail. Only Admin and Full Access users can use ApiKey and Secure authentication. </p>
 
-<p>Basic authentication is performed via HTTP Basic Auth and your Intelex user credentials (Username:Password). The credentials are then verified by Intelex and access will be granted or denied accordingly.</p>
+<p>Security on data for all types of authentication is managed by the platform security configuration. API requests will maintain the security settings configured for the user on the Intelex platform.</p>
 
-<p>ApiKey authentication can be performed by generating API access key(s) from the Intelex User Profile menu (note that this page is only accessible to full-access and admins on the site). 
-The unique generated key can then be used to access the Intelex REST API and used to authenticate and prove that the user is who they claim to be.</p>
+<p>Basic authentication is performed via HTTP Basic Auth with your Intelex user credentials (Username:Password). The credentials are verified by Intelex and access granted or denied accordingly.</p>
 
-<p>For both HTTP Basic Auth and ApiKey authentication, access to Intelex apps and data is constrained by the user&rsquo;s existing access, set up and managed in Intelex. </p>
+<p>ApiKey authentication can be performed by generating API access key(s) from the Intelex User Profile menu (note that this page is only accessible to full-access and admin users). The unique generated key can then be used to authenticate with the Intelex REST API.</p>
 
-<p>Secure token based authentication is supported in V6 API (Feature needs to be enabled by Intelex Team). Only Admin and full-access users can access the API.</p>
-
-<p>During the authentication process, the client provides the ‘client id’ and ‘client secret’ to the authentication endpoint, along with the audience and grant type, as shown in the example. In response, the API furnishes an access token that comes with a specified time limit of the token expiration. After successful authentication, clients gain access to V6 API endpoints.</p>
-
-<p>All API requests must be made over HTTPS and API requests without authentication will fail. Security on data is managed by the platform security configuration. 
-API requests will maintain the same security settings you have configured in the platform for each user.</p>
+<p>Starting at Platform Version 6.6.7, secure token based authentication is supported by the V6 API. This form of authentication needs to be enabled by Intelex. During the authentication process, the client provides the ‘client id’ and ‘client secret’ to the authentication endpoint, along with the audience and grant type, as shown in the example. In response, the API furnishes an access token that comes with a specified expiration. After successful authentication, clients gain access to V6 API endpoints.</p>
 
 <blockquote>
 <p>Example Requests:</p>
