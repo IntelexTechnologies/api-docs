@@ -27,7 +27,7 @@ To begin using the Intelex API you will need:
 Body for Authentication Endpoint
 {"client_id":"Client ID Data",
 "client_secret":"Client Secret Data",
-"audience":"https://*.intelex.com/API-release",
+"audience":"https://*.intelex.com/ACTSAPI",
 "grant_type":"client_credentials"}
 ```
 
