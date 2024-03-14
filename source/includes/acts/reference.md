@@ -55,6 +55,10 @@ When we make any new changes to the API, we release new versions. The current ve
 
 >Example API endpoint : https://[tenant].actsapi.intelex.com/v1/[endpoint-name]
 
+### ACTS API Software & Certificate Version Details
+ 
+The ACTS API SSL Certification is incompatible with following version of the python 3.10 + . If we use the python version < 3.10 the SSL handshake works for ACTS API.Currently this is considered as one of the limitation.
+
 ### API's and Associated Database Tables 
 
 This ACTS API release includes 13 GET enpoints and 5 POST endpoints, along with the authentication endpoint described earlier. The tables that can be queried and updated are as follows. 
@@ -89,3 +93,8 @@ Database Tables supporting POST requests
 3. Facility
 4. Facility Attribute
 5. Operation
+6. Workflow
+7. Workflow Answer
+8. Workflow Equipment
+9. Workflow Facility
+10. Workflow Person 
