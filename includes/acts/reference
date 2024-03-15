@@ -56,6 +56,10 @@
 <p>Example API endpoint : https://[tenant].actsapi.intelex.com/v1/[endpoint-name]</p>
 </blockquote>
 
+<h3 id="acts-api-software-certificate-version-details">ACTS API Software &amp; Certificate Version Details</h3>
+
+<p>The ACTS API SSL Certification is incompatible with following version of the python 3.10 + . If we use the python version &lt; 3.10 the SSL handshake works for ACTS API.Currently this is considered as one of the limitation.</p>
+
 <h3 id="apis-and-associated-database-tables">API&rsquo;s and Associated Database Tables</h3>
 
 <p>This ACTS API release includes 13 GET enpoints and 5 POST endpoints, along with the authentication endpoint described earlier. The tables that can be queried and updated are as follows. </p>
@@ -93,4 +97,9 @@
 <li>Facility</li>
 <li>Facility Attribute</li>
 <li>Operation</li>
+<li>Workflow</li>
+<li>Workflow Answer</li>
+<li>Workflow Equipment</li>
+<li>Workflow Facility</li>
+<li>Workflow Person </li>
 </ol>
