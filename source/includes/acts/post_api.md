@@ -602,6 +602,7 @@ IRestResponse response = client.Execute(request);
 }
 
 ```
+
 ### 7. Operation Emissions Recalculate 
 
 This section guides you through the process of an on-demand update to the emissions calculation for a specific operation using the designated API endpoint. While this API endpoint is a child of the Operation table, adding or updating an operation with the API will not cause an update on its own. 
