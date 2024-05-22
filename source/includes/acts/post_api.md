@@ -1,9 +1,9 @@
 ## Add or Modify Database Table
 
-This section outlines the available POST APIs designed for modifying ACTS data. These APIs offer options for updating existing records and inserting new ones. 
+This section outlines the available POST APIs designed for modifying ACTS data. These APIs let you update existing records and insert new records. POSTs should be formatted in JSON. 
 
 * To insert new records, set the primary key to 0
-* To updates to existing records, use the primary key of the record. 
+* To update existing records, use the primary key of the record. 
 
 <aside class="notice">
 For efficient handling of larger data inserts, it is recommended to perform batch POSTs containing up to 500 rows each. 
@@ -11,13 +11,15 @@ For efficient handling of larger data inserts, it is recommended to perform batc
 Note that excessively large batch POSTs may encounter throttling or failure, depending on system resources.
 </aside>
 
-In the following release, the POST APIs End points are provided to add or update following table 
+In the following release, the POST APIs End points are provided to add or update following: 
 
 * Equipment
+* Equipment Emissions Recalculate
 * Equipment Attribute
 * Facility
 * Facility Attribute
 * Operation
+* Operation Emissions Recalculate
 * Workflow
 * Workflow Answer
 * Workflow Equipment
@@ -139,9 +141,11 @@ IRestResponse response = client.Execute(request);
 }
 
 ```
-**Equipment/EmissionCalculation POST endpoint**
+### 2. Equipment Emissions Recalculate 
 
-Emission Calculation using equipment ids can be triggered using below operation.
+This section guides you through the process of an on-demand update to the emissions calculation for a specific equipment using the designated API endpoint. While this API endpoint is a child of the Equipment table, adding or updating an equipment will not cause an update on its own. 
+
+**Equipment/EmissionCalculation POST endpoint**
 
 `POST` api/v1/equipment/emissioncalculation
 
@@ -154,7 +158,7 @@ var options = { method: 'POST',
   url: 'https://[tenant].actsapi.intelex.com/v1/equipment/emissioncalculation',
   headers: { 'content-type': 'application/json' },
   body:
-    { [EquipmentId: 'number']
+    { [EquipmentId1, EquipmentId2, EquipmentId3....]
 	 },
   json: true };
 
@@ -169,18 +173,16 @@ request(options, function (error, response, body) {
 var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/equipment/emissioncalculation");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
-request.AddParameter("application/json", "{\r\n    \"EquipmentId\": \"number\",\r\n}", ParameterType.RequestBody);
+request.AddParameter("application/json", "{\r\n   [EquipmentId1, EquipmentId2, EquipmentId3....]\r\n}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
 > Input JSON Body
 
 ```json
-[
-  {
-    "EquipmentId": "number"
-	}
-]
+{
+   [EquipmentId1, EquipmentId2, EquipmentId3....]
+	 }
 ```
 > Example Response
 
@@ -211,7 +213,8 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 2. Equipment Attribute Table 
+
+### 3. Equipment Attribute Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Equipment Attribute table using the dedicated API endpoint.
 
@@ -298,7 +301,7 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 3. Facility Table 
+### 4. Facility Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Facility table using the dedicated API endpoint.
 
@@ -402,7 +405,7 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 4. Facility Attribute Table 
+### 5. Facility Attribute Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Facility Attribute table using the dedicated API endpoint.
 
@@ -489,7 +492,7 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 5. Operation Table 
+### 6. Operation Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Operation table using the dedicated API endpoint.
 
@@ -599,10 +602,11 @@ IRestResponse response = client.Execute(request);
 }
 
 ```
+### 7. Operation Emissions Recalculate 
+
+This section guides you through the process of an on-demand update to the emissions calculation for a specific operation using the designated API endpoint. While this API endpoint is a child of the Operation table, adding or updating an operation with the API will not cause an update on its own. 
 
 **Operation/EmissionCalculation POST endpoint**
-
-Emission Calculation using Operation ids can be triggered using below operation.
 
 `POST` api/v1/operation/emissioncalculation
 
@@ -615,7 +619,7 @@ var options = { method: 'POST',
   url: 'https://[tenant].actsapi.intelex.com/v1/operation/emissioncalculation',
   headers: { 'content-type': 'application/json' },
   body:
-    { [OperationId: 'number']
+    { [OperationId1, OperationId2, OperationId3....]
 	 },
   json: true };
 
@@ -630,18 +634,16 @@ request(options, function (error, response, body) {
 var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/operation/emissioncalculation");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
-request.AddParameter("application/json", "{\r\n    \"OperationId\": \"number\",\r\n}", ParameterType.RequestBody);
+request.AddParameter("application/json", "{\r\n   [OperationId1, OperationId2, OperationId3....]\r\n}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
 > Input JSON Body
 
 ```json
-[
-  {
-    "OperationId": "number"
-	}
-]
+{
+   [OperationId1, OperationId2, OperationId3....]
+	 }
 ```
 > Example Response
 
@@ -672,7 +674,7 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 6. Workflow Table 
+### 8. Workflow Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Workflow table using the dedicated API endpoint.
 
@@ -756,7 +758,7 @@ IRestResponse response = client.Execute(request);
 }
 
 ```
-### 7. Workflow Answer Table 
+### 9. Workflow Answer Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Workflow Answer table using the dedicated API endpoint.
 
@@ -852,7 +854,7 @@ IRestResponse response = client.Execute(request);
 }
 
 ```
-### 8. Workflow Equipment Table 
+### 10. Workflow Equipment Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Workflow Equipment table using the dedicated API endpoint.
 
@@ -936,7 +938,7 @@ IRestResponse response = client.Execute(request);
 }
 
 ```
-### 9. Workflow Facility Table 
+### 11. Workflow Facility Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Workflow Facility table using the dedicated API endpoint.
 
@@ -1021,7 +1023,7 @@ IRestResponse response = client.Execute(request);
 }
 
 ```
-### 10. Workflow Person Table 
+### 12. Workflow Person Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Workflow Person table using the dedicated API endpoint.
 
