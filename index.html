@@ -6899,11 +6899,11 @@ Content-Transfer-Encoding:binary
 
           <h2 id="add-or-modify-database-table">Add or Modify Database Table</h2>
 
-<p>This section outlines the available POST APIs designed for modifying ACTS data. These APIs offer options for updating existing records and inserting new ones. </p>
+<p>This section outlines the available POST APIs designed for modifying ACTS data. These APIs let you update existing records and insert new records. POSTs should be formatted in JSON. </p>
 
 <ul>
 <li>To insert new records, set the primary key to 0</li>
-<li>To updates to existing records, use the primary key of the record. </li>
+<li>To update existing records, use the primary key of the record. </li>
 </ul>
 
 <aside class="notice">
@@ -6912,14 +6912,16 @@ For efficient handling of larger data inserts, it is recommended to perform batc
 Note that excessively large batch POSTs may encounter throttling or failure, depending on system resources.
 </aside>
 
-<p>In the following release, the POST APIs End points are provided to add or update following table </p>
+<p>In the following release, the POST APIs End points are provided to add or update following: </p>
 
 <ul>
 <li>Equipment</li>
+<li>Equipment Emissions Recalculate</li>
 <li>Equipment Attribute</li>
 <li>Facility</li>
 <li>Facility Attribute</li>
 <li>Operation</li>
+<li>Operation Emissions Recalculate</li>
 <li>Workflow</li>
 <li>Workflow Answer</li>
 <li>Workflow Equipment</li>
@@ -7037,9 +7039,11 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<p><strong>Equipment/EmissionCalculation POST endpoint</strong></p>
+<h3 id="2-equipment-emissions-recalculate">2. Equipment Emissions Recalculate</h3>
 
-<p>Emission Calculation using equipment ids can be triggered using below operation.</p>
+<p>This section guides you through the process of an on-demand update to the emissions calculation for a specific equipment using the designated API endpoint. While this API endpoint is a child of the Equipment table, adding or updating an equipment will not cause an update on its own. </p>
+
+<p><strong>Equipment/EmissionCalculation POST endpoint</strong></p>
 
 <p><code class="prettyprint">POST</code> api/v1/equipment/emissioncalculation</p>
 
@@ -7052,7 +7056,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
   <span class="na">url</span><span class="p">:</span> <span class="s1">'https://[tenant].actsapi.intelex.com/v1/equipment/emissioncalculation'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span> <span class="p">},</span>
   <span class="na">body</span><span class="p">:</span>
-    <span class="p">{</span> <span class="p">[</span><span class="na">EquipmentId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">]</span>
+    <span class="p">{</span> <span class="p">[</span><span class="nx">EquipmentId1</span><span class="p">,</span> <span class="nx">EquipmentId2</span><span class="p">,</span> <span class="nx">EquipmentId3</span><span class="p">....]</span>
      <span class="p">},</span>
   <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
 
@@ -7064,17 +7068,15 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://[tenant].actsapi.intelex.com/v1/equipment/emissioncalculation"</span><span class="p">);</span>
 <span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>
 <span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
-<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"{\r\n    \"EquipmentId\": \"number\",\r\n}"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"{\r\n   [EquipmentId1, EquipmentId2, EquipmentId3....]\r\n}"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
 <span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
 </code></pre>
 <blockquote>
 <p>Input JSON Body</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"EquipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="p">[</span><span class="err">EquipmentId</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="err">EquipmentId</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="err">EquipmentId</span><span class="mi">3</span><span class="err">....</span><span class="p">]</span><span class="w">
+     </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
 <p>Example Response</p>
@@ -7103,7 +7105,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<h3 id="2-equipment-attribute-table">2. Equipment Attribute Table</h3>
+<h3 id="3-equipment-attribute-table">3. Equipment Attribute Table</h3>
 
 <p>This section outlines the process of adding new entries or modifying existing records within the Equipment Attribute table using the dedicated API endpoint.</p>
 
@@ -7184,7 +7186,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<h3 id="3-facility-table">3. Facility Table</h3>
+<h3 id="4-facility-table">4. Facility Table</h3>
 
 <p>This section outlines the process of adding new entries or modifying existing records within the Facility table using the dedicated API endpoint.</p>
 
@@ -7281,7 +7283,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<h3 id="4-facility-attribute-table">4. Facility Attribute Table</h3>
+<h3 id="5-facility-attribute-table">5. Facility Attribute Table</h3>
 
 <p>This section outlines the process of adding new entries or modifying existing records within the Facility Attribute table using the dedicated API endpoint.</p>
 
@@ -7362,7 +7364,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<h3 id="5-operation-table">5. Operation Table</h3>
+<h3 id="6-operation-table">6. Operation Table</h3>
 
 <p>This section outlines the process of adding new entries or modifying existing records within the Operation table using the dedicated API endpoint.</p>
 
@@ -7467,9 +7469,11 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<p><strong>Operation/EmissionCalculation POST endpoint</strong></p>
+<h3 id="7-operation-emissions-recalculate">7. Operation Emissions Recalculate</h3>
 
-<p>Emission Calculation using Operation ids can be triggered using below operation.</p>
+<p>This section guides you through the process of an on-demand update to the emissions calculation for a specific operation using the designated API endpoint. While this API endpoint is a child of the Operation table, adding or updating an operation with the API will not cause an update on its own. </p>
+
+<p><strong>Operation/EmissionCalculation POST endpoint</strong></p>
 
 <p><code class="prettyprint">POST</code> api/v1/operation/emissioncalculation</p>
 
@@ -7482,7 +7486,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
   <span class="na">url</span><span class="p">:</span> <span class="s1">'https://[tenant].actsapi.intelex.com/v1/operation/emissioncalculation'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span> <span class="p">},</span>
   <span class="na">body</span><span class="p">:</span>
-    <span class="p">{</span> <span class="p">[</span><span class="na">OperationId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">]</span>
+    <span class="p">{</span> <span class="p">[</span><span class="nx">OperationId1</span><span class="p">,</span> <span class="nx">OperationId2</span><span class="p">,</span> <span class="nx">OperationId3</span><span class="p">....]</span>
      <span class="p">},</span>
   <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
 
@@ -7494,17 +7498,15 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://[tenant].actsapi.intelex.com/v1/operation/emissioncalculation"</span><span class="p">);</span>
 <span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>
 <span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
-<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"{\r\n    \"OperationId\": \"number\",\r\n}"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"{\r\n   [OperationId1, OperationId2, OperationId3....]\r\n}"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
 <span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
 </code></pre>
 <blockquote>
 <p>Input JSON Body</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"OperationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="p">[</span><span class="err">OperationId</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="err">OperationId</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="err">OperationId</span><span class="mi">3</span><span class="err">....</span><span class="p">]</span><span class="w">
+     </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
 <p>Example Response</p>
@@ -7533,7 +7535,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<h3 id="6-workflow-table">6. Workflow Table</h3>
+<h3 id="8-workflow-table">8. Workflow Table</h3>
 
 <p>This section outlines the process of adding new entries or modifying existing records within the Workflow table using the dedicated API endpoint.</p>
 
@@ -7612,7 +7614,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<h3 id="7-workflow-answer-table">7. Workflow Answer Table</h3>
+<h3 id="9-workflow-answer-table">9. Workflow Answer Table</h3>
 
 <p>This section outlines the process of adding new entries or modifying existing records within the Workflow Answer table using the dedicated API endpoint.</p>
 
@@ -7703,7 +7705,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<h3 id="8-workflow-equipment-table">8. Workflow Equipment Table</h3>
+<h3 id="10-workflow-equipment-table">10. Workflow Equipment Table</h3>
 
 <p>This section outlines the process of adding new entries or modifying existing records within the Workflow Equipment table using the dedicated API endpoint.</p>
 
@@ -7782,7 +7784,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<h3 id="9-workflow-facility-table">9. Workflow Facility Table</h3>
+<h3 id="11-workflow-facility-table">11. Workflow Facility Table</h3>
 
 <p>This section outlines the process of adding new entries or modifying existing records within the Workflow Facility table using the dedicated API endpoint.</p>
 
@@ -7862,7 +7864,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<h3 id="10-workflow-person-table">10. Workflow Person Table</h3>
+<h3 id="12-workflow-person-table">12. Workflow Person Table</h3>
 
 <p>This section outlines the process of adding new entries or modifying existing records within the Workflow Person table using the dedicated API endpoint.</p>
 
