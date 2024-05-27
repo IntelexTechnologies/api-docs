@@ -241,7 +241,84 @@ PageSize | int | The number of results per page
 emissionCategoryIds | int | Emission Category ID is one of the unique identifier for this emission category record and is one of the filter option provided for Emission Category
 emissionCategoryTypes | string | Emission Category Types is for the project to emission category detail types
 
-### 4. Emission Type Table
+### 4. Emission Factor Table
+
+This section elaborates on how to obtain data from the Emission Factor table using the designated API endpoint. The endpoint allows you to retrieve all data from the Emission Factor table or You can optionally fetch specific data by including the emission factor Ids, emission factor names, emission type Ids, emission category Ids, unit Ids, compound Ids, equipment Ids, last modified start date and last modified end date. The Emission Factor endpoint supports pagination.
+
+> Example Request
+
+```javascript
+var request = require("request");
+
+var options = { method: 'GET',
+  url: 'https://[tenant].actsapi.intelex.com/v1/emissionfactor' };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+```
+
+```csharp
+var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/emissionfactor");
+var request = new RestRequest(Method.GET);
+IRestResponse response = client.Execute(request);
+```
+
+> Response Schema
+
+```json
+{
+    "currentPage": 1,
+    "totalPages": 1,
+    "currentPageSize": 10,
+    "maxAPIPageSize": 500,
+    "totalCount": 1,
+    "hasPrevious": false,
+    "hasNext": false,
+    "data": [
+        {
+            "emissionFactorId": "number",
+            "emissionFactor": "number",
+            "equipmentId": "number",
+            "emissionTypeId": "number",
+            "emissionCategoryId": "number",
+            "compoundId": "number",
+            "emissionFactorName": "string",
+            "unitId": "number",
+            "lastModifiedDate": "2018-08-22T15:33:44",
+            "externalIdentifier": "string",
+            "comments": "string",
+            "activeDate": "2014-01-01T00:00:00",
+            "inactiveDate": "2014-01-01T00:00:00",
+            "primaryInd": "string",
+            "reportableInd": "string",
+            "readOnlyInd": "string",
+            "dataLockTypeId": "number"
+        }
+    ]
+}
+```
+
+**API Endpoints**
+
+`GET` /api/v1/emissionfactor
+
+**Query parameters**
+
+Attribute | Type | Description
+--------- | ---- | -----------
+PageNumber | int | Page number of the results to fetch.
+PageSize | int | The number of results per page
+emissionFactorIDs | int | Emission Factor Ids are unique identifier for this Emission Factor record
+emissionFactorNames | string | Emission Factor Names are one of the filter option and the parameter is for the names of the Emission Factors
+emissionTypeIds | int | The unique identifier of the associated emission type
+emissionCategoryIds | int | The unique identifier of the associated emission category
+unitIds | int | The unique identifier of the associated unit
+compoundIds | int | Compound ID is one of the unique identifier for this compound record  
+equipmentIds | int | The unique identifier of the associated equipment
+lastModifiedStartDate | string | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+lastModifiedEndDate | string | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+
+### 5. Emission Type Table
 
 This section guides you through the process of fetching data from the Emission Type table using the dedicated API endpoint. The endpoint enables you to retrieve data from the entire Emission Type table or selectively obtain information by including Emission Type Ids. Additionally, the Emission Type endpoint is equipped with pagination capabilities to facilitate the handling of extensive datasets.
 
@@ -305,7 +382,7 @@ emissionTypeIds | int | Emission Type ID is one of the type of emissions and is 
 emissionTypes | string | Emission Types is for the project to emission detail types
 
 
-### 5. Equipment Table
+### 6. Equipment Table
 
 This section provides guidance on retrieving data from the Equipment table using the designated API endpoint. The endpoint allows you to retrieve all data from the Equipment table or specify specific data based on equipment Ids. Additionally, the Equipment endpoint offers pagination support to facilitate the handling of substantial datasets.
 
@@ -391,7 +468,7 @@ lastModifiedStartDate | string | Date time format "yyyy/mm/dd T hours:min:secZ -
 lastModifiedEndDate | string | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 
 
-### 6. Equipment Status Table
+### 7. Equipment Status Table
 
 All data from the Equipment Status table will be returned from the endpoint below. You can optionally fetch specific data by including the equipment status ID and equipment status value. The Equipment Status endpoint supports pagination.
 
@@ -455,7 +532,7 @@ equipmentStatusIds | int | Equipment Status ID is one of the unique identifier f
 equipmentStatus | string | Equipment Status is one of the identifier for the status of the equipment
 
 
-### 7. Equipment Attribute Table
+### 8. Equipment Attribute Table
 
 All data from the Equipment Attribute table will be returned from the endpoint below. You can optionally fetch specific data by including the facility attribute Ids, facility names, emission type Ids, facility type Ids, unit Ids, equipment Ids, last modified start date and last modified end date. The facility attribute endpoint supports pagination.
 
@@ -525,7 +602,7 @@ lastModifiedStartDate | string | Date time format "yyyy/mm/dd T hours:min:secZ -
 lastModifiedEndDate | string | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 
 
-### 8. Equipment Type Table
+### 9. Equipment Type Table
 
 All data from the Equipment Type table will be returned from the endpoint below. You can optionally fetch specific data by including the equipment type ID and equipment types value. The Equipment type endpoint supports pagination.
 
@@ -610,7 +687,7 @@ equipmentTypeIds | int | Equipment Type ID is one of the unique identifier for t
 equipmentTypes | string | Equipment Types is one of the filter option and the parameter is for the type of the equipment
 
 
-### 9. Facility Table
+### 10. Facility Table
 
 All data from the Facility table will be returned from the endpoint below. You can optionally fetch specific data by including the facility Ids, facility names, emission type Ids, facility type Ids, facility status Ids, county Ids, last modified start date and last modified end date. The facility endpoint supports pagination.
 
@@ -703,7 +780,7 @@ lastModifiedStartDate | string | Date time format "yyyy/mm/dd T hours:min:secZ -
 lastModifiedEndDate | string | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 
 
-### 10. Facility Attribute Table
+### 11. Facility Attribute Table
 
 All data from the Facility Attribute table will be returned from the endpoint below. You can optionally fetch specific data by including the facility attribute Ids, facility names, emission type Ids, facility type Ids, facility attribute and last modified end date. The facility attribute endpoint supports pagination.
 
@@ -776,7 +853,7 @@ externalidentifier | string | External Identifier a unique identifier for this r
 comments | string | Comments any comments associated with this record
 
 
-### 11. Operation Table
+### 12. Operation Table
 
 All data from the Operation table will be returned from the endpoint below. You can optionally fetch specific data by including the operation Ids, operation type Ids, emission type Ids, emission category Ids, unit Ids, equipment Ids, last modified start date and last modified end date. The Operation endpoint supports pagination.
 
@@ -859,7 +936,7 @@ lastModifiedStartDate | string | Date time format "yyyy/mm/dd T hours:min:secZ -
 lastModifiedEndDate | string | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 
 
-### 12. Operation Type Table
+### 13. Operation Type Table
 
 All data from the Operation Type table will be returned from the endpoint below. You can optionally fetch specific data by including the operation type ids, operation types . The Operation Type endpoint supports pagination.
 
@@ -926,8 +1003,93 @@ PageSize | int | The number of results per page
 operationTypeIDs | int | The unique identifier for this operation type record
 operationTypes | int | The type of operational data
 
+### 14. Query Results
 
-### 13. Unit Table
+The QueryResults API end point will allow the user to run the views saved in Query view tables and returns the dynamic results based on the specific query view id value. The QueryResults endpoint supports pagination.
+
+> Example Request
+
+```javascript
+var request = require("request");
+
+var options = { method: 'GET',
+  url: 'https://[tenant].actsapi.intelex.com/v1/queryresults',
+  headers: { 'content-type': 'application/json' },
+  body:
+   { 
+    "queryViewId": "number"
+      },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+```csharp
+var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/queryresults");
+var request = new RestRequest(Method.GET);
+request.AddHeader("content-type", "application/json");
+request.AddParameter("application/json", "{\r\n    \"queryViewId\": \"number\"\r\n}", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+```
+
+> Response Schema
+
+```json
+{
+    "currentPage": 1,
+    "totalPages": 51,
+    "currentPageSize": 500,
+    "maxAPIPageSize": 500,
+    "totalCount": 25052,
+    "hasPrevious": false,
+    "hasNext": true,
+    "data": [
+        {
+            "EQUIPMENT_ID": "number",
+            "AREA_ID": "number",
+            "FACILITY_ID": "number",
+            "EQUIPMENT_TYPE_ID": "number",
+            "SOURCE_NAME": "string",
+            "EQUIPMENT_STATUS_ID": "number",
+            "MODEL_ID": "number",
+            "OWNERSHIP_ID": "number",
+            "OWNER_ID": "number",
+            "SERIAL_NUMBER": "string",
+            "MANUFACTURE_DATE": "2023-03-30T07:27:06",
+            "INTERNAL_NAME": "string",
+            "ALTERNATE_NAME": "string",
+            "DESIGN": "string",
+            "ORIGINAL_SURVEY_DATE": "2023-03-30T07:27:06",
+            "ACTIVE_DATE": "2018-10-16T06:19:21",
+            "INACTIVE_DATE": "2023-03-30T07:27:06",
+            "DATA_LOCK_TYPE_ID": "number",
+            "LAST_MODIFIED_DATE": "2023-03-30T04:07:57",
+            "EXTERNAL_IDENTIFIER": "string",
+            "COMMENTS": "string"
+        }
+	]
+}
+
+```
+
+**API Endpoints**
+
+`GET` /api/v1/queryresults
+
+**Query parameters**
+
+Attribute | Type | Description
+--------- | ---- | -----------
+PageNumber | int | Page number of the results to fetch.
+PageSize | int | The number of results per page
+queryViewId | int | The unique identifier for this query view record
+
+
+### 15. Unit Table
 
 This section outlines how to retrieve data from the Unit table using the provided endpoint. You have the flexibility to fetch specific data by including unit Ids, unit type Ids, and units. The Unit type endpoint also supports pagination for managing large datasets effectively.
 
@@ -995,7 +1157,7 @@ unitIds | int | Unit ID is one of the unique identifier for this Unit record
 unitTypeIds | int | Unit Type Ids is the unique identifier of the associated unit type
 units | string | Units is one of the filter option and the parameter is for the Name of the Unit
 
-### 14. Workflow Table
+### 16. Workflow Table
 
 This section outlines how to retrieve data from the Workflow table using the provided endpoint. You have the flexibility to fetch specific data by including workflow Ids, workflow type Ids, workflow date for both start date and end date along with the last modified date. The workflow endpoint also supports pagination for managing large datasets effectively.
 
@@ -1063,7 +1225,7 @@ workflowEndDate | dateTime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex 
 lastModifiedStartDate | dateTime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 lastModifiedEndDate | dateTime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 
-### 15. Workflow Answer Table
+### 17. Workflow Answer Table
 
 This section outlines how to retrieve data from the Workflow Answer table using the provided endpoint. You have the flexibility to fetch specific data by including workflow Answer Ids, workflow Ids, workflow question Ids, category Answer Index, category Revision Index, question Answer Index, question Revision Index, workflow Answer, lastModifiedStartDate and lastModifiedEndDate. The Workflow Answer endpoint also supports pagination for managing large datasets effectively.
 
@@ -1141,7 +1303,7 @@ workflowAnswer | string | Wokflow Answer is the answer to the question..
 lastModifiedStartDate | dateTime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 lastModifiedEndDate | dateTime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 
-### 16. Workflow Equipment Table
+### 18. Workflow Equipment Table
 
 This section outlines how to retrieve data from the Workflow Equipment table using the provided endpoint. Equipment workflows are typically labeled Inspection. You have the flexibility to fetch specific data by including workflow Equipment Ids, workflow Ids, and Equipment Ids. The Workflow Equipment endpoint also supports pagination for managing large datasets effectively.
 
@@ -1206,7 +1368,7 @@ workflowEquipmentIds | int | Workflow Equipment ID is the unique identifier for 
 workflowIds | int | Workflow Ids is the unique identifier of the associated workflow.
 equipmentIds | string | Equipment IDs are the unique identifier of the associated equipment.
 
-### 17. Workflow Facility Table
+### 19. Workflow Facility Table
 
 This section outlines how to retrieve data from the Workflow Facility table using the provided endpoint. Facility workflows are typically labeled Inspection. You have the flexibility to fetch specific data by including workflow Facility Ids, workflow Ids and facility Ids. The Workflow Facility endpoint also supports pagination for managing large datasets effectively.
 
@@ -1274,7 +1436,7 @@ facilityIds | int | Facility IDs are the unique identifier for the associated fa
 
 
 
-### 18. Workflow Person Table
+### 20. Workflow Person Table
 
 This section outlines how to retrieve data from the Workflow Person table using the provided endpoint. You have the flexibility to fetch specific data by including workflow person Ids, workflow Ids and person Ids. The Unit type endpoint also supports pagination for managing large datasets effectively.
 
@@ -1339,7 +1501,7 @@ workflowPersonIds | int | Workflow Person ID is the unique identifier for the as
 workflowIds | int | Workflow IDs are the unique identifier for workflows (the named form or workflow type+date completed).
 personIds | int | Person IDs are the assigned values for associated person(s) and can be used as a filter.
 
-### 19. Workflow Question Table
+### 21. Workflow Question Table
 
 This section outlines how to retrieve data from the Workflow Question table using the provided endpoint. You have the flexibility to fetch specific data by including workflow Question Ids, workflow question categoy Ids, data type Ids, required Inds and questions. The Workflow Question endpoint also supports pagination for managing large datasets effectively.
 
@@ -1431,7 +1593,7 @@ dataTypeIds | int | Data Type IDs are the unique identifiers for the associated 
 requiredInds | string | Required Inds is the value if an answer is required before saving the form.
 questions | string | Questions are the question content values included on the form.
 
-### 20. Workflow Type Table
+### 22. Workflow Type Table
 
 This section outlines how to retrieve data from the Workflow Type table using the provided endpoint. You have the flexibility to fetch specific data by including workflow Ids, workflow type Ids, and workflows. The Unit type endpoint also supports pagination for managing large datasets effectively.
 
