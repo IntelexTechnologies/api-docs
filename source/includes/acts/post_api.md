@@ -320,7 +320,6 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-
 ### 4. Equipment Attribute Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Equipment Attribute table using the dedicated API endpoint.
@@ -962,6 +961,7 @@ IRestResponse response = client.Execute(request);
 }
 
 ```
+
 ### 11. Workflow Equipment Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Workflow Equipment table using the dedicated API endpoint.
@@ -1046,6 +1046,7 @@ IRestResponse response = client.Execute(request);
 }
 
 ```
+
 ### 12. Workflow Facility Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Workflow Facility table using the dedicated API endpoint.
@@ -1131,6 +1132,7 @@ IRestResponse response = client.Execute(request);
 }
 
 ```
+
 ### 13. Workflow Person Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Workflow Person table using the dedicated API endpoint.
