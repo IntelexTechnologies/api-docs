@@ -308,7 +308,129 @@
 </tr>
 </tbody></table>
 
-<h3 id="4-emission-type-table">4. Emission Type Table</h3>
+<h3 id="4-emission-factor-table">4. Emission Factor Table</h3>
+
+<p>This section elaborates on how to obtain data from the Emission Factor table using the designated API endpoint. The endpoint allows you to retrieve all data from the Emission Factor table or You can optionally fetch specific data by including the emission factor Ids, emission factor names, emission type Ids, emission category Ids, unit Ids, compound Ids, equipment Ids, last modified start date and last modified end date. The Emission Factor endpoint supports pagination.</p>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://[tenant].actsapi.intelex.com/v1/emissionfactor'</span> <span class="p">};</span>
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://[tenant].actsapi.intelex.com/v1/emissionfactor"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">GET</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Response Schema</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"currentPage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currentPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"maxAPIPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hasPrevious"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hasNext"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"emissionFactorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"emissionFactor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"equipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"emissionTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"emissionCategoryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"compoundId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"emissionFactorName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"lastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-22T15:33:44"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"externalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"activeDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-01-01T00:00:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"inactiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-01-01T00:00:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"primaryInd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"reportableInd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"readOnlyInd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"dataLockTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>API Endpoints</strong></p>
+
+<p><code class="prettyprint">GET</code> /api/v1/emissionfactor</p>
+
+<p><strong>Query parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>PageNumber</td>
+<td>int</td>
+<td>Page number of the results to fetch.</td>
+</tr>
+<tr>
+<td>PageSize</td>
+<td>int</td>
+<td>The number of results per page</td>
+</tr>
+<tr>
+<td>emissionFactorIDs</td>
+<td>int</td>
+<td>Emission Factor Ids are unique identifier for this Emission Factor record</td>
+</tr>
+<tr>
+<td>emissionFactorNames</td>
+<td>string</td>
+<td>Emission Factor Names are one of the filter option and the parameter is for the names of the Emission Factors</td>
+</tr>
+<tr>
+<td>emissionTypeIds</td>
+<td>int</td>
+<td>The unique identifier of the associated emission type</td>
+</tr>
+<tr>
+<td>emissionCategoryIds</td>
+<td>int</td>
+<td>The unique identifier of the associated emission category</td>
+</tr>
+<tr>
+<td>unitIds</td>
+<td>int</td>
+<td>The unique identifier of the associated unit</td>
+</tr>
+<tr>
+<td>compoundIds</td>
+<td>int</td>
+<td>Compound ID is one of the unique identifier for this compound record</td>
+</tr>
+<tr>
+<td>equipmentIds</td>
+<td>int</td>
+<td>The unique identifier of the associated equipment</td>
+</tr>
+<tr>
+<td>lastModifiedStartDate</td>
+<td>string</td>
+<td>Date time format &ldquo;yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z&rdquo;</td>
+</tr>
+<tr>
+<td>lastModifiedEndDate</td>
+<td>string</td>
+<td>Date time format &ldquo;yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z&rdquo;</td>
+</tr>
+</tbody></table>
+
+<h3 id="5-emission-type-table">5. Emission Type Table</h3>
 
 <p>This section guides you through the process of fetching data from the Emission Type table using the dedicated API endpoint. The endpoint enables you to retrieve data from the entire Emission Type table or selectively obtain information by including Emission Type Ids. Additionally, the Emission Type endpoint is equipped with pagination capabilities to facilitate the handling of extensive datasets.</p>
 
@@ -388,7 +510,7 @@
 </tr>
 </tbody></table>
 
-<h3 id="5-equipment-table">5. Equipment Table</h3>
+<h3 id="6-equipment-table">6. Equipment Table</h3>
 
 <p>This section provides guidance on retrieving data from the Equipment table using the designated API endpoint. The endpoint allows you to retrieve all data from the Equipment table or specify specific data based on equipment Ids. Additionally, the Equipment endpoint offers pagination support to facilitate the handling of substantial datasets.</p>
 
@@ -518,7 +640,7 @@
 </tr>
 </tbody></table>
 
-<h3 id="6-equipment-status-table">6. Equipment Status Table</h3>
+<h3 id="7-equipment-status-table">7. Equipment Status Table</h3>
 
 <p>All data from the Equipment Status table will be returned from the endpoint below. You can optionally fetch specific data by including the equipment status ID and equipment status value. The Equipment Status endpoint supports pagination.</p>
 
@@ -598,7 +720,7 @@
 </tr>
 </tbody></table>
 
-<h3 id="7-equipment-attribute-table">7. Equipment Attribute Table</h3>
+<h3 id="8-equipment-attribute-table">8. Equipment Attribute Table</h3>
 
 <p>All data from the Equipment Attribute table will be returned from the endpoint below. You can optionally fetch specific data by including the facility attribute Ids, facility names, emission type Ids, facility type Ids, unit Ids, equipment Ids, last modified start date and last modified end date. The facility attribute endpoint supports pagination.</p>
 
@@ -700,7 +822,7 @@
 </tr>
 </tbody></table>
 
-<h3 id="8-equipment-type-table">8. Equipment Type Table</h3>
+<h3 id="9-equipment-type-table">9. Equipment Type Table</h3>
 
 <p>All data from the Equipment Type table will be returned from the endpoint below. You can optionally fetch specific data by including the equipment type ID and equipment types value. The Equipment type endpoint supports pagination.</p>
 
@@ -801,7 +923,7 @@
 </tr>
 </tbody></table>
 
-<h3 id="9-facility-table">9. Facility Table</h3>
+<h3 id="10-facility-table">10. Facility Table</h3>
 
 <p>All data from the Facility table will be returned from the endpoint below. You can optionally fetch specific data by including the facility Ids, facility names, emission type Ids, facility type Ids, facility status Ids, county Ids, last modified start date and last modified end date. The facility endpoint supports pagination.</p>
 
@@ -942,7 +1064,7 @@
 </tr>
 </tbody></table>
 
-<h3 id="10-facility-attribute-table">10. Facility Attribute Table</h3>
+<h3 id="11-facility-attribute-table">11. Facility Attribute Table</h3>
 
 <p>All data from the Facility Attribute table will be returned from the endpoint below. You can optionally fetch specific data by including the facility attribute Ids, facility names, emission type Ids, facility type Ids, facility attribute and last modified end date. The facility attribute endpoint supports pagination.</p>
 
@@ -1059,7 +1181,7 @@
 </tr>
 </tbody></table>
 
-<h3 id="11-operation-table">11. Operation Table</h3>
+<h3 id="12-operation-table">12. Operation Table</h3>
 
 <p>All data from the Operation table will be returned from the endpoint below. You can optionally fetch specific data by including the operation Ids, operation type Ids, emission type Ids, emission category Ids, unit Ids, equipment Ids, last modified start date and last modified end date. The Operation endpoint supports pagination.</p>
 
@@ -1182,7 +1304,7 @@
 </tr>
 </tbody></table>
 
-<h3 id="12-operation-type-table">12. Operation Type Table</h3>
+<h3 id="13-operation-type-table">13. Operation Type Table</h3>
 
 <p>All data from the Operation Type table will be returned from the endpoint below. You can optionally fetch specific data by including the operation type ids, operation types . The Operation Type endpoint supports pagination.</p>
 
@@ -1266,7 +1388,105 @@
 </tr>
 </tbody></table>
 
-<h3 id="13-unit-table">13. Unit Table</h3>
+<h3 id="14-query-results">14. Query Results</h3>
+
+<p>The QueryResults API end point will allow the user to run the views saved in Query view tables and returns the dynamic results based on the specific query view id value. The QueryResults endpoint supports pagination.</p>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://[tenant].actsapi.intelex.com/v1/queryresults'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span> <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span>
+   <span class="p">{</span> 
+    <span class="s2">"queryViewId"</span><span class="p">:</span> <span class="s2">"number"</span>
+      <span class="p">},</span>
+  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://[tenant].actsapi.intelex.com/v1/queryresults"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">GET</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"{\r\n    \"queryViewId\": \"number\"\r\n}"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Response Schema</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"currentPage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">51</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currentPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"maxAPIPageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">25052</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hasPrevious"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hasNext"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"EQUIPMENT_ID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"AREA_ID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"FACILITY_ID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"EQUIPMENT_TYPE_ID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"SOURCE_NAME"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"EQUIPMENT_STATUS_ID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"MODEL_ID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"OWNERSHIP_ID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"OWNER_ID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"SERIAL_NUMBER"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"MANUFACTURE_DATE"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-03-30T07:27:06"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"INTERNAL_NAME"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ALTERNATE_NAME"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"DESIGN"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ORIGINAL_SURVEY_DATE"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-03-30T07:27:06"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ACTIVE_DATE"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-16T06:19:21"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"INACTIVE_DATE"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-03-30T07:27:06"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"DATA_LOCK_TYPE_ID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"LAST_MODIFIED_DATE"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-03-30T04:07:57"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"EXTERNAL_IDENTIFIER"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"COMMENTS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p><strong>API Endpoints</strong></p>
+
+<p><code class="prettyprint">GET</code> /api/v1/queryresults</p>
+
+<p><strong>Query parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>PageNumber</td>
+<td>int</td>
+<td>Page number of the results to fetch.</td>
+</tr>
+<tr>
+<td>PageSize</td>
+<td>int</td>
+<td>The number of results per page</td>
+</tr>
+<tr>
+<td>queryViewId</td>
+<td>int</td>
+<td>The unique identifier for this query view record</td>
+</tr>
+</tbody></table>
+
+<h3 id="15-unit-table">15. Unit Table</h3>
 
 <p>This section outlines how to retrieve data from the Unit table using the provided endpoint. You have the flexibility to fetch specific data by including unit Ids, unit type Ids, and units. The Unit type endpoint also supports pagination for managing large datasets effectively.</p>
 
@@ -1355,7 +1575,7 @@
 </tr>
 </tbody></table>
 
-<h3 id="14-workflow-table">14. Workflow Table</h3>
+<h3 id="16-workflow-table">16. Workflow Table</h3>
 
 <p>This section outlines how to retrieve data from the Workflow table using the provided endpoint. You have the flexibility to fetch specific data by including workflow Ids, workflow type Ids, workflow date for both start date and end date along with the last modified date. The workflow endpoint also supports pagination for managing large datasets effectively.</p>
 
@@ -1456,7 +1676,7 @@
 </tr>
 </tbody></table>
 
-<h3 id="15-workflow-answer-table">15. Workflow Answer Table</h3>
+<h3 id="17-workflow-answer-table">17. Workflow Answer Table</h3>
 
 <p>This section outlines how to retrieve data from the Workflow Answer table using the provided endpoint. You have the flexibility to fetch specific data by including workflow Answer Ids, workflow Ids, workflow question Ids, category Answer Index, category Revision Index, question Answer Index, question Revision Index, workflow Answer, lastModifiedStartDate and lastModifiedEndDate. The Workflow Answer endpoint also supports pagination for managing large datasets effectively.</p>
 
@@ -1583,7 +1803,7 @@
 </tr>
 </tbody></table>
 
-<h3 id="16-workflow-equipment-table">16. Workflow Equipment Table</h3>
+<h3 id="18-workflow-equipment-table">18. Workflow Equipment Table</h3>
 
 <p>This section outlines how to retrieve data from the Workflow Equipment table using the provided endpoint. Equipment workflows are typically labeled Inspection. You have the flexibility to fetch specific data by including workflow Equipment Ids, workflow Ids, and Equipment Ids. The Workflow Equipment endpoint also supports pagination for managing large datasets effectively.</p>
 
@@ -1669,7 +1889,7 @@
 </tr>
 </tbody></table>
 
-<h3 id="17-workflow-facility-table">17. Workflow Facility Table</h3>
+<h3 id="19-workflow-facility-table">19. Workflow Facility Table</h3>
 
 <p>This section outlines how to retrieve data from the Workflow Facility table using the provided endpoint. Facility workflows are typically labeled Inspection. You have the flexibility to fetch specific data by including workflow Facility Ids, workflow Ids and facility Ids. The Workflow Facility endpoint also supports pagination for managing large datasets effectively.</p>
 
@@ -1756,7 +1976,7 @@
 </tr>
 </tbody></table>
 
-<h3 id="18-workflow-person-table">18. Workflow Person Table</h3>
+<h3 id="20-workflow-person-table">20. Workflow Person Table</h3>
 
 <p>This section outlines how to retrieve data from the Workflow Person table using the provided endpoint. You have the flexibility to fetch specific data by including workflow person Ids, workflow Ids and person Ids. The Unit type endpoint also supports pagination for managing large datasets effectively.</p>
 
@@ -1842,7 +2062,7 @@
 </tr>
 </tbody></table>
 
-<h3 id="19-workflow-question-table">19. Workflow Question Table</h3>
+<h3 id="21-workflow-question-table">21. Workflow Question Table</h3>
 
 <p>This section outlines how to retrieve data from the Workflow Question table using the provided endpoint. You have the flexibility to fetch specific data by including workflow Question Ids, workflow question categoy Ids, data type Ids, required Inds and questions. The Workflow Question endpoint also supports pagination for managing large datasets effectively.</p>
 
@@ -1963,7 +2183,7 @@
 </tr>
 </tbody></table>
 
-<h3 id="20-workflow-type-table">20. Workflow Type Table</h3>
+<h3 id="22-workflow-type-table">22. Workflow Type Table</h3>
 
 <p>This section outlines how to retrieve data from the Workflow Type table using the provided endpoint. You have the flexibility to fetch specific data by including workflow Ids, workflow type Ids, and workflows. The Unit type endpoint also supports pagination for managing large datasets effectively.</p>
 

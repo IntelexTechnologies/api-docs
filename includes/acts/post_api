@@ -16,6 +16,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 <p>In the following release, the POST APIs End points are provided to add or update following: </p>
 
 <ul>
+<li>Emission Factor</li>
 <li>Equipment</li>
 <li>Equipment Emissions Recalculate</li>
 <li>Equipment Attribute</li>
@@ -32,7 +33,106 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 
 <p>POST requests to these endpoints should be formatted in JSON.</p>
 
-<h3 id="1-equipment-table">1. Equipment Table</h3>
+<h3 id="1-emission-factor-table">1. Emission Factor Table</h3>
+
+<p>This section guides you through the process of modifying existing Emission Factor records or adding new entries to the Emission Factor table using the designated API endpoint.</p>
+
+<p><strong>Emission Factor POST endpoint</strong></p>
+
+<p><code class="prettyprint">POST</code> api/v1/emissionfactor</p>
+
+<blockquote>
+<p>Example Request &amp; JSON Input Body </p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://[tenant].actsapi.intelex.com/v1/emissionfactor'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span> <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span>
+    <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s2">"emissionFactorId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+    <span class="s2">"equipmentId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+    <span class="s2">"emissionTypeId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+    <span class="s2">"emissionCategoryId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+    <span class="s2">"compoundId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+    <span class="s2">"emissionFactorName"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
+    <span class="s2">"activeDate"</span><span class="p">:</span> <span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span>
+    <span class="s2">"emissionFactor"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+    <span class="s2">"unitId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+    <span class="s2">"viewColumnName"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
+    <span class="s2">"inactiveDate"</span><span class="p">:</span> <span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span>
+    <span class="s2">"dataLockTypeId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+    <span class="s2">"lastModifiedDate"</span><span class="p">:</span> <span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span>
+    <span class="s2">"externalIdentifier"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
+    <span class="s2">"comments"</span><span class="p">:</span> <span class="s2">"string"</span>
+  <span class="p">}</span>
+<span class="p">],</span>
+  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://[tenant].actsapi.intelex.com/v1/emissionfactor"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"[  {\r\n    \"emissionFactorId\": \"number\",\r\n    \"equipmentId\": \"number\",\r\n    \"emissionTypeId\": \"number\",\r\n    \"emissionCategoryId\": \"number\",\r\n    \"compoundId\": \"number\",\r\n    \"emissionFactorName\": \"string\",\r\n    \"activeDate\": \"2023-06-25T04:00:00Z\",\r\n    \"emissionFactor\": \"number\",\r\n    \"unitId\": \"number\",\r\n    \"viewColumnName\": \"string\",\r\n    \"inactiveDate\": \"2023-06-25T04:00:00Z\",\r\n    \"dataLockTypeId\": \"number\",\r\n    \"lastModifiedDate\": \"2023-06-25T04:00:00Z\",\r\n    \"externalIdentifier\": \"string\",\r\n    \"comments\": \"string\"\r\n  }\r\n]"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Input JSON Body</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"emissionFactorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"equipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"emissionTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"emissionCategoryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"compoundId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"emissionFactorName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"activeDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"emissionFactor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"unitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"viewColumnName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"inactiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dataLockTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"externalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"insertedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"updatedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"deletedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"failureCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errorMessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<blockquote>
+<p>Example Output For When Data Get&rsquo;s Failed To Insert or Update due to invalid EmissionFactorId</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"insertedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"updatedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w"> 
+  </span><span class="s2">"deletedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"failureCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errorMessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+     </span><span class="s2">"External Identifier : , Error: An error occurred while saving the entity changes. See the inner exception for details. "</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<h3 id="2-equipment-table">2. Equipment Table</h3>
 
 <p>This section guides you through the process of modifying existing equipment records or adding new entries to the Equipment table using the designated API endpoint.</p>
 
@@ -140,7 +240,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<h3 id="2-equipment-emissions-recalculate">2. Equipment Emissions Recalculate</h3>
+<h3 id="3-equipment-emissions-recalculate">3. Equipment Emissions Recalculate</h3>
 
 <p>This section guides you through the process of an on-demand update to the emissions calculation for a specific equipment using the designated API endpoint. While this API endpoint is a child of the Equipment table, adding or updating an equipment will not cause an update on its own. </p>
 
@@ -206,7 +306,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<h3 id="3-equipment-attribute-table">3. Equipment Attribute Table</h3>
+<h3 id="4-equipment-attribute-table">4. Equipment Attribute Table</h3>
 
 <p>This section outlines the process of adding new entries or modifying existing records within the Equipment Attribute table using the dedicated API endpoint.</p>
 
@@ -287,7 +387,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<h3 id="4-facility-table">4. Facility Table</h3>
+<h3 id="5-facility-table">5. Facility Table</h3>
 
 <p>This section outlines the process of adding new entries or modifying existing records within the Facility table using the dedicated API endpoint.</p>
 
@@ -384,7 +484,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<h3 id="5-facility-attribute-table">5. Facility Attribute Table</h3>
+<h3 id="6-facility-attribute-table">6. Facility Attribute Table</h3>
 
 <p>This section outlines the process of adding new entries or modifying existing records within the Facility Attribute table using the dedicated API endpoint.</p>
 
@@ -465,7 +565,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<h3 id="6-operation-table">6. Operation Table</h3>
+<h3 id="7-operation-table">7. Operation Table</h3>
 
 <p>This section outlines the process of adding new entries or modifying existing records within the Operation table using the dedicated API endpoint.</p>
 
@@ -570,7 +670,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<h3 id="7-operation-emissions-recalculate">7. Operation Emissions Recalculate</h3>
+<h3 id="8-operation-emissions-recalculate">8. Operation Emissions Recalculate</h3>
 
 <p>This section guides you through the process of an on-demand update to the emissions calculation for a specific operation using the designated API endpoint. While this API endpoint is a child of the Operation table, adding or updating an operation with the API will not cause an update on its own. </p>
 
@@ -636,7 +736,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<h3 id="8-workflow-table">8. Workflow Table</h3>
+<h3 id="9-workflow-table">9. Workflow Table</h3>
 
 <p>This section outlines the process of adding new entries or modifying existing records within the Workflow table using the dedicated API endpoint.</p>
 
@@ -715,7 +815,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<h3 id="9-workflow-answer-table">9. Workflow Answer Table</h3>
+<h3 id="10-workflow-answer-table">10. Workflow Answer Table</h3>
 
 <p>This section outlines the process of adding new entries or modifying existing records within the Workflow Answer table using the dedicated API endpoint.</p>
 
@@ -806,7 +906,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<h3 id="10-workflow-equipment-table">10. Workflow Equipment Table</h3>
+<h3 id="11-workflow-equipment-table">11. Workflow Equipment Table</h3>
 
 <p>This section outlines the process of adding new entries or modifying existing records within the Workflow Equipment table using the dedicated API endpoint.</p>
 
@@ -885,7 +985,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<h3 id="11-workflow-facility-table">11. Workflow Facility Table</h3>
+<h3 id="12-workflow-facility-table">12. Workflow Facility Table</h3>
 
 <p>This section outlines the process of adding new entries or modifying existing records within the Workflow Facility table using the dedicated API endpoint.</p>
 
@@ -965,7 +1065,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<h3 id="12-workflow-person-table">12. Workflow Person Table</h3>
+<h3 id="13-workflow-person-table">13. Workflow Person Table</h3>
 
 <p>This section outlines the process of adding new entries or modifying existing records within the Workflow Person table using the dedicated API endpoint.</p>
 
