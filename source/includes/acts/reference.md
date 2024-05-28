@@ -61,40 +61,45 @@ The ACTS API SSL Certification is incompatible with following version of the pyt
 
 ### API's and Associated Database Tables 
 
-This ACTS API release includes 13 GET enpoints and 5 POST endpoints, along with the authentication endpoint described earlier. The tables that can be queried and updated are as follows. 
+This ACTS API release includes 22 GET enpoints and 13 POST endpoints, along with the authentication endpoint described earlier. The tables that can be queried and updated are as follows. 
 
 Database Tables supporting GET requests 
 
 1. Attribute Type					   
 2. Compound 				    
-3. Emission Type			     
-4. Emission Category
-5. Equipment 
-6. Equipment Status
-7. Equipment Attribute 
-8. Equipment Type
-9. Facility
-10. Facility Attribute
-11. Operation 
-12. Operation Type
-13. Unit
-14. Workflow 
-15. Workflow Answer
-16. Workflow Equipment
-17. Workflow Facility
-18. Workflow Person
-19. Workflow Question
-20. Workflow Type
+3. Emission Category
+4. Emission Factor Table			     
+5. Emission Type
+6. Equipment 
+7. Equipment Status
+8. Equipment Attribute 
+9. Equipment Type
+10. Facility
+11. Facility Attribute
+12. Operation 
+13. Operation Type
+14. Query Results
+15. Unit
+16. Workflow 
+17. Workflow Answer
+18. Workflow Equipment
+19. Workflow Facility
+20. Workflow Person
+21. Workflow Question
+22. Workflow Type
 
 Database Tables supporting POST requests 
 
-1. Equipment
-2. Equipment Attribute
-3. Facility
-4. Facility Attribute
-5. Operation
-6. Workflow
-7. Workflow Answer
-8. Workflow Equipment
-9. Workflow Facility
-10. Workflow Person 
+1. Emission Factor
+2. Equipment
+3. Equipment Emissions Recalculate
+4. Equipment Attribute
+5. Facility
+6. Facility Attribute
+7. Operation
+8. Operation Emissions Recalculate
+9. Workflow
+10. Workflow Answer
+11. Workflow Equipment
+12. Workflow Facility
+13. Workflow Person 

@@ -6,11 +6,72 @@ This section outlines the available Delete APIs designed for modifying ACTS data
 
 In the current release, one DELETE API End point is provided to remove or delete from the following table 
 
+* Emission Factor
 * Operation
 
 DELETE requests to these endpoints should be formatted in JSON.
 
-### 1. Operation Table 
+### 1. Emission Factor Table 
+
+This section guides you through the process of removing/deleting the existing records from the Emission Factor table using the designated API endpoint.
+
+**Emission Factor DELETE endpoint**
+
+`DELETE` /api/v1/emissionfactor
+
+> Example Request & JSON Input Body 
+
+```javascript
+var request = require("request");
+
+var options = { method: 'DELETE',
+  url: 'https://[tenant].actsapi.intelex.com/v1/emissionfactor',
+  headers: { 'content-type': 'application/json' },
+  body:
+   { 
+    "emissionFactorId": "number"
+      },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+```csharp
+
+var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/emissionfactor");
+var request = new RestRequest(Method.DELETE);
+request.AddHeader("content-type", "application/json");
+request.AddParameter("application/json", "{\r\n    \"emissionFactorId\": \"number\"\r\n}", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+```
+> Input JSON Body
+
+```json
+
+  {
+    "emissionFactorId": "number"
+  }
+
+```
+> Example Response
+
+```json
+{
+	"insertedRowCount" : 0 , 
+	"updatedRowCount" : 0 ,
+	"deletedRowCount" : 1 ,
+	"failureCount" : 0 ,
+	"errorMessage" : []
+}
+
+```
+
+
+### 2. Operation Table 
 
 This section guides you through the process of removing/deleting the existing records from the Operation table using the designated API endpoint.
 
@@ -64,3 +125,4 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{\r\n    \"ActionsTaken\": \"string\",\r\n    \"Date\": \"2017-02-13T22:15:30.203Z\",\r\n    \"Description\": \"string\",\r\n    \"IncidentNo\": 0,\r\n    \"ReportedDate\": \"2017-02-13T22:15:30.203Z\",\r\n    \"SuspectedCause\": \"string\"\r\n}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
