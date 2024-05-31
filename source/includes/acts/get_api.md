@@ -40,28 +40,28 @@ IRestResponse response = client.Execute(request);
     "hasNext": true,
     "data": [
         {
-            "attribute_type_id": "number",
-            "attribute_type": "string",
-            "data_type_id": "number",
-            "data_type_size": "number",
-            "data_type_precision": "number",
-            "data_type_filter": "string",
-            "readonly_ind": "string",
-            "searchable_ind": "string",
-            "remote_ind": "string",
-            "default_value": "string",
-            "always_evaluate_default_ind": "string",
-            "display_condition": "string",
-            "disabled_condition": "string",
-            "validation_condition": "string",
-            "validation_error_text": "string",
-            "view_column_name": "string",
-            "activedate": "2011-07-04t17:42:43",
-            "inactive_date": "2010-07-04t17:42:43",
-            "lastmodifieddate": "2020-09-10t10:01:19",
-            "externalidentifier": "string",
+            "attributeTypeId": "number",
+            "attributeType": "string",
+            "dataTypeId": "number",
+            "dataTypeSize": "number",
+            "dataTypePrecision": "number",
+            "dataTypeFilter": "string",
+            "readonlyInd": "string",
+            "searchableInd": "string",
+            "remoteInd": "string",
+            "defaultValue": "string",
+            "alwaysEvaluateDefaultInd": "string",
+            "displayCondition": "string",
+            "disabledCondition": "string",
+            "validationCondition": "string",
+            "validationErrorText": "string",
+            "viewColumnName": "string",
+            "activeDate": "2011-01-01T00:00:00",
+            "inactiveDate": "2011-01-01T00:00:00",
+            "lastModifiedDate": "2020-10-08T13:35:31",
+            "externalIdentifier": "string",
             "comments": "string",
-            "refid": "string"
+            "refId": "string"
         }
 	]
 }
@@ -215,15 +215,15 @@ IRestResponse response = client.Execute(request);
     "hasPrevious": false,
     "hasNext": true,
     "data": [
-        {
-            "emission_category_id": "number",
-            "emission_category": "string",
-            "sort_order": "number",
-            "last_modified_date": "2020-09-10t10:01:19",
-            "external_identifier": "string",
+		   {
+            "emissionCategoryId": "number",
+            "emissionCategory": "string",
+            "sortOrder": "number",
+            "lastModifiedDate": "2022-11-22T08:03:51",
+            "externalIdentifier": "string",
             "comments": "string",
-            "ref_id": "string"
-		    }
+            "refId": "string"
+        }
 	]
 }
 ```
@@ -355,15 +355,15 @@ IRestResponse response = client.Execute(request);
     "hasPrevious": false,
     "hasNext": true,
     "data": [
-        {
-            "emission_type_id": "number",
-            "emission_type": "string",
-            "sort_order": "number",
-            "last_modified_date": "2020-09-10t10:01:19",
-            "external_identifier": "string",
+          {
+            "emissionTypeId": "number",
+            "emissionType": "string",
+            "sortOrder": "number",
+            "lastModifiedDate": "2022-11-22T08:03:41",
+            "externalIdentifier": "string",
             "comments": "string",
-            "ref_id": "string"
-		    }
+            "refId": "string"
+        }
 	]
 }
 ```
@@ -420,26 +420,26 @@ IRestResponse response = client.Execute(request);
     "hasNext": true,
     "data": [
         {
-            "equipment_id": "number",
-            "area_id": "number",
-            "facility_id": "number",
-            "equipment_type_id": "number",
-            "source_name": "string",
-            "equipment_status_id": "number",
-            "model_id": "number",
-            "ownership_id": "number",
-            "owner_id": "number",
-            "serial_number": "string",
-            "manufacture_date": "2019-09-10t10:01:19",
-            "internal_name": "string",
-            "alternate_name": "string",
+            "equipmentId": "number",
+            "areaId": "number",
+            "facilityId": "number",
+            "equipmentTypeId": "number",
+            "sourceName": "string",
+            "equipmentStatusId": "number",
+            "modelId": "number",
+            "ownershipId": "number",
+            "ownerId": "number",
+            "serialNumber": "string",
+            "manufactureDate": "2013-09-03T00:00:00",
+            "internalName": "string",
+            "alternateName": "string",
             "design": "string",
-            "original_survey_date": "2021-09-10t10:01:19",
-            "active_date": "2022-09-10t10:01:19",
-            "inactive_date": "2023-09-10t10:01:19",
-            "data_lock_type_id": "number",
-            "last_modified_date": "2023-09-11t10:01:19",
-            "external_identifier": "string",
+            "originalSurveyDate": "2022-12-12T15:43:07",
+            "activeDate": "2013-09-03T00:00:00",
+            "inactiveDate": "2022-12-12T15:43:07",
+            "dataLockTypeId": "number",
+            "lastModifiedDate": "2022-12-12T15:43:07",
+            "externalIdentifier": "string",
             "comments": "string"
         }
 	]
@@ -468,71 +468,7 @@ lastModifiedStartDate | string | Date time format "yyyy/mm/dd T hours:min:secZ -
 lastModifiedEndDate | string | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 
 
-### 7. Equipment Status Table
-
-All data from the Equipment Status table will be returned from the endpoint below. You can optionally fetch specific data by including the equipment status ID and equipment status value. The Equipment Status endpoint supports pagination.
-
-> Example Request
-
-```javascript
-var request = require("request");
-
-var options = { method: 'GET',
-  url: 'https://[tenant].actsapi.intelex.com/v1/equipmentstatus' };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-```
-
-```csharp
-var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/equipmentstatus");
-var request = new RestRequest(Method.GET);
-IRestResponse response = client.Execute(request);
-```
-
-> Response Schema
-
-```json
-{
-    "currentPage": 1,
-    "totalPages": 3,
-    "currentPageSize": 500,
-    "maxAPIPageSize": 500,
-    "totalCount": 1346,
-    "hasPrevious": false,
-    "hasNext": true,
-    "data": [
-        {
-            "emission_status_id": "number",
-            "emission_status": "string",
-			      "color_id": "number",
-            "sort_order": "number",
-            "last_modified_date": "2020-09-10t10:01:19",
-            "external_identifier": "string",
-            "comments": "string"
-        }
-	]
-}
-```
-
-**API Endpoints**
-
-`GET` /api/v1/equipmentstatus
-
-**Query parameters**
-
-Attribute | Type | Description
---------- | ---- | -----------
-PageNumber | int | Page number of the results to fetch.
-PageSize | int | The number of results per page
-equipmentStatusIds | int | Equipment Status ID is one of the unique identifier for this equipment status record
-equipmentStatus | string | Equipment Status is one of the identifier for the status of the equipment
-
-
-### 8. Equipment Attribute Table
+### 7. Equipment Attribute Table
 
 All data from the Equipment Attribute table will be returned from the endpoint below. You can optionally fetch specific data by including the facility attribute Ids, facility names, emission type Ids, facility type Ids, unit Ids, equipment Ids, last modified start date and last modified end date. The facility attribute endpoint supports pagination.
 
@@ -602,6 +538,71 @@ lastModifiedStartDate | string | Date time format "yyyy/mm/dd T hours:min:secZ -
 lastModifiedEndDate | string | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 
 
+### 8. Equipment Status Table
+
+All data from the Equipment Status table will be returned from the endpoint below. You can optionally fetch specific data by including the equipment status ID and equipment status value. The Equipment Status endpoint supports pagination.
+
+> Example Request
+
+```javascript
+var request = require("request");
+
+var options = { method: 'GET',
+  url: 'https://[tenant].actsapi.intelex.com/v1/equipmentstatus' };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+```csharp
+var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/equipmentstatus");
+var request = new RestRequest(Method.GET);
+IRestResponse response = client.Execute(request);
+```
+
+> Response Schema
+
+```json
+{
+    "currentPage": 1,
+    "totalPages": 3,
+    "currentPageSize": 500,
+    "maxAPIPageSize": 500,
+    "totalCount": 1346,
+    "hasPrevious": false,
+    "hasNext": true,
+    "data": [
+		{
+            "equipmentStatusId": "number",
+            "equipmentStatus": "string",
+            "colorId": "number",
+            "sortOrder": "number",
+            "lastModifiedDate": "2022-11-22T07:46:46",
+            "externalIdentifier": "string",
+            "comments": "string"
+        }
+	]
+}
+```
+
+**API Endpoints**
+
+`GET` /api/v1/equipmentstatus
+
+**Query parameters**
+
+Attribute | Type | Description
+--------- | ---- | -----------
+PageNumber | int | Page number of the results to fetch.
+PageSize | int | The number of results per page
+equipmentStatusIds | int | Equipment Status ID is one of the unique identifier for this equipment status record
+equipmentStatus | string | Equipment Status is one of the identifier for the status of the equipment
+
+
+
 ### 9. Equipment Type Table
 
 All data from the Equipment Type table will be returned from the endpoint below. You can optionally fetch specific data by including the equipment type ID and equipment types value. The Equipment type endpoint supports pagination.
@@ -639,36 +640,36 @@ IRestResponse response = client.Execute(request);
     "hasPrevious": false,
     "hasNext": true,
     "data": [
-        {
-            "equipment_type_id": "number",
-            "equipment_type": "string",
-            "visible_ind": "string",
-            "equipment_attributes_ind": "string",
-            "emission_calculations_ind": "string",
-            "containment_ind": "string",
-            "geometry_ind": "string",
-            "emission_factors_ind": "string",
-            "sample_locations_ind": "string",
-            "equipment_associations_ind": "string",
-            "facility_associations_ind": "string",
-            "location_information_ind": "string",
-            "fuel_use_ind": "string",
-            "people_associations_ind": "string",
-            "service_schedule_ind": "string",
-            "service_history_ind": "string",
-            "operational_data_collectn_ind": "string",
-            "pte_operational_data_ind": "string",
-            "schedule_ind": "string",
-            "correspondence_ind": "string",
-            "requirements_ind": "string",
-            "file_attachments_ind": "string",
-            "view_name": "string",
-            "sort_order": "number", 
-            "last_modified_date": "2020-09-10t10:01:19",
-            "external_identifier": "string",
+		        {
+            "equipmentTypeId": "number",
+            "equipmentType": "string",
+            "visibleInd": "string",
+            "equipmentAttributesInd": "string",
+            "emissionCalculationsInd": "string",
+            "containmentInd": "string",
+            "geometryInd": "string",
+            "emissionFactorsInd": "string",
+            "sampleLocationsInd": "string",
+            "equipmentAssociationsInd": "string",
+            "facilityAssociationsInd": "string",
+            "locationInformationInd": "string",
+            "fuelUseInd": "string",
+            "peopleAssociationsInd": "string",
+            "serviceScheduleInd": "string",
+            "serviceHistoryInd": "string",
+            "operationalDataCollectnInd": "string",
+            "pteOperationalDataInd": "string",
+            "scheduleInd": "string",
+            "correspondenceInd": "string",
+            "requirementsInd": "string",
+            "fileAttachmentsInd": "string",
+            "viewName": "string",
+            "sortOrder": "number",
+            "lastModifiedDate": "2022-04-14T09:15:47",
+            "externalIdentifier": "string",
             "comments": "string",
-            "ref_id": "string"
-		}
+            "refId": "string"
+        }
 	]
 }
 ```
@@ -1049,27 +1050,27 @@ IRestResponse response = client.Execute(request);
     "hasNext": true,
     "data": [
         {
-            "EQUIPMENT_ID": "number",
-            "AREA_ID": "number",
-            "FACILITY_ID": "number",
-            "EQUIPMENT_TYPE_ID": "number",
-            "SOURCE_NAME": "string",
-            "EQUIPMENT_STATUS_ID": "number",
-            "MODEL_ID": "number",
-            "OWNERSHIP_ID": "number",
-            "OWNER_ID": "number",
-            "SERIAL_NUMBER": "string",
-            "MANUFACTURE_DATE": "2023-03-30T07:27:06",
-            "INTERNAL_NAME": "string",
-            "ALTERNATE_NAME": "string",
-            "DESIGN": "string",
-            "ORIGINAL_SURVEY_DATE": "2023-03-30T07:27:06",
-            "ACTIVE_DATE": "2018-10-16T06:19:21",
-            "INACTIVE_DATE": "2023-03-30T07:27:06",
-            "DATA_LOCK_TYPE_ID": "number",
-            "LAST_MODIFIED_DATE": "2023-03-30T04:07:57",
-            "EXTERNAL_IDENTIFIER": "string",
-            "COMMENTS": "string"
+            "equipment_id": "number",
+            "area_id": "number",
+            "facility_id": "number",
+            "equipment_type_id": "number",
+            "source_name": "string",
+            "equipment_status_id": "number",
+            "model_id": "number",
+            "ownership_id": "number",
+            "owner_id": "number",
+            "serial_number": "string",
+            "manufacture_date": "2023-03-30T07:27:06",
+            "internal_name": "string",
+            "alternate_name": "string",
+            "design": "string",
+            "original_survey_date": "2023-03-30T07:27:06",
+            "active_date": "2018-10-16T06:19:21",
+            "inactive_date": "2023-03-30T07:27:06",
+            "data_lock_type_id": "number",
+            "last_modified_date": "2023-03-30T04:07:57",
+            "external_identifier": "string",
+            "comments": "string"
         }
 	]
 }

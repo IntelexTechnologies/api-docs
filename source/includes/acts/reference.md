@@ -71,8 +71,8 @@ Database Tables supporting GET requests
 4. Emission Factor Table			     
 5. Emission Type
 6. Equipment 
-7. Equipment Status
-8. Equipment Attribute 
+7. Equipment Attribute
+8. Equipment Status
 9. Equipment Type
 10. Facility
 11. Facility Attribute
@@ -92,8 +92,8 @@ Database Tables supporting POST requests
 
 1. Emission Factor
 2. Equipment
-3. Equipment Emissions Recalculate
-4. Equipment Attribute
+3. Equipment Attribute
+4. Equipment Emissions Recalculate
 5. Facility
 6. Facility Attribute
 7. Operation

@@ -15,8 +15,8 @@ In the following release, the POST APIs End points are provided to add or update
 
 * Emission Factor
 * Equipment
-* Equipment Emissions Recalculate
 * Equipment Attribute
+* Equipment Emissions Recalculate
 * Facility
 * Facility Attribute
 * Operation
@@ -248,79 +248,7 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 3. Equipment Emissions Recalculate 
-
-This section guides you through the process of an on-demand update to the emissions calculation for a specific equipment using the designated API endpoint. While this API endpoint is a child of the Equipment table, adding or updating an equipment will not cause an update on its own. 
-
-**Equipment/EmissionCalculation POST endpoint**
-
-`POST` api/v1/equipment/emissioncalculation
-
-> Example Request & JSON Input Body 
-
-```javascript
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://[tenant].actsapi.intelex.com/v1/equipment/emissioncalculation',
-  headers: { 'content-type': 'application/json' },
-  body:
-    { [EquipmentId1, EquipmentId2, EquipmentId3....]
-	 },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-```
-
-```csharp
-var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/equipment/emissioncalculation");
-var request = new RestRequest(Method.POST);
-request.AddHeader("content-type", "application/json");
-request.AddParameter("application/json", "{\r\n   [EquipmentId1, EquipmentId2, EquipmentId3....]\r\n}", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-> Input JSON Body
-
-```json
-{
-   [EquipmentId1, EquipmentId2, EquipmentId3....]
-	 }
-```
-> Example Response
-
-```json
-{
-    "processedIds": [
-        "34",
-        "36"
-    ],
-    "invalidIds": [
-        "1234"
-    ],
-    "errorMessages": []
-}
-
-```
-
-> Example Output when data is missing
-
-```json
-{
-    "processedIds": [],
-    "invalidIds": [],
-    "errorMessages": [
-        "Equipment ids are missing."
-    ]
-}
-
-```
-
-### 4. Equipment Attribute Table 
+### 3. Equipment Attribute Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Equipment Attribute table using the dedicated API endpoint.
 
@@ -406,6 +334,79 @@ IRestResponse response = client.Execute(request);
 }
 
 ```
+
+### 4. Equipment Emissions Recalculate 
+
+This section guides you through the process of an on-demand update to the emissions calculation for a specific equipment using the designated API endpoint. While this API endpoint is a child of the Equipment table, adding or updating an equipment will not cause an update on its own. 
+
+**Equipment/EmissionCalculation POST endpoint**
+
+`POST` api/v1/equipment/emissioncalculation
+
+> Example Request & JSON Input Body 
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://[tenant].actsapi.intelex.com/v1/equipment/emissioncalculation',
+  headers: { 'content-type': 'application/json' },
+  body:
+    { [EquipmentId1, EquipmentId2, EquipmentId3....]
+	 },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+```csharp
+var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/equipment/emissioncalculation");
+var request = new RestRequest(Method.POST);
+request.AddHeader("content-type", "application/json");
+request.AddParameter("application/json", "{\r\n   [EquipmentId1, EquipmentId2, EquipmentId3....]\r\n}", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+```
+
+> Input JSON Body
+
+```json
+{
+   [EquipmentId1, EquipmentId2, EquipmentId3....]
+	 }
+```
+> Example Response
+
+```json
+{
+    "processedIds": [
+        "34",
+        "36"
+    ],
+    "invalidIds": [
+        "1234"
+    ],
+    "errorMessages": []
+}
+
+```
+
+> Example Output when data is missing
+
+```json
+{
+    "processedIds": [],
+    "invalidIds": [],
+    "errorMessages": [
+        "Equipment ids are missing."
+    ]
+}
+
+```
+
 
 ### 5. Facility Table 
 
@@ -865,6 +866,7 @@ IRestResponse response = client.Execute(request);
 }
 
 ```
+
 ### 10. Workflow Answer Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Workflow Answer table using the dedicated API endpoint.
@@ -1218,6 +1220,7 @@ IRestResponse response = client.Execute(request);
 }
 
 ```
+
 ### JSON body for both Insert & Update 
 
 #### JSON Input body for Insert 
