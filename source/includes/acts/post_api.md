@@ -352,7 +352,7 @@ var options = { method: 'POST',
   url: 'https://[tenant].actsapi.intelex.com/v1/equipment/emissioncalculation',
   headers: { 'content-type': 'application/json' },
   body:
-    { [EquipmentId1, EquipmentId2, EquipmentId3....]
+    { [equipmentId1, equipmentId2, equipmentId3....]
 	 },
   json: true };
 
@@ -367,7 +367,7 @@ request(options, function (error, response, body) {
 var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/equipment/emissioncalculation");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
-request.AddParameter("application/json", "{\r\n   [EquipmentId1, EquipmentId2, EquipmentId3....]\r\n}", ParameterType.RequestBody);
+request.AddParameter("application/json", "{\r\n   [equipmentId1, equipmentId2, equipmentId3....]\r\n}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -375,7 +375,7 @@ IRestResponse response = client.Execute(request);
 
 ```json
 {
-   [EquipmentId1, EquipmentId2, EquipmentId3....]
+   [equipmentId1, equipmentId2, equipmentId3....]
 	 }
 ```
 > Example Response
@@ -727,7 +727,7 @@ var options = { method: 'POST',
   url: 'https://[tenant].actsapi.intelex.com/v1/operation/emissioncalculation',
   headers: { 'content-type': 'application/json' },
   body:
-    { [OperationId1, OperationId2, OperationId3....]
+    { [operationId1, operationId2, operationId3....]
 	 },
   json: true };
 
@@ -742,7 +742,7 @@ request(options, function (error, response, body) {
 var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/operation/emissioncalculation");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
-request.AddParameter("application/json", "{\r\n   [OperationId1, OperationId2, OperationId3....]\r\n}", ParameterType.RequestBody);
+request.AddParameter("application/json", "{\r\n   [operationId1, operationId2, operationId3....]\r\n}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -750,7 +750,7 @@ IRestResponse response = client.Execute(request);
 
 ```json
 {
-   [OperationId1, OperationId2, OperationId3....]
+   [operationId1, operationId2, operationId3....]
 	 }
 ```
 > Example Response
