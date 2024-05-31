@@ -87,26 +87,8 @@
   <span class="na">url</span><span class="p">:</span> <span class="s1">'https://[tenant].actsapi.intelex.com/v1/operation'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span> <span class="p">},</span>
   <span class="na">body</span><span class="p">:</span>
-   <span class="p">{</span> <span class="na">operationId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
-     <span class="na">equipmentId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
-     <span class="na">emissionTypeId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
-       <span class="na">emissionCategoryId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
-     <span class="na">operationTypeId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
-     <span class="na">activeDate</span><span class="p">:</span> <span class="s1">'2023-06-25T04:00:00Z'</span><span class="p">,</span>
-     <span class="na">unitId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
-     <span class="na">controlledInd</span><span class="p">:</span> <span class="s1">'string'</span><span class="p">,</span>
-     <span class="na">estimatedInd</span><span class="p">:</span> <span class="s1">'string'</span><span class="p">,</span>
-     <span class="na">invalidInd</span><span class="p">:</span> <span class="s1">'string'</span><span class="p">,</span>
-     <span class="na">calculateEmissionsInd</span><span class="p">:</span> <span class="s1">'string'</span><span class="p">,</span>
-     <span class="na">collectionDate</span><span class="p">:</span> <span class="s1">'2023-06-25T04:00:00Z'</span><span class="p">,</span>
-     <span class="na">fieldEventId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
-     <span class="na">inactiveDate</span><span class="p">:</span> <span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span>
-     <span class="na">dataLockTypeId</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
-     <span class="na">lastModifiedDate</span><span class="p">:</span> <span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span>
-     <span class="na">externalIdentifier</span><span class="p">:</span> <span class="s1">'string'</span><span class="p">,</span>
-     <span class="na">comments</span><span class="p">:</span> <span class="s1">'string'</span><span class="p">,</span>
-     <span class="na">badDataFlag</span><span class="p">:</span> <span class="s1">'number(1,0)'</span><span class="p">,</span>
-     <span class="na">operationAmount</span><span class="p">:</span> <span class="s1">'number'</span> <span class="p">},</span>
+   <span class="p">{</span> <span class="p">[</span><span class="nx">operationId1</span><span class="p">,</span> <span class="nx">operationId2</span><span class="p">,</span> <span class="nx">operationId3</span><span class="p">....]</span>
+     <span class="p">},</span>
   <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
 
 <span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
@@ -118,6 +100,26 @@
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://[tenant].actsapi.intelex.com/v1/operation"</span><span class="p">);</span>
 <span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">DELETE</span><span class="p">);</span>
 <span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
-<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"{\r\n    \"ActionsTaken\": \"string\",\r\n    \"Date\": \"2017-02-13T22:15:30.203Z\",\r\n    \"Description\": \"string\",\r\n    \"IncidentNo\": 0,\r\n    \"ReportedDate\": \"2017-02-13T22:15:30.203Z\",\r\n    \"SuspectedCause\": \"string\"\r\n}"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"{\r\n   [operationId1, operationId2, operationId3....]\r\n}"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
 <span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
 </code></pre>
+<blockquote>
+<p>Input JSON Body</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="p">[</span><span class="err">operationId</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="err">operationId</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="err">operationId</span><span class="mi">3</span><span class="err">....</span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"deletedRowCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notFoundCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"failureCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errorMessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
