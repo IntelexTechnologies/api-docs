@@ -88,26 +88,8 @@ var options = { method: 'DELETE',
   url: 'https://[tenant].actsapi.intelex.com/v1/operation',
   headers: { 'content-type': 'application/json' },
   body:
-   { operationId: 'number',
-     equipmentId: 'number',
-     emissionTypeId: 'number',
-	   emissionCategoryId: 'number',
-     operationTypeId: 'number',
-     activeDate: '2023-06-25T04:00:00Z',
-     unitId: 'number',
-     controlledInd: 'string',
-     estimatedInd: 'string',
-     invalidInd: 'string',
-     calculateEmissionsInd: 'string',
-     collectionDate: '2023-06-25T04:00:00Z',
-     fieldEventId: 'number',
-     inactiveDate: "2023-06-25T04:00:00Z",
-     dataLockTypeId: 'number',
-     lastModifiedDate: "2023-06-25T04:00:00Z",
-     externalIdentifier: 'string',
-     comments: 'string',
-     badDataFlag: 'number(1,0)',
-     operationAmount: 'number' },
+   { [operationId1, operationId2, operationId3....]
+	 },
   json: true };
 
 request(options, function (error, response, body) {
@@ -122,7 +104,28 @@ request(options, function (error, response, body) {
 var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/operation");
 var request = new RestRequest(Method.DELETE);
 request.AddHeader("content-type", "application/json");
-request.AddParameter("application/json", "{\r\n    \"ActionsTaken\": \"string\",\r\n    \"Date\": \"2017-02-13T22:15:30.203Z\",\r\n    \"Description\": \"string\",\r\n    \"IncidentNo\": 0,\r\n    \"ReportedDate\": \"2017-02-13T22:15:30.203Z\",\r\n    \"SuspectedCause\": \"string\"\r\n}", ParameterType.RequestBody);
+request.AddParameter("application/json", "{\r\n   [operationId1, operationId2, operationId3....]\r\n}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
+```
+
+> Input JSON Body
+
+```json
+
+  {
+    [operationId1, operationId2, operationId3....]
+  }
+
+```
+> Example Response
+
+```json
+{
+    "deletedRowCount": 1,
+    "notFoundCount": 0,
+    "failureCount": 0,
+	"errorMessage" : []
+}
+
 ```
 
