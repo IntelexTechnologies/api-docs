@@ -121,9 +121,9 @@ IRestResponse response = client.Execute(request);
 
 ```json
 {
-    "deletedRowCount": 1,
-    "notFoundCount": 0,
-    "failureCount": 0,
+  "deletedRowCount": 1,
+  "notFoundCount": 0,
+  "failureCount": 0,
 	"errorMessage" : []
 }
 
