@@ -69,7 +69,7 @@ IRestResponse response = client.Execute(request);
 
 **API Endpoints**
 
-`GET` /api/v1/AttributeType
+`GET` /api/v1/attributetype
 
 **Query parameters**
 
@@ -119,7 +119,7 @@ IRestResponse response = client.Execute(request);
     "data": [
         {
             "compoundId": "number",
-            "compound": "string",
+            "compoundName": "string",
             "compoundTypeId": "number",
             "compoundStatusId": "number",
             "activeDate": "2011-07-04T17:42:43",
@@ -179,7 +179,7 @@ compoundTypeIds | int | Compound Type Ids is the associated compound type and is
 compoundstatusIds | int | Compound Status Ids is associated with compound status
 compoundNames | string | Compound Names The name of the compound which is a string type data and is one among the parameter for filter option
 externalIdentifier | int | External Identifiers is a unique identifier for this record to an external data system
-CAS | string | CAS Number is a Chemical Abstract Service number for the compound 
+cas | string | CAS Number is a Chemical Abstract Service number for the compound 
 
 ### 3. Emission Category Table
 
@@ -506,14 +506,14 @@ IRestResponse response = client.Execute(request);
     "hasNext": true,
     "data": [
         {
-            "EquipmentAttributeId": "number",
-            "EquipmentId": "number",
-            "AttributeTypeId": "number",
-            "EquipmentAttribute":"string",
-            "DataLockTypeId": "number",
-            "LastModifiedDate": "datetime",
-            "ExternalIdentifier": "string",
-            "Comments":"string"
+            "equipmentAttributeId": "number",
+            "equipmentId": "number",
+            "attributeTypeId": "number",
+            "equipmentAttribute":"string",
+            "dataLockTypeId": "number",
+            "lastModifiedDate": "datetime",
+            "externalIdentifier": "string",
+            "comments":"string"
         }
 	]
 }
@@ -724,16 +724,16 @@ IRestResponse response = client.Execute(request);
     "hasPrevious": false,
     "hasNext": true,
     "data": [
-        {
+       {
             "facilityId": "number",
             "facilityName": "string",
-            "emissionTypeId": "number",
             "areaId": "number",
             "facilityTypeId": "number",
             "facilityStatusId": "number",
             "sortOrder": "number",
             "facilityOwnershipId": "number",
             "facilityOwnerId": "number",
+            "landOwnershipId": "number",
             "landOwnerId": "number",
             "operatorId": "number",
             "countryId": "number",
@@ -819,14 +819,14 @@ IRestResponse response = client.Execute(request);
     "hasNext": true,
     "data": [
         {
-          "FacilityAttributeId": "number",
-          "FacilityId": "number",
-          "AttributeTypeId": "number",
-          "FacilityAttribute":"string",
-          "DataLockTypeId": "number",
-          "LastModifiedDate": "2023-03-30T07:27:06.295Z",
-          "ExternalIdentifier": "string",
-          "Comments":"string"
+          "facilityAttributeId": "number",
+          "facilityId": "number",
+          "attributeTypeId": "number",
+          "facilityAttribute":"string",
+          "dataLockTypeId": "number",
+          "lastModifiedDate": "2023-03-30T07:27:06.295Z",
+          "externalIdentifier": "string",
+          "comments":"string"
         }
 	]
 }
@@ -1413,8 +1413,7 @@ IRestResponse response = client.Execute(request);
             "workflowQuestionId": "number",
             "lastModifiedDate": "2017-02-13T22:15:30.203Z",
             "externalIdentifier": "string",
-            "comments": "string",
-            "refId": "string"
+            "comments": "string"
         }
 	]
 }
@@ -1571,7 +1570,8 @@ IRestResponse response = client.Execute(request);
             "sortOrder": "number",
             "lastModifiedDate": "2017-02-13T22:15:30.203Z",
             "externalIdentifier": "string",
-            "comments": "string"
+            "comments": "string",
+            "refId": "string"
         }
 	]
 }
