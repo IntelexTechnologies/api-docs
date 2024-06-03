@@ -264,6 +264,7 @@ var options = { method: 'POST',
   url: 'https://[tenant].actsapi.intelex.com/v1/equipmentattribute',
   headers: { 'content-type': 'application/json' },
   body:
+
        [
   { 
 	 "equipmentAttributeId": "number",
