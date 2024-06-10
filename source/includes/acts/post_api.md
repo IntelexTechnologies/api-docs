@@ -410,8 +410,79 @@ IRestResponse response = client.Execute(request);
 
 ```
 
+### 5. Emissions Recalculate By Operation 
 
-### 5. Facility Table 
+This section guides you through the process of an on-demand update to the emissions calculation for a specific operation using the designated API endpoint. While this API endpoint is a child of the Operation table, adding or updating an operation with the API will not cause an update on its own. 
+
+**Operation/EmissionCalculation POST endpoint**
+
+`POST` api/v1/operation/emissioncalculation
+
+> Example Request & JSON Input Body 
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://[tenant].actsapi.intelex.com/v1/operation/emissioncalculation',
+  headers: { 'content-type': 'application/json' },
+  body:
+  { [operationId1, operationId2, operationId3....]
+	 },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+```csharp
+var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/operation/emissioncalculation");
+var request = new RestRequest(Method.POST);
+request.AddHeader("content-type", "application/json");
+request.AddParameter("application/json", "{\r\n   [operationId1, operationId2, operationId3....]\r\n}", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+```
+
+> Input JSON Body
+
+```json
+{
+   [operationId1, operationId2, operationId3....]
+}
+```
+> Example Response
+
+```json
+{
+    "processedIds": [
+        "34",
+        "36"
+    ],
+    "invalidIds": [
+        "1234"
+    ],
+    "errorMessages": []
+}
+
+```
+
+> Example Output when data is missing
+
+```json
+{
+    "processedIds": [],
+    "invalidIds": [],
+    "errorMessages": [
+        "Operation ids are missing."
+    ]
+}
+
+```
+
+### 6. Facility Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Facility table using the dedicated API endpoint.
 
@@ -539,7 +610,7 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 6. Facility Attribute Table 
+### 7. Facility Attribute Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Facility Attribute table using the dedicated API endpoint.
 
@@ -628,7 +699,7 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 7. Operation Table 
+### 8. Operation Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Operation table using the dedicated API endpoint.
 
@@ -739,78 +810,6 @@ IRestResponse response = client.Execute(request);
 	"errorMessage" : [
 	 "Operation ID : 0, Error: An error occurred while saving the entity changes. See the inner exception for details "
 	]
-}
-
-```
-
-### 8. Emissions Recalculate By Operation 
-
-This section guides you through the process of an on-demand update to the emissions calculation for a specific operation using the designated API endpoint. While this API endpoint is a child of the Operation table, adding or updating an operation with the API will not cause an update on its own. 
-
-**Operation/EmissionCalculation POST endpoint**
-
-`POST` api/v1/operation/emissioncalculation
-
-> Example Request & JSON Input Body 
-
-```javascript
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://[tenant].actsapi.intelex.com/v1/operation/emissioncalculation',
-  headers: { 'content-type': 'application/json' },
-  body:
-    { [operationId1, operationId2, operationId3....]
-	 },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-```
-
-```csharp
-var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/operation/emissioncalculation");
-var request = new RestRequest(Method.POST);
-request.AddHeader("content-type", "application/json");
-request.AddParameter("application/json", "{\r\n   [operationId1, operationId2, operationId3....]\r\n}", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-> Input JSON Body
-
-```json
-{
-   [operationId1, operationId2, operationId3....]
-	 }
-```
-> Example Response
-
-```json
-{
-    "processedIds": [
-        "34",
-        "36"
-    ],
-    "invalidIds": [
-        "1234"
-    ],
-    "errorMessages": []
-}
-
-```
-
-> Example Output when data is missing
-
-```json
-{
-    "processedIds": [],
-    "invalidIds": [],
-    "errorMessages": [
-        "Operation ids are missing."
-    ]
 }
 
 ```
