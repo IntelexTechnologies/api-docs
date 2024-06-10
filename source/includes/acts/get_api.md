@@ -1,4 +1,4 @@
-## Retrieve data from Database Table
+## Retrieve Data
 
 This section outlines the various GET APIs available for fetching data from different tables. Each API provides the capability to retrieve specific data based on provided parameters. Pagination support is available for managing large datasets effectively.The user can pass the set of parameters of same or different filter options at once .
 
@@ -80,7 +80,7 @@ PageSize | int | The number of results per page
 attributeTypeIds | int | Attribute ID is one of the filter parameter is a integer data type
 attributeTypes | string | Attribute Types is for the project detail type
 
-### 2. Compound API Table
+### 2. Compound Table
 
 This section guides you through the process of fetching data from the Compound table using the dedicated API endpoint. The endpoint offers the flexibility to retrieve all data from the Compound table or selectively acquire information by including Compound Ids, Compound Type Ids, Compound Status Ids, Compound Names, External Identifiers, or CAS Numbers. Additionally, the Compound endpoint is equipped with pagination capabilities to facilitate efficient management of substantial datasets.
 
