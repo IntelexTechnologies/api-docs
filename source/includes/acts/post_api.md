@@ -1,4 +1,4 @@
-## Add or Modify Database Table
+## Add or Modify Data
 
 This section outlines the available POST APIs designed for modifying ACTS data. These APIs let you update existing records and insert new records. POSTs should be formatted in JSON. 
 
@@ -16,11 +16,11 @@ In the following release, the POST APIs End points are provided to add or update
 * Emission Factor
 * Equipment
 * Equipment Attribute
-* Equipment Emissions Recalculate
+* Emissions Recalculate By Equipment
 * Facility
 * Facility Attribute
 * Operation
-* Operation Emissions Recalculate
+* Emissions Recalculate By Operation 
 * Workflow
 * Workflow Answer
 * Workflow Equipment
@@ -338,7 +338,7 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 4. Equipment Emissions Recalculate 
+### 4. Emissions Recalculate By Equipment  
 
 This section guides you through the process of an on-demand update to the emissions calculation for a specific equipment using the designated API endpoint. While this API endpoint is a child of the Equipment table, adding or updating an equipment will not cause an update on its own. 
 
@@ -743,7 +743,7 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 8. Operation Emissions Recalculate 
+### 8. Emissions Recalculate By Operation 
 
 This section guides you through the process of an on-demand update to the emissions calculation for a specific operation using the designated API endpoint. While this API endpoint is a child of the Operation table, adding or updating an operation with the API will not cause an update on its own. 
 
