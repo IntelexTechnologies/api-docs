@@ -93,11 +93,11 @@ Database Tables supporting POST requests
 1. Emission Factor
 2. Equipment
 3. Equipment Attribute
-4. Equipment Emissions Recalculate
-5. Facility
-6. Facility Attribute
-7. Operation
-8. Operation Emissions Recalculate
+4. Emissions Recalculate By Equipment
+5. Emissions Recalculate By Operation
+6. Facility
+7. Facility Attribute
+8. Operation
 9. Workflow
 10. Workflow Answer
 11. Workflow Equipment
