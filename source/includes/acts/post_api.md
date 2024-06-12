@@ -17,10 +17,10 @@ In the following release, the POST APIs End points are provided to add or update
 * Equipment
 * Equipment Attribute
 * Emissions Recalculate By Equipment
+* Emissions Recalculate By Operation 
 * Facility
 * Facility Attribute
 * Operation
-* Emissions Recalculate By Operation 
 * Workflow
 * Workflow Answer
 * Workflow Equipment
