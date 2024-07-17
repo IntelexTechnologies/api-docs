@@ -86,7 +86,8 @@ Database Tables supporting GET requests
 19. Workflow Facility
 20. Workflow Person
 21. Workflow Question
-22. Workflow Type
+22. Workflow Question Category
+23. Workflow Type
 
 Database Tables supporting POST requests 
 

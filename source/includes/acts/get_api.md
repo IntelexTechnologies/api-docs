@@ -1594,7 +1594,85 @@ dataTypeIds | int | Data Type IDs are the unique identifiers for the associated 
 requiredInds | string | Required Inds is the value if an answer is required before saving the form.
 questions | string | Questions are the question content values included on the form.
 
-### 22. Workflow Type Table
+### 22. Workflow Question Category Table
+
+This section outlines how to retrieve data from the Workflow Question Category table using the provided endpoint. You have the flexibility to fetch specific data by including workflow question category Ids, workflow type Ids and workflow question category. The Workflow Question Category endpoint also supports pagination for managing large datasets effectively.
+
+> Example Request
+
+```javascript
+var request = require("request");
+
+var options = { method: 'GET',
+  url: 'https://[tenant].actsapi.intelex.com/v1/workflowquestioncategory' };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+```csharp
+var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/workflowquestioncategory");
+var request = new RestRequest(Method.GET);
+IRestResponse response = client.Execute(request);
+```
+
+> Response Schema
+
+```json
+{
+    "currentPage": 1,
+    "totalPages": 1,
+    "currentPageSize": 500,
+    "maxAPIPageSize": 500,
+    "totalCount": 337,
+    "hasPrevious": false,
+    "hasNext": true,
+    "data": [
+        {
+            "workflowQuestionCategoryId": "number",
+            "workflowTypeId": "number",
+            "parentQuestionCategoryId": "number",
+            "workflowQuestionCategory": "string",
+            "autoExpandInd": "string",
+            "displayInd": "string",
+            "displayCondition": "string",
+            "disabledInd": "string",
+            "disabledCondition": "string",
+            "repeatInd": "string",
+            "repeatDeleteInd": "string",
+            "repeatDeleteConfirmInd": "string",
+            "reviseInd": "string",
+            "xmlDescription": "string",
+            "sortOrder": "number",
+            "lastModifiedDate": "2017-02-13T22:15:30.203Z",
+            "externalIdentifier": "string",
+            "comments": "string",
+            "refId": "string"
+        }
+	]
+}
+
+```
+
+**API Endpoints**
+
+`GET` /api/v1/workflowquestioncategory
+
+**Query parameters**
+
+Attribute | Type | Description
+--------- | ---- | -----------
+PageNumber | int | Page number of the results to fetch.
+PageSize | int | The number of results per page
+workflowQuestionCategoryIds | int | Workflow Question Category Ids are the unique identifiers for the associated workflow question category.
+workflowTypeIds | int | Workflow Type IDs are the unique identifiers for the associated workflow type.
+workflow question category | string | Workflow Question Category is the category of the form type.
+
+
+### 23. Workflow Type Table
 
 This section outlines how to retrieve data from the Workflow Type table using the provided endpoint. You have the flexibility to fetch specific data by including workflow Ids, workflow type Ids, and workflows. The Unit type endpoint also supports pagination for managing large datasets effectively.
 
