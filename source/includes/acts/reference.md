@@ -61,7 +61,7 @@ The ACTS API SSL Certification is incompatible with following version of the pyt
 
 ### API's and Associated Database Tables 
 
-This ACTS API release includes 22 GET enpoints and 13 POST endpoints, along with the authentication endpoint described earlier. The tables that can be queried and updated are as follows. 
+This ACTS API release includes 23 GET enpoints and 13 POST endpoints, along with the authentication endpoint described earlier. The tables that can be queried and updated are as follows. 
 
 Database Tables supporting GET requests 
 
