@@ -62,7 +62,7 @@
 
 <h3 id="apis-and-associated-database-tables">API&rsquo;s and Associated Database Tables</h3>
 
-<p>This ACTS API release includes 23 GET enpoints and 13 POST endpoints, along with the authentication endpoint described earlier. The tables that can be queried and updated are as follows. </p>
+<p>This ACTS API release includes 23 GET enpoints and 16 POST endpoints, along with the authentication endpoint described earlier. The tables that can be queried and updated are as follows. </p>
 
 <p>Database Tables supporting GET requests </p>
 
@@ -95,8 +95,11 @@
 <p>Database Tables supporting POST requests </p>
 
 <ol>
+<li>Analysis</li>
+<li>Analysis Compound</li>
 <li>Emission Factor</li>
 <li>Equipment</li>
+<li>Equipment Analysis</li>
 <li>Equipment Attribute</li>
 <li>Emissions Recalculate By Equipment</li>
 <li>Emissions Recalculate By Operation</li>
