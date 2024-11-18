@@ -13,8 +13,11 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 
 In the following release, the POST APIs End points are provided to add or update following: 
 
+* Analysis
+* Analysis Compound
 * Emission Factor
 * Equipment
+* Equipment Analysis
 * Equipment Attribute
 * Emissions Recalculate By Equipment
 * Emissions Recalculate By Operation 
@@ -29,7 +32,239 @@ In the following release, the POST APIs End points are provided to add or update
  
 POST requests to these endpoints should be formatted in JSON.
 
-### 1. Emission Factor Table 
+### 1. Analysis Table 
+
+This section guides you through the process of modifying existing Analysis records or adding new entries to the Analysis table using the designated API endpoint. For inserting a new record, please pass the primary key field AnalysisId as 0 in the request body.
+
+**Analysis POST endpoint**
+
+`POST` api/v1/analysis
+
+> Example Request & JSON Input Body 
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://[tenant].actsapi.intelex.com/v1/analysis',
+  headers: { 'content-type': 'application/json' },
+  body:
+    [
+{
+  "analysisId": "number",
+  "analysisName": "string",
+  "analysisDate": "2024-11-01T12:58:49Z",
+  "analysisTypeId": "number",
+  "analysisStatusId": "number",
+  "alternateName": "string",
+  "vendorId": "number",
+  "vendorAnalysisNumber": "number",
+  "vendorJobNumber": "string",
+  "vendorId2": "number",
+  "vendorAnalysisNumber2": "string",
+  "vendorJobNumber2": "string",
+  "reviewedById": "number",
+  "reviewedDate": "2024-11-01T12:58:49Z",
+  "submitDate": "2024-11-01T12:58:49Z",
+  "dataLockTypeId": "number",
+  "externalIdentifier": "string",
+  "comments": "string"
+}
+],
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+```csharp
+var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/analysis");
+var request = new RestRequest(Method.POST);
+request.AddHeader("content-type", "application/json");
+request.AddParameter("application/json", "[  {\r\n  \"analysisId\": \"number\",\r\n  \"analysisName\": \"string\",\r\n
+  \"analysisDate\": \"2024-11-01T12:58:49Z\",\r\n  \"analysisTypeId\": \"number\",\r\n  \"analysisStatusId\": \"number\",\r\n
+  \"alternateName\": \"string\",\r\n  \"vendorId\": \"number\",\r\n  \"vendorAnalysisNumber\": \"number\",\r\n  \"vendorJobNumber\": \"string\",\r\n  \"vendorId2\": \"number\",\r\n  \"vendorAnalysisNumber2\": \"string\",\r\n  \"vendorJobNumber2\": \"string\",\r\n
+  \"reviewedById\": \"number\",\r\n  \"reviewedDate\": \"2024-11-01T12:58:49Z\",\r\n  \"submitDate\": \"2024-11-01T12:58:49Z\",\r\n
+  \"dataLockTypeId\": \"number\",\r\n  \"externalIdentifier\": \"string\",\r\n  \"comments\": \"string\"}\r\n]",
+   ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+```
+
+> Input JSON Body
+
+```json
+[
+  {
+  "analysisId": "number",
+  "analysisName": "string",
+  "analysisDate": "2024-11-01T12:58:49Z",
+  "analysisTypeId": "number",
+  "analysisStatusId": "number",
+  "alternateName": "string",
+  "vendorId": "number",
+  "vendorAnalysisNumber": "number",
+  "vendorJobNumber": "string",
+  "vendorId2": "number",
+  "vendorAnalysisNumber2": "string",
+  "vendorJobNumber2": "string",
+  "reviewedById": "number",
+  "reviewedDate": "2024-11-01T12:58:49Z",
+  "submitDate": "2024-11-01T12:58:49Z",
+  "dataLockTypeId": "number",
+  "externalIdentifier": "string",
+  "comments": "string"
+}
+]
+```
+> Example Response
+
+```json
+{
+	"insertedRowCount" : 0 , 
+	"updatedRowCount" : 1 ,
+	"deletedRowCount" : 0 ,
+	"failureCount" : 0 ,
+	"errorMessage" : []
+
+}
+
+```
+
+> Example Output For When Data Get's Failed To Insert or Update due to invalid analysisId
+
+```json
+{
+	"insertedRowCount" : 0 , 
+	"updatedRowCount" : 0 ,	
+  "deletedRowCount" : 0 ,
+	"failureCount" : 1 ,
+	"errorMessage" : [
+	 "External Identifier : , Error: An error occurred while saving the entity changes. See the inner exception for details. "
+	]
+}
+
+```
+
+### 2. Analysis Compound Table 
+
+This section guides you through the process of modifying existing Analysis Compound records or adding new entries to the Analysis Compound table using the designated API endpoint. For inserting a new record, please pass the primary key field AnalysisCompoundId as 0 in the request body.
+
+**Analysis Compound POST endpoint**
+
+`POST` api/v1/analysiscompound
+
+> Example Request & JSON Input Body 
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://[tenant].actsapi.intelex.com/v1/analysiscompound',
+  headers: { 'content-type': 'application/json' },
+  body:
+    [
+{
+	"analysisCompoundId": "number",
+	"analysisValue": "number",
+	"analysisId": "number",
+	"analysisDate": "2011-07-19T00:00:00z",
+	"compoundId": "number",
+	"comments": "string",
+	"dilutionFactor": "number",
+	"dataLockTypeId": "number",
+	"externalIdentifier": "string",
+	"operator": "string",
+	"resultText": "string",
+	"reportableInd": "string",
+	"reportingLimit": "number",
+	"method": "string",
+	"methodDetectionLimit": "number",
+	"qualifier": "string",
+	"sortOrder": "number",
+	"unitId": "number"
+ }
+],
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+```csharp
+var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/analysiscompound");
+var request = new RestRequest(Method.POST);
+request.AddHeader("content-type", "application/json");
+request.AddParameter("application/json", "[  {\r\n  \"analysisCompoundId\": \"number\",\r\n	\"analysisValue\": \"number\",\r\n
+	\"analysisId\": \"number\",\r\n	\"analysisDate\": \"2011-07-19T00:00:00z\",\r\n	\"compoundId\": \"number\",\r\n	\"comments\": \"string\",\r\n	\"dilutionFactor\": \"number\",\r\n	\"dataLockTypeId\": \"number\",\r\n	\"externalIdentifier\": \"string\",\r\n
+	\"operator\": \"string\",\r\n	\"resultText\": \"string\",\r\n	\"reportableInd\": \"string\",\r\n	\"reportingLimit\": \"number\",\r\n
+	\"method\": \"string\",\r\n	\"methodDetectionLimit\": \"number\",\r\n	\"qualifier\": \"string\",\r\n	\"sortOrder\": \"number\",\r\n
+	\"unitId\": \"number\"}\r\n]",   ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+```
+
+> Input JSON Body
+
+```json
+[
+{
+	"analysisCompoundId": "number",
+	"analysisValue": "number",
+	"analysisId": "number",
+	"analysisDate": "2011-07-19T00:00:00z",
+	"compoundId": "number",
+	"comments": "string",
+	"dilutionFactor": "number",
+	"dataLockTypeId": "number",
+	"externalIdentifier": "string",
+	"operator": "string",
+	"resultText": "string",
+	"reportableInd": "string",
+	"reportingLimit": "number",
+	"method": "string",
+	"methodDetectionLimit": "number",
+	"qualifier": "string",
+	"sortOrder": "number",
+	"unitId": "number"
+ }
+]
+```
+> Example Response
+
+```json
+{
+	"insertedRowCount" : 0 , 
+	"updatedRowCount" : 1 ,
+	"deletedRowCount" : 0 ,
+	"failureCount" : 0 ,
+	"errorMessage" : []
+
+}
+
+```
+
+> Example Output For When Data Get's Failed To Insert or Update due to invalid analysisCompoundId
+
+```json
+{
+	"insertedRowCount" : 0 , 
+	"updatedRowCount" : 0 ,	
+  "deletedRowCount" : 0 ,
+	"failureCount" : 1 ,
+	"errorMessage" : [
+	 "External Identifier : , Error: An error occurred while saving the entity changes. See the inner exception for details. "
+	]
+}
+
+```
+
+
+### 3. Emission Factor Table 
 
 This section guides you through the process of modifying existing Emission Factor records or adding new entries to the Emission Factor table using the designated API endpoint. For inserting a new record, please pass the primary key field emissionFactorId as 0 in the request body.
 
@@ -134,7 +369,8 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 2. Equipment Table 
+
+### 4. Equipment Table 
 
 This section guides you through the process of modifying existing equipment records or adding new entries to the Equipment table using the designated API endpoint.
 
@@ -247,7 +483,105 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 3. Equipment Attribute Table 
+### 5. Equipment Analysis Table 
+
+This section outlines the process of adding new entries or modifying existing records within the Equipment Analysis table using the dedicated API endpoint.
+
+**Equipment Analysis POST Endpoint**
+
+`POST` api/v1/equipmentanalysis
+
+> Example Request & JSON Input Body 
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://[tenant].actsapi.intelex.com/v1/equipmentanalysis',
+  headers: { 'content-type': 'application/json' },
+  body:
+
+       [
+  {
+    "equipmentAnalysisId": "number",
+    "equipmentId": "number",
+    "analysisId": "number",
+    "analysisAssociationTypeId": "number",
+    "activeDate": "2014-04-01T00:00:00z",
+    "inactiveDate": "2025-04-01T00:00:00z",
+    "dataLockTypeId": "number",
+    "lastModifiedDate": "2014-04-01T13:37:16z",
+    "externalIdentifier": "string",
+    "comments": "string"
+  }
+],
+          json: true };
+
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+```csharp
+var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/equipmentanalysis");
+var request = new RestRequest(Method.POST);
+request.AddHeader("content-type", "application/json");
+request.AddParameter("application/json", " [\r\n  { \r\n\ "equipmentAnalysisId\": \"number\",\r\n    \"equipmentId\": \"number\",\r\n
+    \"analysisId\": \"number\",\r\n    \"analysisAssociationTypeId\": \"number\",\r\n    \"activeDate\": \"2014-04-01T00:00:00z\",\r\n
+    \"inactiveDate\": \"2025-04-01T00:00:00z\",\r\n    \"dataLockTypeId\": \"number\",\r\n    \"lastModifiedDate\": \"2014-04-01T13:37:16z\",\r\n    \"externalIdentifier\": \"string\",\r\n    \"comments\": \"string\" \r\n  }\r\n]", 
+    ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+```
+
+> Input JSON Body 
+
+```json
+ [
+  {
+    "equipmentAnalysisId": "number",
+    "equipmentId": "number",
+    "analysisId": "number",
+    "analysisAssociationTypeId": "number",
+    "activeDate": "2014-04-01T00:00:00z",
+    "inactiveDate": "2025-04-01T00:00:00z",
+    "dataLockTypeId": "number",
+    "lastModifiedDate": "2014-04-01T13:37:16z",
+    "externalIdentifier": "string",
+    "comments": "string"
+  }
+]
+```
+> Example Response
+
+```json
+{
+	"insertedRowCount" : 2 , 
+	"updatedRowCount" : 3 ,
+	"failureCount" : 0 ,
+	"errorMessage" : []
+
+}
+
+```
+
+> Example Output For When Data Get's Failed To Insert or Update
+
+```json
+{
+    "insertedRowCount" : 0 , 
+    "updatedRowCount" : 0 ,
+    "failureCount" : 1 ,
+    "errorMessage" : [
+	 "EquipmentAnalysis ID : 0, Error: An error occurred while saving the entity changes. See the inner exception for details "
+	]
+}
+
+```
+
+### 6. Equipment Attribute Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Equipment Attribute table using the dedicated API endpoint.
 
@@ -338,7 +672,8 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 4. Emissions Recalculate By Equipment  
+
+### 7. Emissions Recalculate By Equipment  
 
 This section guides you through the process of an on-demand update to the emissions calculation for a specific equipment using the designated API endpoint. While this API endpoint is a child of the Equipment table, adding or updating an equipment will not cause an update on its own. 
 
@@ -410,7 +745,7 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 5. Emissions Recalculate By Operation 
+### 8. Emissions Recalculate By Operation 
 
 This section guides you through the process of an on-demand update to the emissions calculation for a specific operation using the designated API endpoint. While this API endpoint is a child of the Operation table, adding or updating an operation with the API will not cause an update on its own. 
 
@@ -482,7 +817,7 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 6. Facility Table 
+### 9. Facility Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Facility table using the dedicated API endpoint.
 
@@ -610,7 +945,7 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 7. Facility Attribute Table 
+### 10. Facility Attribute Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Facility Attribute table using the dedicated API endpoint.
 
@@ -699,7 +1034,7 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 8. Operation Table 
+### 11. Operation Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Operation table using the dedicated API endpoint.
 
@@ -814,7 +1149,7 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 9. Workflow Table 
+### 12. Workflow Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Workflow table using the dedicated API endpoint.
 
@@ -902,7 +1237,7 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 10. Workflow Answer Table 
+### 13. Workflow Answer Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Workflow Answer table using the dedicated API endpoint.
 
@@ -998,7 +1333,7 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 11. Workflow Equipment Table 
+### 14. Workflow Equipment Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Workflow Equipment table using the dedicated API endpoint.
 
@@ -1086,7 +1421,7 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 12. Workflow Facility Table 
+### 15. Workflow Facility Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Workflow Facility table using the dedicated API endpoint.
 
@@ -1175,7 +1510,7 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 13. Workflow Person Table 
+### 16. Workflow Person Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Workflow Person table using the dedicated API endpoint.
 
