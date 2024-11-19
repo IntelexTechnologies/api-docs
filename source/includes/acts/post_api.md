@@ -16,11 +16,11 @@ In the following release, the POST APIs End points are provided to add or update
 * Analysis
 * Analysis Compound
 * Emission Factor
+* Emissions Recalculate By Equipment
+* Emissions Recalculate By Operation
 * Equipment
 * Equipment Analysis
 * Equipment Attribute
-* Emissions Recalculate By Equipment
-* Emissions Recalculate By Operation 
 * Facility
 * Facility Attribute
 * Operation
@@ -368,8 +368,152 @@ IRestResponse response = client.Execute(request);
 
 ```
 
+### 4. Emissions Recalculate By Equipment  
 
-### 4. Equipment Table 
+This section guides you through the process of an on-demand update to the emissions calculation for a specific equipment using the designated API endpoint. While this API endpoint is a child of the Equipment table, adding or updating an equipment will not cause an update on its own. 
+
+**Equipment/EmissionCalculation POST endpoint**
+
+`POST` api/v1/equipment/emissioncalculation
+
+> Example Request & JSON Input Body 
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://[tenant].actsapi.intelex.com/v1/equipment/emissioncalculation',
+  headers: { 'content-type': 'application/json' },
+  body:
+    { [equipmentId1, equipmentId2, equipmentId3....]
+	 },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+```csharp
+var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/equipment/emissioncalculation");
+var request = new RestRequest(Method.POST);
+request.AddHeader("content-type", "application/json");
+request.AddParameter("application/json", "{\r\n   [equipmentId1, equipmentId2, equipmentId3....]\r\n}", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+```
+
+> Input JSON Body
+
+```json
+{
+   [equipmentId1, equipmentId2, equipmentId3....]
+	 }
+```
+> Example Response
+
+```json
+{
+    "processedIds": [
+        "34",
+        "36"
+    ],
+    "invalidIds": [
+        "1234"
+    ],
+    "errorMessages": []
+}
+
+```
+
+> Example Output when data is missing
+
+```json
+{
+    "processedIds": [],
+    "invalidIds": [],
+    "errorMessages": [
+        "Equipment ids are missing."
+    ]
+}
+
+```
+
+### 5. Emissions Recalculate By Operation 
+
+This section guides you through the process of an on-demand update to the emissions calculation for a specific operation using the designated API endpoint. While this API endpoint is a child of the Operation table, adding or updating an operation with the API will not cause an update on its own. 
+
+**Operation/EmissionCalculation POST endpoint**
+
+`POST` api/v1/operation/emissioncalculation
+
+> Example Request & JSON Input Body 
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://[tenant].actsapi.intelex.com/v1/operation/emissioncalculation',
+  headers: { 'content-type': 'application/json' },
+  body:
+  { [operationId1, operationId2, operationId3....]
+	 },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+```csharp
+var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/operation/emissioncalculation");
+var request = new RestRequest(Method.POST);
+request.AddHeader("content-type", "application/json");
+request.AddParameter("application/json", "{\r\n   [operationId1, operationId2, operationId3....]\r\n}", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+```
+
+> Input JSON Body
+
+```json
+{
+   [operationId1, operationId2, operationId3....]
+}
+```
+> Example Response
+
+```json
+{
+    "processedIds": [
+        "34",
+        "36"
+    ],
+    "invalidIds": [
+        "1234"
+    ],
+    "errorMessages": []
+}
+
+```
+
+> Example Output when data is missing
+
+```json
+{
+    "processedIds": [],
+    "invalidIds": [],
+    "errorMessages": [
+        "Operation ids are missing."
+    ]
+}
+
+```
+
+
+### 6. Equipment Table 
 
 This section guides you through the process of modifying existing equipment records or adding new entries to the Equipment table using the designated API endpoint.
 
@@ -480,7 +624,7 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 5. Equipment Analysis Table 
+### 7. Equipment Analysis Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Equipment Analysis table using the dedicated API endpoint.
 
@@ -576,7 +720,7 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 6. Equipment Attribute Table 
+### 8. Equipment Attribute Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Equipment Attribute table using the dedicated API endpoint.
 
@@ -666,149 +810,6 @@ IRestResponse response = client.Execute(request);
 ```
 
 
-### 7. Emissions Recalculate By Equipment  
-
-This section guides you through the process of an on-demand update to the emissions calculation for a specific equipment using the designated API endpoint. While this API endpoint is a child of the Equipment table, adding or updating an equipment will not cause an update on its own. 
-
-**Equipment/EmissionCalculation POST endpoint**
-
-`POST` api/v1/equipment/emissioncalculation
-
-> Example Request & JSON Input Body 
-
-```javascript
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://[tenant].actsapi.intelex.com/v1/equipment/emissioncalculation',
-  headers: { 'content-type': 'application/json' },
-  body:
-    { [equipmentId1, equipmentId2, equipmentId3....]
-	 },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-```
-
-```csharp
-var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/equipment/emissioncalculation");
-var request = new RestRequest(Method.POST);
-request.AddHeader("content-type", "application/json");
-request.AddParameter("application/json", "{\r\n   [equipmentId1, equipmentId2, equipmentId3....]\r\n}", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-> Input JSON Body
-
-```json
-{
-   [equipmentId1, equipmentId2, equipmentId3....]
-	 }
-```
-> Example Response
-
-```json
-{
-    "processedIds": [
-        "34",
-        "36"
-    ],
-    "invalidIds": [
-        "1234"
-    ],
-    "errorMessages": []
-}
-
-```
-
-> Example Output when data is missing
-
-```json
-{
-    "processedIds": [],
-    "invalidIds": [],
-    "errorMessages": [
-        "Equipment ids are missing."
-    ]
-}
-
-```
-
-### 8. Emissions Recalculate By Operation 
-
-This section guides you through the process of an on-demand update to the emissions calculation for a specific operation using the designated API endpoint. While this API endpoint is a child of the Operation table, adding or updating an operation with the API will not cause an update on its own. 
-
-**Operation/EmissionCalculation POST endpoint**
-
-`POST` api/v1/operation/emissioncalculation
-
-> Example Request & JSON Input Body 
-
-```javascript
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://[tenant].actsapi.intelex.com/v1/operation/emissioncalculation',
-  headers: { 'content-type': 'application/json' },
-  body:
-  { [operationId1, operationId2, operationId3....]
-	 },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-```
-
-```csharp
-var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/operation/emissioncalculation");
-var request = new RestRequest(Method.POST);
-request.AddHeader("content-type", "application/json");
-request.AddParameter("application/json", "{\r\n   [operationId1, operationId2, operationId3....]\r\n}", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-> Input JSON Body
-
-```json
-{
-   [operationId1, operationId2, operationId3....]
-}
-```
-> Example Response
-
-```json
-{
-    "processedIds": [
-        "34",
-        "36"
-    ],
-    "invalidIds": [
-        "1234"
-    ],
-    "errorMessages": []
-}
-
-```
-
-> Example Output when data is missing
-
-```json
-{
-    "processedIds": [],
-    "invalidIds": [],
-    "errorMessages": [
-        "Operation ids are missing."
-    ]
-}
-
-```
 
 ### 9. Facility Table 
 

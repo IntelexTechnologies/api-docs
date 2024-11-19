@@ -8,8 +8,8 @@ In the current release, one DELETE API End point is provided to remove or delete
 
 * Analysis
 * Analysis Compound
-* Equipment Analysis
 * Emission Factor
+* Equipment Analysis
 * Operation
 
 DELETE requests to these endpoints should be formatted in JSON.
@@ -130,65 +130,8 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 3. Equipment Analysis Table 
 
-This section guides you through the process of removing/deleting the existing records from the Equipment Analysis table using the designated API endpoint.
-
-**Equipment Analysis DELETE endpoint**
-
-`DELETE` /api/v1/equipmentanalysis
-
-> Example Request & JSON Input Body 
-
-```javascript
-var request = require("request");
-
-var options = { method: 'DELETE',
-  url: 'https://[tenant].actsapi.intelex.com/v1/equipmentanalysis',
-  headers: { 'content-type': 'application/json' },
-  body:
-   { 
-    [equipmentanalysisId1, equipmentanalysisId2, equipmentanalysisId3....]
-      },
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-```
-
-```csharp
-
-var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/equipmentanalysis");
-var request = new RestRequest(Method.DELETE);
-request.AddHeader("content-type", "application/json");
-request.AddParameter("application/json", "{\r\n    [equipmentanalysisId1, equipmentanalysisId2, equipmentanalysisId3....] \r\n}", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-> Input JSON Body
-
-```json
-
-  {
-    [equipmentanalysisId1, equipmentanalysisId2, equipmentanalysisId3....]
-  }
-
-```
-> Example Response
-
-```json
-{
-  "deletedRowCount": 1,
-  "notFoundCount": 0,
-  "failureCount": 0,
-  "errorMessage" : []
-}
-
-```
-
-### 4. Emission Factor Table 
+### 3. Emission Factor Table 
 
 This section guides you through the process of removing/deleting the existing records from the Emission Factor table using the designated API endpoint.
 
@@ -247,6 +190,63 @@ IRestResponse response = client.Execute(request);
 
 ```
 
+### 4. Equipment Analysis Table 
+
+This section guides you through the process of removing/deleting the existing records from the Equipment Analysis table using the designated API endpoint.
+
+**Equipment Analysis DELETE endpoint**
+
+`DELETE` /api/v1/equipmentanalysis
+
+> Example Request & JSON Input Body 
+
+```javascript
+var request = require("request");
+
+var options = { method: 'DELETE',
+  url: 'https://[tenant].actsapi.intelex.com/v1/equipmentanalysis',
+  headers: { 'content-type': 'application/json' },
+  body:
+   { 
+    [equipmentanalysisId1, equipmentanalysisId2, equipmentanalysisId3....]
+      },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+```csharp
+
+var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/equipmentanalysis");
+var request = new RestRequest(Method.DELETE);
+request.AddHeader("content-type", "application/json");
+request.AddParameter("application/json", "{\r\n    [equipmentanalysisId1, equipmentanalysisId2, equipmentanalysisId3....] \r\n}", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+```
+> Input JSON Body
+
+```json
+
+  {
+    [equipmentanalysisId1, equipmentanalysisId2, equipmentanalysisId3....]
+  }
+
+```
+> Example Response
+
+```json
+{
+  "deletedRowCount": 1,
+  "notFoundCount": 0,
+  "failureCount": 0,
+  "errorMessage" : []
+}
+
+```
 
 ### 5. Operation Table 
 
