@@ -511,7 +511,6 @@ var options = { method: 'POST',
     "activeDate": "2014-04-01T00:00:00z",
     "inactiveDate": "2025-04-01T00:00:00z",
     "dataLockTypeId": "number",
-    "lastModifiedDate": "2014-04-01T13:37:16z",
     "externalIdentifier": "string",
     "comments": "string"
   }
@@ -532,7 +531,7 @@ var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", " [\r\n  { \r\n\ "equipmentAnalysisId\": \"number\",\r\n    \"equipmentId\": \"number\",\r\n
     \"analysisId\": \"number\",\r\n    \"analysisAssociationTypeId\": \"number\",\r\n    \"activeDate\": \"2014-04-01T00:00:00z\",\r\n
-    \"inactiveDate\": \"2025-04-01T00:00:00z\",\r\n    \"dataLockTypeId\": \"number\",\r\n    \"lastModifiedDate\": \"2014-04-01T13:37:16z\",\r\n    \"externalIdentifier\": \"string\",\r\n    \"comments\": \"string\" \r\n  }\r\n]", 
+    \"inactiveDate\": \"2025-04-01T00:00:00z\",\r\n    \"dataLockTypeId\": \"number\",\r\n   \"externalIdentifier\": \"string\",\r\n    \"comments\": \"string\" \r\n  }\r\n]", 
     ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
@@ -549,7 +548,6 @@ IRestResponse response = client.Execute(request);
     "activeDate": "2014-04-01T00:00:00z",
     "inactiveDate": "2025-04-01T00:00:00z",
     "dataLockTypeId": "number",
-    "lastModifiedDate": "2014-04-01T13:37:16z",
     "externalIdentifier": "string",
     "comments": "string"
   }
