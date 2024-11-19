@@ -7513,7 +7513,6 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
     <span class="s2">"viewColumnName"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
     <span class="s2">"inactiveDate"</span><span class="p">:</span> <span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span>
     <span class="s2">"dataLockTypeId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
-    <span class="s2">"lastModifiedDate"</span><span class="p">:</span> <span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span>
     <span class="s2">"externalIdentifier"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
     <span class="s2">"comments"</span><span class="p">:</span> <span class="s2">"string"</span>
   <span class="p">}</span>
@@ -7528,7 +7527,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://[tenant].actsapi.intelex.com/v1/emissionfactor"</span><span class="p">);</span>
 <span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>
 <span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
-<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"[  {\r\n    \"emissionFactorId\": \"number\",\r\n    \"equipmentId\": \"number\",\r\n    \"emissionTypeId\": \"number\",\r\n    \"emissionCategoryId\": \"number\",\r\n    \"compoundId\": \"number\",\r\n    \"emissionFactorName\": \"string\",\r\n    \"activeDate\": \"2023-06-25T04:00:00Z\",\r\n    \"emissionFactor\": \"number\",\r\n    \"unitId\": \"number\",\r\n    \"viewColumnName\": \"string\",\r\n    \"inactiveDate\": \"2023-06-25T04:00:00Z\",\r\n    \"dataLockTypeId\": \"number\",\r\n    \"lastModifiedDate\": \"2023-06-25T04:00:00Z\",\r\n    \"externalIdentifier\": \"string\",\r\n    \"comments\": \"string\"\r\n  }\r\n]"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"[  {\r\n    \"emissionFactorId\": \"number\",\r\n    \"equipmentId\": \"number\",\r\n    \"emissionTypeId\": \"number\",\r\n    \"emissionCategoryId\": \"number\",\r\n    \"compoundId\": \"number\",\r\n    \"emissionFactorName\": \"string\",\r\n    \"activeDate\": \"2023-06-25T04:00:00Z\",\r\n    \"emissionFactor\": \"number\",\r\n    \"unitId\": \"number\",\r\n    \"viewColumnName\": \"string\",\r\n    \"inactiveDate\": \"2023-06-25T04:00:00Z\",\r\n    \"dataLockTypeId\": \"number\",\r\n   \"externalIdentifier\": \"string\",\r\n    \"comments\": \"string\"\r\n  }\r\n]"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
 <span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
 </code></pre>
 <blockquote>
@@ -7548,7 +7547,6 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
     </span><span class="s2">"viewColumnName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"inactiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"dataLockTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"lastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"externalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -7616,8 +7614,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
     <span class="s2">"originalSurveyDate"</span><span class="p">:</span> <span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span>
     <span class="s2">"activeDate"</span><span class="p">:</span> <span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span>
     <span class="s2">"inactiveDate"</span><span class="p">:</span> <span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span>
-      <span class="s2">"dataLockTypeId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
-    <span class="s2">"lastModifiedDate"</span><span class="p">:</span> <span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span>
+    <span class="s2">"dataLockTypeId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
     <span class="s2">"externalIdentifier"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
     <span class="s2">"comments"</span><span class="p">:</span> <span class="s2">"string"</span>
     <span class="p">}],</span>
@@ -7631,7 +7628,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://[tenant].actsapi.intelex.com/v1/equipment"</span><span class="p">);</span>
 <span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>
 <span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
-<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">" [ {\r\n    \"equipmentId\": \"number\",\r\n    \"areaId\": \"number\",\r\n    \"facilityId\": \"number\",\r\n    \"equipmentTypeId\": \"number\",\r\n    \"sourceName\": \"string \",\r\n    \"equipmentStatusId\": \"number\",\r\n    \"modelId\": \"number\",\r\n    \"ownershipId\": \"number\",\r\n    \"ownerId\": \"number\",\r\n    \"serialNumber\": \"number\",\r\n    \"manufactureDate\": \"2023-06-25T04:00:00Z\",\r\n    \"internalName\": \"string\",\r\n    \"alternateName\": \"string\",\r\n    \"design\": \"string\",\r\n    \"originalSurveyDate\": \"2023-06-25T04:00:00Z\",\r\n    \"activeDate\": \"2023-06-25T04:00:00Z\",\r\n    \"inactiveDate\": \"2023-06-25T04:00:00Z\",\r\n\t  \"dataLockTypeId\": \"number\",\r\n    \"lastModifiedDate\": \"2023-06-25T04:00:00Z\",\r\n    \"externalIdentifier\": \"string\",\r\n    \"comments\": \"string\"\r\n }\r\n]"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">" [ {\r\n    \"equipmentId\": \"number\",\r\n    \"areaId\": \"number\",\r\n    \"facilityId\": \"number\",\r\n    \"equipmentTypeId\": \"number\",\r\n    \"sourceName\": \"string \",\r\n    \"equipmentStatusId\": \"number\",\r\n    \"modelId\": \"number\",\r\n    \"ownershipId\": \"number\",\r\n    \"ownerId\": \"number\",\r\n    \"serialNumber\": \"number\",\r\n    \"manufactureDate\": \"2023-06-25T04:00:00Z\",\r\n    \"internalName\": \"string\",\r\n    \"alternateName\": \"string\",\r\n    \"design\": \"string\",\r\n    \"originalSurveyDate\": \"2023-06-25T04:00:00Z\",\r\n    \"activeDate\": \"2023-06-25T04:00:00Z\",\r\n    \"inactiveDate\": \"2023-06-25T04:00:00Z\",\r\n\t  \"dataLockTypeId\": \"number\",\r\n  \"externalIdentifier\": \"string\",\r\n    \"comments\": \"string\"\r\n }\r\n]"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
 <span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
 </code></pre>
 <blockquote>
@@ -7656,8 +7653,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
     </span><span class="s2">"originalSurveyDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"activeDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"inactiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"dataLockTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"lastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dataLockTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"externalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -7715,7 +7711,6 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
     <span class="s2">"activeDate"</span><span class="p">:</span> <span class="s2">"2014-04-01T00:00:00z"</span><span class="p">,</span>
     <span class="s2">"inactiveDate"</span><span class="p">:</span> <span class="s2">"2025-04-01T00:00:00z"</span><span class="p">,</span>
     <span class="s2">"dataLockTypeId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
-    <span class="s2">"lastModifiedDate"</span><span class="p">:</span> <span class="s2">"2014-04-01T13:37:16z"</span><span class="p">,</span>
     <span class="s2">"externalIdentifier"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
     <span class="s2">"comments"</span><span class="p">:</span> <span class="s2">"string"</span>
   <span class="p">}</span>
@@ -7733,7 +7728,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 <span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
 <span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">" [\r\n  { \r\n\ "</span><span class="n">equipmentAnalysisId</span><span class="err">\</span><span class="s">": \"number\",\r\n    \"equipmentId\": \"number\",\r\n
 </span>    <span class="err">\</span><span class="s">"analysisId\": \"number\",\r\n    \"analysisAssociationTypeId\": \"number\",\r\n    \"activeDate\": \"2014-04-01T00:00:00z\",\r\n
-</span>    <span class="err">\</span><span class="s">"inactiveDate\": \"2025-04-01T00:00:00z\",\r\n    \"dataLockTypeId\": \"number\",\r\n    \"lastModifiedDate\": \"2014-04-01T13:37:16z\",\r\n    \"externalIdentifier\": \"string\",\r\n    \"comments\": \"string\" \r\n  }\r\n]"</span><span class="p">,</span> 
+</span>    <span class="err">\</span><span class="s">"inactiveDate\": \"2025-04-01T00:00:00z\",\r\n    \"dataLockTypeId\": \"number\",\r\n   \"externalIdentifier\": \"string\",\r\n    \"comments\": \"string\" \r\n  }\r\n]"</span><span class="p">,</span> 
     <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
 <span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
 </code></pre>
@@ -7749,7 +7744,6 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
     </span><span class="s2">"activeDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-04-01T00:00:00z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"inactiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-04-01T00:00:00z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"dataLockTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"lastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-04-01T13:37:16z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"externalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -7800,12 +7794,11 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 
        <span class="p">[</span>
   <span class="p">{</span> 
-     <span class="s2">"equipmentAttributeId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+    <span class="s2">"equipmentAttributeId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
     <span class="s2">"equipmentId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
     <span class="s2">"attributeTypeId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
     <span class="s2">"equipmentAttribute"</span><span class="p">:</span><span class="s2">"string"</span><span class="p">,</span>
     <span class="s2">"dataLockTypeId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
-    <span class="s2">"lastModifiedDate"</span><span class="p">:</span> <span class="s2">"2023-03-30T07:27:06.295Z"</span><span class="p">,</span>
     <span class="s2">"externalIdentifier"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
     <span class="s2">"comments"</span><span class="p">:</span><span class="s2">"string"</span>
   <span class="p">}</span>
@@ -7821,7 +7814,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://[tenant].actsapi.intelex.com/v1/equipmentattribute"</span><span class="p">);</span>
 <span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>
 <span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
-<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">" [\r\n  { \r\n"</span><span class="n">equipmentAttributeId</span><span class="err">\</span><span class="s">": \"number\",\r\n    \"equipmentId\": \"number\",\r\n    \"attributeTypeId\": \"number\",\r\n    \"equipmentAttribute\":\"string\",\r\n    \"dataLockTypeId\": \"number\",\r\n    \"lastModifiedDate\": \"2023-03-30T07:27:06.295Z\",\r\n    \"externalIdentifier\": \"string\",\r\n    \"comments\":\"string\"\r\n  }\r\n]"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">" [\r\n  { \r\n"</span><span class="n">equipmentAttributeId</span><span class="err">\</span><span class="s">": \"number\",\r\n    \"equipmentId\": \"number\",\r\n    \"attributeTypeId\": \"number\",\r\n    \"equipmentAttribute\":\"string\",\r\n    \"dataLockTypeId\": \"number\",\r\n  \"externalIdentifier\": \"string\",\r\n    \"comments\":\"string\"\r\n  }\r\n]"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
 <span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
 </code></pre>
 <blockquote>
@@ -7834,7 +7827,6 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
     </span><span class="s2">"attributeTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"equipmentAttribute"</span><span class="p">:</span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"dataLockTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"lastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-03-30T07:27:06.295Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"externalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"comments"</span><span class="p">:</span><span class="s2">"string"</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -8040,7 +8032,6 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
     <span class="s2">"activeDate"</span><span class="p">:</span> <span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span>
     <span class="s2">"inactiveDate"</span><span class="p">:</span> <span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span>
     <span class="s2">"dataLockTypeId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
-    <span class="s2">"lastModifiedDate"</span><span class="p">:</span> <span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span>
     <span class="s2">"externalIdentifier"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
     <span class="s2">"comments"</span><span class="p">:</span> <span class="s2">"string"</span>
   <span class="p">}],</span>
@@ -8054,7 +8045,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://[tenant].actsapi.intelex.com/v1/facility"</span><span class="p">);</span>
 <span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>
 <span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
-<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"[{\r\n    \"facilityId\": \"number\",\r\n    \"facilityName\": \"string\",\r\n    \"areaId\": \"number\",\r\n    \"facilityTypeId\": \"number\",\r\n    \"facilityStatusId\": \"number\",\r\n    \"sortOrder\": \"number\",\r\n    \"facilityOwnershipId\": \"number\",\r\n    \"facilityOwnerId\": \"number\",\r\n    \"landOwnershipId\": \"number\",\r\n    \"landOwnerId\": \"number\",\r\n    \"operatorId\": \"number\",\r\n    \"countryId\": \"number\",\r\n    \"countyId\": \"number\",\r\n    \"offshoreBlockId\": \"number\",\r\n    \"meteorologicalId\": \"number\",\r\n    \"businessEntityId\": \"number\",\r\n    \"businessUnitId\": \"number\",\r\n    \"alternateName\": \"string\",\r\n    \"purchaseDate\": \"2023-06-25T04:00:00Z\",\r\n    \"previousOwnerId\": \"number\",\r\n    \"soldDate\": \"2023-06-25T04:00:00Z\",\r\n    \"soldToId\": \"number\",\r\n    \"activeDate\": \"2023-06-25T04:00:00Z\",\r\n    \"inactiveDate\": \"2023-06-25T04:00:00Z\",\r\n    \"dataLockTypeId\": \"number\",\r\n    \"lastModifiedDate\": \"2023-06-25T04:00:00Z\",\r\n    \"externalIdentifier\": \"string\",\r\n    \"comments\": \"string\"\r\n  }]"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"[{\r\n    \"facilityId\": \"number\",\r\n    \"facilityName\": \"string\",\r\n    \"areaId\": \"number\",\r\n    \"facilityTypeId\": \"number\",\r\n    \"facilityStatusId\": \"number\",\r\n    \"sortOrder\": \"number\",\r\n    \"facilityOwnershipId\": \"number\",\r\n    \"facilityOwnerId\": \"number\",\r\n    \"landOwnershipId\": \"number\",\r\n    \"landOwnerId\": \"number\",\r\n    \"operatorId\": \"number\",\r\n    \"countryId\": \"number\",\r\n    \"countyId\": \"number\",\r\n    \"offshoreBlockId\": \"number\",\r\n    \"meteorologicalId\": \"number\",\r\n    \"businessEntityId\": \"number\",\r\n    \"businessUnitId\": \"number\",\r\n    \"alternateName\": \"string\",\r\n    \"purchaseDate\": \"2023-06-25T04:00:00Z\",\r\n    \"previousOwnerId\": \"number\",\r\n    \"soldDate\": \"2023-06-25T04:00:00Z\",\r\n    \"soldToId\": \"number\",\r\n    \"activeDate\": \"2023-06-25T04:00:00Z\",\r\n    \"inactiveDate\": \"2023-06-25T04:00:00Z\",\r\n    \"dataLockTypeId\": \"number\",\r\n  \"externalIdentifier\": \"string\",\r\n    \"comments\": \"string\"\r\n  }]"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
 <span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
 </code></pre>
 <blockquote>
@@ -8087,7 +8078,6 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
     </span><span class="s2">"activeDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"inactiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"dataLockTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"lastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"externalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">}</span><span class="w"> 
@@ -8141,7 +8131,6 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
     <span class="s2">"attributeTypeId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
     <span class="s2">"facilityAttribute"</span><span class="p">:</span><span class="s2">"string"</span><span class="p">,</span>
     <span class="s2">"dataLockTypeId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
-    <span class="s2">"lastModifiedDate"</span><span class="p">:</span> <span class="s2">"2023-03-30T07:27:06.295Z"</span><span class="p">,</span>
     <span class="s2">"externalIdentifier"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
     <span class="s2">"comments"</span><span class="p">:</span><span class="s2">"string"</span>
   <span class="p">}</span>
@@ -8157,7 +8146,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://[tenant].actsapi.intelex.com/v1/facilityattribute"</span><span class="p">);</span>
 <span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>
 <span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
-<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"[\r\n  { \r\n"</span><span class="n">facilityAttributeId</span><span class="err">\</span><span class="s">": \"number\",\r\n    \"facilityId\": \"number\",\r\n    \"attributeTypeId\": \"number\",\r\n    \"facilityAttribute\":\"string\",\r\n    \"dataLockTypeId\": \"number\",\r\n    \"lastModifiedDate\": \"2023-03-30T07:27:06.295Z\",\r\n    \"externalIdentifier\": \"string\",\r\n    \"comments\":\"string\"\r\n  }\r\n]"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"[\r\n  { \r\n"</span><span class="n">facilityAttributeId</span><span class="err">\</span><span class="s">": \"number\",\r\n    \"facilityId\": \"number\",\r\n    \"attributeTypeId\": \"number\",\r\n    \"facilityAttribute\":\"string\",\r\n    \"dataLockTypeId\": \"number\",\r\n   \"externalIdentifier\": \"string\",\r\n    \"comments\":\"string\"\r\n  }\r\n]"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
 <span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
 </code></pre>
 <blockquote>
@@ -8170,7 +8159,6 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
     </span><span class="s2">"attributeTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"facilityAttribute"</span><span class="p">:</span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"dataLockTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"lastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-03-30T07:27:06.295Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"externalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"comments"</span><span class="p">:</span><span class="s2">"string"</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -8235,7 +8223,6 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
     <span class="s2">"fieldEventId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
     <span class="s2">"inactiveDate"</span><span class="p">:</span> <span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span>
     <span class="s2">"dataLockTypeId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
-    <span class="s2">"lastModifiedDate"</span><span class="p">:</span> <span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span>
     <span class="s2">"externalIdentifier"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
     <span class="s2">"comments"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
     <span class="s2">"badDataFlag"</span><span class="p">:</span> <span class="s2">"number(1,0)"</span><span class="p">,</span>
@@ -8253,7 +8240,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://[tenant].actsapi.intelex.com/v1/operation"</span><span class="p">);</span>
 <span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>
 <span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
-<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"[\r\n  {\r\n    \"operationId\": \"number\",\r\n    \"equipmentId\": \"number\",\r\n    \"emissionTypeId\": \"number\",\r\n    \"emissionCategoryId\": \"number\",\r\n    \"operationTypeId\": \"number\",\r\n    \"activeDate\": \"2023-06-25T04:00:00Z\",\r\n    \"unitId\": \"number\",\r\n    \"controlledInd\": \"string\",\r\n    \"estimatedInd\": \"string\",\r\n    \"invalidInd\": \"string\",\r\n    \"calculateEmissionsInd\": \"string\",\r\n    \"collectionDate\": \"2023-06-25T04:00:00Z\",\r\n    \"fieldEventId\": \"number\",\r\n    \"inactiveDate\": \"2023-06-25T04:00:00Z\",\r\n    \"dataLockTypeId\": \"number\",\r\n    \"lastModifiedDate\": \"2023-06-25T04:00:00Z\",\r\n    \"externalIdentifier\": \"string\",\r\n    \"comments\": \"string\",\r\n    \"badDataFlag\": \"number(1,0)\",\r\n    \"operationAmount\": \"number\"\r\n  } \r\n]"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"[\r\n  {\r\n    \"operationId\": \"number\",\r\n    \"equipmentId\": \"number\",\r\n    \"emissionTypeId\": \"number\",\r\n    \"emissionCategoryId\": \"number\",\r\n    \"operationTypeId\": \"number\",\r\n    \"activeDate\": \"2023-06-25T04:00:00Z\",\r\n    \"unitId\": \"number\",\r\n    \"controlledInd\": \"string\",\r\n    \"estimatedInd\": \"string\",\r\n    \"invalidInd\": \"string\",\r\n    \"calculateEmissionsInd\": \"string\",\r\n    \"collectionDate\": \"2023-06-25T04:00:00Z\",\r\n    \"fieldEventId\": \"number\",\r\n    \"inactiveDate\": \"2023-06-25T04:00:00Z\",\r\n    \"dataLockTypeId\": \"number\",\r\n   \"externalIdentifier\": \"string\",\r\n    \"comments\": \"string\",\r\n    \"badDataFlag\": \"number(1,0)\",\r\n    \"operationAmount\": \"number\"\r\n  } \r\n]"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
 <span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
 </code></pre>
 <blockquote>
@@ -8276,7 +8263,6 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
     </span><span class="s2">"fieldEventId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"inactiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"dataLockTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"lastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-25T04:00:00Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"externalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"badDataFlag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number(1,0)"</span><span class="p">,</span><span class="w">
@@ -8333,7 +8319,6 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
         <span class="s2">"workflowTypeId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
         <span class="s2">"workflowDate"</span><span class="p">:</span> <span class="s2">"2024-01-03T08:16:24.155Z"</span><span class="p">,</span>
         <span class="s2">"dataLockTypeId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
-        <span class="s2">"lastModifiedDate"</span><span class="p">:</span> <span class="s2">"2024-01-03T08:16:24.155Z"</span><span class="p">,</span>
         <span class="s2">"externalIdentifier"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
         <span class="s2">"comments"</span><span class="p">:</span> <span class="s2">"string"</span>
   <span class="p">}</span>
@@ -8349,7 +8334,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://[tenant].actsapi.intelex.com/v1/workflow"</span><span class="p">);</span>
 <span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>
 <span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
-<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">" [\r\n  {\r\n        \"workflowId\": \"number\",\r\n        \"workflowTypeId\": \"number\",\r\n        \"workflowDate\": \"2024-01-03T08:16:24.155Z\",\r\n        \"dataLockTypeId\": \"number\",\r\n        \"lastModifiedDate\": \"2024-01-03T08:16:24.155Z\",\r\n        \"externalIdentifier\": \"string\",\r\n        \"comments\": \"string\"\r\n  }\r\n]"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">" [\r\n  {\r\n        \"workflowId\": \"number\",\r\n        \"workflowTypeId\": \"number\",\r\n        \"workflowDate\": \"2024-01-03T08:16:24.155Z\",\r\n        \"dataLockTypeId\": \"number\",\r\n   \"externalIdentifier\": \"string\",\r\n        \"comments\": \"string\"\r\n  }\r\n]"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
 <span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
 </code></pre>
 <blockquote>
@@ -8361,7 +8346,6 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
         </span><span class="s2">"workflowTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"workflowDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-01-03T08:16:24.155Z"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"dataLockTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"lastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-01-03T08:16:24.155Z"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"externalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -8420,7 +8404,6 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
         <span class="s2">"workflowAnswer"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
         <span class="s2">"dataLockTypeId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
         <span class="s2">"personId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
-        <span class="s2">"lastModifiedDate"</span><span class="p">:</span> <span class="s2">"2024-01-03T08:16:24.155Z"</span><span class="p">,</span>
         <span class="s2">"externalIdentifier"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
         <span class="s2">"comments"</span><span class="p">:</span> <span class="s2">"string"</span>
       <span class="p">}],</span>
@@ -8435,7 +8418,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://[tenant].actsapi.intelex.com/v1/workflowanswer"</span><span class="p">);</span>
 <span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>
 <span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
-<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"[{\r\n        \"workflowAnswerId\": \"number\",\r\n        \"workflowId\": \"number\",\r\n        \"workflowQuestionId\": \"number\",\r\n        \"categoryAnswerIndex\": \"number\",\r\n        \"categoryRevisionIndex\": \"number\",\r\n        \"questionAnswerIndex\": \"number\",\r\n        \"questionRevisionIndex\": \"number\",\r\n        \"workflowAnswer\": \"string\",\r\n        \"dataLockTypeId\": \"number\",\r\n        \"personId\": \"number\",\r\n        \"lastModifiedDate\": \"2024-01-03T08:16:24.155Z\",\r\n        \"externalIdentifier\": \"string\",\r\n        \"comments\": \"string\"\r\n      }]"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"[{\r\n        \"workflowAnswerId\": \"number\",\r\n        \"workflowId\": \"number\",\r\n        \"workflowQuestionId\": \"number\",\r\n        \"categoryAnswerIndex\": \"number\",\r\n        \"categoryRevisionIndex\": \"number\",\r\n        \"questionAnswerIndex\": \"number\",\r\n        \"questionRevisionIndex\": \"number\",\r\n        \"workflowAnswer\": \"string\",\r\n        \"dataLockTypeId\": \"number\",\r\n        \"personId\": \"number\",\r\n    \"externalIdentifier\": \"string\",\r\n        \"comments\": \"string\"\r\n      }]"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
 <span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
 </code></pre>
 <blockquote>
@@ -8452,7 +8435,6 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
         </span><span class="s2">"workflowAnswer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"dataLockTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"personId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"lastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-01-03T08:16:24.155Z"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"externalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
       </span><span class="p">}]</span><span class="w">
@@ -8505,7 +8487,6 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
         <span class="s2">"workflowId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
         <span class="s2">"equipmentId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
         <span class="s2">"workflowQuestionId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
-        <span class="s2">"lastModifiedDate"</span><span class="p">:</span> <span class="s2">"2024-01-03T08:16:24.155Z"</span><span class="p">,</span>
         <span class="s2">"externalIdentifier"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
         <span class="s2">"comments"</span><span class="p">:</span> <span class="s2">"string"</span>
   <span class="p">}</span>
@@ -8521,7 +8502,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://[tenant].actsapi.intelex.com/v1/workflowequipment"</span><span class="p">);</span>
 <span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>
 <span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
-<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"[\r\n  {\r\n        \"workflowEquipmentId\": \"number\",\r\n        \"workflowId\": \"number\",\r\n        \"equipmentId\": \"number\",\r\n        \"workflowQuestionId\": \"number\",\r\n        \"lastModifiedDate\": \"2024-01-03T08:16:24.155Z\",\r\n        \"externalIdentifier\": \"string\",\r\n        \"comments\": \"string\"\r\n  }\r\n]"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"[\r\n  {\r\n        \"workflowEquipmentId\": \"number\",\r\n        \"workflowId\": \"number\",\r\n        \"equipmentId\": \"number\",\r\n        \"workflowQuestionId\": \"number\",\r\n     \"externalIdentifier\": \"string\",\r\n        \"comments\": \"string\"\r\n  }\r\n]"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
 <span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
 </code></pre>
 <blockquote>
@@ -8533,7 +8514,6 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
         </span><span class="s2">"workflowId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"equipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"workflowQuestionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"lastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-01-03T08:16:24.155Z"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"externalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -8587,7 +8567,6 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
         <span class="s2">"workflowId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
         <span class="s2">"facilityId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
         <span class="s2">"workflowQuestionId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
-        <span class="s2">"lastModifiedDate"</span><span class="p">:</span> <span class="s2">"2024-01-03T08:16:24.155Z"</span><span class="p">,</span>
         <span class="s2">"externalIdentifier"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
         <span class="s2">"comments"</span><span class="p">:</span> <span class="s2">"string"</span>
   <span class="p">}</span>
@@ -8603,7 +8582,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://[tenant].actsapi.intelex.com/v1/workflowfacility"</span><span class="p">);</span>
 <span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>
 <span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
-<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"[\r\n  {\r\n        \"workflowFacilityId\": \"number\",\r\n        \"workflowId\": \"number\",\r\n        \"facilityId\": \"number\",\r\n        \"workflowQuestionId\": \"number\",\r\n        \"lastModifiedDate\": \"2024-01-03T08:16:24.155Z\",\r\n        \"externalIdentifier\": \"string\",\r\n        \"comments\": \"string\"\r\n  }\r\n]"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"[\r\n  {\r\n        \"workflowFacilityId\": \"number\",\r\n        \"workflowId\": \"number\",\r\n        \"facilityId\": \"number\",\r\n        \"workflowQuestionId\": \"number\",\r\n       \"externalIdentifier\": \"string\",\r\n        \"comments\": \"string\"\r\n  }\r\n]"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
 <span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
 </code></pre>
 <blockquote>
@@ -8615,7 +8594,6 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
         </span><span class="s2">"workflowId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"facilityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"workflowQuestionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"lastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-01-03T08:16:24.155Z"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"externalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -8670,7 +8648,6 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
         <span class="s2">"workflowId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
         <span class="s2">"personId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
         <span class="s2">"workflowQuestionId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
-        <span class="s2">"lastModifiedDate"</span><span class="p">:</span> <span class="s2">"2024-01-03T08:16:24.155Z"</span><span class="p">,</span>
         <span class="s2">"externalIdentifier"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
         <span class="s2">"comments"</span><span class="p">:</span> <span class="s2">"string"</span>
   <span class="p">}</span>
@@ -8698,7 +8675,6 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
         </span><span class="s2">"workflowId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"personId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"workflowQuestionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"lastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-01-03T08:16:24.155Z"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"externalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -8763,10 +8739,6 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 <td>dataLockTypeId accepts the numbers as input</td>
 </tr>
 <tr>
-<td>lastModifiedDate</td>
-<td>lastModifiedDate is given in a date and time format</td>
-</tr>
-<tr>
 <td>externalIdentifier</td>
 <td>externalIdentifier accepts the string data as input</td>
 </tr>
@@ -8786,7 +8758,6 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
         </span><span class="s2">"attributeTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"equipmentAttribute"</span><span class="p">:</span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"dataLockTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"lastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"datetime"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"externalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"comments"</span><span class="p">:</span><span class="s2">"string"</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -8827,10 +8798,6 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 <td>dataLockTypeId accepts the numbers as input</td>
 </tr>
 <tr>
-<td>lastModifiedDate</td>
-<td>lastModifiedDate is given in a date and time format</td>
-</tr>
-<tr>
 <td>externalIdentifier</td>
 <td>externalIdentifier accepts the string data as input</td>
 </tr>
@@ -8846,7 +8813,6 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
         </span><span class="s2">"attributeTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"equipmentAttribute"</span><span class="p">:</span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"dataLockTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"lastModifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"datetime"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"externalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"comments"</span><span class="p">:</span><span class="s2">"string"</span><span class="w">
     </span><span class="p">}</span><span class="w">
