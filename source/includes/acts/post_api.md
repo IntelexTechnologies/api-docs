@@ -296,7 +296,6 @@ var options = { method: 'POST',
     "viewColumnName": "string",
     "inactiveDate": "2023-06-25T04:00:00Z",
     "dataLockTypeId": "number",
-    "lastModifiedDate": "2023-06-25T04:00:00Z",
     "externalIdentifier": "string",
     "comments": "string"
   }
@@ -314,7 +313,7 @@ request(options, function (error, response, body) {
 var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/emissionfactor");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
-request.AddParameter("application/json", "[  {\r\n    \"emissionFactorId\": \"number\",\r\n    \"equipmentId\": \"number\",\r\n    \"emissionTypeId\": \"number\",\r\n    \"emissionCategoryId\": \"number\",\r\n    \"compoundId\": \"number\",\r\n    \"emissionFactorName\": \"string\",\r\n    \"activeDate\": \"2023-06-25T04:00:00Z\",\r\n    \"emissionFactor\": \"number\",\r\n    \"unitId\": \"number\",\r\n    \"viewColumnName\": \"string\",\r\n    \"inactiveDate\": \"2023-06-25T04:00:00Z\",\r\n    \"dataLockTypeId\": \"number\",\r\n    \"lastModifiedDate\": \"2023-06-25T04:00:00Z\",\r\n    \"externalIdentifier\": \"string\",\r\n    \"comments\": \"string\"\r\n  }\r\n]", ParameterType.RequestBody);
+request.AddParameter("application/json", "[  {\r\n    \"emissionFactorId\": \"number\",\r\n    \"equipmentId\": \"number\",\r\n    \"emissionTypeId\": \"number\",\r\n    \"emissionCategoryId\": \"number\",\r\n    \"compoundId\": \"number\",\r\n    \"emissionFactorName\": \"string\",\r\n    \"activeDate\": \"2023-06-25T04:00:00Z\",\r\n    \"emissionFactor\": \"number\",\r\n    \"unitId\": \"number\",\r\n    \"viewColumnName\": \"string\",\r\n    \"inactiveDate\": \"2023-06-25T04:00:00Z\",\r\n    \"dataLockTypeId\": \"number\",\r\n   \"externalIdentifier\": \"string\",\r\n    \"comments\": \"string\"\r\n  }\r\n]", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -335,7 +334,6 @@ IRestResponse response = client.Execute(request);
     "viewColumnName": "string",
     "inactiveDate": "2023-06-25T04:00:00Z",
     "dataLockTypeId": "number",
-    "lastModifiedDate": "2023-06-25T04:00:00Z",
     "externalIdentifier": "string",
     "comments": "string"
   }
@@ -406,8 +404,7 @@ var options = { method: 'POST',
     "originalSurveyDate": "2023-06-25T04:00:00Z",
     "activeDate": "2023-06-25T04:00:00Z",
     "inactiveDate": "2023-06-25T04:00:00Z",
-	  "dataLockTypeId": "number",
-    "lastModifiedDate": "2023-06-25T04:00:00Z",
+	"dataLockTypeId": "number",
     "externalIdentifier": "string",
     "comments": "string"
 	}],
@@ -424,7 +421,7 @@ request(options, function (error, response, body) {
 var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/equipment");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
-request.AddParameter("application/json", " [ {\r\n    \"equipmentId\": \"number\",\r\n    \"areaId\": \"number\",\r\n    \"facilityId\": \"number\",\r\n    \"equipmentTypeId\": \"number\",\r\n    \"sourceName\": \"string \",\r\n    \"equipmentStatusId\": \"number\",\r\n    \"modelId\": \"number\",\r\n    \"ownershipId\": \"number\",\r\n    \"ownerId\": \"number\",\r\n    \"serialNumber\": \"number\",\r\n    \"manufactureDate\": \"2023-06-25T04:00:00Z\",\r\n    \"internalName\": \"string\",\r\n    \"alternateName\": \"string\",\r\n    \"design\": \"string\",\r\n    \"originalSurveyDate\": \"2023-06-25T04:00:00Z\",\r\n    \"activeDate\": \"2023-06-25T04:00:00Z\",\r\n    \"inactiveDate\": \"2023-06-25T04:00:00Z\",\r\n\t  \"dataLockTypeId\": \"number\",\r\n    \"lastModifiedDate\": \"2023-06-25T04:00:00Z\",\r\n    \"externalIdentifier\": \"string\",\r\n    \"comments\": \"string\"\r\n }\r\n]", ParameterType.RequestBody);
+request.AddParameter("application/json", " [ {\r\n    \"equipmentId\": \"number\",\r\n    \"areaId\": \"number\",\r\n    \"facilityId\": \"number\",\r\n    \"equipmentTypeId\": \"number\",\r\n    \"sourceName\": \"string \",\r\n    \"equipmentStatusId\": \"number\",\r\n    \"modelId\": \"number\",\r\n    \"ownershipId\": \"number\",\r\n    \"ownerId\": \"number\",\r\n    \"serialNumber\": \"number\",\r\n    \"manufactureDate\": \"2023-06-25T04:00:00Z\",\r\n    \"internalName\": \"string\",\r\n    \"alternateName\": \"string\",\r\n    \"design\": \"string\",\r\n    \"originalSurveyDate\": \"2023-06-25T04:00:00Z\",\r\n    \"activeDate\": \"2023-06-25T04:00:00Z\",\r\n    \"inactiveDate\": \"2023-06-25T04:00:00Z\",\r\n\t  \"dataLockTypeId\": \"number\",\r\n  \"externalIdentifier\": \"string\",\r\n    \"comments\": \"string\"\r\n }\r\n]", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -450,8 +447,7 @@ IRestResponse response = client.Execute(request);
     "originalSurveyDate": "2023-06-25T04:00:00Z",
     "activeDate": "2023-06-25T04:00:00Z",
     "inactiveDate": "2023-06-25T04:00:00Z",
-	  "dataLockTypeId": "number",
-    "lastModifiedDate": "2023-06-25T04:00:00Z",
+	"dataLockTypeId": "number",
     "externalIdentifier": "string",
     "comments": "string"
 	}
@@ -511,7 +507,6 @@ var options = { method: 'POST',
     "activeDate": "2014-04-01T00:00:00z",
     "inactiveDate": "2025-04-01T00:00:00z",
     "dataLockTypeId": "number",
-    "lastModifiedDate": "2014-04-01T13:37:16z",
     "externalIdentifier": "string",
     "comments": "string"
   }
@@ -532,7 +527,7 @@ var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", " [\r\n  { \r\n\ "equipmentAnalysisId\": \"number\",\r\n    \"equipmentId\": \"number\",\r\n
     \"analysisId\": \"number\",\r\n    \"analysisAssociationTypeId\": \"number\",\r\n    \"activeDate\": \"2014-04-01T00:00:00z\",\r\n
-    \"inactiveDate\": \"2025-04-01T00:00:00z\",\r\n    \"dataLockTypeId\": \"number\",\r\n    \"lastModifiedDate\": \"2014-04-01T13:37:16z\",\r\n    \"externalIdentifier\": \"string\",\r\n    \"comments\": \"string\" \r\n  }\r\n]", 
+    \"inactiveDate\": \"2025-04-01T00:00:00z\",\r\n    \"dataLockTypeId\": \"number\",\r\n   \"externalIdentifier\": \"string\",\r\n    \"comments\": \"string\" \r\n  }\r\n]", 
     ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
@@ -549,7 +544,6 @@ IRestResponse response = client.Execute(request);
     "activeDate": "2014-04-01T00:00:00z",
     "inactiveDate": "2025-04-01T00:00:00z",
     "dataLockTypeId": "number",
-    "lastModifiedDate": "2014-04-01T13:37:16z",
     "externalIdentifier": "string",
     "comments": "string"
   }
@@ -602,12 +596,11 @@ var options = { method: 'POST',
 
        [
   { 
-	 "equipmentAttributeId": "number",
+	"equipmentAttributeId": "number",
     "equipmentId": "number",
     "attributeTypeId": "number",
     "equipmentAttribute":"string",
     "dataLockTypeId": "number",
-    "lastModifiedDate": "2023-03-30T07:27:06.295Z",
     "externalIdentifier": "string",
     "comments":"string"
   }
@@ -626,7 +619,7 @@ request(options, function (error, response, body) {
 var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/equipmentattribute");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
-request.AddParameter("application/json", " [\r\n  { \r\n"equipmentAttributeId\": \"number\",\r\n    \"equipmentId\": \"number\",\r\n    \"attributeTypeId\": \"number\",\r\n    \"equipmentAttribute\":\"string\",\r\n    \"dataLockTypeId\": \"number\",\r\n    \"lastModifiedDate\": \"2023-03-30T07:27:06.295Z\",\r\n    \"externalIdentifier\": \"string\",\r\n    \"comments\":\"string\"\r\n  }\r\n]", ParameterType.RequestBody);
+request.AddParameter("application/json", " [\r\n  { \r\n"equipmentAttributeId\": \"number\",\r\n    \"equipmentId\": \"number\",\r\n    \"attributeTypeId\": \"number\",\r\n    \"equipmentAttribute\":\"string\",\r\n    \"dataLockTypeId\": \"number\",\r\n  \"externalIdentifier\": \"string\",\r\n    \"comments\":\"string\"\r\n  }\r\n]", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -640,7 +633,6 @@ IRestResponse response = client.Execute(request);
     "attributeTypeId": "number",
     "equipmentAttribute":"string",
     "dataLockTypeId": "number",
-    "lastModifiedDate": "2023-03-30T07:27:06.295Z",
     "externalIdentifier": "string",
     "comments":"string"
   }
@@ -861,7 +853,6 @@ var options = { method: 'POST',
     "activeDate": "2023-06-25T04:00:00Z",
     "inactiveDate": "2023-06-25T04:00:00Z",
     "dataLockTypeId": "number",
-    "lastModifiedDate": "2023-06-25T04:00:00Z",
     "externalIdentifier": "string",
     "comments": "string"
   }],
@@ -878,7 +869,7 @@ request(options, function (error, response, body) {
 var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/facility");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
-request.AddParameter("application/json", "[{\r\n    \"facilityId\": \"number\",\r\n    \"facilityName\": \"string\",\r\n    \"areaId\": \"number\",\r\n    \"facilityTypeId\": \"number\",\r\n    \"facilityStatusId\": \"number\",\r\n    \"sortOrder\": \"number\",\r\n    \"facilityOwnershipId\": \"number\",\r\n    \"facilityOwnerId\": \"number\",\r\n    \"landOwnershipId\": \"number\",\r\n    \"landOwnerId\": \"number\",\r\n    \"operatorId\": \"number\",\r\n    \"countryId\": \"number\",\r\n    \"countyId\": \"number\",\r\n    \"offshoreBlockId\": \"number\",\r\n    \"meteorologicalId\": \"number\",\r\n    \"businessEntityId\": \"number\",\r\n    \"businessUnitId\": \"number\",\r\n    \"alternateName\": \"string\",\r\n    \"purchaseDate\": \"2023-06-25T04:00:00Z\",\r\n    \"previousOwnerId\": \"number\",\r\n    \"soldDate\": \"2023-06-25T04:00:00Z\",\r\n    \"soldToId\": \"number\",\r\n    \"activeDate\": \"2023-06-25T04:00:00Z\",\r\n    \"inactiveDate\": \"2023-06-25T04:00:00Z\",\r\n    \"dataLockTypeId\": \"number\",\r\n    \"lastModifiedDate\": \"2023-06-25T04:00:00Z\",\r\n    \"externalIdentifier\": \"string\",\r\n    \"comments\": \"string\"\r\n  }]", ParameterType.RequestBody);
+request.AddParameter("application/json", "[{\r\n    \"facilityId\": \"number\",\r\n    \"facilityName\": \"string\",\r\n    \"areaId\": \"number\",\r\n    \"facilityTypeId\": \"number\",\r\n    \"facilityStatusId\": \"number\",\r\n    \"sortOrder\": \"number\",\r\n    \"facilityOwnershipId\": \"number\",\r\n    \"facilityOwnerId\": \"number\",\r\n    \"landOwnershipId\": \"number\",\r\n    \"landOwnerId\": \"number\",\r\n    \"operatorId\": \"number\",\r\n    \"countryId\": \"number\",\r\n    \"countyId\": \"number\",\r\n    \"offshoreBlockId\": \"number\",\r\n    \"meteorologicalId\": \"number\",\r\n    \"businessEntityId\": \"number\",\r\n    \"businessUnitId\": \"number\",\r\n    \"alternateName\": \"string\",\r\n    \"purchaseDate\": \"2023-06-25T04:00:00Z\",\r\n    \"previousOwnerId\": \"number\",\r\n    \"soldDate\": \"2023-06-25T04:00:00Z\",\r\n    \"soldToId\": \"number\",\r\n    \"activeDate\": \"2023-06-25T04:00:00Z\",\r\n    \"inactiveDate\": \"2023-06-25T04:00:00Z\",\r\n    \"dataLockTypeId\": \"number\",\r\n  \"externalIdentifier\": \"string\",\r\n    \"comments\": \"string\"\r\n  }]", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -912,7 +903,6 @@ IRestResponse response = client.Execute(request);
     "activeDate": "2023-06-25T04:00:00Z",
     "inactiveDate": "2023-06-25T04:00:00Z",
     "dataLockTypeId": "number",
-    "lastModifiedDate": "2023-06-25T04:00:00Z",
     "externalIdentifier": "string",
     "comments": "string"
   } 
@@ -969,7 +959,6 @@ var options = { method: 'POST',
     "attributeTypeId": "number",
     "facilityAttribute":"string",
     "dataLockTypeId": "number",
-    "lastModifiedDate": "2023-03-30T07:27:06.295Z",
     "externalIdentifier": "string",
     "comments":"string"
   }
@@ -988,7 +977,7 @@ request(options, function (error, response, body) {
 var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/facilityattribute");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
-request.AddParameter("application/json", "[\r\n  { \r\n"facilityAttributeId\": \"number\",\r\n    \"facilityId\": \"number\",\r\n    \"attributeTypeId\": \"number\",\r\n    \"facilityAttribute\":\"string\",\r\n    \"dataLockTypeId\": \"number\",\r\n    \"lastModifiedDate\": \"2023-03-30T07:27:06.295Z\",\r\n    \"externalIdentifier\": \"string\",\r\n    \"comments\":\"string\"\r\n  }\r\n]", ParameterType.RequestBody);
+request.AddParameter("application/json", "[\r\n  { \r\n"facilityAttributeId\": \"number\",\r\n    \"facilityId\": \"number\",\r\n    \"attributeTypeId\": \"number\",\r\n    \"facilityAttribute\":\"string\",\r\n    \"dataLockTypeId\": \"number\",\r\n   \"externalIdentifier\": \"string\",\r\n    \"comments\":\"string\"\r\n  }\r\n]", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -1002,7 +991,6 @@ IRestResponse response = client.Execute(request);
     "attributeTypeId": "number",
     "facilityAttribute":"string",
     "dataLockTypeId": "number",
-    "lastModifiedDate": "2023-03-30T07:27:06.295Z",
     "externalIdentifier": "string",
     "comments":"string"
   }
@@ -1069,7 +1057,6 @@ var options = { method: 'POST',
     "fieldEventId": "number",
     "inactiveDate": "2023-06-25T04:00:00Z",
     "dataLockTypeId": "number",
-    "lastModifiedDate": "2023-06-25T04:00:00Z",
     "externalIdentifier": "string",
     "comments": "string",
     "badDataFlag": "number(1,0)",
@@ -1090,7 +1077,7 @@ request(options, function (error, response, body) {
 var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/operation");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
-request.AddParameter("application/json", "[\r\n  {\r\n    \"operationId\": \"number\",\r\n    \"equipmentId\": \"number\",\r\n    \"emissionTypeId\": \"number\",\r\n    \"emissionCategoryId\": \"number\",\r\n    \"operationTypeId\": \"number\",\r\n    \"activeDate\": \"2023-06-25T04:00:00Z\",\r\n    \"unitId\": \"number\",\r\n    \"controlledInd\": \"string\",\r\n    \"estimatedInd\": \"string\",\r\n    \"invalidInd\": \"string\",\r\n    \"calculateEmissionsInd\": \"string\",\r\n    \"collectionDate\": \"2023-06-25T04:00:00Z\",\r\n    \"fieldEventId\": \"number\",\r\n    \"inactiveDate\": \"2023-06-25T04:00:00Z\",\r\n    \"dataLockTypeId\": \"number\",\r\n    \"lastModifiedDate\": \"2023-06-25T04:00:00Z\",\r\n    \"externalIdentifier\": \"string\",\r\n    \"comments\": \"string\",\r\n    \"badDataFlag\": \"number(1,0)\",\r\n    \"operationAmount\": \"number\"\r\n  } \r\n]", ParameterType.RequestBody);
+request.AddParameter("application/json", "[\r\n  {\r\n    \"operationId\": \"number\",\r\n    \"equipmentId\": \"number\",\r\n    \"emissionTypeId\": \"number\",\r\n    \"emissionCategoryId\": \"number\",\r\n    \"operationTypeId\": \"number\",\r\n    \"activeDate\": \"2023-06-25T04:00:00Z\",\r\n    \"unitId\": \"number\",\r\n    \"controlledInd\": \"string\",\r\n    \"estimatedInd\": \"string\",\r\n    \"invalidInd\": \"string\",\r\n    \"calculateEmissionsInd\": \"string\",\r\n    \"collectionDate\": \"2023-06-25T04:00:00Z\",\r\n    \"fieldEventId\": \"number\",\r\n    \"inactiveDate\": \"2023-06-25T04:00:00Z\",\r\n    \"dataLockTypeId\": \"number\",\r\n   \"externalIdentifier\": \"string\",\r\n    \"comments\": \"string\",\r\n    \"badDataFlag\": \"number(1,0)\",\r\n    \"operationAmount\": \"number\"\r\n  } \r\n]", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 > Input JSON Body
@@ -1113,7 +1100,6 @@ IRestResponse response = client.Execute(request);
     "fieldEventId": "number",
     "inactiveDate": "2023-06-25T04:00:00Z",
     "dataLockTypeId": "number",
-    "lastModifiedDate": "2023-06-25T04:00:00Z",
     "externalIdentifier": "string",
     "comments": "string",
     "badDataFlag": "number(1,0)",
@@ -1173,7 +1159,6 @@ var options = { method: 'POST',
         "workflowTypeId": "number",
         "workflowDate": "2024-01-03T08:16:24.155Z",
         "dataLockTypeId": "number",
-        "lastModifiedDate": "2024-01-03T08:16:24.155Z",
         "externalIdentifier": "string",
         "comments": "string"
   }
@@ -1192,7 +1177,7 @@ request(options, function (error, response, body) {
 var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/workflow");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
-request.AddParameter("application/json", " [\r\n  {\r\n        \"workflowId\": \"number\",\r\n        \"workflowTypeId\": \"number\",\r\n        \"workflowDate\": \"2024-01-03T08:16:24.155Z\",\r\n        \"dataLockTypeId\": \"number\",\r\n        \"lastModifiedDate\": \"2024-01-03T08:16:24.155Z\",\r\n        \"externalIdentifier\": \"string\",\r\n        \"comments\": \"string\"\r\n  }\r\n]", ParameterType.RequestBody);
+request.AddParameter("application/json", " [\r\n  {\r\n        \"workflowId\": \"number\",\r\n        \"workflowTypeId\": \"number\",\r\n        \"workflowDate\": \"2024-01-03T08:16:24.155Z\",\r\n        \"dataLockTypeId\": \"number\",\r\n   \"externalIdentifier\": \"string\",\r\n        \"comments\": \"string\"\r\n  }\r\n]", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -1205,7 +1190,6 @@ IRestResponse response = client.Execute(request);
         "workflowTypeId": "number",
         "workflowDate": "2024-01-03T08:16:24.155Z",
         "dataLockTypeId": "number",
-        "lastModifiedDate": "2024-01-03T08:16:24.155Z",
         "externalIdentifier": "string",
         "comments": "string"
   }
@@ -1266,7 +1250,6 @@ var options = { method: 'POST',
         "workflowAnswer": "string",
         "dataLockTypeId": "number",
         "personId": "number",
-        "lastModifiedDate": "2024-01-03T08:16:24.155Z",
         "externalIdentifier": "string",
         "comments": "string"
       }],
@@ -1284,7 +1267,7 @@ request(options, function (error, response, body) {
 var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/workflowanswer");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
-request.AddParameter("application/json", "[{\r\n        \"workflowAnswerId\": \"number\",\r\n        \"workflowId\": \"number\",\r\n        \"workflowQuestionId\": \"number\",\r\n        \"categoryAnswerIndex\": \"number\",\r\n        \"categoryRevisionIndex\": \"number\",\r\n        \"questionAnswerIndex\": \"number\",\r\n        \"questionRevisionIndex\": \"number\",\r\n        \"workflowAnswer\": \"string\",\r\n        \"dataLockTypeId\": \"number\",\r\n        \"personId\": \"number\",\r\n        \"lastModifiedDate\": \"2024-01-03T08:16:24.155Z\",\r\n        \"externalIdentifier\": \"string\",\r\n        \"comments\": \"string\"\r\n      }]", ParameterType.RequestBody);
+request.AddParameter("application/json", "[{\r\n        \"workflowAnswerId\": \"number\",\r\n        \"workflowId\": \"number\",\r\n        \"workflowQuestionId\": \"number\",\r\n        \"categoryAnswerIndex\": \"number\",\r\n        \"categoryRevisionIndex\": \"number\",\r\n        \"questionAnswerIndex\": \"number\",\r\n        \"questionRevisionIndex\": \"number\",\r\n        \"workflowAnswer\": \"string\",\r\n        \"dataLockTypeId\": \"number\",\r\n        \"personId\": \"number\",\r\n    \"externalIdentifier\": \"string\",\r\n        \"comments\": \"string\"\r\n      }]", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -1302,7 +1285,6 @@ IRestResponse response = client.Execute(request);
         "workflowAnswer": "string",
         "dataLockTypeId": "number",
         "personId": "number",
-        "lastModifiedDate": "2024-01-03T08:16:24.155Z",
         "externalIdentifier": "string",
         "comments": "string"
       }]
@@ -1357,7 +1339,6 @@ var options = { method: 'POST',
         "workflowId": "number",
         "equipmentId": "number",
         "workflowQuestionId": "number",
-        "lastModifiedDate": "2024-01-03T08:16:24.155Z",
         "externalIdentifier": "string",
         "comments": "string"
   }
@@ -1376,7 +1357,7 @@ request(options, function (error, response, body) {
 var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/workflowequipment");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
-request.AddParameter("application/json", "[\r\n  {\r\n        \"workflowEquipmentId\": \"number\",\r\n        \"workflowId\": \"number\",\r\n        \"equipmentId\": \"number\",\r\n        \"workflowQuestionId\": \"number\",\r\n        \"lastModifiedDate\": \"2024-01-03T08:16:24.155Z\",\r\n        \"externalIdentifier\": \"string\",\r\n        \"comments\": \"string\"\r\n  }\r\n]", ParameterType.RequestBody);
+request.AddParameter("application/json", "[\r\n  {\r\n        \"workflowEquipmentId\": \"number\",\r\n        \"workflowId\": \"number\",\r\n        \"equipmentId\": \"number\",\r\n        \"workflowQuestionId\": \"number\",\r\n     \"externalIdentifier\": \"string\",\r\n        \"comments\": \"string\"\r\n  }\r\n]", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -1389,7 +1370,6 @@ IRestResponse response = client.Execute(request);
         "workflowId": "number",
         "equipmentId": "number",
         "workflowQuestionId": "number",
-        "lastModifiedDate": "2024-01-03T08:16:24.155Z",
         "externalIdentifier": "string",
         "comments": "string"
   }
@@ -1445,7 +1425,6 @@ var options = { method: 'POST',
         "workflowId": "number",
         "facilityId": "number",
         "workflowQuestionId": "number",
-        "lastModifiedDate": "2024-01-03T08:16:24.155Z",
         "externalIdentifier": "string",
         "comments": "string"
   }
@@ -1464,7 +1443,7 @@ request(options, function (error, response, body) {
 var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/workflowfacility");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
-request.AddParameter("application/json", "[\r\n  {\r\n        \"workflowFacilityId\": \"number\",\r\n        \"workflowId\": \"number\",\r\n        \"facilityId\": \"number\",\r\n        \"workflowQuestionId\": \"number\",\r\n        \"lastModifiedDate\": \"2024-01-03T08:16:24.155Z\",\r\n        \"externalIdentifier\": \"string\",\r\n        \"comments\": \"string\"\r\n  }\r\n]", ParameterType.RequestBody);
+request.AddParameter("application/json", "[\r\n  {\r\n        \"workflowFacilityId\": \"number\",\r\n        \"workflowId\": \"number\",\r\n        \"facilityId\": \"number\",\r\n        \"workflowQuestionId\": \"number\",\r\n       \"externalIdentifier\": \"string\",\r\n        \"comments\": \"string\"\r\n  }\r\n]", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -1477,7 +1456,6 @@ IRestResponse response = client.Execute(request);
         "workflowId": "number",
         "facilityId": "number",
         "workflowQuestionId": "number",
-        "lastModifiedDate": "2024-01-03T08:16:24.155Z",
         "externalIdentifier": "string",
         "comments": "string"
   }
@@ -1534,7 +1512,6 @@ var options = { method: 'POST',
         "workflowId": "number",
         "personId": "number",
         "workflowQuestionId": "number",
-        "lastModifiedDate": "2024-01-03T08:16:24.155Z",
         "externalIdentifier": "string",
         "comments": "string"
   }
@@ -1566,7 +1543,6 @@ IRestResponse response = client.Execute(request);
         "workflowId": "number",
         "personId": "number",
         "workflowQuestionId": "number",
-        "lastModifiedDate": "2024-01-03T08:16:24.155Z",
         "externalIdentifier": "string",
         "comments": "string"
   }
@@ -1613,7 +1589,6 @@ equipmentId  | equipmentId accepts the numbers as input
 attributeTypeId  | attributeTypeId accepts the numbers as input 
 equipmentAttribute  | equipmentAttribute accepts the string data as input 
 dataLockTypeId | dataLockTypeId accepts the numbers as input 
-lastModifiedDate  | lastModifiedDate is given in a date and time format 
 externalIdentifier  | externalIdentifier accepts the string data as input
 comments  | comments accepts the string data as input
 
@@ -1627,7 +1602,6 @@ comments  | comments accepts the string data as input
         "attributeTypeId": "number",
 		    "equipmentAttribute":"string",
         "dataLockTypeId": "number",
-        "lastModifiedDate": "datetime",
         "externalIdentifier": "string",
 		    "comments":"string"
     }
@@ -1647,7 +1621,6 @@ equipmentId  | equipmentId accepts the numbers as input
 attributeTypeId  | attributeTypeId accepts the numbers as input 
 equipmentAttribute  | equipmentAttribute accepts the string data as input 
 dataLockTypeId | dataLockTypeId accepts the numbers as input 
-lastModifiedDate  | lastModifiedDate is given in a date and time format 
 externalIdentifier  | externalIdentifier accepts the string data as input
 comments  | comments accepts the string data as input
 
@@ -1660,7 +1633,6 @@ comments  | comments accepts the string data as input
         "attributeTypeId": "number",
 		    "equipmentAttribute":"string",
         "dataLockTypeId": "number",
-        "lastModifiedDate": "datetime",
         "externalIdentifier": "string",
 		    "comments":"string"
     }
