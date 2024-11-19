@@ -64,11 +64,10 @@ IRestResponse response = client.Execute(request);
 
 ```json
 {
-	"insertedRowCount" : 0 , 
-	"updatedRowCount" : 0 ,
-	"deletedRowCount" : 1 ,
-	"failureCount" : 0 ,
-	"errorMessage" : []
+  "deletedRowCount": 1,
+  "notFoundCount": 0,
+  "failureCount": 0,
+  "errorMessage" : []
 }
 
 ```
@@ -123,11 +122,10 @@ IRestResponse response = client.Execute(request);
 
 ```json
 {
-	"insertedRowCount" : 0 , 
-	"updatedRowCount" : 0 ,
-	"deletedRowCount" : 1 ,
-	"failureCount" : 0 ,
-	"errorMessage" : []
+  "deletedRowCount": 1,
+  "notFoundCount": 0,
+  "failureCount": 0,
+  "errorMessage" : []
 }
 
 ```
@@ -182,11 +180,10 @@ IRestResponse response = client.Execute(request);
 
 ```json
 {
-	"insertedRowCount" : 0 , 
-	"updatedRowCount" : 0 ,
-	"deletedRowCount" : 1 ,
-	"failureCount" : 0 ,
-	"errorMessage" : []
+  "deletedRowCount": 1,
+  "notFoundCount": 0,
+  "failureCount": 0,
+  "errorMessage" : []
 }
 
 ```
