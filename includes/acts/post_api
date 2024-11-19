@@ -62,7 +62,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
   <span class="s2">"analysisStatusId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
   <span class="s2">"alternateName"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
   <span class="s2">"vendorId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
-  <span class="s2">"vendorAnalysisNumber"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+  <span class="s2">"vendorAnalysisNumber"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
   <span class="s2">"vendorJobNumber"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
   <span class="s2">"vendorId2"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
   <span class="s2">"vendorAnalysisNumber2"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
@@ -87,7 +87,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 <span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
 <span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"[  {\r\n  \"analysisId\": \"number\",\r\n  \"analysisName\": \"string\",\r\n
 </span>  <span class="err">\</span><span class="s">"analysisDate\": \"2024-11-01T12:58:49Z\",\r\n  \"analysisTypeId\": \"number\",\r\n  \"analysisStatusId\": \"number\",\r\n
-</span>  <span class="err">\</span><span class="s">"alternateName\": \"string\",\r\n  \"vendorId\": \"number\",\r\n  \"vendorAnalysisNumber\": \"number\",\r\n  \"vendorJobNumber\": \"string\",\r\n  \"vendorId2\": \"number\",\r\n  \"vendorAnalysisNumber2\": \"string\",\r\n  \"vendorJobNumber2\": \"string\",\r\n
+</span>  <span class="err">\</span><span class="s">"alternateName\": \"string\",\r\n  \"vendorId\": \"number\",\r\n  \"vendorAnalysisNumber\": \"string\",\r\n  \"vendorJobNumber\": \"string\",\r\n  \"vendorId2\": \"number\",\r\n  \"vendorAnalysisNumber2\": \"string\",\r\n  \"vendorJobNumber2\": \"string\",\r\n
 </span>  <span class="err">\</span><span class="s">"reviewedById\": \"number\",\r\n  \"reviewedDate\": \"2024-11-01T12:58:49Z\",\r\n  \"submitDate\": \"2024-11-01T12:58:49Z\",\r\n
 </span>  <span class="err">\</span><span class="s">"dataLockTypeId\": \"number\",\r\n  \"externalIdentifier\": \"string\",\r\n  \"comments\": \"string\"}\r\n]"</span><span class="p">,</span>
    <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
@@ -105,7 +105,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
   </span><span class="s2">"analysisStatusId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"alternateName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"vendorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"vendorAnalysisNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"vendorAnalysisNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"vendorJobNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"vendorId2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"vendorAnalysisNumber2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -166,23 +166,23 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
     <span class="p">[</span>
 <span class="p">{</span>
     <span class="s2">"analysisCompoundId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
-    <span class="s2">"analysisValue"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
     <span class="s2">"analysisId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
-    <span class="s2">"analysisDate"</span><span class="p">:</span> <span class="s2">"2011-07-19T00:00:00z"</span><span class="p">,</span>
     <span class="s2">"compoundId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
-    <span class="s2">"comments"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
-    <span class="s2">"dilutionFactor"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
-    <span class="s2">"dataLockTypeId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
-    <span class="s2">"externalIdentifier"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
     <span class="s2">"operator"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
+    <span class="s2">"analysisValue"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+    <span class="s2">"unitId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
     <span class="s2">"resultText"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
-    <span class="s2">"reportableInd"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
+    <span class="s2">"analysisDate"</span><span class="p">:</span> <span class="s2">"2011-07-19T00:00:00z"</span><span class="p">,</span>
+    <span class="s2">"dilutionFactor"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
     <span class="s2">"reportingLimit"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
     <span class="s2">"method"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
     <span class="s2">"methodDetectionLimit"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
     <span class="s2">"qualifier"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
+    <span class="s2">"reportableInd"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
+    <span class="s2">"dataLockTypeId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
     <span class="s2">"sortOrder"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
-    <span class="s2">"unitId"</span><span class="p">:</span> <span class="s2">"number"</span>
+    <span class="s2">"externalIdentifier"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
+    <span class="s2">"comments"</span><span class="p">:</span> <span class="s2">"string"</span>
  <span class="p">}</span>
 <span class="p">],</span>
   <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
@@ -195,11 +195,12 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://[tenant].actsapi.intelex.com/v1/analysiscompound"</span><span class="p">);</span>
 <span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>
 <span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
-<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"[  {\r\n  \"analysisCompoundId\": \"number\",\r\n \"analysisValue\": \"number\",\r\n
-</span>    <span class="err">\</span><span class="s">"analysisId\": \"number\",\r\n \"analysisDate\": \"2011-07-19T00:00:00z\",\r\n \"compoundId\": \"number\",\r\n \"comments\": \"string\",\r\n   \"dilutionFactor\": \"number\",\r\n \"dataLockTypeId\": \"number\",\r\n \"externalIdentifier\": \"string\",\r\n
-</span>    <span class="err">\</span><span class="s">"operator\": \"string\",\r\n   \"resultText\": \"string\",\r\n \"reportableInd\": \"string\",\r\n  \"reportingLimit\": \"number\",\r\n
-</span>    <span class="err">\</span><span class="s">"method\": \"string\",\r\n \"methodDetectionLimit\": \"number\",\r\n   \"qualifier\": \"string\",\r\n  \"sortOrder\": \"number\",\r\n
-</span>    <span class="err">\</span><span class="s">"unitId\": \"number\"}\r\n]"</span><span class="p">,</span>   <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"[  {\r\n  \"analysisCompoundId\": \"number\",\r\n \"analysisId\": \"number\",\r\n
+</span>    <span class="err">\</span><span class="s">"compoundId\": \"number\",\r\n \"operator\": \"string\",\r\n   \"analysisValue\": \"number\",\r\n  \"unitId\": \"number\",\r\n
+</span>    <span class="err">\</span><span class="s">"resultText\": \"string\",\r\n \"analysisDate\": \"2011-07-19T00:00:00z\",\r\n \"dilutionFactor\": \"number\",\r\n
+</span>    <span class="err">\</span><span class="s">"reportingLimit\": \"number\",\r\n \"method\": \"string\",\r\n \"methodDetectionLimit\": \"number\",\r\n
+</span>    <span class="err">\</span><span class="s">"qualifier\": \"string\",\r\n  \"reportableInd\": \"string\",\r\n  \"dataLockTypeId\": \"number\",\r\n \"sortOrder\": \"number\",\r\n
+</span>    <span class="err">\</span><span class="s">"externalIdentifier\": \"string\",\r\n \"comments\": \"string\" }\r\n]"</span><span class="p">,</span>   <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
 <span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
 </code></pre>
 <blockquote>
@@ -208,23 +209,23 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
 </span><span class="p">{</span><span class="w">
     </span><span class="s2">"analysisCompoundId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"analysisValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"analysisId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"analysisDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2011-07-19T00:00:00z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"compoundId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"dilutionFactor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"dataLockTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"externalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"analysisValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"unitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"resultText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"reportableInd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"analysisDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2011-07-19T00:00:00z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dilutionFactor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"reportingLimit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"methodDetectionLimit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"qualifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"reportableInd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dataLockTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"sortOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"unitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="w">
+    </span><span class="s2">"externalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
  </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
