@@ -94,11 +94,11 @@ Database Tables supporting POST requests
 1. Analysis
 2. Analysis Compound
 3. Emission Factor
-4. Equipment
-5. Equipment Analysis
-6. Equipment Attribute
-7. Emissions Recalculate By Equipment
-8. Emissions Recalculate By Operation
+4. Emissions Recalculate By Equipment
+5. Emissions Recalculate By Operation
+6. Equipment
+7. Equipment Analysis
+8. Equipment Attribute
 9. Facility
 10. Facility Attribute
 11. Operation
