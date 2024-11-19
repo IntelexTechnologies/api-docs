@@ -58,7 +58,7 @@ var options = { method: 'POST',
   "analysisStatusId": "number",
   "alternateName": "string",
   "vendorId": "number",
-  "vendorAnalysisNumber": "number",
+  "vendorAnalysisNumber": "string",
   "vendorJobNumber": "string",
   "vendorId2": "number",
   "vendorAnalysisNumber2": "string",
@@ -86,7 +86,7 @@ var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "[  {\r\n  \"analysisId\": \"number\",\r\n  \"analysisName\": \"string\",\r\n
   \"analysisDate\": \"2024-11-01T12:58:49Z\",\r\n  \"analysisTypeId\": \"number\",\r\n  \"analysisStatusId\": \"number\",\r\n
-  \"alternateName\": \"string\",\r\n  \"vendorId\": \"number\",\r\n  \"vendorAnalysisNumber\": \"number\",\r\n  \"vendorJobNumber\": \"string\",\r\n  \"vendorId2\": \"number\",\r\n  \"vendorAnalysisNumber2\": \"string\",\r\n  \"vendorJobNumber2\": \"string\",\r\n
+  \"alternateName\": \"string\",\r\n  \"vendorId\": \"number\",\r\n  \"vendorAnalysisNumber\": \"string\",\r\n  \"vendorJobNumber\": \"string\",\r\n  \"vendorId2\": \"number\",\r\n  \"vendorAnalysisNumber2\": \"string\",\r\n  \"vendorJobNumber2\": \"string\",\r\n
   \"reviewedById\": \"number\",\r\n  \"reviewedDate\": \"2024-11-01T12:58:49Z\",\r\n  \"submitDate\": \"2024-11-01T12:58:49Z\",\r\n
   \"dataLockTypeId\": \"number\",\r\n  \"externalIdentifier\": \"string\",\r\n  \"comments\": \"string\"}\r\n]",
    ParameterType.RequestBody);
@@ -105,7 +105,7 @@ IRestResponse response = client.Execute(request);
   "analysisStatusId": "number",
   "alternateName": "string",
   "vendorId": "number",
-  "vendorAnalysisNumber": "number",
+  "vendorAnalysisNumber": "string",
   "vendorJobNumber": "string",
   "vendorId2": "number",
   "vendorAnalysisNumber2": "string",
@@ -168,23 +168,23 @@ var options = { method: 'POST',
     [
 {
 	"analysisCompoundId": "number",
-	"analysisValue": "number",
 	"analysisId": "number",
-	"analysisDate": "2011-07-19T00:00:00z",
 	"compoundId": "number",
-	"comments": "string",
-	"dilutionFactor": "number",
-	"dataLockTypeId": "number",
-	"externalIdentifier": "string",
 	"operator": "string",
+	"analysisValue": "number",
+	"unitId": "number",
 	"resultText": "string",
-	"reportableInd": "string",
+	"analysisDate": "2011-07-19T00:00:00z",
+	"dilutionFactor": "number",
 	"reportingLimit": "number",
 	"method": "string",
 	"methodDetectionLimit": "number",
 	"qualifier": "string",
+	"reportableInd": "string",
+	"dataLockTypeId": "number",
 	"sortOrder": "number",
-	"unitId": "number"
+	"externalIdentifier": "string",
+	"comments": "string"
  }
 ],
   json: true };
@@ -200,11 +200,12 @@ request(options, function (error, response, body) {
 var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/analysiscompound");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
-request.AddParameter("application/json", "[  {\r\n  \"analysisCompoundId\": \"number\",\r\n	\"analysisValue\": \"number\",\r\n
-	\"analysisId\": \"number\",\r\n	\"analysisDate\": \"2011-07-19T00:00:00z\",\r\n	\"compoundId\": \"number\",\r\n	\"comments\": \"string\",\r\n	\"dilutionFactor\": \"number\",\r\n	\"dataLockTypeId\": \"number\",\r\n	\"externalIdentifier\": \"string\",\r\n
-	\"operator\": \"string\",\r\n	\"resultText\": \"string\",\r\n	\"reportableInd\": \"string\",\r\n	\"reportingLimit\": \"number\",\r\n
-	\"method\": \"string\",\r\n	\"methodDetectionLimit\": \"number\",\r\n	\"qualifier\": \"string\",\r\n	\"sortOrder\": \"number\",\r\n
-	\"unitId\": \"number\"}\r\n]",   ParameterType.RequestBody);
+request.AddParameter("application/json", "[  {\r\n	\"analysisCompoundId\": \"number\",\r\n	\"analysisId\": \"number\",\r\n
+	\"compoundId\": \"number\",\r\n	\"operator\": \"string\",\r\n	\"analysisValue\": \"number\",\r\n	\"unitId\": \"number\",\r\n
+	\"resultText\": \"string\",\r\n	\"analysisDate\": \"2011-07-19T00:00:00z\",\r\n	\"dilutionFactor\": \"number\",\r\n
+	\"reportingLimit\": \"number\",\r\n	\"method\": \"string\",\r\n	\"methodDetectionLimit\": \"number\",\r\n
+	\"qualifier\": \"string\",\r\n	\"reportableInd\": \"string\",\r\n	\"dataLockTypeId\": \"number\",\r\n	\"sortOrder\": \"number\",\r\n
+	\"externalIdentifier\": \"string\",\r\n	\"comments\": \"string\" }\r\n]",   ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -214,23 +215,23 @@ IRestResponse response = client.Execute(request);
 [
 {
 	"analysisCompoundId": "number",
-	"analysisValue": "number",
 	"analysisId": "number",
-	"analysisDate": "2011-07-19T00:00:00z",
 	"compoundId": "number",
-	"comments": "string",
-	"dilutionFactor": "number",
-	"dataLockTypeId": "number",
-	"externalIdentifier": "string",
 	"operator": "string",
+	"analysisValue": "number",
+	"unitId": "number",
 	"resultText": "string",
-	"reportableInd": "string",
+	"analysisDate": "2011-07-19T00:00:00z",
+	"dilutionFactor": "number",
 	"reportingLimit": "number",
 	"method": "string",
 	"methodDetectionLimit": "number",
 	"qualifier": "string",
+	"reportableInd": "string",
+	"dataLockTypeId": "number",
 	"sortOrder": "number",
-	"unitId": "number"
+	"externalIdentifier": "string",
+	"comments": "string"
  }
 ]
 ```
