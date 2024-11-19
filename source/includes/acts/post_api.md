@@ -264,7 +264,6 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-
 ### 3. Emission Factor Table 
 
 This section guides you through the process of modifying existing Emission Factor records or adding new entries to the Emission Factor table using the designated API endpoint. For inserting a new record, please pass the primary key field emissionFactorId as 0 in the request body.
