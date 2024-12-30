@@ -20,7 +20,7 @@ This section guides you through the process of removing/deleting the existing re
 
 **Analysis DELETE endpoint**
 
-`DELETE` /api/v1/analysis
+`DELETE` /actsapi/v1/analysis
 
 > Example Request & JSON Input Body 
 
@@ -28,7 +28,7 @@ This section guides you through the process of removing/deleting the existing re
 var request = require("request");
 
 var options = { method: 'DELETE',
-  url: 'https://[tenant].actsapi.intelex.com/v1/analysis',
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/analysis',
   headers: { 'content-type': 'application/json' },
   body:
    { 
@@ -45,7 +45,7 @@ request(options, function (error, response, body) {
 
 ```csharp
 
-var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/analysis");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/analysis");
 var request = new RestRequest(Method.DELETE);
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{\r\n    [operationId1, operationId2, operationId3....] \r\n}", ParameterType.RequestBody);
@@ -78,7 +78,7 @@ This section guides you through the process of removing/deleting the existing re
 
 **Analysis Compound DELETE endpoint**
 
-`DELETE` /api/v1/analysiscompound
+`DELETE` /actsapi/v1/analysiscompound
 
 > Example Request & JSON Input Body 
 
@@ -86,7 +86,7 @@ This section guides you through the process of removing/deleting the existing re
 var request = require("request");
 
 var options = { method: 'DELETE',
-  url: 'https://[tenant].actsapi.intelex.com/v1/analysiscompound',
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/analysiscompound',
   headers: { 'content-type': 'application/json' },
   body:
    { 
@@ -103,7 +103,7 @@ request(options, function (error, response, body) {
 
 ```csharp
 
-var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/analysiscompound");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/analysiscompound");
 var request = new RestRequest(Method.DELETE);
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{\r\n    [analysisCompoundId1, analysisCompoundId2, analysisCompoundId3....] \r\n}", ParameterType.RequestBody);
@@ -137,7 +137,7 @@ This section guides you through the process of removing/deleting the existing re
 
 **Emission Factor DELETE endpoint**
 
-`DELETE` /api/v1/emissionfactor
+`DELETE` /actsapi/v1/emissionfactor
 
 > Example Request & JSON Input Body 
 
@@ -145,7 +145,7 @@ This section guides you through the process of removing/deleting the existing re
 var request = require("request");
 
 var options = { method: 'DELETE',
-  url: 'https://[tenant].actsapi.intelex.com/v1/emissionfactor',
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/emissionfactor',
   headers: { 'content-type': 'application/json' },
   body:
    { 
@@ -162,7 +162,7 @@ request(options, function (error, response, body) {
 
 ```csharp
 
-var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/emissionfactor");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/emissionfactor");
 var request = new RestRequest(Method.DELETE);
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{\r\n    \"emissionFactorId\": \"number\"\r\n}", ParameterType.RequestBody);
@@ -196,7 +196,7 @@ This section guides you through the process of removing/deleting the existing re
 
 **Equipment Analysis DELETE endpoint**
 
-`DELETE` /api/v1/equipmentanalysis
+`DELETE` /actsapi/v1/equipmentanalysis
 
 > Example Request & JSON Input Body 
 
@@ -204,7 +204,7 @@ This section guides you through the process of removing/deleting the existing re
 var request = require("request");
 
 var options = { method: 'DELETE',
-  url: 'https://[tenant].actsapi.intelex.com/v1/equipmentanalysis',
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/equipmentanalysis',
   headers: { 'content-type': 'application/json' },
   body:
    { 
@@ -221,7 +221,7 @@ request(options, function (error, response, body) {
 
 ```csharp
 
-var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/equipmentanalysis");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/equipmentanalysis");
 var request = new RestRequest(Method.DELETE);
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{\r\n    [equipmentanalysisId1, equipmentanalysisId2, equipmentanalysisId3....] \r\n}", ParameterType.RequestBody);
@@ -254,7 +254,7 @@ This section guides you through the process of removing/deleting the existing re
 
 **Operation DELETE endpoint**
 
-`DELETE` /api/v1/operation
+`DELETE` /actsapi/v1/operation
 
 > Example Request & JSON Input Body 
 
@@ -262,7 +262,7 @@ This section guides you through the process of removing/deleting the existing re
 var request = require("request");
 
 var options = { method: 'DELETE',
-  url: 'https://[tenant].actsapi.intelex.com/v1/operation',
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/operation',
   headers: { 'content-type': 'application/json' },
   body:
    { [operationId1, operationId2, operationId3....]
@@ -278,7 +278,7 @@ request(options, function (error, response, body) {
 
 ```csharp
 
-var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/operation");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/operation");
 var request = new RestRequest(Method.DELETE);
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{\r\n   [operationId1, operationId2, operationId3....]\r\n}", ParameterType.RequestBody);

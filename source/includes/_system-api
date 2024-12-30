@@ -11,7 +11,7 @@ The Task API is currently in beta. This means that we might make changes to the 
 {
 	"value": {
 		"@odata.type": "#Intelex.IncidentsObject",
-		"@odata.id": "https://intelex_url/api/v2/object/IncidentsObject(UID)",
+		"@odata.id": "https://intelex_url/actsapi/v2/object/IncidentsObject(UID)",
 	}
 }
 ```
@@ -28,7 +28,7 @@ Property | Description
 
 ```json
 {
-	"@odata.nextLink": "https://intelex_url/api/v2/task/mytasks?$skip=500"
+	"@odata.nextLink": "https://intelex_url/actsapi/v2/task/mytasks?$skip=500"
 }
 ```
 
@@ -60,7 +60,7 @@ The following resources are similar to the application abs you find in the My Ta
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://intelex_url/api/v2/task' };
+  url: 'https://intelex_url/actsapi/v2/task' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -70,7 +70,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v2/task");
+var client = new RestClient("https://intelex_url/actsapi/v2/task");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -91,7 +91,7 @@ IRestResponse response = client.Execute(request);
 
 Returns the task resource endpoints that you can access
 
-#### GET /api/v2/task
+#### GET /actsapi/v2/task
 
 Attribute | Description
 --------- | -----------

@@ -12,7 +12,7 @@ This section outlines the process of retrieving data from the Attribute Type tab
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://[tenant].actsapi.intelex.com/v1/attributetype' };
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/attributetype' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -22,7 +22,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/attributetype");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/attributetype");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -69,7 +69,7 @@ IRestResponse response = client.Execute(request);
 
 **API Endpoints**
 
-`GET` /api/v1/attributetype
+`GET` /actsapi/v1/attributetype
 
 **Query parameters**
 
@@ -90,7 +90,7 @@ This section guides you through the process of fetching data from the Compound t
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://[tenant].actsapi.intelex.com/v1/compound' };
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/compound' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -100,7 +100,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/compound");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/compound");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -166,7 +166,7 @@ IRestResponse response = client.Execute(request);
 
 **API Endpoints**
 
-`GET` /api/v1/compound
+`GET` /actsapi/v1/compound
 
 **Query parameters**
 
@@ -191,14 +191,14 @@ This section elaborates on how to obtain data from the Emission Category table u
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://[tenant].actsapi.intelex.com/v1/emissioncategory' };
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/emissioncategory' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
 ```
 
 ```csharp
-var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/emissioncategory");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/emissioncategory");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -230,7 +230,7 @@ IRestResponse response = client.Execute(request);
 
 **API Endpoints**
 
-`GET` /api/v1/emissioncategory
+`GET` /actsapi/v1/emissioncategory
 
 **Query parameters**
 
@@ -251,14 +251,14 @@ This section elaborates on how to obtain data from the Emission Factor table usi
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://[tenant].actsapi.intelex.com/v1/emissionfactor' };
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/emissionfactor' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
 ```
 
 ```csharp
-var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/emissionfactor");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/emissionfactor");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -300,7 +300,7 @@ IRestResponse response = client.Execute(request);
 
 **API Endpoints**
 
-`GET` /api/v1/emissionfactor
+`GET` /actsapi/v1/emissionfactor
 
 **Query parameters**
 
@@ -328,7 +328,7 @@ This section guides you through the process of fetching data from the Emission T
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://[tenant].actsapi.intelex.com/v1/emissiontype' };
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/emissiontype' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -338,7 +338,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/emissiontype");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/emissiontype");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -370,7 +370,7 @@ IRestResponse response = client.Execute(request);
 
 **API Endpoints**
 
-`GET` /api/v1/emissiontype
+`GET` /actsapi/v1/emissiontype
 
 **Query parameters**
 
@@ -392,7 +392,7 @@ This section provides guidance on retrieving data from the Equipment table using
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://[tenant].actsapi.intelex.com/v1/equipment' };
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/equipment' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -402,7 +402,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/equipment");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/equipment");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -449,7 +449,7 @@ IRestResponse response = client.Execute(request);
 
 **API Endpoints**
 
-`GET` /api/v1/equipment
+`GET` /actsapi/v1/equipment
 
 **Query parameters**
 
@@ -478,7 +478,7 @@ All data from the Equipment Attribute table will be returned from the endpoint b
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://[tenant].actsapi.intelex.com/v1/equipmentattribute' };
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/equipmentattribute' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -488,7 +488,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/equipmentattribute");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/equipmentattribute");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -522,7 +522,7 @@ IRestResponse response = client.Execute(request);
 
 **API Endpoints**
 
-`GET` /api/v1/equipmentattribute
+`GET` /actsapi/v1/equipmentattribute
 
 **Query parameters**
 
@@ -548,7 +548,7 @@ All data from the Equipment Status table will be returned from the endpoint belo
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://[tenant].actsapi.intelex.com/v1/equipmentstatus' };
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/equipmentstatus' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -558,7 +558,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/equipmentstatus");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/equipmentstatus");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -590,7 +590,7 @@ IRestResponse response = client.Execute(request);
 
 **API Endpoints**
 
-`GET` /api/v1/equipmentstatus
+`GET` /actsapi/v1/equipmentstatus
 
 **Query parameters**
 
@@ -613,7 +613,7 @@ All data from the Equipment Type table will be returned from the endpoint below.
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://[tenant].actsapi.intelex.com/v1/equipmenttype' };
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/equipmenttype' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -623,7 +623,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/equipmenttype");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/equipmenttype");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -676,7 +676,7 @@ IRestResponse response = client.Execute(request);
 
 **API Endpoints**
 
-`GET` /api/v1/equipmenttype
+`GET` /actsapi/v1/equipmenttype
 
 **Query parameters**
 
@@ -698,7 +698,7 @@ All data from the Facility table will be returned from the endpoint below. You c
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://[tenant].actsapi.intelex.com/v1/facility' };
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/facility' };
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
 
@@ -707,7 +707,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/facility");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/facility");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -761,7 +761,7 @@ IRestResponse response = client.Execute(request);
 
 **API Endpoints**
 
-`GET` /api/v1/facility
+`GET` /actsapi/v1/facility
 
 **Query parameters**
 
@@ -791,7 +791,7 @@ All data from the Facility Attribute table will be returned from the endpoint be
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://[tenant].actsapi.intelex.com/v1/facilityattribute' };
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/facilityattribute' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -801,7 +801,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/facilityattribute");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/facilityattribute");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -835,7 +835,7 @@ IRestResponse response = client.Execute(request);
 
 **API Endpoints**
 
-`GET` /api/v1/facilityattribute
+`GET` /actsapi/v1/facilityattribute
 
 **Query parameters**
 
@@ -864,7 +864,7 @@ All data from the Operation table will be returned from the endpoint below. You 
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://[tenant].actsapi.intelex.com/v1/operation' };
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/operation' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -874,7 +874,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/operation");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/operation");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -919,7 +919,7 @@ IRestResponse response = client.Execute(request);
 
 **API Endpoints**
 
-`GET` /api/v1/operation
+`GET` /actsapi/v1/operation
 
 **Query parameters**
 
@@ -947,7 +947,7 @@ All data from the Operation Type table will be returned from the endpoint below.
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://[tenant].actsapi.intelex.com/v1/operationtype' };
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/operationtype' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -957,7 +957,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/operationtype");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/operationtype");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -993,7 +993,7 @@ IRestResponse response = client.Execute(request);
 
 **API Endpoints**
 
-`GET` /api/v1/operationtype
+`GET` /actsapi/v1/operationtype
 
 **Query parameters**
 
@@ -1014,7 +1014,7 @@ The QueryResults API end point will allow the user to run the views saved in Que
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://[tenant].actsapi.intelex.com/v1/queryresults',
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/queryresults',
   headers: { 'content-type': 'application/json' },
   body:
    { 
@@ -1030,7 +1030,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/queryresults");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/queryresults");
 var request = new RestRequest(Method.GET);
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{\r\n    \"queryViewId\": \"number\"\r\n}", ParameterType.RequestBody);
@@ -1079,7 +1079,7 @@ IRestResponse response = client.Execute(request);
 
 **API Endpoints**
 
-`GET` /api/v1/queryresults
+`GET` /actsapi/v1/queryresults
 
 **Query parameters**
 
@@ -1100,7 +1100,7 @@ This section outlines how to retrieve data from the Unit table using the provide
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://[tenant].actsapi.intelex.com/v1/unit' };
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/unit' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -1110,7 +1110,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/unit");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/unit");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -1146,7 +1146,7 @@ IRestResponse response = client.Execute(request);
 
 **API Endpoints**
 
-`GET` /api/v1/unit
+`GET` /actsapi/v1/unit
 
 **Query parameters**
 
@@ -1168,7 +1168,7 @@ This section outlines how to retrieve data from the Workflow table using the pro
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://[tenant].actsapi.intelex.com/v1/workflow' };
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/workflow' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -1178,7 +1178,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/workflow");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/workflow");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -1211,7 +1211,7 @@ IRestResponse response = client.Execute(request);
 
 **API Endpoints**
 
-`GET` /api/v1/workflow
+`GET` /actsapi/v1/workflow
 
 **Query parameters**
 
@@ -1236,7 +1236,7 @@ This section outlines how to retrieve data from the Workflow Answer table using 
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://[tenant].actsapi.intelex.com/v1/workflowanswer' };
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/workflowanswer' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -1246,7 +1246,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/workflowanswer");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/workflowanswer");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -1285,7 +1285,7 @@ IRestResponse response = client.Execute(request);
 
 **API Endpoints**
 
-`GET` /api/v1/workflowanswer
+`GET` /actsapi/v1/workflowanswer
 
 **Query parameters**
 
@@ -1314,7 +1314,7 @@ This section outlines how to retrieve data from the Workflow Equipment table usi
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://[tenant].actsapi.intelex.com/v1/workflowEquipment' };
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/workflowEquipment' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -1324,7 +1324,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/workflowEquipment");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/workflowEquipment");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -1357,7 +1357,7 @@ IRestResponse response = client.Execute(request);
 
 **API Endpoints**
 
-`GET` /api/v1/workflowEquipment
+`GET` /actsapi/v1/workflowEquipment
 
 **Query parameters**
 
@@ -1379,7 +1379,7 @@ This section outlines how to retrieve data from the Workflow Facility table usin
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://[tenant].actsapi.intelex.com/v1/workflowfacility' };
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/workflowfacility' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -1389,7 +1389,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/workflowfacility");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/workflowfacility");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -1422,7 +1422,7 @@ IRestResponse response = client.Execute(request);
 
 **API Endpoints**
 
-`GET` /api/v1/workflowfacility
+`GET` /actsapi/v1/workflowfacility
 
 **Query parameters**
 
@@ -1446,7 +1446,7 @@ This section outlines how to retrieve data from the Workflow Person table using 
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://[tenant].actsapi.intelex.com/v1/workflowperson' };
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/workflowperson' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -1456,7 +1456,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/workflowperson");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/workflowperson");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -1489,7 +1489,7 @@ IRestResponse response = client.Execute(request);
 
 **API Endpoints**
 
-`GET` /api/v1/workflowperson
+`GET` /actsapi/v1/workflowperson
 
 **Query parameters**
 
@@ -1511,7 +1511,7 @@ This section outlines how to retrieve data from the Workflow Question table usin
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://[tenant].actsapi.intelex.com/v1/workflowquestion' };
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/workflowquestion' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -1521,7 +1521,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/workflowquestion");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/workflowquestion");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -1580,7 +1580,7 @@ IRestResponse response = client.Execute(request);
 
 **API Endpoints**
 
-`GET` /api/v1/workflowquestion
+`GET` /actsapi/v1/workflowquestion
 
 **Query parameters**
 
@@ -1604,7 +1604,7 @@ This section outlines how to retrieve data from the Workflow Question Category t
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://[tenant].actsapi.intelex.com/v1/workflowquestioncategory' };
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/workflowquestioncategory' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -1614,7 +1614,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/workflowquestioncategory");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/workflowquestioncategory");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -1659,7 +1659,7 @@ IRestResponse response = client.Execute(request);
 
 **API Endpoints**
 
-`GET` /api/v1/workflowquestioncategory
+`GET` /actsapi/v1/workflowquestioncategory
 
 **Query parameters**
 
@@ -1682,7 +1682,7 @@ This section outlines how to retrieve data from the Workflow Type table using th
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://[tenant].actsapi.intelex.com/v1/workflowtype' };
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/workflowtype' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -1692,7 +1692,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://[tenant].actsapi.intelex.com/v1/workflowtype");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/workflowtype");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -1734,7 +1734,7 @@ IRestResponse response = client.Execute(request);
 
 **API Endpoints**
 
-`GET` /api/v1/workflowtype
+`GET` /actsapi/v1/workflowtype
 
 **Query parameters**
 

@@ -3,7 +3,7 @@
 >  Object Data API Endpoint - replace **intelex_object** with the system name of your object
 
 ```
-https://intelex_url/api/v2/object/intelex_object
+https://intelex_url/actsapi/v2/object/intelex_object
 ```
 
 The Object Data API gives you the ability to create, retrieve, update, and delete data in your Intelex application objects.  Each Object Data API resource is an Intelex application object. Access each resource by using the system name of the object in the API endpoint URL. The data sent and returned with your API requests are the fields that exist on the object you are accessing. The system name of fields is used in every request and response.
@@ -18,8 +18,8 @@ Your instance of Intelex may include system and custom objects. System objects i
 {
 	"value": {
 		"@odata.type": "#Intelex.IncidentsObject",
-		"@odata.id": "https://intelex_url/api/v2/object/IncidentsObject(UID)",
-		"@odata.editLink": "https://intelex_url/api/v2/object/IncidentsObject(UID)"
+		"@odata.id": "https://intelex_url/actsapi/v2/object/IncidentsObject(UID)",
+		"@odata.editLink": "https://intelex_url/actsapi/v2/object/IncidentsObject(UID)"
 	}
 }
 ```
@@ -37,7 +37,7 @@ Property | Description
 
 ```json
 {
-	"@odata.nextLink": "https://intelex_url/api/v2/object/IncidentsObject?$skip=500"
+	"@odata.nextLink": "https://intelex_url/actsapi/v2/object/IncidentsObject?$skip=500"
 }
 ```
 
@@ -73,7 +73,7 @@ EDIS Staging Table | Staging table used to process EDIS | EmployeeStagingEntity
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://intelex_url/api/v2/object/IncidentsObject' };
+  url: 'https://intelex_url/actsapi/v2/object/IncidentsObject' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -83,7 +83,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v2/object/IncidentsObject");
+var client = new RestClient("https://intelex_url/actsapi/v2/object/IncidentsObject");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -111,7 +111,7 @@ IRestResponse response = client.Execute(request);
 
 Returns all records from an Intelex object that the user is authorized to view
 
-#### GET /api/v2/object/{intelex_object}
+#### GET /actsapi/v2/object/{intelex_object}
 
 ##### URL Parameters
 
@@ -127,7 +127,7 @@ intelex_object | The Intelex system name of the object being requested eg. Incid
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://intelex_url/api/v2/object/IncidentsObject(UID)' };
+  url: 'https://intelex_url/actsapi/v2/object/IncidentsObject(UID)' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -137,7 +137,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v2/object/IncidentsObject(UID)");
+var client = new RestClient("https://intelex_url/actsapi/v2/object/IncidentsObject(UID)");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -179,7 +179,7 @@ id | The Intelex UID of the record being requested
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://intelex_url/api/v2/object/IncidentsObject(UID)/SubIncidents' };
+  url: 'https://intelex_url/actsapi/v2/object/IncidentsObject(UID)/SubIncidents' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -190,7 +190,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v2/object/IncidentsObject(UID)/SubIncidents");
+var client = new RestClient("https://intelex_url/actsapi/v2/object/IncidentsObject(UID)/SubIncidents");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -236,7 +236,7 @@ navigation_property|The Intelex system name of the relation type or lookup type 
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://intelex_url/api/v2/object/IncidentsObject(UID)/SubIncidents(UID)' };
+  url: 'https://intelex_url/actsapi/v2/object/IncidentsObject(UID)/SubIncidents(UID)' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -246,7 +246,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v2/object/IncidentsObject(UID)/SubIncidents(UID)");
+var client = new RestClient("https://intelex_url/actsapi/v2/object/IncidentsObject(UID)/SubIncidents(UID)");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -290,7 +290,7 @@ navigation_property|The Intelex system name of the relation type or lookup type 
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://intelex_url/api/v2/object/IncidentsObject',
+  url: 'https://intelex_url/actsapi/v2/object/IncidentsObject',
   qs: { '$select': 'IncidentNo' } };
 
 request(options, function (error, response, body) {
@@ -302,7 +302,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v2/object/IncidentsObject?$select=IncidentNo");
+var client = new RestClient("https://intelex_url/actsapi/v2/object/IncidentsObject?$select=IncidentNo");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -345,7 +345,7 @@ field_name | Field name(s) to include in response
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://intelex_url/api/v2/object/IncidentsObject',
+  url: 'https://intelex_url/actsapi/v2/object/IncidentsObject',
   qs: { '$count': 'true' } };
 
 request(options, function (error, response, body) {
@@ -357,7 +357,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v2/object/IncidentsObject?$count=true");
+var client = new RestClient("https://intelex_url/actsapi/v2/object/IncidentsObject?$count=true");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -402,7 +402,7 @@ intelex_object | The Intelex system name of the object being requested eg. Incid
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://intelex_url/api/v2/object/IncidentsObject',
+  url: 'https://intelex_url/actsapi/v2/object/IncidentsObject',
   qs: { '$skip': '10', '$top': '5' } };
 
 request(options, function (error, response, body) {
@@ -413,7 +413,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v2/object/IncidentsObject?$skip=10&$top=5");
+var client = new RestClient("https://intelex_url/actsapi/v2/object/IncidentsObject?$skip=10&$top=5");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -463,7 +463,7 @@ skip_n| Number of items to be skipped
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://intelex_url/api/v2/object/IncidentsObject',
+  url: 'https://intelex_url/actsapi/v2/object/IncidentsObject',
   qs: { '$orderby': 'DateCreated desc' } };
 
 request(options, function (error, response, body) {
@@ -475,7 +475,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v2/object/IncidentsObject?$orderby=DateCreateddesc");
+var client = new RestClient("https://intelex_url/actsapi/v2/object/IncidentsObject?$orderby=DateCreateddesc");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -533,7 +533,7 @@ field_name | Fields that you want to sort by
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://intelex_url/api/v2/object/IncidentsObject',
+  url: 'https://intelex_url/actsapi/v2/object/IncidentsObject',
   qs: { '$filter': 'IncidentNo eq 1000' } };
 
 request(options, function (error, response, body) {
@@ -544,7 +544,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v2/object/IncidentsObject?$filter=IncidentNo eq 10");
+var client = new RestClient("https://intelex_url/actsapi/v2/object/IncidentsObject?$filter=IncidentNo eq 10");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -657,7 +657,7 @@ You can only access the records you have permission to view.
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://intelex_url/api/v2/object/IncidentsObject',
+  url: 'https://intelex_url/actsapi/v2/object/IncidentsObject',
   qs: { '$expand': 'Location' } };
 
 request(options, function (error, response, body) {
@@ -668,7 +668,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v2/object/IncidentsObject?$expand=Location");
+var client = new RestClient("https://intelex_url/actsapi/v2/object/IncidentsObject?$expand=Location");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -747,7 +747,7 @@ relation_field | Relation field used to request related object data
 var request = require("request");
 
 var options = { method: 'POST',
-  url: 'https://intelex_url/api/v2/object/IncidentsObject',
+  url: 'https://intelex_url/actsapi/v2/object/IncidentsObject',
   headers: { 'content-type': 'application/json' },
   body:
    { ActionsTaken: 'string',
@@ -766,7 +766,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v2/object/IncidentsObject");
+var client = new RestClient("https://intelex_url/actsapi/v2/object/IncidentsObject");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{\r\n    \"ActionsTaken\": \"string\",\r\n    \"Date\": \"2017-02-13T22:15:30.203Z\",\r\n    \"Description\": \"string\",\r\n    \"IncidentNo\": 0,\r\n    \"ReportedDate\": \"2017-02-13T22:15:30.203Z\",\r\n    \"SuspectedCause\": \"string\"\r\n}", ParameterType.RequestBody);
@@ -793,7 +793,7 @@ IRestResponse response = client.Execute(request);
 
 ```json
 {
-	"Location@odata.bind": "https://intelex_url/api/v2/object/LocationObject(Id)"
+	"Location@odata.bind": "https://intelex_url/actsapi/v2/object/LocationObject(Id)"
 }
 ```
 
@@ -801,7 +801,7 @@ IRestResponse response = client.Execute(request);
 
 ```json
 {
-	"Severity@odata.bind": "https://intelex_url/api/v2/object/SeverityLookupObject(Id)"
+	"Severity@odata.bind": "https://intelex_url/actsapi/v2/object/SeverityLookupObject(Id)"
 }
 ```
 
@@ -810,7 +810,7 @@ IRestResponse response = client.Execute(request);
 ```json
 {
 	"Workflow": {
-		"PersonResponsible@odata.bind": "https://intelex_url/api/v2/object/EmployeeObject(UID)",
+		"PersonResponsible@odata.bind": "https://intelex_url/actsapi/v2/object/EmployeeObject(UID)",
 		"RecurringSeries": {
 			"Frequency": "RRULE:FREQ=HOURLY",
 			"StartDate": "2017-06-06T02:30:00-05:00",
@@ -825,8 +825,8 @@ IRestResponse response = client.Execute(request);
 ```json
 {
 	"RelatedIncidents@odata.bind": [
-		"https://intelex_url/api/v2/object/RelatedIncidentObject(Id)",
-		"https://intelex_url/api/v2/object/RelatedIncidentObject(Id)"
+		"https://intelex_url/actsapi/v2/object/RelatedIncidentObject(Id)",
+		"https://intelex_url/actsapi/v2/object/RelatedIncidentObject(Id)"
 	]
 }
 ```
@@ -865,7 +865,7 @@ ActionToExecute | UID of the workflow stage action|No|Id=797bbb3b-b485-4e73-a21c
 var request = require("request");
 
 var options = { method: 'POST',
-  url: 'https://intelex_url/api/v2/object/IncidentsObject(UID)/SubIncidents',
+  url: 'https://intelex_url/actsapi/v2/object/IncidentsObject(UID)/SubIncidents',
   headers: { 'content-type': 'application/json' },
   body: 
    { ActionsTaken: 'string',
@@ -884,7 +884,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v2/object/IncidentsObject(UID)/SubIncidents");
+var client = new RestClient("https://intelex_url/actsapi/v2/object/IncidentsObject(UID)/SubIncidents");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{\r\n    \"ActionsTaken\": \"string\",\r\n    \"Date\": \"2017-02-13T22:15:30.203Z\",\r\n    \"Description\": \"string\",\r\n    \"IncidentNo\": 0,\r\n    \"ReportedDate\": \"2017-02-13T22:15:30.203Z\",\r\n    \"SuspectedCause\": \"string\"\r\n}", ParameterType.RequestBody);
@@ -942,7 +942,7 @@ ActionToExecute | UID of the workflow stage action|No|Id=797bbb3b-b485-4e73-a21c
 var request = require("request");
 
 var options = { method: 'PATCH',
-  url: 'https://intelex_url/api/v2/object/IncidentsObject(UID)',
+  url: 'https://intelex_url/actsapi/v2/object/IncidentsObject(UID)',
   headers: { 'content-type': 'application/json' },
   body: { Description: 'string' },
   json: true };
@@ -955,7 +955,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v2/object/IncidentsObject(UID)");
+var client = new RestClient("https://intelex_url/actsapi/v2/object/IncidentsObject(UID)");
 var request = new RestRequest(Method.PATCH);
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{\r\n    \"Description\": \"string\"\r\n}", ParameterType.RequestBody);
@@ -966,7 +966,7 @@ IRestResponse response = client.Execute(request);
 
 ```json
 {
-	"Location@odata.bind": "https://intelex_url/api/v2/object/LocationObject(UID)"
+	"Location@odata.bind": "https://intelex_url/actsapi/v2/object/LocationObject(UID)"
 }
 ```
 
@@ -974,7 +974,7 @@ IRestResponse response = client.Execute(request);
 
 ```json
 {
-	"Severity@odata.bind": "https://intelex_url/api/v2/object/SeverityLookupObject(UID)"
+	"Severity@odata.bind": "https://intelex_url/actsapi/v2/object/SeverityLookupObject(UID)"
 }
 ```
 
@@ -983,8 +983,8 @@ IRestResponse response = client.Execute(request);
 ```json
 {
 	"RelatedIncidents@odata.bind": [
-		"https://intelex_url/api/v2/object/RelatedIncidentObject(UID)",
-		"https://intelex_url/api/v2/object/RelatedIncidentObject(UID)"
+		"https://intelex_url/actsapi/v2/object/RelatedIncidentObject(UID)",
+		"https://intelex_url/actsapi/v2/object/RelatedIncidentObject(UID)"
 	]
 }
 ```
@@ -1023,7 +1023,7 @@ ActionToExecute | UID of the workflow stage action|No|Id=797bbb3b-b485-4e73-a21c
 var request = require("request");
 
 var options = { method: 'DELETE',
-  url: 'https://intelex_url/api/v2/object/IncidentsObject(UID)' };
+  url: 'https://intelex_url/actsapi/v2/object/IncidentsObject(UID)' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -1033,7 +1033,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v2/object/IncidentsObject(UID)");
+var client = new RestClient("https://intelex_url/actsapi/v2/object/IncidentsObject(UID)");
 var request = new RestRequest(Method.DELETE);
 IRestResponse response = client.Execute(request);
 ```
@@ -1057,7 +1057,7 @@ id|The Intelex UID of the record being updated
 var request = require("request");
 
 var options = { method: 'DELETE',
-  url: 'https://intelex_url/api/v2/object/IncidentsObject(UID)/SubIncidents(UID)' };
+  url: 'https://intelex_url/actsapi/v2/object/IncidentsObject(UID)/SubIncidents(UID)' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -1067,7 +1067,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v2/object/IncidentsObject(UID)/SubIncidents(UID)");
+var client = new RestClient("https://intelex_url/actsapi/v2/object/IncidentsObject(UID)/SubIncidents(UID)");
 var request = new RestRequest(Method.DELETE);
 IRestResponse response = client.Execute(request);
 ```
@@ -1092,7 +1092,7 @@ navigation_property|The Intelex system name of the relation type field
 var request = require("request");
 
 var options = { method: 'DELETE',
-  url: 'https://intelex_url/api/v2/object/IncidentsObject(UID)/Severity/$ref' };
+  url: 'https://intelex_url/actsapi/v2/object/IncidentsObject(UID)/Severity/$ref' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -1102,7 +1102,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v2/object/IncidentsObject(UID)/Severity/$ref");
+var client = new RestClient("https://intelex_url/actsapi/v2/object/IncidentsObject(UID)/Severity/$ref");
 var request = new RestRequest(Method.DELETE);
 IRestResponse response = client.Execute(request);
 ```
@@ -1127,7 +1127,7 @@ navigation_property|The Intelex system name of the relation type field - must be
 var request = require("request");
 
 var options = { method: 'DELETE',
-  url: 'https://intelex_url/api/v2/object/IncidentsObject(UID)/RelatedIncidents(UID)/$ref' };
+  url: 'https://intelex_url/actsapi/v2/object/IncidentsObject(UID)/RelatedIncidents(UID)/$ref' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -1137,7 +1137,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v2/object/IncidentsObject(UID)/RelatedIncidents(UID)/$ref");
+var client = new RestClient("https://intelex_url/actsapi/v2/object/IncidentsObject(UID)/RelatedIncidents(UID)/$ref");
 var request = new RestRequest(Method.DELETE);
 IRestResponse response = client.Execute(request);
 ```
@@ -1164,7 +1164,7 @@ navigation_property|The Intelex system name of the relation type field - must be
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://intelex_url/api/v2/object/IncidentsObject(UID)/Workflow' };
+  url: 'https://intelex_url/actsapi/v2/object/IncidentsObject(UID)/Workflow' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -1174,7 +1174,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v2/object/IncidentsObject(UID)/Workflow");
+var client = new RestClient("https://intelex_url/actsapi/v2/object/IncidentsObject(UID)/Workflow");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -1220,7 +1220,7 @@ id|The Intelex UID of the record being accessed
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://intelex_url/api/v2/object/IncidentsObject(UID)/Workflow/Status' };
+  url: 'https://intelex_url/actsapi/v2/object/IncidentsObject(UID)/Workflow/Status' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -1230,7 +1230,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v2/object/IncidentsObject(UID)/Workflow/Status");
+var client = new RestClient("https://intelex_url/actsapi/v2/object/IncidentsObject(UID)/Workflow/Status");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -1281,7 +1281,7 @@ id|The Intelex UID of the record being accessed
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://intelex_url/api/v2/object/IncidentsObject(UID)/Workflow/CurrentStage' };
+  url: 'https://intelex_url/actsapi/v2/object/IncidentsObject(UID)/Workflow/CurrentStage' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -1291,7 +1291,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v2/object/IncidentsObject(UID)/Workflow/CurrentStage");
+var client = new RestClient("https://intelex_url/actsapi/v2/object/IncidentsObject(UID)/Workflow/CurrentStage");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -1342,7 +1342,7 @@ id|The Intelex UID of the record being accessed
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://intelex_url/api/v2/object/IncidentsObject(UID)/Workflow/CurrentStage/Actions' };
+  url: 'https://intelex_url/actsapi/v2/object/IncidentsObject(UID)/Workflow/CurrentStage/Actions' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -1352,7 +1352,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v2/object/IncidentsObject(UID)/Workflow/CurrentStage/Actions");
+var client = new RestClient("https://intelex_url/actsapi/v2/object/IncidentsObject(UID)/Workflow/CurrentStage/Actions");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -1406,7 +1406,7 @@ id|The Intelex UID of the record being accessed
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://intelex_url/api/v2/object/IncidentsObject(UID)/Workflow/PersonResponsible' };
+  url: 'https://intelex_url/actsapi/v2/object/IncidentsObject(UID)/Workflow/PersonResponsible' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -1416,7 +1416,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v2/object/IncidentsObject(UID)/Workflow/PersonResponsible");
+var client = new RestClient("https://intelex_url/actsapi/v2/object/IncidentsObject(UID)/Workflow/PersonResponsible");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -1456,7 +1456,7 @@ id|The Intelex UID of the record being accessed
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://intelex_url/api/v2/object/IncidentsObject(UID)/Workflow/RecurringSeries' };
+  url: 'https://intelex_url/actsapi/v2/object/IncidentsObject(UID)/Workflow/RecurringSeries' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -1466,7 +1466,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v2/object/IncidentsObject(UID)/Workflow/RecurringSeries");
+var client = new RestClient("https://intelex_url/actsapi/v2/object/IncidentsObject(UID)/Workflow/RecurringSeries");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -1510,7 +1510,7 @@ id|The Intelex UID of the record being accessed
 var request = require("request");
 
 var options = { method: 'POST',
-  url: 'https://intelex_url/api/v2/object/IncidentsObject(UID)/Workflow/CurrentStage/Actions(UID)/Action.ExecuteStageAction' };
+  url: 'https://intelex_url/actsapi/v2/object/IncidentsObject(UID)/Workflow/CurrentStage/Actions(UID)/Action.ExecuteStageAction' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -1521,7 +1521,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v2/object/IncidentsObject(UID)/Workflow/CurrentStage/Actions(UID)/Action.ExecuteStageAction");
+var client = new RestClient("https://intelex_url/actsapi/v2/object/IncidentsObject(UID)/Workflow/CurrentStage/Actions(UID)/Action.ExecuteStageAction");
 var request = new RestRequest(Method.POST);
 IRestResponse response = client.Execute(request);
 ```
@@ -1545,7 +1545,7 @@ id|The Intelex UID of the record or action being accessed
 var request = require("request");
 
 var options = { method: 'PATCH',
-  url: 'https://intelex_url/api/v2/object/IncidentsObject%28UID%29/Workflow/RecurringSeries',
+  url: 'https://intelex_url/actsapi/v2/object/IncidentsObject%28UID%29/Workflow/RecurringSeries',
   headers: { 'content-type': 'application/json' },
   body: 
    { Frequency: 'RRULE:FREQ=HOURLY',
@@ -1560,7 +1560,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v2/object/IncidentsObject%28UID%29/Workflow/RecurringSeries");
+var client = new RestClient("https://intelex_url/actsapi/v2/object/IncidentsObject%28UID%29/Workflow/RecurringSeries");
 var request = new RestRequest(Method.PATCH);
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{\n  \"Frequency\": \"RRULE:FREQ=HOURLY\",\n  \"StartDate\": \"2017-06-06T03:30:00-04:00\"\n}", ParameterType.RequestBody);
@@ -1594,9 +1594,9 @@ EndDate | Date you want the frequency to end
 var request = require("request");
 
 var options = { method: 'PATCH',
-  url: 'https://intelex_url/api/v2/object/IncidentsObject(UID)/Workflow',
+  url: 'https://intelex_url/actsapi/v2/object/IncidentsObject(UID)/Workflow',
   headers: { 'content-type': 'application/json' },
-  body: { 'PersonResponsible@odata.bind': 'https://intelex_url/api/v2/object/EmployeeObject(UID)' },
+  body: { 'PersonResponsible@odata.bind': 'https://intelex_url/actsapi/v2/object/EmployeeObject(UID)' },
   json: true };
 
 request(options, function (error, response, body) {
@@ -1607,10 +1607,10 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v2/object/IncidentsObject(UID)/Workflow");
+var client = new RestClient("https://intelex_url/actsapi/v2/object/IncidentsObject(UID)/Workflow");
 var request = new RestRequest(Method.PATCH);
 request.AddHeader("content-type", "application/json");
-request.AddParameter("application/json", "{\n\t\"PersonResponsible@odata.bind\": \"https://intelex_url/api/v2/object/EmployeeObject(UID)\"\n}", ParameterType.RequestBody);
+request.AddParameter("application/json", "{\n\t\"PersonResponsible@odata.bind\": \"https://intelex_url/actsapi/v2/object/EmployeeObject(UID)\"\n}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -1643,7 +1643,7 @@ There are two types of file attachments on records. Files can be attached to the
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://intelex_url/api/v2/object/IncidentsObject%28UID%29/ILX.Attachments' };
+  url: 'https://intelex_url/actsapi/v2/object/IncidentsObject%28UID%29/ILX.Attachments' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -1653,7 +1653,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v2/object/IncidentsObject%28UID%29/ILX.Attachments");
+var client = new RestClient("https://intelex_url/actsapi/v2/object/IncidentsObject%28UID%29/ILX.Attachments");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -1698,7 +1698,7 @@ id|The Intelex UID of the record being accessed
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://intelex_url/api/v2/object/IncidentsObject(UID)/ILX.Attachments(UID)',
+  url: 'https://intelex_url/actsapi/v2/object/IncidentsObject(UID)/ILX.Attachments(UID)',
   headers: 
    { prefer: 'attachment=thumbnail',
      accept: 'application/octet-stream' } };
@@ -1711,7 +1711,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v2/object/IncidentsObject%28UID%29/ILX.Attachments(UID)");
+var client = new RestClient("https://intelex_url/actsapi/v2/object/IncidentsObject%28UID%29/ILX.Attachments(UID)");
 var request = new RestRequest(Method.GET);
 request.AddHeader("prefer", "attachment=thumbnail");
 request.AddHeader("accept", "application/octet-stream");
@@ -1760,7 +1760,7 @@ Prefer|Used to request a thumbnail version of an image file|attachment=thumbnail
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://intelex_url/api/v2/object/DocDocumentEntity(UID)/CurrentRevision/File',
+  url: 'https://intelex_url/actsapi/v2/object/DocDocumentEntity(UID)/CurrentRevision/File',
   headers: 
    { accept: 'application/octet-stream' } };
 
@@ -1772,7 +1772,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v2/object/DocDocumentEntity%28UID%29/CurrentRevision/File");
+var client = new RestClient("https://intelex_url/actsapi/v2/object/DocDocumentEntity%28UID%29/CurrentRevision/File");
 var request = new RestRequest(Method.GET);
 request.AddHeader("accept", "application/octet-stream");
 IRestResponse response = client.Execute(request);
@@ -1818,7 +1818,7 @@ var fs = require("fs");
 var request = require("request");
 
 var options = { method: 'POST',
-  url: 'https://intelex_url/api/v2/object/IncidentsObject(UID)/ILX.Attachments',
+  url: 'https://intelex_url/actsapi/v2/object/IncidentsObject(UID)/ILX.Attachments',
   headers: { 'content-type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' },
   formData: 
    { '': 
@@ -1835,7 +1835,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v2/object/IncidentsObject(UID)/ILX.Attachments");
+var client = new RestClient("https://intelex_url/actsapi/v2/object/IncidentsObject(UID)/ILX.Attachments");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW");
 request.AddParameter("multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW", "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"\"; filename=\"C:\\Document.docx\"\r\nContent-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document\r\n\r\n\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--", ParameterType.RequestBody);
@@ -1884,7 +1884,7 @@ multipart/formData | file | The file you want to attach to the record. Cannot ex
 var request = require("request");
 
 var options = { method: 'DELETE',
-  url: 'https://intelex_url/api/v2/object/IncidentsObject(UID)/ILX.Attachments(UID)' };
+  url: 'https://intelex_url/actsapi/v2/object/IncidentsObject(UID)/ILX.Attachments(UID)' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -1895,7 +1895,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v2/object/IncidentsObject(UID)/ILX.Attachments(UID)");
+var client = new RestClient("https://intelex_url/actsapi/v2/object/IncidentsObject(UID)/ILX.Attachments(UID)");
 var request = new RestRequest(Method.DELETE);
 IRestResponse response = client.Execute(request);
 ```
@@ -1920,7 +1920,7 @@ The first step for File type is to upload document. The file must be attached to
 var fs = require("fs");
 var request = require("request");
 var options = { method: 'POST',
-  url: 'https://intelex_url/api/v2/FileUpload',
+  url: 'https://intelex_url/actsapi/v2/FileUpload',
   headers: { 'content-type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' },
   formData: 
    { '': 
@@ -1959,7 +1959,7 @@ content-type | The multipart/form-data content type is intended to allow informa
 var fs = require("fs");
 var request = require("request");
 var options = { method: 'POST',
-  url: 'https://intelex_url/api/v2/object/SysFileInfoEntity',
+  url: 'https://intelex_url/actsapi/v2/object/SysFileInfoEntity',
   headers: { 'content-type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' },
   formData: 
    { '': 
@@ -2008,7 +2008,7 @@ Once you have <b>@odata.id</b> of FileInfo, you can use that to attach to an obj
 ```
 {
   ....
-  "FileInput@odata.bind": "http://torwdtahmed02.intelex.com/devlogin/inspections/api/v2/object/SysFileInfoEntity(47df4cec-50ad-4da5-a820-7827985a77bb)"
+  "FileInput@odata.bind": "http://torwdtahmed02.intelex.com/devlogin/inspections/actsapi/v2/object/SysFileInfoEntity(47df4cec-50ad-4da5-a820-7827985a77bb)"
 }
 ```
 ##### POST /object/{intelex_object}
@@ -2047,7 +2047,7 @@ To access Merge Template details use the system reserved property: ILX.MailMerge
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://intelex_url/api/v2/object/IncidentsObject(UID)/ILX.MailMergeDocs' };
+  url: 'https://intelex_url/actsapi/v2/object/IncidentsObject(UID)/ILX.MailMergeDocs' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -2057,7 +2057,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v2/object/IncidentsObject(UID)/ILX.MailMergeDocs");
+var client = new RestClient("https://intelex_url/actsapi/v2/object/IncidentsObject(UID)/ILX.MailMergeDocs");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -2105,7 +2105,7 @@ id|The Intelex UID of the object record being accessed
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://intelex_url/api/v2/object/IncidentsObject(UID)/ILX.MailMergeDocs(UID)',
+  url: 'https://intelex_url/actsapi/v2/object/IncidentsObject(UID)/ILX.MailMergeDocs(UID)',
   headers: 
    { accept: 'application/octet-stream' } };
 
@@ -2117,7 +2117,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v2/object/IncidentsObject(UID)/ILX.MailMergeDocs(UID)");
+var client = new RestClient("https://intelex_url/actsapi/v2/object/IncidentsObject(UID)/ILX.MailMergeDocs(UID)");
 var request = new RestRequest(Method.GET);
 request.AddHeader("accept", "application/octet-stream");
 IRestResponse response = client.Execute(request);
@@ -2214,7 +2214,7 @@ Content-Transfer-Encoding: binary
 Content-ID: 1
 
 HTTP/1.1 201 Created
-Location: https://intelex_url/api/v2/object/IncidentsObject(UID)
+Location: https://intelex_url/actsapi/v2/object/IncidentsObject(UID)
 Content-Type: application/json; odata.metadata=minimal
 OData-Version: 4.0
 

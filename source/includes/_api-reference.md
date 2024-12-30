@@ -7,7 +7,7 @@ The Intelex API is organized around REST. Our API has predictable, resource-orie
 > API Endpoint - replace **intelex_url** with the full URL path to your Intelex system
 
 ```
-https://intelex_url/api/v2/
+https://intelex_url/actsapi/v2/
 ```
 
 To begin using the Intelex API you will need:
@@ -136,7 +136,7 @@ Response Code | Meaning
 
 ## Versioning
 
-When we make backwards-incompatible changes to the API, we release new versions. The current version is **v2** and can be determined with our API base path **/api/v2/**. Read our [Intelex platform release notes](https://community.intelex.com/library/knowledgebase/release-notes) to see our API changelog.
+When we make backwards-incompatible changes to the API, we release new versions. The current version is **v2** and can be determined with our API base path **/actsapi/v2/**. Read our [Intelex platform release notes](https://community.intelex.com/library/knowledgebase/release-notes) to see our API changelog.
 
 ## API Rate Limiting / Quotas
 To ensure Intelex Platform is reliable and has the expected performance for all users, we limit the number of API calls an API user (or application) can make within a given time period. If the limit is exceeded, the API user may be throttled and subsequent requests within the same period will fail (status code 429).

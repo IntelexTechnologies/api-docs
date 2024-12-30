@@ -11,7 +11,7 @@ The Task API is currently in beta. This means that we might make changes to the 
 {
 	"value": {
 		"@odata.type": "#Intelex.IncidentsObject",
-		"@odata.id": "https://intelex_url/api/v2/object/IncidentsObject(UID)",
+		"@odata.id": "https://intelex_url/actsapi/v2/object/IncidentsObject(UID)",
 	}
 }
 ```
@@ -28,7 +28,7 @@ Property | Description
 
 ```json
 {
-	"@odata.nextLink": "https://intelex_url/api/v2/task/mytasks?$skip=500"
+	"@odata.nextLink": "https://intelex_url/actsapi/v2/task/mytasks?$skip=500"
 }
 ```
 
@@ -60,7 +60,7 @@ The following resources are similar to the application tabs you find in the My T
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://intelex_url/api/v2/task' };
+  url: 'https://intelex_url/actsapi/v2/task' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -70,7 +70,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v2/task");
+var client = new RestClient("https://intelex_url/actsapi/v2/task");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -91,7 +91,7 @@ IRestResponse response = client.Execute(request);
 
 Returns the task resource endpoints that you can access
 
-#### GET /api/v2/task
+#### GET /actsapi/v2/task
 
 Attribute | Description
 --------- | -----------
@@ -107,7 +107,7 @@ url | Endpoint for resource
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://intelex_url/api/v2/task/mytasks' };
+  url: 'https://intelex_url/actsapi/v2/task/mytasks' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -117,7 +117,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v2/task/mytasks");
+var client = new RestClient("https://intelex_url/actsapi/v2/task/mytasks");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -154,7 +154,7 @@ IRestResponse response = client.Execute(request);
 
 Returns your tasks
 
-#### GET /api/v2/task/mytasks
+#### GET /actsapi/v2/task/mytasks
 
 Attribute | Description
 --------- | -----------
@@ -184,7 +184,7 @@ WebLink | Web URL to access task view
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://intelex_url/api/v2/task/stafftasks' };
+  url: 'https://intelex_url/actsapi/v2/task/stafftasks' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -194,7 +194,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v2/task/stafftasks");
+var client = new RestClient("https://intelex_url/actsapi/v2/task/stafftasks");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -231,7 +231,7 @@ IRestResponse response = client.Execute(request);
 
 Returns all tasks assigned to employees that the user is supervisor of
 
-#### GET /api/v2/task/stafftasks
+#### GET /actsapi/v2/task/stafftasks
 
 Attribute | Description
 --------- | -----------
@@ -261,7 +261,7 @@ WebLink | Web URL to access task view
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://intelex_url/api/v2/task/locationtasks' };
+  url: 'https://intelex_url/actsapi/v2/task/locationtasks' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -271,7 +271,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v2/task/locationtasks");
+var client = new RestClient("https://intelex_url/actsapi/v2/task/locationtasks");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -308,7 +308,7 @@ IRestResponse response = client.Execute(request);
 Returns all tasks for a location. Default location is the user's logon location set in their user profile. Tasks returned will belong to the default location and its child locations.
 
 
-#### GET /api/v2/task/locationtasks
+#### GET /actsapi/v2/task/locationtasks
 
 Attribute | Description
 --------- | -----------
@@ -344,7 +344,7 @@ ActiveLocation | Provide the ID of the location you want to use as the active lo
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://intelex_url/api/v2/task/alltasks' };
+  url: 'https://intelex_url/actsapi/v2/task/alltasks' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -354,7 +354,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v2/task/alltasks");
+var client = new RestClient("https://intelex_url/actsapi/v2/task/alltasks");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -391,7 +391,7 @@ IRestResponse response = client.Execute(request);
 
 Returns all tasks in Intelex
 
-#### GET /api/v2/task/alltasks
+#### GET /actsapi/v2/task/alltasks
 
 Attribute | Description
 --------- | -----------
@@ -421,7 +421,7 @@ WebLink | Web URL to access task view
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://intelex_url/api/v2/task/types' };
+  url: 'https://intelex_url/actsapi/v2/task/types' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -431,7 +431,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v2/task/types");
+var client = new RestClient("https://intelex_url/actsapi/v2/task/types");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -463,7 +463,7 @@ IRestResponse response = client.Execute(request);
 
 Returns types of tasks you can create. This data is used to determine which objects have 'quick task creation' enabled
 
-#### GET /api/v2/task/types
+#### GET /actsapi/v2/task/types
 
 Attribute | Description
 --------- | -----------
@@ -487,7 +487,7 @@ You can use the following query options on any of the Task API resources
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://intelex_url/api/v2/task/mytasks',
+  url: 'https://intelex_url/actsapi/v2/task/mytasks',
   qs: { '$select': 'RecordDescription' } };
 
 request(options, function (error, response, body) {
@@ -499,7 +499,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v2/task/mytasks?$select=RecordDescription");
+var client = new RestClient("https://intelex_url/actsapi/v2/task/mytasks?$select=RecordDescription");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -541,7 +541,7 @@ field_name | Field name(s) to include in response
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://intelex_url/api/v2/task/mytasks',
+  url: 'https://intelex_url/actsapi/v2/task/mytasks',
   qs: { '$count': 'true' } };
 
 request(options, function (error, response, body) {
@@ -553,7 +553,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v2/task/mytasks?$count=true");
+var client = new RestClient("https://intelex_url/actsapi/v2/task/mytasks?$count=true");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -600,7 +600,7 @@ The $count system query option with a value of true specifies that the total cou
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://intelex_url/api/v2/task/mytasks',
+  url: 'https://intelex_url/actsapi/v2/task/mytasks',
   qs: { '$skip': '10', '$top': '5' } };
 
 request(options, function (error, response, body) {
@@ -611,7 +611,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v2/task/mytasks?$skip=10&$top=5");
+var client = new RestClient("https://intelex_url/actsapi/v2/task/mytasks?$skip=10&$top=5");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -663,7 +663,7 @@ skip_n| Number of items to be skipped
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://intelex_url/api/v2/task/mytasks',
+  url: 'https://intelex_url/actsapi/v2/task/mytasks',
   qs: { '$orderby': 'NextDate desc' } };
 
 request(options, function (error, response, body) {
@@ -675,7 +675,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v2/task/mytasks?$orderby=NextDate desc");
+var client = new RestClient("https://intelex_url/actsapi/v2/task/mytasks?$orderby=NextDate desc");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -734,7 +734,7 @@ field_name | Fields that you want to sort by
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://intelex_url/api/v2/task/mytasks',
+  url: 'https://intelex_url/actsapi/v2/task/mytasks',
   qs: { '$filter': 'RespEmployeeName eq \'Steve Rogers\'' } };
 
 request(options, function (error, response, body) {
@@ -746,7 +746,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("http://cloud3.intelex.com/wabouchalha/api/v2/task/mytasks?%24filter=RespEmployeeName%20eq%20'Steve%20Rogers'");
+var client = new RestClient("http://cloud3.intelex.com/wabouchalha/actsapi/v2/task/mytasks?%24filter=RespEmployeeName%20eq%20'Steve%20Rogers'");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -832,7 +832,7 @@ filter_expression | Filter expression used to query data
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://intelex_url/api/v2/task/locationtasks',
+  url: 'https://intelex_url/actsapi/v2/task/locationtasks',
   qs: { '$expand': 'Location' } };
 
 request(options, function (error, response, body) {
@@ -843,7 +843,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/api/v2/task/locationtasks?$expand=Location");
+var client = new RestClient("https://intelex_url/actsapi/v2/task/locationtasks?$expand=Location");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
