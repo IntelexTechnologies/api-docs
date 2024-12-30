@@ -9,7 +9,7 @@
 <blockquote>
 <p>API Endpoint - In the URL the tenant is the individual unique tenants based on the tenants they are specifying </p>
 </blockquote>
-<pre class="highlight plaintext"><code>https://[tenant].actsapi.intelex.com/v1/api/
+<pre class="highlight plaintext"><code>https://[tenant].actsapi.intelex.com/actsapi/v1/
 </code></pre>
 <p>To begin using the Intelex API you will need:</p>
 
@@ -50,10 +50,10 @@
 
 <h3 id="acts-api-versioning">ACTS API Versioning</h3>
 
-<p>When we make any new changes to the API, we release new versions. The current version of the ACTS API  is v1 and can be determined with our API base path /api/v1/.</p>
+<p>When we make any new changes to the API, we release new versions. The current version of the ACTS API  is v1 and can be determined with our API base path /actsapi/v1/.</p>
 
 <blockquote>
-<p>Example API endpoint : https://[tenant].actsapi.intelex.com/v1/[endpoint-name]</p>
+<p>Example API endpoint : https://[tenant].actsapi.intelex.com/actsapi/v1/[endpoint-name]</p>
 </blockquote>
 
 <h3 id="acts-api-software-certificate-version-details">ACTS API Software &amp; Certificate Version Details</h3>
