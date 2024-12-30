@@ -9,7 +9,7 @@ Our API has predictable, resource-oriented URLs, and uses HTTP response codes to
 >API Endpoint - In the URL the tenant is the individual unique tenants based on the tenants they are specifying 
 
 ```
-https://[tenant].actsapi.intelex.com/v1/api/
+https://[tenant].actsapi.intelex.com/actsapi/v1/
 ```
 
 To begin using the Intelex API you will need:
@@ -51,9 +51,9 @@ The user authentication endpoint uses a POST to generate the access token [beare
 
 ### ACTS API Versioning
 
-When we make any new changes to the API, we release new versions. The current version of the ACTS API  is v1 and can be determined with our API base path /api/v1/.
+When we make any new changes to the API, we release new versions. The current version of the ACTS API  is v1 and can be determined with our API base path /actsapi/v1/.
 
->Example API endpoint : https://[tenant].actsapi.intelex.com/v1/[endpoint-name]
+>Example API endpoint : https://[tenant].actsapi.intelex.com/actsapi/v1/[endpoint-name]
 
 ### ACTS API Software & Certificate Version Details
  
