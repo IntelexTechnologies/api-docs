@@ -1,50 +1,132 @@
 ## Add or Modify Data
 
-### Payload Validation
+> User Management API Endpoint - replace **intelex_object** with the system name of your object
 
-Fields in the payload will be checked for validity befor creating the employee and user records.
+```
+https://intelex_url/api/v2/EmployeeUserAccess
+```
 
-Some validations for Create (POST) include:
-- Required fields that are not included in the payload
-- Invalid external identifiers that do not exist (E.g. <code>SupervisorNumber</code>, <code>LoginLocationCode</code>)
-- Duplicate primary key identifiers (E.g. duplicate <code>EmployeeNumber</code> or <code>DisplayName</code>)
+### Add Data
 
-> Example POST response with validation errors
+#### POST /EmployeeUserAccess
+
+##### Body Parameters
+
+| Parameter  | Description                                                                                                      |
+| ---------- | ---------------------------------------------------------------------------------------------------------------- |
+| field_name | The value you want to set for an employee or user field. Replace _field_name_ with the name of the employee or user field |
+
+See [Request Payload Field Reference](#request-payload-field-reference) for detailed field information.
+
+> Example Request
+
+```javascript
+var request = require("request");
+
+var options = { 
+  method: 'POST',
+  url: 'https://intelex_url/api/v2/EmployeeUserAccess',
+  headers: { 'content-type': 'application/json' },
+  body: 
+  {
+    "EmployeeNumber": "001",
+    "HomeLocationCode": "001",
+    "FirstName": "John",
+    "LastName": "Doe",
+    "UserId": "jdoe",
+    "LoginLocationCode": "001",
+    "LicenseType": "Full Access"
+  }
+};
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+```csharp
+var client = new RestClient("https://intelex_url/api/v2/EmployeeUserAccess");
+var request = new RestRequest(Method.POST);
+request.AddHeader("content-type", "application/json");
+request.AddParameter("application/json", "{\r\n    \"EmployeeNumber\": \"001\",\r\n    \"HomeLocationCode\": \"001\",\r\n    \"FirstName\": \"John\",\r\n    \"LastName\": \"Doe\",\r\n    \"UserId\": \"jdoe\",\r\n    \"LoginLocationCode\": \"001\",\r\n    \"LicenseType\": \"Full Access\"\r\n}", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+```
+
+A succesful POST to the EmployeeUserAccess endpoint will respond with a <code>201 Created</code> response code and a json body containing the Id for the created employee and user records.
+
+> Example of successful create (POST) response
 
 ```json
 {
-    "error": {
-        "messages": [
-            "There is an existing employee with the same employee number."
-        ]
-    }
+  "Id": "43d1b046-156a-4715-bf96-10f71690a528"
 }
 ```
 
-Some validations for Update (PATCH) include:
-- Required identifier fields (Id, EmployeeNumber) not included in the request
+### Modify Data
 
-> Example PATCH response with validation errors
+#### PATCH /EmployeeUserAccess({id})
 
-```json
-{
-    "error": {
-        "messages": [
-            "There is an existing employee with the same employee number."
-        ]
-    }
-}
+##### URL Parameters
+
+| Parameter              | Description                                        |
+| ---------------------- | -------------------------------------------------- |
+| employee_id _(optional)_ | The Intelex UID of the employee/user being updated |
+
+<b>NOTE:</b> You may also provide a valid <code>Id</code> <i>or</i> <code>EmployeeNumber</code> in the payload as the identifier used to update the record.
+
+##### Body Parameters
+
+| Parameter  | Description                                                                                                      |
+| ---------- | ---------------------------------------------------------------------------------------------------------------- |
+| field_name | The value you want to set for and employee or user field. Replace _field_name_ with the name of the employee or user field |
+
+See [Request Payload Field Reference](#request-payload-field-reference) for detailed field information.
+
+> Example Request
+
+```javascript
+var request = require("request");
+
+var options = { 
+  method: 'PATCH',
+  url: 'https://intelex_url/api/v2/EmployeeUserAccess',
+  headers: { 'content-type': 'application/json' },
+  body: 
+  {
+    "EmployeeNumber": "001",
+    "FirstName": "Jon",
+    "IsLocked": true
+  }
+};
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 ```
 
-### Payload Field Reference
+```csharp
+var client = new RestClient("https://intelex_url/api/v2/EmployeeUserAccess");
+var request = new RestRequest(Method.POST);
+request.AddHeader("content-type", "application/json");
+request.AddParameter("application/json", "{\r\n    \"EmployeeNumber\": \"001\",\r\n    \"FirstName\": \"Jon\",\r\n    \"IsLocked\": true\r\n}", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+```
+
+A succesful PATCH to the EmployeeUserAccess endpoint will respond with a <code>204 No Content</code> response code.
+
+### Request Payload Field Reference
 
 #### Settings Flags
 
-Settings flags are payload fields that configure the behavior of the user management API request. 
+Settings flags are payload fields that configure various behaviors of the user management API request.
 
-Some settings flags may be ignored if the flag is not relevant to the request type. For example, <code>RevokeUserAccess</code> is only applicable to an existing user, so is only applicable in a update (PATCH) request.
+Some settings flags may be ignored if the flag is not relevant to the request type. For example, <code>RevokeUserAccess</code> is only applicable to an existing user, so is only applicable in an update (PATCH) request.
 
-All flags default to <code>false</code> unless otherwise noted.
+<b>All flags default to <code>false</code> unless otherwise noted.</b>
 
 <table>
   <tr>
@@ -96,9 +178,11 @@ All flags default to <code>false</code> unless otherwise noted.
   </tr>
 </table>
 
-### Employee Fields
+#### Employee Fields
 
-Payload fields that are associated with the employee record to be created or updated. Properties denoted with a <code>*</code> are required and must be included in the payload.
+Payload fields that are associated with the employee record to be created or updated.
+
+Properties denoted with a <code>\*</code> are required and must be included in the payload.
 
 <table>
   <tr>
@@ -174,13 +258,15 @@ Payload fields that are associated with the employee record to be created or upd
   <tr>
     <td>IsSupervisor</td>
     <td>
-      Indicates whether employee has direct reports or not.
+      <li>Indicates whether employee has direct reports or not.</li>
+      <li>Valid values are <code>Y</code> or <code>N</code></li>
     </td>
   </tr>
   <tr>
     <td>EmployeeType</td>
     <td>
-      Type of employee.
+      <li>Type of Employee.</li>
+      <li>Must be the <code>Name</code> of a valid <code>SysEmployeeType</code> record.</li>
     </td>
   </tr>
   <tr>
@@ -211,7 +297,8 @@ Payload fields that are associated with the employee record to be created or upd
   <tr>
     <td>Contractor</td>
     <td>
-      Indicates whether employee is a contractor.
+      <li>Indicates whether employee is a contractor.</li>
+      <li>Valid values are <code>Y</code> or <code>N</code></li>
     </td>
   </tr>
   <tr>
@@ -359,9 +446,11 @@ Payload fields that are associated with the employee record to be created or upd
   </tr>
 </table>
 
-### User Fields
+#### User Fields
 
-Payload fields that are associated with the user record to be created or updated if requested (<code>IgnoreUserAccess</code> = <code>false</code>). <b>If user access is requested,</b> properties denoted with a <code>*</code> are required and must be included in the payload.
+Payload fields that are associated with the user record to be created or updated if requested (<code>IgnoreUserAccess</code> = <code>false</code>).
+
+<i>If user access is requested,</i> properties denoted with a <code>\*</code> are required and must be included in the payload.
 
 <table>
   <tr>
@@ -416,28 +505,28 @@ Payload fields that are associated with the user record to be created or updated
   <tr>
     <td>TimeZone</td>
     <td>
-      <li>Time Zone for the User. In the EDIS template the user can select the Time Zone from a select control, in the default template downloaded from the Data Import user have to enter the value manually. </li>
+      <li>Time Zone for the User.</li>
       <li>Example: (UTC-05:00) Eastern Time (US & Canada)</li>
     </td>
   </tr>
   <tr>
     <td><b>LicenseType*</b></td>
     <td>
-      <li>Must map correctly to SecurityGroupName column:</li>
-      <ul>
-        <li>IF (SecurityGroupName) Limited Access THEN SET (LicenseType) TO Concurrent Access</li>
-        <li>IF (SecurityGroupName) Supervisor Access THEN SET (LicenseType) TO Concurrent Access</li>
-        <li>IF (SecurityGroupName) Full Access THEN SET (LicenseType) TO Full Access</li>
-        <li>IF (SecurityGroupName) System Administrator THEN SET (LicenseType) TO System Administrator</li>
-      </ul>
       <li>Identifies specific V6 license type assigned in License Type field in user profile.</li>
+      <li>Valid values are:</li>
+      <ul>
+        <li>Concurrent Access</li>
+        <li>Full Access</li>
+        <li>System Administrator</li>
+      </ul>
     </td>
   </tr>
   <tr>
     <td>CultureName</td>
     <td>
       <li>For clients who have purchased additional languages.</li>
-      <li>Identifies culture assigned in Culture field in user profile. If the value in this staging table is "Automatic" will set to "Determine Automatically".</li>
+      <li>Identifies culture assigned in Culture field in user profile.</li>
+      <li>"Automatic" will set to "Determine Automatically".</li>
       <li>Inactive cultures won't be assigned to a user.</li>
     </td>
   </tr>
@@ -467,76 +556,161 @@ Payload fields that are associated with the user record to be created or updated
   </tr>
 </table>
 
-> Example request body payload
+> Full example request body payload
 
 ```json
 {
-    // IUserMgmtSettings (EDIS Settings) Fields
-    "SendEmail": true,
-    "IgnoreUserAccess": false,
+  "SendEmail": true,
+  "IgnoreUserAccess": false,
 
-    // Employee Fields
-    "Flag": "AAA", // Must be A or I
-    "EmployeeNumber": "0011144", // Required, checked for uniqueness
-    "HomeLocationCode": "001", // Required, checked for existence
-    "Prefix": "pre",
-    "FirstName": "AAAJohn", // Required
-    "LastName": "Doe", // Required
-    "MiddleName": "Joe",
-    "DisplayName": "John Doe44", // If blank, will be set as "{FirstName} {LastName}"
-    "Suffix": "suf",
-    "Email": "john.doe@intelex.com",
-    "IsSupervisor": "Y", // Must be Y or N
-    "EmployeeType": "Hourly", // Converted to EmployeeTypeId
-    "Date_Of_Hire": "2019-11-25",
-    "SupervisorNumber": "001", // Checked for existence
-    "PositionTitle": "Line Worker",
-    "Notes": "dfghdfghdfg",
-    "Contractor": "Y", // Must be Y or N
-    "Company": "Intelex",
-    "ContractorName": "Sears",
-    "ContractExpiry": "2026-12-30",
-    "InsuranceExpiry": "2026-12-31",
-    "ContractorNotes": "zdgsdf",
-    "StreetAddress": "5613 DTC Pkwy Suite 320",
-    "City": "Greenwood Village",
-    "State": "Colorado",
-    "ZipCode": "80111",
-    "Gender": "M",
-    "Date_Of_Birth": "1999-06-23",
-    "SSN": "111-11-1111",
-    "EmergencyContact": "Jane Doe",
-    "EmergencyPhone": "123-456-7890",
-    "PersonResponsible": 1, // Not currently used
-    "PhoneNumber": "111-111-1111",
-    "HourlyWage": "25",
-    "JobCode": "jc12",
-    "WorkStatus": "full time",
+  "Flag": "A",
+  "EmployeeNumber": "001",
+  "HomeLocationCode": "001",
+  "Prefix": "Mr.",
+  "FirstName": "John",
+  "LastName": "Doe",
+  "MiddleName": "Joe",
+  "DisplayName": "John Doe",
+  "Suffix": "III",
+  "Email": "john.doe@intelex.com",
+  "IsSupervisor": "Y",
+  "EmployeeType": "Hourly",
+  "Date_Of_Hire": "2019-11-25",
+  "SupervisorNumber": "001",
+  "PositionTitle": "Line Worker",
+  "Notes": "Notes for me",
+  "Contractor": "Y",
+  "Company": "Intelex",
+  "ContractorName": "Sears",
+  "ContractExpiry": "2026-12-30",
+  "InsuranceExpiry": "2026-12-31",
+  "ContractorNotes": "Notes for the Contractor",
+  "StreetAddress": "5613 DTC Pkwy Suite 320",
+  "City": "Greenwood Village",
+  "State": "Colorado",
+  "ZipCode": "80111",
+  "Gender": "M",
+  "Date_Of_Birth": "1999-06-23",
+  "SSN": "111-11-1111",
+  "EmergencyContact": "Jane Doe",
+  "EmergencyPhone": "123-456-7890",
+  "PersonResponsible": 1,
+  "PhoneNumber": "111-111-1111",
+  "HourlyWage": "25",
+  "JobCode": "jc12",
+  "WorkStatus": "full time",
 
-    // User Fields
-    "UserId": "jdoe41", // Required if user access is requested
-    "IsLocked": false,
-    "Password": "1234",
-    "SecondaryPassword": "5678",
-    "ForcePasswordChange": false,
-    "LoginLocationCode": "001",  // Required if user access is requested
-    "TimeZone": "Eastern Standard Time", // Checked for existence
-    "LicenseType": "Full Access",  // Required if user access is requested. Checked for existence
-    "CultureName": "English (United States)",
-    "LongDate": "",
-    "LongTime": "",
-    "ShortDate": "",
-    "ShortTime": "",
+  "UserId": "jdoe",
+  "IsLocked": false,
+  "Password": "1234",
+  "SecondaryPassword": "5678",
+  "ForcePasswordChange": false,
+  "LoginLocationCode": "001",
+  "TimeZone": "Eastern Standard Time",
+  "LicenseType": "Full Access",
+  "CultureName": "English (United States)",
+  "LongDate": "",
+  "LongTime": "",
+  "ShortDate": "",
+  "ShortTime": "",
 
-    "Groups": "Claims Administrator(01E4C606-2F03-4044-B6B1-079AE288D82A);7F50AC4D-93F4-4DF9-90AF-00D7DF663720",
-
+  "Groups": "Claims Administrator(01E4C606-2F03-4044-B6B1-079AE288D82A);7F50AC4D-93F4-4DF9-90AF-00D7DF663720"
 }
 ```
 
-## Add Data
+### Payload Validation
 
-This section outlines the blah blah blah
+Fields in the payload will be checked for validity before creating or updating the employee and user records.
 
-## Modify Data
+#### Create (POST) Payload Validation
 
-This section outlines the blah blah blah
+Example payload validations for creation include:
+
+<ul>
+    <li>Required fields that are not included in the payload</li>
+    <li>Invalid external identifiers that do not exist (E.g. <code>SupervisorNumber</code>, <code>LoginLocationCode</code>)</li>
+    <li>Duplicate primary key identifiers (E.g. <code>EmployeeNumber</code>, <code>DisplayName</code>)</li>
+</ul>
+
+#### Update (PATCH) Payload Validation
+
+Example payload validations for modification include:
+
+<ul>
+    <li>Required identifier fields (<code>Id</code>, <code>EmployeeNumber</code>) not included in the request</li>
+    <li>Required fields that are empty (<code>""</code>) in the payload</li>
+    <li>Invalid external identifiers that do not exist (E.g. <code>SupervisorNumber</code>, <code>LoginLocationCode</code>)</li>
+    <li>Duplicate primary key identifiers (E.g. <code>EmployeeNumber</code>, <code>DisplayName</code>)</li>
+</ul>
+
+> Example response with validation errors
+
+```json
+{
+  "error": {
+    "messages": [
+      "Cannot create employee - Invalid value for IsSupervisor. Please use either 'Y' or 'N'",
+      "There is an existing employee with the same employee number.",
+      "Home location with code 001 is not found."
+    ]
+  }
+}
+```
+
+### Group Membership
+
+Group membership for an employee may also be managed via the User Management API with use of the <code>Groups</code> field. The <code>Groups</code> field expects a semi-colon delimited list of groups in one of the following formats:
+<ul>
+  <li><code>GroupId</code></li>
+  <li><code>GroupName</code></li>
+  <li><code>RoleId(LocationId)</code> (for a Location Role)</li>
+  <li><code>RoleId(LocationCode)</code> (for a Location Role)</li>
+  <li><code>RoleName(LocationId)</code> (for a Location Role)</li>
+  <li><code>RoleName(LocationCode)</code> (for a Location Role)</li>
+</ul>
+
+"Groups" include Security Groups, Roles, Location Roles and Training Workgroups, or any object that inherits from the Group Entity.
+
+#### Roles and Location Roles
+
+If an entry is a role and no location is defined for the entry (E.g. As <code>RoleId(LocationId)</code>), a location role will be assigned using the <code>LoginLocationCode</code> value. If <code>LoginLocationCode</code> is invalid or not present in the payload, the Role will be assigned without a location.
+
+Roles with <code>AllowManySubjects</code> set to <code>false</code> will unassign any existing members from the role before assigning membership to the target employee.
+
+#### Group Membership Settings
+
+See [Settings Flags](#settings-flags) for details on <code>DoNotAddGroupAssignments</code> and <code>RemoveFromUnlistedGroups</code> fields.
+
+#### Group Validation
+
+Groups are validated before membership is assigned. If any validations fail, error messages will be returned in the response.
+
+Example group validations include:
+<ul>
+  <li>Group Id or Name does not exist.</li>
+  <li>Group for a LocationRole (GroupId(LocationId), in this case GroupId) does not exist.</li>
+  <li>Group Id or Name for a location role (<code>Role(Location)</code>), is not a Role. E.g. If you try to use the ID of a SysSecurityGroup as a role in a location role, the parsing will fail.</li>
+  <li>Location code does not exist or is invalid.</li>
+</ul>
+
+> Example of a payload with Groups
+
+```json
+{
+  "Groups": "7F50AC4D-93F4-4DF9-90AF-00D7DF663720;Insurance;36D48405-36EA-42C8-B11B-CA50DAB377DD(01E4C606-2F03-4044-B6B1-079AE288D82A);BD5797DD-D015-429C-89E6-1A79C3EB7B79(056);Claims Administrator(01E4C606-2F03-4044-B6B1-079AE288D82A);Claims Administrator(001)"
+}
+```
+
+> Example response with group validation errors
+
+```json
+{
+  "error": {
+    "messages": [
+      "The Location Role 'Role123(Loc123)' is invalid. Please ensure that the Role (Role123) is the Name or ID of a valid and existing Role.",
+      "Group '36D48405-36EA-42C8-B11B-CA50DAB377DD' is invalid. Group with ID '36D48405-36EA-42C8-B11B-CA50DAB377DD' does not exist.",
+      "Group 'Role456(Loc456)' is invalid. Location with Code 'Loc456' is archived or does not exist."
+    ]
+  }
+}
+```
