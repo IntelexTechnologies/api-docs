@@ -17,7 +17,6 @@ includes:
   - user-mgmt-api
   - user-mgmt/get-api
   - user-mgmt/post-patch-api
-  - user-mgmt/group-membership
   - dev-support
 
 search: true
