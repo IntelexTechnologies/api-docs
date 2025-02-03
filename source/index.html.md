@@ -9,14 +9,14 @@ includes:
   - api-reference
   - object-data-api
   - task-api
+  - user-mgmt-api
+  - user-mgmt/get-api
+  - user-mgmt/post-patch-api
   - acts-api
   - acts/reference
   - acts/get_api
   - acts/post_api
   - acts/delete_api
-  - user-mgmt-api
-  - user-mgmt/get-api
-  - user-mgmt/post-patch-api
   - dev-support
 
 search: true
