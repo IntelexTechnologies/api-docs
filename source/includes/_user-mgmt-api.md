@@ -1,4 +1,4 @@
-# USER MANAGEMENT API
+# User Management API
 
 The User Management API provides the ability to externally manage employee and user acccess in Intelex.
 

@@ -151,16 +151,18 @@ Some settings flags may be ignored if the flag is not relevant to the request ty
   <tr>
     <td>RevokeUserAccess</td>
     <td>
-      <li>Existing users only. Only respected if user access is requested. </li>
+      <li>Existing users only.</li>
       <li>Revokes access for the specified user.</li>
-      <li></li>
+      <li>Revokes API access for the specified user (if applicable).</li>
     </td>
   </tr>
   <tr>
     <td>ArchiveIfTasksAssigned</td>
     <td>
-      <li>Existing users only. Only respected if user access is requested.</li>
-      <li></li>
+      <li>Existing users only.</li>
+      <li>Only respected if <code>Flag</code> = <code>I</code> in <a href="#employee-fields">Employee Fields</a>.</li>
+      <li>Allows Employees who have tasks assigned to them to be archived.</li>
+      <li>If <code>ArchiveIfTasksAssigned</code> is not set and the specified employee has tasks assigned, the request will fail with an error and the associated user will be locked.</li>
     </td>
   </tr>
   <tr>
@@ -200,6 +202,7 @@ Properties denoted with a <code>\*</code> are required and must be included in t
         <li><code>I</code> = Inactive (archived) employee</li>
       </ul>
       <li>Archiving an an employee will also remove the associated user's access, if available.</li>
+      <li>Only existing employees can be archived. You cannot create a new "Inactive" employee.</li>
     </td>
   </tr>
   <tr>
