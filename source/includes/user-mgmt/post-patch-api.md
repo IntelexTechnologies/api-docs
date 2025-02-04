@@ -1,5 +1,7 @@
 ## Add or Modify Data
 
+This section outlines the available POST and PATCH endpoints designed for modifying employee and user data. These endpoints support updating existing records and inserting new records. Requests should be formatted in JSON.
+
 > User Management API Endpoint - replace **intelex_object** with the system name of your object
 
 ```
@@ -7,16 +9,6 @@ https://intelex_url/api/v2/EmployeeUserAccess
 ```
 
 ### Add Data
-
-#### POST /EmployeeUserAccess
-
-##### Body Parameters
-
-| Parameter  | Description                                                                                                      |
-| ---------- | ---------------------------------------------------------------------------------------------------------------- |
-| field_name | The value you want to set for an employee or user field. Replace _field_name_ with the name of the employee or user field |
-
-See [Request Payload Field Reference](#request-payload-field-reference) for detailed field information.
 
 > Example Request
 
@@ -54,9 +46,19 @@ request.AddParameter("application/json", "{\r\n    \"EmployeeNumber\": \"001\",\
 IRestResponse response = client.Execute(request);
 ```
 
-A succesful POST to the EmployeeUserAccess endpoint will respond with a <code>201 Created</code> response code and a json body containing the Id for the created employee and user records.
+#### POST /EmployeeUserAccess
 
-> Example of successful create (POST) response
+##### Body Parameters
+
+| Parameter  | Description                                                                                                      |
+| ---------- | ---------------------------------------------------------------------------------------------------------------- |
+| field_name | The value you want to set for an employee or user field. Replace _field_name_ with the name of the employee or user field |
+
+See [Request Payload Field Reference](#request-payload-field-reference) for detailed field information.
+
+A successful POST to the EmployeeUserAccess endpoint will respond with a <code>201 Created</code> response code and a json body containing the Id for the created employee and user records.
+
+> Example Response
 
 ```json
 {
@@ -65,24 +67,6 @@ A succesful POST to the EmployeeUserAccess endpoint will respond with a <code>20
 ```
 
 ### Modify Data
-
-#### PATCH /EmployeeUserAccess({id})
-
-##### URL Parameters
-
-| Parameter              | Description                                        |
-| ---------------------- | -------------------------------------------------- |
-| employee_id _(optional)_ | The Intelex UID of the employee/user being updated |
-
-<b>NOTE:</b> You may also provide a valid <code>Id</code> <i>or</i> <code>EmployeeNumber</code> in the payload as the identifier used to update the record.
-
-##### Body Parameters
-
-| Parameter  | Description                                                                                                      |
-| ---------- | ---------------------------------------------------------------------------------------------------------------- |
-| field_name | The value you want to set for and employee or user field. Replace _field_name_ with the name of the employee or user field |
-
-See [Request Payload Field Reference](#request-payload-field-reference) for detailed field information.
 
 > Example Request
 
@@ -116,7 +100,25 @@ request.AddParameter("application/json", "{\r\n    \"EmployeeNumber\": \"001\",\
 IRestResponse response = client.Execute(request);
 ```
 
-A succesful PATCH to the EmployeeUserAccess endpoint will respond with a <code>204 No Content</code> response code.
+#### PATCH /EmployeeUserAccess({id})
+
+##### URL Parameters
+
+| Parameter              | Description                                        |
+| ---------------------- | -------------------------------------------------- |
+| employee_id _(optional)_ | The Intelex UID of the employee/user being updated |
+
+<b>NOTE:</b> You may also provide a valid <code>Id</code> <i>or</i> <code>EmployeeNumber</code> in the payload as the identifier used to update the record.
+
+##### Body Parameters
+
+| Parameter  | Description                                                                                                      |
+| ---------- | ---------------------------------------------------------------------------------------------------------------- |
+| field_name | The value you want to set for and employee or user field. Replace _field_name_ with the name of the employee or user field |
+
+See [Request Payload Field Reference](#request-payload-field-reference) for detailed field information.
+
+A successful PATCH to the EmployeeUserAccess endpoint will respond with a <code>204 No Content</code> response code.
 
 ### Request Payload Field Reference
 
@@ -136,7 +138,7 @@ Some settings flags may be ignored if the flag is not relevant to the request ty
   <tr>
     <td>IgnoreUserAccess</td>
     <td>
-      Skips user access creation. Employee record will still be created.
+      <li>Skips user access creation. Employee record will still be created.</li>
     </td>
   </tr>
   <tr>
@@ -173,7 +175,7 @@ Some settings flags may be ignored if the flag is not relevant to the request ty
   <tr>
     <td>RemoveFromUnlistedGroups</td>
     <td>
-      <li>Existing employees only</li>
+      <li>Existing employees only.</li>
       <li>Remove employee membership from any previously assigned groups that are not specified in the <code>Groups</code> field.</li>
       <li>This field is still respected if <code>DoNotAddGroupAssignments</code> is set.</li>
     </td>
@@ -194,7 +196,7 @@ Properties denoted with a <code>\*</code> are required and must be included in t
   <tr>
     <td>Flag</td>
     <td>
-      <li>Indicates whether employe should be archived in the system:</li>
+      <li>Indicates whether employee should be archived in the system:</li>
       <ul>
         <li><code>A</code> = Active employee (default)</li>
         <li><code>I</code> = Inactive (archived) employee</li>
@@ -206,7 +208,7 @@ Properties denoted with a <code>\*</code> are required and must be included in t
   <tr>
     <td><b>EmployeeNumber*</b></td>
     <td>
-      Primary Key; Unique identifier of employee.
+      <li>Primary Key; Unique identifier of employee.</li>
     </td>
   </tr>
   <tr>
@@ -219,43 +221,43 @@ Properties denoted with a <code>\*</code> are required and must be included in t
   <tr>
     <td>Prefix</td>
     <td>
-      Prefix of employee (e.g., Mr., Mrs., Ms.)
+      <li>Prefix of employee (e.g., Mr., Mrs., Ms.)</li>
     </td>
   </tr>
   <tr>
     <td><b>FirstName*</b></td>
     <td>
-      First name of employee.
+      <li>First name of employee.</li>
     </td>
   </tr>
   <tr>
     <td><b>LastName*</b></td>
     <td>
-      Last name of employee.
+      <li>Last name of employee.</li>
     </td>
   </tr>
   <tr>
     <td>MiddleName</td>
     <td>
-      Middle name of employee
+      <li>Middle name of employee.</li>
     </td>
   </tr>
   <tr>
     <td>DisplayName</td>
     <td>
-      Last name of employee.
+      <li>Last name of employee.</li>
     </td>
   </tr>
   <tr>
     <td>Suffix</td>
     <td>
-      Suffix of employee (e.g., Jr., Sr.)
+      <li>Suffix of employee (e.g., Jr., Sr.)</li>
     </td>
   </tr>
   <tr>
     <td>Email</td>
     <td>
-      Email address of employee.
+      <li>Email address of employee.</li>
     </td>
   </tr>
   <tr>
@@ -273,7 +275,7 @@ Properties denoted with a <code>\*</code> are required and must be included in t
     </td>
   </tr>
   <tr>
-    <td>Date_Of_Hire</td>
+    <td>DateOfHire</td>
     <td>
       <li>Date of hire of employee.</li>
       <li>Please speak with your consultant to confirm the date format for your subdomain.</li>
@@ -282,19 +284,19 @@ Properties denoted with a <code>\*</code> are required and must be included in t
   <tr>
     <td>SupervisorNumber</td>
     <td>
-      Employee Number of supervisor of employee.
+      <li>Employee Number of supervisor of employee.</li>
     </td>
   </tr>
   <tr>
     <td>PositionTitle</td>
     <td>
-      Job title of employee.
+      <li>Job title of employee.</li>
     </td>
   </tr>
   <tr>
     <td>Notes</td>
     <td>
-      Open text field found in employee profile.
+      <li>Open text field found in employee profile.</li>
     </td>
   </tr>
   <tr>
@@ -307,13 +309,13 @@ Properties denoted with a <code>\*</code> are required and must be included in t
   <tr>
     <td>Company</td>
     <td>
-      Company name of employee.
+      <li>Company name of employee.</li>
     </td>
   </tr>
   <tr>
     <td>ContractorName</td>
     <td>
-      Contractor company name of employee.
+      <li>Contractor company name of employee.</li>
     </td>
   </tr>
   <tr>
@@ -333,41 +335,41 @@ Properties denoted with a <code>\*</code> are required and must be included in t
   <tr>
     <td>ContractorNotes</td>
     <td>
-      Open text field found in employee profile.
+      <li>Open text field found in employee profile.</li>
     </td>
   </tr>
   <tr>
     <td>StreetAddress</td>
     <td>
-      Street address of employee.
+      <li>Street address of employee.</li>
     </td>
   </tr>
   <tr>
     <td>City</td>
     <td>
-      City of employee.
+      <li>City of employee.</li>
     </td>
   </tr>
   <tr>
     <td>State</td>
     <td>
-      State of employee.
+      <li>State of employee.</li>
     </td>
   </tr>
   <tr>
     <td>ZipCode</td>
     <td>
-      Zip code (or postal code) of employee.
+      <li>Zip code (or postal code) of employee.</li>
     </td>
   </tr>
   <tr>
     <td>Gender</td>
     <td>
-      Gender of employee.
+      <li>Gender of employee.</li>
     </td>
   </tr>
   <tr>
-    <td>Date_Of_Birth</td>
+    <td>DateOfBirth</td>
     <td>
       <li>Date of birth of employee.</li>
       <li>Please speak with your consultant to confirm the date format for your subdomain.</li>
@@ -376,19 +378,19 @@ Properties denoted with a <code>\*</code> are required and must be included in t
   <tr>
     <td>SSN</td>
     <td>
-      Social security number of employee.
+      <li>Social security number of employee.</li>
     </td>
   </tr>
   <tr>
     <td>EmergencyContact</td>
     <td>
-      Emergency contact information of employee.
+      <li>Emergency contact information of employee.</li>
     </td>
   </tr>
   <tr>
     <td>EmergencyPhone</td>
     <td>
-      Emergency phone number of employee.
+      <li>Emergency phone number of employee.</li>
     </td>
   </tr>
   <tr>
@@ -416,25 +418,25 @@ Properties denoted with a <code>\*</code> are required and must be included in t
   <tr>
     <td>PhoneNumber</td>
     <td>
-      Phone number of employee.
+      <li>Phone number of employee.</li>
     </td>
   </tr>
   <tr>
     <td>HourlyWage</td>
     <td>
-      Hourly wage of employee.
+      <li>Hourly wage of employee.</li>
     </td>
   </tr>
   <tr>
     <td>JobCode</td>
     <td>
-      Job Code for employee.
+      <li>Job Code for employee.</li>
     </td>
   </tr>
   <tr>
     <td>WorkStatus</td>
     <td>
-      [Legal] Work status of employee.
+      <li>[Legal] Work status of employee.</li>
     </td>
   </tr>
   <tr>
@@ -443,8 +445,8 @@ Properties denoted with a <code>\*</code> are required and must be included in t
       <li>Semicolon (;) delimited list of elements that this employee is a member of (excluding Everyone group).</li>
       <li>Each element can be the Caption or GUID of any Group or Location Role.</li>
       <li>Groups includes Security Groups, Roles, Location Roles and Training Workgroups.</li>
-      <li>If an element is invalid, then the processing of this particular element is skipped; other elements for the employee are not skipped.</li>
-      <li>Notation for Location Role: RoleCaption(LocationCodeOrGUID)</li>
+      <li>If an element is invalid, the request will fail with validation errors in the response.</li>
+      <li>Notation for Location Role: RoleNameOrGUID(LocationCodeOrGUID)</li>
     </td>
   </tr>
 </table>
@@ -471,7 +473,7 @@ Payload fields that are associated with the user record to be created or updated
   <tr>
     <td>IsLocked</td>
     <td>
-      Locks or unlocks the user
+      <li>Locks or unlocks the user</li>
     </td>
   </tr>
   <tr>
@@ -536,30 +538,30 @@ Payload fields that are associated with the user record to be created or updated
   <tr>
     <td>LongDate</td>
     <td>
-      d, dd = day; ddd, dddd = day of week; M, MM = month; yy, yyyy = year
+      <li>d, dd = day; ddd, dddd = day of week; M, MM = month; yy, yyyy = year</li>
     </td>
   </tr>
   <tr>
     <td>LongTime</td>
     <td>
-      h, hh = hour (12-hour format); H, HH = hour (24-hour format); m = minutes; s = seconds; tt = A.M. or P.M.
+      <li>h, hh = hour (12-hour format); H, HH = hour (24-hour format); m = minutes; s = seconds; tt = A.M. or P.M.</li>
     </td>
   </tr>
   <tr>
     <td>ShortDate</td>
     <td>
-      d, dd = day; ddd, dddd = day of week; M, MM = month; yy, yyyy = year
+      <li>d, dd = day; ddd, dddd = day of week; M, MM = month; yy, yyyy = year</li>
     </td>
   </tr>
   <tr>
     <td>ShortTime</td>
     <td>
-      h, hh = hour (12-hour format); H, HH = hour (24-hour format); m = minutes; s = seconds; tt = A.M. or P.M.
+      <li>h, hh = hour (12-hour format); H, HH = hour (24-hour format); m = minutes; s = seconds; tt = A.M. or P.M.</li>
     </td>
   </tr>
 </table>
 
-> Full example request body payload
+> Example Request Body
 
 ```json
 {
@@ -646,7 +648,7 @@ Example payload validations for modification include:
     <li>Duplicate primary key identifiers (E.g. <code>EmployeeNumber</code>, <code>DisplayName</code>)</li>
 </ul>
 
-> Example response with validation errors
+> Example Response With Validation Errors
 
 ```json
 {
@@ -696,7 +698,7 @@ Example group validations include:
   <li>Location code does not exist or is invalid.</li>
 </ul>
 
-> Example of a payload with Groups
+> Example Groups Payload
 
 ```json
 {
@@ -704,7 +706,7 @@ Example group validations include:
 }
 ```
 
-> Example response with group validation errors
+> Example Response With Group Validation Errors
 
 ```json
 {
