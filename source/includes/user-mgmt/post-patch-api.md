@@ -2,7 +2,7 @@
 
 This section outlines the available POST and PATCH endpoints designed for modifying employee and user data. These endpoints support updating existing records and inserting new records. Requests should be formatted in JSON.
 
-> User Management API Endpoint - replace **intelex_object** with the system name of your object
+> User Management API Endpoint
 
 ```
 https://intelex_url/api/v2/EmployeeUserAccess
@@ -580,22 +580,22 @@ Payload fields that are associated with the user record to be created or updated
   "Email": "john.doe@intelex.com",
   "IsSupervisor": "Y",
   "EmployeeType": "Hourly",
-  "Date_Of_Hire": "2019-11-25",
+  "DateOfHire": "2019-11-25",
   "SupervisorNumber": "001",
   "PositionTitle": "Line Worker",
   "Notes": "Notes for me",
   "Contractor": "Y",
   "Company": "Intelex",
-  "ContractorName": "Sears",
+  "ContractorName": "Contractor Name",
   "ContractExpiry": "2026-12-30",
   "InsuranceExpiry": "2026-12-31",
   "ContractorNotes": "Notes for the Contractor",
-  "StreetAddress": "5613 DTC Pkwy Suite 320",
-  "City": "Greenwood Village",
-  "State": "Colorado",
-  "ZipCode": "80111",
+  "StreetAddress": "70 University Ave #800",
+  "City": "Toronto",
+  "State": "Ontario",
+  "ZipCode": "M5J 2M4",
   "Gender": "M",
-  "Date_Of_Birth": "1999-06-23",
+  "DateOfBirth": "1999-06-23",
   "SSN": "111-11-1111",
   "EmergencyContact": "Jane Doe",
   "EmergencyPhone": "123-456-7890",
@@ -614,10 +614,10 @@ Payload fields that are associated with the user record to be created or updated
   "TimeZone": "Eastern Standard Time",
   "LicenseType": "Full Access",
   "CultureName": "English (United States)",
-  "LongDate": "",
-  "LongTime": "",
-  "ShortDate": "",
-  "ShortTime": "",
+  "LongDate": "dddd, MMMM dd, yyyy",
+  "LongTime": "h:mm:ss tt",
+  "ShortDate": "M/d/yyyy",
+  "ShortTime": "h:mm tt",
 
   "Groups": "Claims Administrator(01E4C606-2F03-4044-B6B1-079AE288D82A);7F50AC4D-93F4-4DF9-90AF-00D7DF663720"
 }
