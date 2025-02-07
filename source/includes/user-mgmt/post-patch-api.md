@@ -245,7 +245,10 @@ Properties denoted with a <code>\*</code> are required and must be included in t
   <tr>
     <td>DisplayName</td>
     <td>
-      <li>Last name of employee.</li>
+      <li>Display name of employee.</li>
+      <li>If present, cannot be blank (<code>""</code>) or empty (<code>" "</code>).</li>
+      <li>If not present or <code>null</code> in <i>create</i> payload, defaults to <code>FirstName</code> + <code>LastName</code>.</li>
+      <li>If not present or <code>null</code> in <i>update</i> payload, value will not be updated.</li>
     </td>
   </tr>
   <tr>
