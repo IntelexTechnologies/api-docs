@@ -12,7 +12,7 @@ The following resources give you access to system information
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://intelex_url/actsapi/v2/apps' };
+  url: 'https://intelex_url/api/v2/apps' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -22,7 +22,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/actsapi/v2/apps");
+var client = new RestClient("https://intelex_url/api/v2/apps");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -45,7 +45,7 @@ IRestResponse response = client.Execute(request);
 
 Returns the apps that you can use
 
-#### GET /actsapi/v2/apps
+#### GET /api/v2/apps
 
 Attribute | Description
 --------- | -----------
@@ -65,7 +65,7 @@ NavigationUrl | Navigation URL of application
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://intelex_url/actsapi/v2/reports' };
+  url: 'https://intelex_url/api/v2/reports' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -75,7 +75,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/actsapi/v2/reports");
+var client = new RestClient("https://intelex_url/api/v2/reports");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -96,7 +96,7 @@ IRestResponse response = client.Execute(request);
 
 Returns the reports that you can view
 
-#### GET /actsapi/v2/reports
+#### GET /api/v2/reports
 
 Attribute | Description
 --------- | -----------
@@ -113,7 +113,7 @@ NavigationUrl | URL to view report
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://intelex_url/actsapi/v2/dashboards' };
+  url: 'https://intelex_url/api/v2/dashboards' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -123,7 +123,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/actsapi/v2/dashboards");
+var client = new RestClient("https://intelex_url/api/v2/dashboards");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -144,7 +144,7 @@ IRestResponse response = client.Execute(request);
 
 Returns the dashboards that you can view
 
-#### GET /actsapi/v2/dashboards
+#### GET /api/v2/dashboards
 
 Attribute | Description
 --------- | -----------
@@ -160,7 +160,7 @@ NavigationUrl | URL to view dashboard
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://intelex_url/actsapi/v2/locations' };
+  url: 'https://intelex_url/api/v2/locations' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -170,7 +170,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/actsapi/v2/locations");
+var client = new RestClient("https://intelex_url/api/v2/locations");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -200,7 +200,7 @@ IRestResponse response = client.Execute(request);
 
 Returns the location hierarchy
 
-#### GET /actsapi/v2/locations
+#### GET /api/v2/locations
 
 Attribute | Description
 --------- | -----------
@@ -218,7 +218,7 @@ Children | An array of child locations
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://intelex_url/actsapi/v2/users/me' };
+  url: 'https://intelex_url/api/v2/users/me' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -228,7 +228,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://intelex_url/actsapi/v2/users/me");
+var client = new RestClient("https://intelex_url/api/v2/users/me");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -245,7 +245,7 @@ IRestResponse response = client.Execute(request);
 
 Returns a user's details
 
-#### GET /actsapi/v2/users/me
+#### GET /api/v2/users/me
 
 Attribute | Description
 --------- | -----------
