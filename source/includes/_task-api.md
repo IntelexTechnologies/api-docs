@@ -746,7 +746,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("http://cloud3.intelex.com/wabouchalha/api/v2/task/mytasks?%24filter=RespEmployeeName%20eq%20'Steve%20Rogers'");
+var client = new RestClient("https://cloud3.intelex.com/wabouchalha/api/v2/task/mytasks?%24filter=RespEmployeeName%20eq%20'Steve%20Rogers'");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
