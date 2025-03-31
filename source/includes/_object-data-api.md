@@ -59,6 +59,7 @@ Sometimes you might need to access data from system objects that contain data su
 System Object | Description |  System Name
 --------- | ----------- | --------- 
 Employees | Intelex Employees | SysEmployeeEntity
+Users | Intelex Users | SysUserEntity
 Locations | Intelex locations | SysLocationEntity
 Groups | Intelex Employee groups | SysGroupEntity
 EDIS Staging Table | Staging table used to process EDIS | EmployeeStagingEntity
