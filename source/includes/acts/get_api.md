@@ -466,6 +466,7 @@ internalNames | string | Internal Names is one of the unique identifier for this
 alternateNames | string | Alternate Names is one of the unique identifier for this equipment record
 lastModifiedStartDate | string | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 lastModifiedEndDate | string | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+externalIdentifier | string | External Identifier a unique identifier for this record to an external data system
 
 
 ### 7. Equipment Attribute Table
@@ -1225,6 +1226,8 @@ workflowStartDate | dateTime | Date time format "yyyy/mm/dd T hours:min:secZ - E
 workflowEndDate | dateTime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 lastModifiedStartDate | dateTime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 lastModifiedEndDate | dateTime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+externalIdentifier | string | External Identifier a unique identifier for this record to an external data system
+
 
 ### 17. Workflow Answer Table
 
