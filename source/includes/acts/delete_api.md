@@ -306,3 +306,56 @@ IRestResponse response = client.Execute(request);
 
 ```
 
+### 6. Requirement Table 
+
+This section guides you through the process of removing/deleting the existing records from the Requirement table using the designated API endpoint.
+
+**Requirement DELETE endpoint**
+
+`DELETE` /actsapi/v1/requirement
+
+> Example Request & JSON Input Body 
+
+```javascript
+var request = require("request");
+
+var options = { method: 'DELETE',
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/requirement',
+  headers: { 'content-type': 'application/json' },
+  body:
+   { [requirementId1, requirementId2, requirementId3....]
+	 },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+```csharp
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/requirement");
+var request = new RestRequest(Method.DELETE);
+request.AddHeader("content-type", "application/json");
+request.AddParameter("application/json", "{\r\n   [requirementId1, requirementId2, requirementId3....]\r\n}", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+```
+
+> Input JSON Body
+
+```json
+  {
+    [requirementId1, requirementId2, requirementId3....]
+  }
+```
+> Example Response
+
+```json
+{
+  "deletedRowCount": 1,
+  "notFoundCount": 0,
+  "failureCount": 0,
+  "errorMessage" : []
+}
+```
