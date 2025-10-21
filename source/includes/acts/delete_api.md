@@ -306,7 +306,61 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 6. Requirement Table 
+### 6. Regulation Table 
+
+This section guides you through the process of removing/deleting the existing records from the Regulation table using the designated API endpoint.
+
+**Regulation DELETE endpoint**
+
+`DELETE` /actsapi/v1/regulation
+
+> Example Request & JSON Input Body 
+
+```javascript
+var request = require("request");
+
+var options = { method: 'DELETE',
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/regulation',
+  headers: { 'content-type': 'application/json' },
+  body:
+   { [regulationId1, regulationId2, regulationId3....]
+	 },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+```csharp
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/regulation");
+var request = new RestRequest(Method.DELETE);
+request.AddHeader("content-type", "application/json");
+request.AddParameter("application/json", "{\r\n   [regulationId1, regulationId2, regulationId3....]\r\n}", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+```
+
+> Input JSON Body
+
+```json
+  {
+    [regulationId1, regulationId2, regulationId3....]
+  }
+```
+> Example Response
+
+```json
+{
+  "deletedRowCount": 1,
+  "notFoundCount": 0,
+  "failureCount": 0,
+  "errorMessage" : []
+}
+```
+
+### 7. Requirement Table 
 
 This section guides you through the process of removing/deleting the existing records from the Requirement table using the designated API endpoint.
 
