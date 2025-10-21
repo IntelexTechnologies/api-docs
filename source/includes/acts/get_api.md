@@ -1255,7 +1255,7 @@ Attribute | Type | Description |
 PageNumber | int | Page number of the results to fetch.
 PageSize | int | The number of results per page
 regulationIds | int | Regulation ID is one of the unique identifier for this regulation record
-regulationNames| string | Regulation Names are one of the filter option and the parameter is for the names of the Regulations
+regulationNames| string | Regulation Names are one of the filter option and the parameter is for the name of the regulations
 regulationTypeIds | int | The unique identifier of the associated regulation type
 regulationStatusIds | int | The unique identifier of the associated regulation status
 agencyIds | int | The unique identifier of the associated agency
@@ -1427,7 +1427,7 @@ IRestResponse response = client.Execute(request);
       "externalIdentifier": "string",
       "comments": "string"
     }
-]
+  ]
 }
 ```
 
@@ -1441,10 +1441,10 @@ Attribute | Type | Description |
 --------- |------|-------------|
 PageNumber | int | Page number of the results to fetch.
 PageSize | int | The number of results per page
-requirementIds | int | Requirement ID is one of the unique identifier for this regulation record
+requirementIds | int | Requirement ID is one of the unique identifier for this requirement record
 regulationIds | int | The unique identifier of the associated regulation
 requirementTypeIds | int | The unique identifier of the associated requirement type
-requirementNames | string | Requirement Names is one of the filter option and the parameter is for the type of the requirement
+requirementNames | string | Requirement Names is one of the filter option and the parameter is for the name of the requirement
 requirementCategoryIds | int | The unique identifier of the associated requirement category type
 regulationActivityIds | int | The unique identifier of the associated regulation activity
 externalIdentifier| string | External Identifier a unique identifier for this record to an external data 
@@ -1455,7 +1455,102 @@ activeEndDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 
 inactiveStartDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 inactiveEndDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 
-### 19. Unit Table
+### 19. Requirement Limit Table
+This section elaborates on how to obtain data from the Requirement Limit table using the designated API endpoint. The endpoint allows you to retrieve all data from the Requirement Limit table or selectively acquire information by providing the Requirement Limit ID. Moreover, the Requirement Limit endpoint features pagination to facilitate efficient management of substantial datasets.
+
+> Example Request
+
+```javascript
+var request = require("request");
+
+var options = { method: 'GET'
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/requirementLimit' };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+```csharp
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/requirementLimit");
+var request = new RestRequest(Method.GET);
+IRestResponse response = client.Execute(request);
+```
+
+> Response Schema
+
+```json
+{
+  "currentPage": 1,
+  "totalPages": 3,
+  "currentPageSize": 500,
+  "maxAPIPageSize": 500,
+  "totalCount": 1346,
+  "hasPrevious": false,
+  "hasNext": true,
+  "data": [
+    {
+      "activeDate": "2025-10-21T11:09:26.877Z",
+      "inactiveDate": "2025-10-21T11:09:26.877Z",
+      "lastModifiedDate": "2025-10-21T11:09:26.877Z",
+      "externalIdentifier": "string",
+      "comments": "string",
+      "requirementLimitId": "number",
+      "requirementId": "number",
+      "requirementLimitTypeId": "number",
+      "compoundId": "number",
+      "compoundGroupTypeId": "number",
+      "unitId": "number",
+      "operator": "string",
+      "limitThreshold": "number",
+      "compareLimitInd": "string",
+      "compareDecimalPlaces": "number",
+      "compareOffset": "number",
+      "compareDays": "number",
+      "limitViolationText": "string",
+      "emissionTypeId": "number",
+      "emissionCategoryId": "number",
+      "operationTypeId": "number",
+      "analysisTypeId": "number",
+      "analysisValueName": "string",
+      "customLimitThreshold": "string",
+      "sortOrder": "number"
+    }
+  ]
+}
+```
+
+**API Endpoints**
+
+`GET` /actsapi/v1/requirementLimit
+
+**Query parameters**
+
+Attribute | Type | Description |
+--------- |------|-------------|
+PageNumber | int | Page number of the results to fetch.
+PageSize | int | The number of results per page
+requirementLimitIds | int | Requirement Limit ID is one of the unique identifier for this requirement limit record
+requirementIds | int | The unique identifier of the associated requirement
+requirementLimitTypeIds | int | The unique identifier of the associated requirement limit type
+compoundIds | int | The unique identifier of the associated compound
+compoundGroupTypeIds | int | The unique identifier of the associated compound group type
+unitIds | int | The unique identifier of the associated unit
+emissionTypeIds | int | The unique identifier of the associated emission type
+emissionCategoryIds | int | The unique identifier of the associated emission category
+operationTypeIds | int | The unique identifier of the associated operation type
+analysisTypeIds | int | The unique identifier of the associated operation type
+externalIdentifier| string | External Identifier a unique identifier for this record to an external data 
+lastModifiedStartDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+lastModifiedEndDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+activeStartDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+activeEndDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+inactiveStartDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+inactiveEndDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+
+### 20. Unit Table
 
 This section outlines how to retrieve data from the Unit table using the provided endpoint. You have the flexibility to fetch specific data by including unit Ids, unit type Ids, and units. The Unit type endpoint also supports pagination for managing large datasets effectively.
 
@@ -1523,7 +1618,7 @@ unitIds | int | Unit ID is one of the unique identifier for this Unit record
 unitTypeIds | int | Unit Type Ids is the unique identifier of the associated unit type
 units | string | Units is one of the filter option and the parameter is for the Name of the Unit
 
-### 20. Workflow Table
+### 21. Workflow Table
 
 This section outlines how to retrieve data from the Workflow table using the provided endpoint. You have the flexibility to fetch specific data by including workflow Ids, workflow type Ids, workflow date for both start date and end date along with the last modified date. The workflow endpoint also supports pagination for managing large datasets effectively.
 
@@ -1593,7 +1688,7 @@ lastModifiedEndDate | dateTime | Date time format "yyyy/mm/dd T hours:min:secZ -
 externalIdentifier | string | External Identifier a unique identifier for this record to an external data system
 
 
-### 21. Workflow Answer Table
+### 22. Workflow Answer Table
 
 This section outlines how to retrieve data from the Workflow Answer table using the provided endpoint. You have the flexibility to fetch specific data by including workflow Answer Ids, workflow Ids, workflow question Ids, category Answer Index, category Revision Index, question Answer Index, question Revision Index, workflow Answer, lastModifiedStartDate and lastModifiedEndDate. The Workflow Answer endpoint also supports pagination for managing large datasets effectively.
 
@@ -1671,7 +1766,7 @@ workflowAnswer | string | Wokflow Answer is the answer to the question..
 lastModifiedStartDate | dateTime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 lastModifiedEndDate | dateTime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 
-### 22. Workflow Equipment Table
+### 23. Workflow Equipment Table
 
 This section outlines how to retrieve data from the Workflow Equipment table using the provided endpoint. Equipment workflows are typically labeled Inspection. You have the flexibility to fetch specific data by including workflow Equipment Ids, workflow Ids, and Equipment Ids. The Workflow Equipment endpoint also supports pagination for managing large datasets effectively.
 
@@ -1736,7 +1831,7 @@ workflowEquipmentIds | int | Workflow Equipment ID is the unique identifier for 
 workflowIds | int | Workflow Ids is the unique identifier of the associated workflow.
 equipmentIds | string | Equipment IDs are the unique identifier of the associated equipment.
 
-### 23. Workflow Facility Table
+### 24. Workflow Facility Table
 
 This section outlines how to retrieve data from the Workflow Facility table using the provided endpoint. Facility workflows are typically labeled Inspection. You have the flexibility to fetch specific data by including workflow Facility Ids, workflow Ids and facility Ids. The Workflow Facility endpoint also supports pagination for managing large datasets effectively.
 
@@ -1803,7 +1898,7 @@ facilityIds | int | Facility IDs are the unique identifier for the associated fa
 
 
 
-### 24. Workflow Person Table
+### 25. Workflow Person Table
 
 This section outlines how to retrieve data from the Workflow Person table using the provided endpoint. You have the flexibility to fetch specific data by including workflow person Ids, workflow Ids and person Ids. The Unit type endpoint also supports pagination for managing large datasets effectively.
 
@@ -1868,7 +1963,7 @@ workflowPersonIds | int | Workflow Person ID is the unique identifier for the as
 workflowIds | int | Workflow IDs are the unique identifier for workflows (the named form or workflow type+date completed).
 personIds | int | Person IDs are the assigned values for associated person(s) and can be used as a filter.
 
-### 25. Workflow Question Table
+### 26. Workflow Question Table
 
 This section outlines how to retrieve data from the Workflow Question table using the provided endpoint. You have the flexibility to fetch specific data by including workflow Question Ids, workflow question categoy Ids, data type Ids, required Inds and questions. The Workflow Question endpoint also supports pagination for managing large datasets effectively.
 
@@ -1961,7 +2056,7 @@ dataTypeIds | int | Data Type IDs are the unique identifiers for the associated 
 requiredInds | string | Required Inds is the value if an answer is required before saving the form.
 questions | string | Questions are the question content values included on the form.
 
-### 26. Workflow Question Category Table
+### 27. Workflow Question Category Table
 
 This section outlines how to retrieve data from the Workflow Question Category table using the provided endpoint. You have the flexibility to fetch specific data by including workflow question category Ids, workflow type Ids and workflow question category. The Workflow Question Category endpoint also supports pagination for managing large datasets effectively.
 
@@ -2039,7 +2134,7 @@ workflowTypeIds | int | Workflow Type IDs are the unique identifiers for the ass
 workflow question category | string | Workflow Question Category is the category of the form type.
 
 
-### 27. Workflow Type Table
+### 28. Workflow Type Table
 
 This section outlines how to retrieve data from the Workflow Type table using the provided endpoint. You have the flexibility to fetch specific data by including workflow Ids, workflow type Ids, and workflows. The Unit type endpoint also supports pagination for managing large datasets effectively.
 
