@@ -1240,7 +1240,7 @@ IRestResponse response = client.Execute(request);
   "updatedRowCount": 0,
   "failureCount": 1,
   "errorMessage": [
-      "RegulationId: 103356 does not exist"
+      "Not found RegulationIds: 123041"
   ]
 }
 ```
