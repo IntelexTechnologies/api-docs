@@ -413,3 +413,57 @@ IRestResponse response = client.Execute(request);
   "errorMessage" : []
 }
 ```
+
+### 8. Requirement Limit Table 
+
+This section guides you through the process of removing/deleting the existing records from the Requirement Limit table using the designated API endpoint.
+
+**Requirement Limit DELETE endpoint**
+
+`DELETE` /actsapi/v1/requirementlimit
+
+> Example Request & JSON Input Body 
+
+```javascript
+var request = require("request");
+
+var options = { method: 'DELETE',
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/requirementlimit',
+  headers: { 'content-type': 'application/json' },
+  body:
+   { [requirementLimitId1, requirementLimitId2, requirementLimitId3....]
+	 },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+```csharp
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/requirementlimit");
+var request = new RestRequest(Method.DELETE);
+request.AddHeader("content-type", "application/json");
+request.AddParameter("application/json", "{\r\n   [requirementLimitId1, requirementLimitId2, requirementLimitId3....]\r\n}", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+```
+
+> Input JSON Body
+
+```json
+  {
+    [requirementLimitId1, requirementLimitId2, requirementLimitId3....]
+  }
+```
+> Example Response
+
+```json
+{
+  "deletedRowCount": 1,
+  "notFoundCount": 0,
+  "failureCount": 0,
+  "errorMessage" : []
+}
+```
