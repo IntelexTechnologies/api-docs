@@ -1136,11 +1136,120 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 12. Requirement Table 
+### 12. Regulation Table 
+
+This section outlines the process of adding new entries or modifying existing records within the Regulation table using the dedicated API endpoint.
+
+**Requirement POST Endpoint**
+
+`POST` /actsapi/v1/regulation
+
+> Example Request & JSON Input Body 
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/regulation',
+  headers: { 'content-type': 'application/json' },
+  body:
+      [
+        {
+          "activeDate": "2025-10-21T15:14:09.542Z",
+          "inactiveDate": "2025-10-21T15:14:09.543Z",
+          "externalIdentifier": "string",
+          "comments": "string",
+          "regulationId": "number",
+          "agencyId": "number",
+          "regulationTypeId": "number",
+          "mediaId": "number",
+          "regulationName": "string",
+          "regulationStatusId": "number",
+          "applicationDate": "2025-10-21T15:14:09.543Z",
+          "completeDate": "2025-10-21T15:14:09.543Z",
+          "publicNoticeDate": "2025-10-21T15:14:09.543Z",
+          "issueDate": "2025-10-21T15:14:09.543Z",
+          "renewalDate": "2025-10-21T15:14:09.543Z",
+          "expirationDate": "2025-10-21T15:14:09.543Z",
+          "description": "string",
+          "applicabilityCriteria": "string",
+          "sortOrder": "number"
+        }
+      ],
+  json: true };
+
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+```csharp
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/regulation");
+var request = new RestRequest(Method.POST);
+request.AddHeader("content-type", "application/json");
+request.AddParameter("application/json", "[{\"activeDate\":\"2025-10-21T15:14:09.542Z\",\"inactiveDate\":\"2025-10-21T15:14:09.543Z\",\"externalIdentifier\":\"string\",\"comments\":\"string\",\"regulationId\":\"number\",\"agencyId\":\"number\",\"regulationTypeId\":\"number\",\"mediaId\":\"number\",\"regulationName\":\"string\",\"regulationStatusId\":\"number\",\"applicationDate\":\"2025-10-21T15:14:09.543Z\",\"completeDate\":\"2025-10-21T15:14:09.543Z\",\"publicNoticeDate\":\"2025-10-21T15:14:09.543Z\",\"issueDate\":\"2025-10-21T15:14:09.543Z\",\"renewalDate\":\"2025-10-21T15:14:09.543Z\",\"expirationDate\":\"2025-10-21T15:14:09.543Z\",\"description\":\"string\",\"applicabilityCriteria\":\"string\",\"sortOrder\":\"number\"}]", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+```
+
+> Input JSON Body 
+
+```json
+[
+    {
+      "activeDate": "2025-10-21T15:14:09.542Z",
+      "inactiveDate": "2025-10-21T15:14:09.543Z",
+      "externalIdentifier": "string",
+      "comments": "string",
+      "regulationId": "number",
+      "agencyId": "number",
+      "regulationTypeId": "number",
+      "mediaId": "number",
+      "regulationName": "string",
+      "regulationStatusId": "number",
+      "applicationDate": "2025-10-21T15:14:09.543Z",
+      "completeDate": "2025-10-21T15:14:09.543Z",
+      "publicNoticeDate": "2025-10-21T15:14:09.543Z",
+      "issueDate": "2025-10-21T15:14:09.543Z",
+      "renewalDate": "2025-10-21T15:14:09.543Z",
+      "expirationDate": "2025-10-21T15:14:09.543Z",
+      "description": "string",
+      "applicabilityCriteria": "string",
+      "sortOrder": "number"
+    }
+]
+```
+> Example Response
+
+```json
+{
+	"insertedRowCount" : 2, 
+	"updatedRowCount" : 3,
+	"failureCount" : 0,
+	"errorMessage" : []
+}
+```
+
+> Example Output For When Data Get's Failed To Insert or Update
+
+```json
+{
+  "insertedRowCount": 0,
+  "updatedRowCount": 0,
+  "failureCount": 1,
+  "errorMessage": [
+      "RegulationId: 103356 does not exist"
+  ]
+}
+```
+
+### 13. Requirement Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Requirement table using the dedicated API endpoint.
 
-**Workflow POST Endpoint**
+**Requirement POST Endpoint**
 
 `POST` /actsapi/v1/requirement
 
@@ -1179,7 +1288,6 @@ var options = { method: 'POST',
           "conditionalFormula": "string",
           "activeDate": "2024-01-03T08:16:24.155Z",
           "inactiveDate": "2024-01-03T08:16:24.155Z",
-          "lastModifiedDate": "2024-01-03T08:16:24.155Z",
           "externalIdentifier": "string",
           "comments": "string"
         }
@@ -1195,10 +1303,10 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/workflow");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/requirement");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
-request.AddParameter("application/json", "[{\"requirementId\":\"number\",\"regulationId\":\"number\",\"requirementTypeId\":\"number\",\"requirementName\":\"string\",\"requirementFrequencyId\":\"number\",\"requirementCategoryId\":\"number\",\"regulationActivityId\":\"number\",\"description\":\"string\",\"associatedRequirements\":\"string\",\"applicabilityCriteria\":\"string\",\"sortOrder\":\"number\",\"generateTaskInd\":\"string\",\"taskText\":\"string\",\"firstDueDate\":\"2024-01-03T08:16:24.155Z\",\"generateFacilityTasksInd\":\"string\",\"combineTasksInd\":\"string\",\"attributeTypeId\":\"number\",\"triggerOffset\":\"number\",\"triggerOffsetType\":\"string\",\"creationOffset\":\"number\",\"dependentRequirementId\":\"number\",\"conditionalFormula\":\"string\",\"activeDate\":\"2024-01-03T08:16:24.155Z\",\"inactiveDate\":\"2024-01-03T08:16:24.155Z\",\"lastModifiedDate\":\"2024-01-03T08:16:24.155Z\",\"externalIdentifier\":\"string\",\"comments\":\"string\"}]", ParameterType.RequestBody);
+request.AddParameter("application/json", "[{\"requirementId\":\"number\",\"regulationId\":\"number\",\"requirementTypeId\":\"number\",\"requirementName\":\"string\",\"requirementFrequencyId\":\"number\",\"requirementCategoryId\":\"number\",\"regulationActivityId\":\"number\",\"description\":\"string\",\"associatedRequirements\":\"string\",\"applicabilityCriteria\":\"string\",\"sortOrder\":\"number\",\"generateTaskInd\":\"string\",\"taskText\":\"string\",\"firstDueDate\":\"2024-01-03T08:16:24.155Z\",\"generateFacilityTasksInd\":\"string\",\"combineTasksInd\":\"string\",\"attributeTypeId\":\"number\",\"triggerOffset\":\"number\",\"triggerOffsetType\":\"string\",\"creationOffset\":\"number\",\"dependentRequirementId\":\"number\",\"conditionalFormula\":\"string\",\"activeDate\":\"2024-01-03T08:16:24.155Z\",\"inactiveDate\":\"2024-01-03T08:16:24.155Z\",\"externalIdentifier\":\"string\",\"comments\":\"string\"}]", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -1231,7 +1339,6 @@ IRestResponse response = client.Execute(request);
     "conditionalFormula": "string",
     "activeDate": "2024-01-03T08:16:24.155Z",
     "inactiveDate": "2024-01-03T08:16:24.155Z",
-    "lastModifiedDate": "2024-01-03T08:16:24.155Z",
     "externalIdentifier": "string",
     "comments": "string"
   }
@@ -1262,7 +1369,7 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 13. Workflow Table 
+### 14. Workflow Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Workflow table using the dedicated API endpoint.
 
@@ -1348,7 +1455,7 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 14. Workflow Answer Table 
+### 15. Workflow Answer Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Workflow Answer table using the dedicated API endpoint.
 
@@ -1442,7 +1549,7 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 15. Workflow Equipment Table 
+### 16. Workflow Equipment Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Workflow Equipment table using the dedicated API endpoint.
 
@@ -1528,7 +1635,7 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 16. Workflow Facility Table 
+### 17. Workflow Facility Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Workflow Facility table using the dedicated API endpoint.
 
@@ -1615,7 +1722,7 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 17. Workflow Person Table 
+### 18. Workflow Person Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Workflow Person table using the dedicated API endpoint.
 
