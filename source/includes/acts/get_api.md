@@ -1356,13 +1356,106 @@ Attribute | Type | Description |
 --------- |------|-------------|
 PageNumber | int | Page number of the results to fetch.
 PageSize | int | The number of results per page
-regulationTypeIds | int | The unique identifier of the associated regulation type
+regulationTypeIds | int | Regulation Type ID is one of the unique identifier for this regulation type record
 reuglationTypes | string | Regulation Types is one of the filter option and the parameter is for the type of the regulation
 externalIdentifier| string | External Identifier a unique identifier for this record to an external data 
 lastModifiedStartDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 lastModifiedEndDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 
-### 18. Unit Table
+### 18. Requirement Table
+This section elaborates on how to obtain data from the Requirement table using the designated API endpoint. The endpoint allows you to retrieve all data from the Requirement table or selectively acquire information by providing the Requirement ID. Moreover, the Requirement endpoint features pagination to facilitate efficient management of substantial datasets.
+
+> Example Request
+
+```javascript
+var request = require("request");
+
+var options = { method: 'GET'
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/requirement' };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+```csharp
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/requirement");
+var request = new RestRequest(Method.GET);
+IRestResponse response = client.Execute(request);
+```
+
+> Response Schema
+
+```json
+{
+  "currentPage": 1,
+  "totalPages": 3,
+  "currentPageSize": 500,
+  "maxAPIPageSize": 500,
+  "totalCount": 1346,
+  "hasPrevious": false,
+  "hasNext": true,
+  "data": [
+    {
+      "requirementId": "number",
+      "regulationId": "number",
+      "requirementTypeId": "number",
+      "requirementName": "string",
+      "requirementFrequencyId": "number",
+      "requirementCategoryId": "number",
+      "regulationActivityId": "number",
+      "description": "string",
+      "associatedRequirements": "string",
+      "applicabilityCriteria": "string",
+      "sortOrder": "number",
+      "generateTaskInd": "string",
+      "taskText": "string",
+      "firstDueDate": "2025-10-21T10:58:41.085Z",
+      "generateFacilityTasksInd": "string",
+      "combineTasksInd": "string",
+      "attributeTypeId": "number",
+      "triggerOffset": "number",
+      "triggerOffsetType": "string",
+      "creationOffset": "number",
+      "dependentRequirementId": "number",
+      "conditionalFormula": "string",
+      "activeDate": "2025-10-21T10:58:41.085Z",
+      "inactiveDate": "2025-10-21T10:58:41.085Z",
+      "lastModifiedDate": "2025-10-21T10:58:41.085Z",
+      "externalIdentifier": "string",
+      "comments": "string"
+    }
+]
+}
+```
+
+**API Endpoints**
+
+`GET` /actsapi/v1/requirement
+
+**Query parameters**
+
+Attribute | Type | Description |
+--------- |------|-------------|
+PageNumber | int | Page number of the results to fetch.
+PageSize | int | The number of results per page
+requirementIds | int | Requirement ID is one of the unique identifier for this regulation record
+regulationIds | int | The unique identifier of the associated regulation
+requirementTypeIds | int | The unique identifier of the associated requirement type
+requirementNames | string | Requirement Names is one of the filter option and the parameter is for the type of the requirement
+requirementCategoryIds | int | The unique identifier of the associated requirement category type
+regulationActivityIds | int | The unique identifier of the associated regulation activity
+externalIdentifier| string | External Identifier a unique identifier for this record to an external data 
+lastModifiedStartDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+lastModifiedEndDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+activeStartDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+activeEndDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+inactiveStartDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+inactiveEndDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+
+### 19. Unit Table
 
 This section outlines how to retrieve data from the Unit table using the provided endpoint. You have the flexibility to fetch specific data by including unit Ids, unit type Ids, and units. The Unit type endpoint also supports pagination for managing large datasets effectively.
 
@@ -1430,7 +1523,7 @@ unitIds | int | Unit ID is one of the unique identifier for this Unit record
 unitTypeIds | int | Unit Type Ids is the unique identifier of the associated unit type
 units | string | Units is one of the filter option and the parameter is for the Name of the Unit
 
-### 19. Workflow Table
+### 20. Workflow Table
 
 This section outlines how to retrieve data from the Workflow table using the provided endpoint. You have the flexibility to fetch specific data by including workflow Ids, workflow type Ids, workflow date for both start date and end date along with the last modified date. The workflow endpoint also supports pagination for managing large datasets effectively.
 
@@ -1500,7 +1593,7 @@ lastModifiedEndDate | dateTime | Date time format "yyyy/mm/dd T hours:min:secZ -
 externalIdentifier | string | External Identifier a unique identifier for this record to an external data system
 
 
-### 20. Workflow Answer Table
+### 21. Workflow Answer Table
 
 This section outlines how to retrieve data from the Workflow Answer table using the provided endpoint. You have the flexibility to fetch specific data by including workflow Answer Ids, workflow Ids, workflow question Ids, category Answer Index, category Revision Index, question Answer Index, question Revision Index, workflow Answer, lastModifiedStartDate and lastModifiedEndDate. The Workflow Answer endpoint also supports pagination for managing large datasets effectively.
 
@@ -1578,7 +1671,7 @@ workflowAnswer | string | Wokflow Answer is the answer to the question..
 lastModifiedStartDate | dateTime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 lastModifiedEndDate | dateTime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 
-### 21. Workflow Equipment Table
+### 22. Workflow Equipment Table
 
 This section outlines how to retrieve data from the Workflow Equipment table using the provided endpoint. Equipment workflows are typically labeled Inspection. You have the flexibility to fetch specific data by including workflow Equipment Ids, workflow Ids, and Equipment Ids. The Workflow Equipment endpoint also supports pagination for managing large datasets effectively.
 
@@ -1643,7 +1736,7 @@ workflowEquipmentIds | int | Workflow Equipment ID is the unique identifier for 
 workflowIds | int | Workflow Ids is the unique identifier of the associated workflow.
 equipmentIds | string | Equipment IDs are the unique identifier of the associated equipment.
 
-### 22. Workflow Facility Table
+### 23. Workflow Facility Table
 
 This section outlines how to retrieve data from the Workflow Facility table using the provided endpoint. Facility workflows are typically labeled Inspection. You have the flexibility to fetch specific data by including workflow Facility Ids, workflow Ids and facility Ids. The Workflow Facility endpoint also supports pagination for managing large datasets effectively.
 
@@ -1710,7 +1803,7 @@ facilityIds | int | Facility IDs are the unique identifier for the associated fa
 
 
 
-### 23. Workflow Person Table
+### 24. Workflow Person Table
 
 This section outlines how to retrieve data from the Workflow Person table using the provided endpoint. You have the flexibility to fetch specific data by including workflow person Ids, workflow Ids and person Ids. The Unit type endpoint also supports pagination for managing large datasets effectively.
 
@@ -1775,7 +1868,7 @@ workflowPersonIds | int | Workflow Person ID is the unique identifier for the as
 workflowIds | int | Workflow IDs are the unique identifier for workflows (the named form or workflow type+date completed).
 personIds | int | Person IDs are the assigned values for associated person(s) and can be used as a filter.
 
-### 24. Workflow Question Table
+### 25. Workflow Question Table
 
 This section outlines how to retrieve data from the Workflow Question table using the provided endpoint. You have the flexibility to fetch specific data by including workflow Question Ids, workflow question categoy Ids, data type Ids, required Inds and questions. The Workflow Question endpoint also supports pagination for managing large datasets effectively.
 
@@ -1868,7 +1961,7 @@ dataTypeIds | int | Data Type IDs are the unique identifiers for the associated 
 requiredInds | string | Required Inds is the value if an answer is required before saving the form.
 questions | string | Questions are the question content values included on the form.
 
-### 25. Workflow Question Category Table
+### 26. Workflow Question Category Table
 
 This section outlines how to retrieve data from the Workflow Question Category table using the provided endpoint. You have the flexibility to fetch specific data by including workflow question category Ids, workflow type Ids and workflow question category. The Workflow Question Category endpoint also supports pagination for managing large datasets effectively.
 
@@ -1946,7 +2039,7 @@ workflowTypeIds | int | Workflow Type IDs are the unique identifiers for the ass
 workflow question category | string | Workflow Question Category is the category of the form type.
 
 
-### 26. Workflow Type Table
+### 27. Workflow Type Table
 
 This section outlines how to retrieve data from the Workflow Type table using the provided endpoint. You have the flexibility to fetch specific data by including workflow Ids, workflow type Ids, and workflows. The Unit type endpoint also supports pagination for managing large datasets effectively.
 
