@@ -1136,7 +1136,133 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 12. Workflow Table 
+### 12. Requirement Table 
+
+This section outlines the process of adding new entries or modifying existing records within the Requirement table using the dedicated API endpoint.
+
+**Workflow POST Endpoint**
+
+`POST` /actsapi/v1/requirement
+
+> Example Request & JSON Input Body 
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/requirement',
+  headers: { 'content-type': 'application/json' },
+  body:
+      [
+        {
+          "requirementId": "number",
+          "regulationId": "number",
+          "requirementTypeId": "number",
+          "requirementName": "string",
+          "requirementFrequencyId": "number",
+          "requirementCategoryId": "number",
+          "regulationActivityId": "number",
+          "description": "string",
+          "associatedRequirements": "string",
+          "applicabilityCriteria": "string",
+          "sortOrder": "number",
+          "generateTaskInd": "string",
+          "taskText": "string",
+          "firstDueDate": "2024-01-03T08:16:24.155Z",
+          "generateFacilityTasksInd": "string",
+          "combineTasksInd": "string",
+          "attributeTypeId": "number",
+          "triggerOffset": "number",
+          "triggerOffsetType": "string",
+          "creationOffset": "number",
+          "dependentRequirementId": "number",
+          "conditionalFormula": "string",
+          "activeDate": "2024-01-03T08:16:24.155Z",
+          "inactiveDate": "2024-01-03T08:16:24.155Z",
+          "lastModifiedDate": "2024-01-03T08:16:24.155Z",
+          "externalIdentifier": "string",
+          "comments": "string"
+        }
+  ],
+  json: true };
+
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+```csharp
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/workflow");
+var request = new RestRequest(Method.POST);
+request.AddHeader("content-type", "application/json");
+request.AddParameter("application/json", "[{\"requirementId\":\"number\",\"regulationId\":\"number\",\"requirementTypeId\":\"number\",\"requirementName\":\"string\",\"requirementFrequencyId\":\"number\",\"requirementCategoryId\":\"number\",\"regulationActivityId\":\"number\",\"description\":\"string\",\"associatedRequirements\":\"string\",\"applicabilityCriteria\":\"string\",\"sortOrder\":\"number\",\"generateTaskInd\":\"string\",\"taskText\":\"string\",\"firstDueDate\":\"2024-01-03T08:16:24.155Z\",\"generateFacilityTasksInd\":\"string\",\"combineTasksInd\":\"string\",\"attributeTypeId\":\"number\",\"triggerOffset\":\"number\",\"triggerOffsetType\":\"string\",\"creationOffset\":\"number\",\"dependentRequirementId\":\"number\",\"conditionalFormula\":\"string\",\"activeDate\":\"2024-01-03T08:16:24.155Z\",\"inactiveDate\":\"2024-01-03T08:16:24.155Z\",\"lastModifiedDate\":\"2024-01-03T08:16:24.155Z\",\"externalIdentifier\":\"string\",\"comments\":\"string\"}]", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+```
+
+> Input JSON Body 
+
+```json
+[
+  {
+    "requirementId": "number",
+    "regulationId": "number",
+    "requirementTypeId": "number",
+    "requirementName": "string",
+    "requirementFrequencyId": "number",
+    "requirementCategoryId": "number",
+    "regulationActivityId": "number",
+    "description": "string",
+    "associatedRequirements": "string",
+    "applicabilityCriteria": "string",
+    "sortOrder": "number",
+    "generateTaskInd": "string",
+    "taskText": "string",
+    "firstDueDate": "2024-01-03T08:16:24.155Z",
+    "generateFacilityTasksInd": "string",
+    "combineTasksInd": "string",
+    "attributeTypeId": "number",
+    "triggerOffset": "number",
+    "triggerOffsetType": "string",
+    "creationOffset": "number",
+    "dependentRequirementId": "number",
+    "conditionalFormula": "string",
+    "activeDate": "2024-01-03T08:16:24.155Z",
+    "inactiveDate": "2024-01-03T08:16:24.155Z",
+    "lastModifiedDate": "2024-01-03T08:16:24.155Z",
+    "externalIdentifier": "string",
+    "comments": "string"
+  }
+]
+```
+> Example Response
+
+```json
+{
+	"insertedRowCount" : 2, 
+	"updatedRowCount" : 3,
+	"failureCount" : 0,
+	"errorMessage" : []
+}
+```
+
+> Example Output For When Data Get's Failed To Insert or Update
+
+```json
+{
+    "insertedRowCount": 0,
+    "updatedRowCount": 0,
+    "failureCount": 1,
+    "errorMessage": [
+        "RequirementId: 103356 does not exist"
+    ]
+}
+
+```
+
+### 13. Workflow Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Workflow table using the dedicated API endpoint.
 
@@ -1222,7 +1348,7 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 13. Workflow Answer Table 
+### 14. Workflow Answer Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Workflow Answer table using the dedicated API endpoint.
 
@@ -1316,7 +1442,7 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 14. Workflow Equipment Table 
+### 15. Workflow Equipment Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Workflow Equipment table using the dedicated API endpoint.
 
@@ -1402,7 +1528,7 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 15. Workflow Facility Table 
+### 16. Workflow Facility Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Workflow Facility table using the dedicated API endpoint.
 
@@ -1489,7 +1615,7 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 16. Workflow Person Table 
+### 17. Workflow Person Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Workflow Person table using the dedicated API endpoint.
 
