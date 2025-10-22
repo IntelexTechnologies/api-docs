@@ -265,7 +265,7 @@ compoundIds| int | The unique identifier of the associated compound
 calculationIds| int | The unique identifier of the associated calculation
 estimatedInd| string | Estimated Ind can be of value 'Y' or 'N'
 badDataFlag| boolean | Bad Data flag can be of value true or false
-externalIdentifier| string | External Identifier a unique identifier for this record to an external data 
+externalIdentifier| string | External Identifier is a unique identifier for this record to an external data system 
 lastModifiedStartDate| datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 lastModifiedEndDate| datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 activeStartDate| datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
@@ -1272,7 +1272,7 @@ renewalStartDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex
 renewalEndDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 expirationStartDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 expirationEndDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
-externalIdentifier| string | External Identifier a unique identifier for this record to an external data 
+externalIdentifier| string | External Identifier is a unique identifier for this record to an external data system 
 lastModifiedStartDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 lastModifiedEndDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 activeStartDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
@@ -1357,8 +1357,8 @@ Attribute | Type | Description |
 PageNumber | int | Page number of the results to fetch.
 PageSize | int | The number of results per page
 regulationTypeIds | int | Regulation Type ID is one of the unique identifier for this regulation type record
-reuglationTypes | string | Regulation Types is one of the filter option and the parameter is for the type of the regulation
-externalIdentifier| string | External Identifier a unique identifier for this record to an external data 
+regulationTypes | string | Regulation Types is one of the filter option and the parameter is for the type of the regulation
+externalIdentifier| string | External Identifier is a unique identifier for this record to an external data system 
 lastModifiedStartDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 lastModifiedEndDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 
@@ -1445,9 +1445,9 @@ requirementIds | int | Requirement ID is one of the unique identifier for this r
 regulationIds | int | The unique identifier of the associated regulation
 requirementTypeIds | int | The unique identifier of the associated requirement type
 requirementNames | string | Requirement Names is one of the filter option and the parameter is for the name of the requirement
-requirementCategoryIds | int | The unique identifier of the associated requirement category type
+requirementCategoryIds | int | The unique identifier of the associated requirement category
 regulationActivityIds | int | The unique identifier of the associated regulation activity
-externalIdentifier| string | External Identifier a unique identifier for this record to an external data 
+externalIdentifier| string | External Identifier is a unique identifier for this record to an external data system 
 lastModifiedStartDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 lastModifiedEndDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 activeStartDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
@@ -1542,7 +1542,7 @@ emissionTypeIds | int | The unique identifier of the associated emission type
 emissionCategoryIds | int | The unique identifier of the associated emission category
 operationTypeIds | int | The unique identifier of the associated operation type
 analysisTypeIds | int | The unique identifier of the associated operation type
-externalIdentifier| string | External Identifier a unique identifier for this record to an external data 
+externalIdentifier| string | External Identifier is a unique identifier for this record to an external data system 
 lastModifiedStartDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 lastModifiedEndDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 activeStartDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"

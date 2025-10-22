@@ -1140,7 +1140,7 @@ IRestResponse response = client.Execute(request);
 
 This section outlines the process of adding new entries or modifying existing records within the Regulation table using the dedicated API endpoint.
 
-**Requirement POST Endpoint**
+**Regulation POST Endpoint**
 
 `POST` /actsapi/v1/regulation
 
@@ -1374,7 +1374,7 @@ This section outlines the process of adding new entries or modifying existing re
 
 **Requirement Limit POST Endpoint**
 
-`POST` /actsapi/v1/requirementlimit
+`POST` /actsapi/v1/requirementLimit
 
 > Example Request & JSON Input Body 
 
@@ -1382,7 +1382,7 @@ This section outlines the process of adding new entries or modifying existing re
 var request = require("request");
 
 var options = { method: 'POST',
-  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/requirementlimit',
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/requirementLimit',
   headers: { 'content-type': 'application/json' },
   body:
       [
@@ -1422,7 +1422,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/requirementlimit");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/requirementLimit");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "[{\"activeDate\":\"2025-10-21T15:34:20.173Z\",\"inactiveDate\":\"2025-10-21T15:34:20.173Z\",\"externalIdentifier\":\"string\",\"comments\":\"string\",\"requirementLimitId\":\"number\",\"requirementId\":\"number\",\"requirementLimitTypeId\":\"number\",\"compoundId\":\"number\",\"compoundGroupTypeId\":\"number\",\"unitId\":\"number\",\"operator\":\"string\",\"limitThreshold\":\"number\",\"compareLimitInd\":\"string\",\"compareDecimalPlaces\":\"number\",\"compareOffset\":\"number\",\"compareDays\":\"number\",\"limitViolationText\":\"string\",\"emissionTypeId\":\"number\",\"emissionCategoryId\":\"number\",\"operationTypeId\":\"number\",\"analysisTypeId\":\"number\",\"analysisValueName\":\"string\",\"customLimitThreshold\":\"string\",\"sortOrder\":\"number\"}]", ParameterType.RequestBody);
