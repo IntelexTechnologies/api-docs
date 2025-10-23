@@ -1070,7 +1070,339 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<h3 id="12-workflow-table">12. Workflow Table</h3>
+<h3 id="12-regulation-table">12. Regulation Table</h3>
+
+<p>This section outlines the process of adding new entries or modifying existing records within the Regulation table using the dedicated API endpoint.</p>
+
+<p><strong>Regulation POST Endpoint</strong></p>
+
+<p><code class="prettyprint">POST</code> /actsapi/v1/regulation</p>
+
+<blockquote>
+<p>Example Request &amp; JSON Input Body </p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://[tenant].actsapi.intelex.com/actsapi/v1/regulation'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span> <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span>
+      <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">"activeDate"</span><span class="p">:</span> <span class="s2">"2025-10-21T15:14:09.542Z"</span><span class="p">,</span>
+          <span class="s2">"inactiveDate"</span><span class="p">:</span> <span class="s2">"2025-10-21T15:14:09.543Z"</span><span class="p">,</span>
+          <span class="s2">"externalIdentifier"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
+          <span class="s2">"comments"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
+          <span class="s2">"regulationId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+          <span class="s2">"agencyId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+          <span class="s2">"regulationTypeId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+          <span class="s2">"mediaId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+          <span class="s2">"regulationName"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
+          <span class="s2">"regulationStatusId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+          <span class="s2">"applicationDate"</span><span class="p">:</span> <span class="s2">"2025-10-21T15:14:09.543Z"</span><span class="p">,</span>
+          <span class="s2">"completeDate"</span><span class="p">:</span> <span class="s2">"2025-10-21T15:14:09.543Z"</span><span class="p">,</span>
+          <span class="s2">"publicNoticeDate"</span><span class="p">:</span> <span class="s2">"2025-10-21T15:14:09.543Z"</span><span class="p">,</span>
+          <span class="s2">"issueDate"</span><span class="p">:</span> <span class="s2">"2025-10-21T15:14:09.543Z"</span><span class="p">,</span>
+          <span class="s2">"renewalDate"</span><span class="p">:</span> <span class="s2">"2025-10-21T15:14:09.543Z"</span><span class="p">,</span>
+          <span class="s2">"expirationDate"</span><span class="p">:</span> <span class="s2">"2025-10-21T15:14:09.543Z"</span><span class="p">,</span>
+          <span class="s2">"description"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
+          <span class="s2">"applicabilityCriteria"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
+          <span class="s2">"sortOrder"</span><span class="p">:</span> <span class="s2">"number"</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
+
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://[tenant].actsapi.intelex.com/actsapi/v1/regulation"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"[{\"activeDate\":\"2025-10-21T15:14:09.542Z\",\"inactiveDate\":\"2025-10-21T15:14:09.543Z\",\"externalIdentifier\":\"string\",\"comments\":\"string\",\"regulationId\":\"number\",\"agencyId\":\"number\",\"regulationTypeId\":\"number\",\"mediaId\":\"number\",\"regulationName\":\"string\",\"regulationStatusId\":\"number\",\"applicationDate\":\"2025-10-21T15:14:09.543Z\",\"completeDate\":\"2025-10-21T15:14:09.543Z\",\"publicNoticeDate\":\"2025-10-21T15:14:09.543Z\",\"issueDate\":\"2025-10-21T15:14:09.543Z\",\"renewalDate\":\"2025-10-21T15:14:09.543Z\",\"expirationDate\":\"2025-10-21T15:14:09.543Z\",\"description\":\"string\",\"applicabilityCriteria\":\"string\",\"sortOrder\":\"number\"}]"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Input JSON Body </p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"activeDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-10-21T15:14:09.542Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"inactiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-10-21T15:14:09.543Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"externalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"regulationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"agencyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"regulationTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"mediaId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"regulationName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"regulationStatusId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"applicationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-10-21T15:14:09.543Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"completeDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-10-21T15:14:09.543Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"publicNoticeDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-10-21T15:14:09.543Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"issueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-10-21T15:14:09.543Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"renewalDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-10-21T15:14:09.543Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"expirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-10-21T15:14:09.543Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"applicabilityCriteria"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sortOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"insertedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"updatedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"failureCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errorMessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Example Output For When Data Get&rsquo;s Failed To Insert or Update</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"insertedRowCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updatedRowCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"failureCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"errorMessage"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"Not found RegulationIds: 123041"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="13-requirement-table">13. Requirement Table</h3>
+
+<p>This section outlines the process of adding new entries or modifying existing records within the Requirement table using the dedicated API endpoint.</p>
+
+<p><strong>Requirement POST Endpoint</strong></p>
+
+<p><code class="prettyprint">POST</code> /actsapi/v1/requirement</p>
+
+<blockquote>
+<p>Example Request &amp; JSON Input Body </p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://[tenant].actsapi.intelex.com/actsapi/v1/requirement'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span> <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span>
+      <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">"requirementId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+          <span class="s2">"regulationId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+          <span class="s2">"requirementTypeId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+          <span class="s2">"requirementName"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
+          <span class="s2">"requirementFrequencyId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+          <span class="s2">"requirementCategoryId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+          <span class="s2">"regulationActivityId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+          <span class="s2">"description"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
+          <span class="s2">"associatedRequirements"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
+          <span class="s2">"applicabilityCriteria"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
+          <span class="s2">"sortOrder"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+          <span class="s2">"generateTaskInd"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
+          <span class="s2">"taskText"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
+          <span class="s2">"firstDueDate"</span><span class="p">:</span> <span class="s2">"2024-01-03T08:16:24.155Z"</span><span class="p">,</span>
+          <span class="s2">"generateFacilityTasksInd"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
+          <span class="s2">"combineTasksInd"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
+          <span class="s2">"attributeTypeId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+          <span class="s2">"triggerOffset"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+          <span class="s2">"triggerOffsetType"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
+          <span class="s2">"creationOffset"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+          <span class="s2">"dependentRequirementId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+          <span class="s2">"conditionalFormula"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
+          <span class="s2">"activeDate"</span><span class="p">:</span> <span class="s2">"2024-01-03T08:16:24.155Z"</span><span class="p">,</span>
+          <span class="s2">"inactiveDate"</span><span class="p">:</span> <span class="s2">"2024-01-03T08:16:24.155Z"</span><span class="p">,</span>
+          <span class="s2">"externalIdentifier"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
+          <span class="s2">"comments"</span><span class="p">:</span> <span class="s2">"string"</span>
+        <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
+
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://[tenant].actsapi.intelex.com/actsapi/v1/requirement"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"[{\"requirementId\":\"number\",\"regulationId\":\"number\",\"requirementTypeId\":\"number\",\"requirementName\":\"string\",\"requirementFrequencyId\":\"number\",\"requirementCategoryId\":\"number\",\"regulationActivityId\":\"number\",\"description\":\"string\",\"associatedRequirements\":\"string\",\"applicabilityCriteria\":\"string\",\"sortOrder\":\"number\",\"generateTaskInd\":\"string\",\"taskText\":\"string\",\"firstDueDate\":\"2024-01-03T08:16:24.155Z\",\"generateFacilityTasksInd\":\"string\",\"combineTasksInd\":\"string\",\"attributeTypeId\":\"number\",\"triggerOffset\":\"number\",\"triggerOffsetType\":\"string\",\"creationOffset\":\"number\",\"dependentRequirementId\":\"number\",\"conditionalFormula\":\"string\",\"activeDate\":\"2024-01-03T08:16:24.155Z\",\"inactiveDate\":\"2024-01-03T08:16:24.155Z\",\"externalIdentifier\":\"string\",\"comments\":\"string\"}]"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Input JSON Body </p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"requirementId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"regulationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requirementTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requirementName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requirementFrequencyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requirementCategoryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"regulationActivityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"associatedRequirements"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"applicabilityCriteria"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sortOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"generateTaskInd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"taskText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"firstDueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-01-03T08:16:24.155Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"generateFacilityTasksInd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"combineTasksInd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"attributeTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"triggerOffset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"triggerOffsetType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"creationOffset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dependentRequirementId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"conditionalFormula"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"activeDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-01-03T08:16:24.155Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"inactiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-01-03T08:16:24.155Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"externalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"insertedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"updatedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"failureCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errorMessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Example Output For When Data Get&rsquo;s Failed To Insert or Update</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"insertedRowCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updatedRowCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"failureCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errorMessage"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"RequirementId: 103356 does not exist"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<h3 id="14-requirement-limit-table">14. Requirement Limit Table</h3>
+
+<p>This section outlines the process of adding new entries or modifying existing records within the Requirement Limit table using the dedicated API endpoint.</p>
+
+<p><strong>Requirement Limit POST Endpoint</strong></p>
+
+<p><code class="prettyprint">POST</code> /actsapi/v1/requirementLimit</p>
+
+<blockquote>
+<p>Example Request &amp; JSON Input Body </p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://[tenant].actsapi.intelex.com/actsapi/v1/requirementLimit'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span> <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span>
+      <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">"activeDate"</span><span class="p">:</span> <span class="s2">"2025-10-21T15:34:20.173Z"</span><span class="p">,</span>
+          <span class="s2">"inactiveDate"</span><span class="p">:</span> <span class="s2">"2025-10-21T15:34:20.173Z"</span><span class="p">,</span>
+          <span class="s2">"externalIdentifier"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
+          <span class="s2">"comments"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
+          <span class="s2">"requirementLimitId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+          <span class="s2">"requirementId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+          <span class="s2">"requirementLimitTypeId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+          <span class="s2">"compoundId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+          <span class="s2">"compoundGroupTypeId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+          <span class="s2">"unitId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+          <span class="s2">"operator"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
+          <span class="s2">"limitThreshold"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+          <span class="s2">"compareLimitInd"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
+          <span class="s2">"compareDecimalPlaces"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+          <span class="s2">"compareOffset"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+          <span class="s2">"compareDays"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+          <span class="s2">"limitViolationText"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
+          <span class="s2">"emissionTypeId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+          <span class="s2">"emissionCategoryId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+          <span class="s2">"operationTypeId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+          <span class="s2">"analysisTypeId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
+          <span class="s2">"analysisValueName"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
+          <span class="s2">"customLimitThreshold"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
+          <span class="s2">"sortOrder"</span><span class="p">:</span> <span class="s2">"number"</span>
+        <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://[tenant].actsapi.intelex.com/actsapi/v1/requirementLimit"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"[{\"activeDate\":\"2025-10-21T15:34:20.173Z\",\"inactiveDate\":\"2025-10-21T15:34:20.173Z\",\"externalIdentifier\":\"string\",\"comments\":\"string\",\"requirementLimitId\":\"number\",\"requirementId\":\"number\",\"requirementLimitTypeId\":\"number\",\"compoundId\":\"number\",\"compoundGroupTypeId\":\"number\",\"unitId\":\"number\",\"operator\":\"string\",\"limitThreshold\":\"number\",\"compareLimitInd\":\"string\",\"compareDecimalPlaces\":\"number\",\"compareOffset\":\"number\",\"compareDays\":\"number\",\"limitViolationText\":\"string\",\"emissionTypeId\":\"number\",\"emissionCategoryId\":\"number\",\"operationTypeId\":\"number\",\"analysisTypeId\":\"number\",\"analysisValueName\":\"string\",\"customLimitThreshold\":\"string\",\"sortOrder\":\"number\"}]"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Input JSON Body </p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"activeDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-10-21T15:34:20.173Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"inactiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-10-21T15:34:20.173Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"externalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requirementLimitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requirementId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requirementLimitTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"compoundId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"compoundGroupTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"unitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"limitThreshold"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"compareLimitInd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"compareDecimalPlaces"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"compareOffset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"compareDays"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"limitViolationText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"emissionTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"emissionCategoryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"operationTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"analysisTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"analysisValueName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"customLimitThreshold"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sortOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"insertedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"updatedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"failureCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errorMessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Example Output For When Data Get&rsquo;s Failed To Insert or Update</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"insertedRowCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updatedRowCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"failureCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errorMessage"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"Not found RequirementLimitIds: 12345"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="15-workflow-table">15. Workflow Table</h3>
 
 <p>This section outlines the process of adding new entries or modifying existing records within the Workflow table using the dedicated API endpoint.</p>
 
@@ -1150,7 +1482,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<h3 id="13-workflow-answer-table">13. Workflow Answer Table</h3>
+<h3 id="16-workflow-answer-table">16. Workflow Answer Table</h3>
 
 <p>This section outlines the process of adding new entries or modifying existing records within the Workflow Answer table using the dedicated API endpoint.</p>
 
@@ -1238,7 +1570,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<h3 id="14-workflow-equipment-table">14. Workflow Equipment Table</h3>
+<h3 id="17-workflow-equipment-table">17. Workflow Equipment Table</h3>
 
 <p>This section outlines the process of adding new entries or modifying existing records within the Workflow Equipment table using the dedicated API endpoint.</p>
 
@@ -1318,7 +1650,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<h3 id="15-workflow-facility-table">15. Workflow Facility Table</h3>
+<h3 id="18-workflow-facility-table">18. Workflow Facility Table</h3>
 
 <p>This section outlines the process of adding new entries or modifying existing records within the Workflow Facility table using the dedicated API endpoint.</p>
 
@@ -1399,7 +1731,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<h3 id="16-workflow-person-table">16. Workflow Person Table</h3>
+<h3 id="19-workflow-person-table">19. Workflow Person Table</h3>
 
 <p>This section outlines the process of adding new entries or modifying existing records within the Workflow Person table using the dedicated API endpoint.</p>
 
