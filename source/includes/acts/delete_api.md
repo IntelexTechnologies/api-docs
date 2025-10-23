@@ -306,3 +306,164 @@ IRestResponse response = client.Execute(request);
 
 ```
 
+### 6. Regulation Table 
+
+This section guides you through the process of removing/deleting the existing records from the Regulation table using the designated API endpoint.
+
+**Regulation DELETE endpoint**
+
+`DELETE` /actsapi/v1/regulation
+
+> Example Request & JSON Input Body 
+
+```javascript
+var request = require("request");
+
+var options = { method: 'DELETE',
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/regulation',
+  headers: { 'content-type': 'application/json' },
+  body:
+   { [regulationId1, regulationId2, regulationId3....]
+	 },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+```csharp
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/regulation");
+var request = new RestRequest(Method.DELETE);
+request.AddHeader("content-type", "application/json");
+request.AddParameter("application/json", "{\r\n   [regulationId1, regulationId2, regulationId3....]\r\n}", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+```
+
+> Input JSON Body
+
+```json
+  {
+    [regulationId1, regulationId2, regulationId3....]
+  }
+```
+> Example Response
+
+```json
+{
+  "deletedRowCount": 1,
+  "notFoundCount": 0,
+  "failureCount": 0,
+  "errorMessage" : []
+}
+```
+
+### 7. Requirement Table 
+
+This section guides you through the process of removing/deleting the existing records from the Requirement table using the designated API endpoint.
+
+**Requirement DELETE endpoint**
+
+`DELETE` /actsapi/v1/requirement
+
+> Example Request & JSON Input Body 
+
+```javascript
+var request = require("request");
+
+var options = { method: 'DELETE',
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/requirement',
+  headers: { 'content-type': 'application/json' },
+  body:
+   { [requirementId1, requirementId2, requirementId3....]
+	 },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+```csharp
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/requirement");
+var request = new RestRequest(Method.DELETE);
+request.AddHeader("content-type", "application/json");
+request.AddParameter("application/json", "{\r\n   [requirementId1, requirementId2, requirementId3....]\r\n}", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+```
+
+> Input JSON Body
+
+```json
+  {
+    [requirementId1, requirementId2, requirementId3....]
+  }
+```
+> Example Response
+
+```json
+{
+  "deletedRowCount": 1,
+  "notFoundCount": 0,
+  "failureCount": 0,
+  "errorMessage" : []
+}
+```
+
+### 8. Requirement Limit Table 
+
+This section guides you through the process of removing/deleting the existing records from the Requirement Limit table using the designated API endpoint.
+
+**Requirement Limit DELETE endpoint**
+
+`DELETE` /actsapi/v1/requirementlimit
+
+> Example Request & JSON Input Body 
+
+```javascript
+var request = require("request");
+
+var options = { method: 'DELETE',
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/requirementlimit',
+  headers: { 'content-type': 'application/json' },
+  body:
+   { [requirementLimitId1, requirementLimitId2, requirementLimitId3....]
+	 },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+```csharp
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/requirementlimit");
+var request = new RestRequest(Method.DELETE);
+request.AddHeader("content-type", "application/json");
+request.AddParameter("application/json", "{\r\n   [requirementLimitId1, requirementLimitId2, requirementLimitId3....]\r\n}", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+```
+
+> Input JSON Body
+
+```json
+  {
+    [requirementLimitId1, requirementLimitId2, requirementLimitId3....]
+  }
+```
+> Example Response
+
+```json
+{
+  "deletedRowCount": 1,
+  "notFoundCount": 0,
+  "failureCount": 0,
+  "errorMessage" : []
+}
+```
