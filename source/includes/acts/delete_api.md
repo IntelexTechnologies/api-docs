@@ -4,13 +4,16 @@ This section outlines the available Delete APIs designed for modifying ACTS data
 
 * To remove the existing records, use the primary key of the record.
 
-In the current release, one DELETE API End point is provided to remove or delete from the following table 
+As per the current release, DELETE APIs End points are provided to delete from the following tables: 
 
 * Analysis
 * Analysis Compound
 * Emission Factor
 * Equipment Analysis
 * Operation
+* Regulation
+* Requirement
+* Requirement Limit
 
 DELETE requests to these endpoints should be formatted in JSON.
 

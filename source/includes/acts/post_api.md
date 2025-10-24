@@ -11,7 +11,7 @@ For efficient handling of larger data inserts, it is recommended to perform batc
 Note that excessively large batch POSTs may encounter throttling or failure, depending on system resources.
 </aside>
 
-In the following release, the POST APIs End points are provided to add or update following: 
+As per the current release, POST APIs End points are provided to add or update the following tables: 
 
 * Analysis
 * Analysis Compound
@@ -24,6 +24,9 @@ In the following release, the POST APIs End points are provided to add or update
 * Facility
 * Facility Attribute
 * Operation
+* Regulation
+* Requirement
+* Requirement Limit
 * Workflow
 * Workflow Answer
 * Workflow Equipment
@@ -1368,6 +1371,7 @@ IRestResponse response = client.Execute(request);
 }
 
 ```
+
 ### 14. Requirement Limit Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Requirement Limit table using the dedicated API endpoint.

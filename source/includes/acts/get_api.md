@@ -1,6 +1,37 @@
 ## Retrieve Data
 
-This section outlines the various GET APIs available for fetching data from different tables. Each API provides the capability to retrieve specific data based on provided parameters. Pagination support is available for managing large datasets effectively.The user can pass the set of parameters of same or different filter options at once .
+This section outlines the various GET APIs available for fetching data from different tables. Each API provides the capability to retrieve specific data based on provided parameters. Pagination support is available for managing large datasets effectively.The user can pass the set of parameters of same or different filter options at once.
+
+As per the current release, GET APIs End points are provided to fetch from the following tables:
+
+* Attribute Type
+* Compound
+* Emission
+* Emission Category
+* Emission Factor
+* Emission Type
+* Equipment
+* Equipment Attribute
+* Equipment Status
+* Equipment Type
+* Facility
+* Facility Attribute
+* Operation
+* Operation Type
+* Query
+* Regulation
+* Regulation Type
+* Requirement
+* Requirement Limit
+* Unit
+* Workflow
+* Workflow Answer
+* Workflow Equipment
+* Workflow Facility
+* Workflow Person
+* Workflow Question
+* Workflow Question Category
+* Workflow Type
 
 ### 1. Attribute Type Table 
 
