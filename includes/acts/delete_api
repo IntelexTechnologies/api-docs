@@ -6,7 +6,7 @@
 <li>To remove the existing records, use the primary key of the record.</li>
 </ul>
 
-<p>In the current release, one DELETE API End point is provided to remove or delete from the following table </p>
+<p>As per the current release, DELETE APIs End points are provided to delete from the following tables: </p>
 
 <ul>
 <li>Analysis</li>
@@ -14,6 +14,9 @@
 <li>Emission Factor</li>
 <li>Equipment Analysis</li>
 <li>Operation</li>
+<li>Regulation</li>
+<li>Requirement</li>
+<li>Requirement Limit</li>
 </ul>
 
 <p>DELETE requests to these endpoints should be formatted in JSON.</p>

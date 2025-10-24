@@ -13,7 +13,7 @@ For efficient handling of larger data inserts, it is recommended to perform batc
 Note that excessively large batch POSTs may encounter throttling or failure, depending on system resources.
 </aside>
 
-<p>In the following release, the POST APIs End points are provided to add or update following: </p>
+<p>As per the current release, POST APIs End points are provided to add or update the following tables: </p>
 
 <ul>
 <li>Analysis</li>
@@ -27,6 +27,9 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 <li>Facility</li>
 <li>Facility Attribute</li>
 <li>Operation</li>
+<li>Regulation</li>
+<li>Requirement</li>
+<li>Requirement Limit</li>
 <li>Workflow</li>
 <li>Workflow Answer</li>
 <li>Workflow Equipment</li>

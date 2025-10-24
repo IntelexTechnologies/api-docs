@@ -5554,29 +5554,34 @@ Content-Transfer-Encoding:binary
 
 <p>The ACTS API SSL Certification is incompatible with following version of the python 3.10 + . If we use the python version &lt; 3.10 the SSL handshake works for ACTS API.Currently this is considered as one of the limitation.</p>
 
-<h3 id="apis-and-associated-database-tables">API&rsquo;s and Associated Database Tables</h3>
+          <h2 id="retrieve-data">Retrieve Data</h2>
 
-<p>This ACTS API release includes 23 GET enpoints and 16 POST endpoints, along with the authentication endpoint described earlier. The tables that can be queried and updated are as follows. </p>
+<p>This section outlines the various GET APIs available for fetching data from different tables. Each API provides the capability to retrieve specific data based on provided parameters. Pagination support is available for managing large datasets effectively.The user can pass the set of parameters of same or different filter options at once.</p>
 
-<p>Database Tables supporting GET requests </p>
+<p>As per the current release, GET APIs End points are provided to fetch from the following tables:</p>
 
-<ol>
-<li>Attribute Type<br></li>
-<li>Compound<br></li>
+<ul>
+<li>Attribute Type</li>
+<li>Compound</li>
+<li>Emission</li>
 <li>Emission Category</li>
-<li>Emission Factor Table<br></li>
+<li>Emission Factor</li>
 <li>Emission Type</li>
-<li>Equipment </li>
+<li>Equipment</li>
 <li>Equipment Attribute</li>
 <li>Equipment Status</li>
 <li>Equipment Type</li>
 <li>Facility</li>
 <li>Facility Attribute</li>
-<li>Operation </li>
+<li>Operation</li>
 <li>Operation Type</li>
-<li>Query Results</li>
+<li>Query</li>
+<li>Regulation</li>
+<li>Regulation Type</li>
+<li>Requirement</li>
+<li>Requirement Limit</li>
 <li>Unit</li>
-<li>Workflow </li>
+<li>Workflow</li>
 <li>Workflow Answer</li>
 <li>Workflow Equipment</li>
 <li>Workflow Facility</li>
@@ -5584,32 +5589,7 @@ Content-Transfer-Encoding:binary
 <li>Workflow Question</li>
 <li>Workflow Question Category</li>
 <li>Workflow Type</li>
-</ol>
-
-<p>Database Tables supporting POST requests </p>
-
-<ol>
-<li>Analysis</li>
-<li>Analysis Compound</li>
-<li>Emission Factor</li>
-<li>Emissions Recalculate By Equipment</li>
-<li>Emissions Recalculate By Operation</li>
-<li>Equipment</li>
-<li>Equipment Analysis</li>
-<li>Equipment Attribute</li>
-<li>Facility</li>
-<li>Facility Attribute</li>
-<li>Operation</li>
-<li>Workflow</li>
-<li>Workflow Answer</li>
-<li>Workflow Equipment</li>
-<li>Workflow Facility</li>
-<li>Workflow Person </li>
-</ol>
-
-          <h2 id="retrieve-data">Retrieve Data</h2>
-
-<p>This section outlines the various GET APIs available for fetching data from different tables. Each API provides the capability to retrieve specific data based on provided parameters. Pagination support is available for managing large datasets effectively.The user can pass the set of parameters of same or different filter options at once .</p>
+</ul>
 
 <h3 id="1-attribute-type-table">1. Attribute Type Table</h3>
 
@@ -8822,7 +8802,7 @@ For efficient handling of larger data inserts, it is recommended to perform batc
 Note that excessively large batch POSTs may encounter throttling or failure, depending on system resources.
 </aside>
 
-<p>In the following release, the POST APIs End points are provided to add or update following: </p>
+<p>As per the current release, POST APIs End points are provided to add or update the following tables: </p>
 
 <ul>
 <li>Analysis</li>
@@ -8836,6 +8816,9 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 <li>Facility</li>
 <li>Facility Attribute</li>
 <li>Operation</li>
+<li>Regulation</li>
+<li>Requirement</li>
+<li>Requirement Limit</li>
 <li>Workflow</li>
 <li>Workflow Answer</li>
 <li>Workflow Equipment</li>
@@ -10766,7 +10749,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 <li>To remove the existing records, use the primary key of the record.</li>
 </ul>
 
-<p>In the current release, one DELETE API End point is provided to remove or delete from the following table </p>
+<p>As per the current release, DELETE APIs End points are provided to delete from the following tables: </p>
 
 <ul>
 <li>Analysis</li>
@@ -10774,6 +10757,9 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 <li>Emission Factor</li>
 <li>Equipment Analysis</li>
 <li>Operation</li>
+<li>Regulation</li>
+<li>Requirement</li>
+<li>Requirement Limit</li>
 </ul>
 
 <p>DELETE requests to these endpoints should be formatted in JSON.</p>
