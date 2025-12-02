@@ -1210,7 +1210,7 @@ IRestResponse response = client.Execute(request);
 
 Attribute | Type | Required | Description
 --------- | ---- | -------- | -----------
-PageNumber | int | No |Page number of the results to fetch.
+PageNumber | int | No | Page number of the results to fetch.
 PageSize | int | No | The number of results per page
 queryViewId | int | Yes | The unique identifier for this query view record
 
