@@ -1131,6 +1131,7 @@ operationTypes | int | The type of operational data
 ### 15. Query Results
 
 The QueryResults API end point will allow the user to run the views saved in Query view tables and returns the dynamic results based on the specific query view id value. The QueryResults endpoint supports pagination.
+Request must contain exactly one single queryViewId as a query parameter.
 
 > Example Request
 
@@ -1207,11 +1208,11 @@ IRestResponse response = client.Execute(request);
 
 **Query parameters**
 
-Attribute | Type | Description
---------- | ---- | -----------
-PageNumber | int | Page number of the results to fetch.
-PageSize | int | The number of results per page
-queryViewId | int | The unique identifier for this query view record
+Attribute | Type | Required | Description
+--------- | ---- | -------- | -----------
+PageNumber | int | No | Page number of the results to fetch.
+PageSize | int | No | The number of results per page
+queryViewId | int | Yes | The unique identifier for this query view record
 
 ### 16. Regulation Table
 This section elaborates on how to obtain data from the Regulation table using the designated API endpoint. The endpoint allows you to retrieve all data from the Regulation table or selectively acquire information by providing the Regulation ID. Moreover, the Regulation endpoint features pagination to facilitate efficient management of substantial datasets.
