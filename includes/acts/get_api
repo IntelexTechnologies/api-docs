@@ -1593,7 +1593,8 @@
 
 <h3 id="15-query-results">15. Query Results</h3>
 
-<p>The QueryResults API end point will allow the user to run the views saved in Query view tables and returns the dynamic results based on the specific query view id value. The QueryResults endpoint supports pagination.</p>
+<p>The QueryResults API end point will allow the user to run the views saved in Query view tables and returns the dynamic results based on the specific query view id value. The QueryResults endpoint supports pagination.
+Request must contain exactly one single queryViewId as a query parameter.</p>
 
 <blockquote>
 <p>Example Request</p>
@@ -1669,22 +1670,26 @@
 <tr>
 <th>Attribute</th>
 <th>Type</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>PageNumber</td>
 <td>int</td>
+<td>No</td>
 <td>Page number of the results to fetch.</td>
 </tr>
 <tr>
 <td>PageSize</td>
 <td>int</td>
+<td>No</td>
 <td>The number of results per page</td>
 </tr>
 <tr>
 <td>queryViewId</td>
 <td>int</td>
+<td>Yes</td>
 <td>The unique identifier for this query view record</td>
 </tr>
 </tbody></table>
