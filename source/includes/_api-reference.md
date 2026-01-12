@@ -139,17 +139,19 @@ Response Code | Meaning
 When we make backwards-incompatible changes to the API, we release new versions. The current version is **v2** and can be determined with our API base path **/api/v2/**. Read our [Intelex platform release notes](https://community.intelex.com/library/knowledgebase/release-notes) to see our API changelog.
 
 ## API Rate Limiting / Quotas
-To ensure Intelex Platform is reliable and has the expected performance for all users, we limit the number of API calls an API user (or application) can make within a given time period. If the limit is exceeded, the API user may be throttled and subsequent requests within the same period will fail (status code 429).
+To ensure Intelex Platform is reliable and has the expected performance for all users, we limit the number of API calls an API user (or application) can make within a given time period. If the limit is exceeded, the API user may be throttled and subsequent requests will fail returning HTTP resposne code 429 Too Many Requests. In such cases, it is the responsibility of the client application to implement appropriate retry logic for requests that fail due to rate limiting.
 
 ### Limit
-The Intelex Platform API Rate limit is **2 requests per second**.
+The Intelex Platform API Rate limit is **6 requests per second**.
 
 ### Quota headers
 Quota details may be passed back to the API user/application via response headers.
 
 Header | Description | Sample value
 ---------- | ------- | -------
-X-RateLimit-Limit	| The request limit per specified unit of time.	| 100
-X-RateLimit-Remaining	| The remaining number of requests that API consumers can send in the current time window. | 75
-X-RateLimit-Reset	| The UTC epoch timestamp indicating the time of the next quota reset. Sent only when quota remains. | 1521214822
-X-RateLimit-Next | The UTC epoch timestamp indicating the time of the next quota reset. Sent only when quota is full.	 |1521215291
+Retry-After	| Time in seconds to wait before retrying the request after rate limit is exceeded. | 600
+
+### Best Practices
+
+* Use HTTP clients that support automatic retries with an exponential back-off strategy when receiving 429 (Too Many Requests) responses.
+* Avoid spikes of traffic by spreading out API calls over time wherever possible.
