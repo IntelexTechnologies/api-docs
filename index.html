@@ -419,11 +419,11 @@ Select the secured API from the API Access page; the endpoint, client id and cli
 
 <h2 id="api-rate-limiting-quotas">API Rate Limiting / Quotas</h2>
 
-<p>To ensure Intelex Platform is reliable and has the expected performance for all users, we limit the number of API calls an API user (or application) can make within a given time period. If the limit is exceeded, the API user may be throttled and subsequent requests within the same period will fail (status code 429).</p>
+<p>To ensure Intelex Platform is reliable and has the expected performance for all users, we limit the number of API calls an API user (or application) can make within a given time period. If the limit is exceeded, the API user may be throttled and subsequent requests will be rejected, returning HTTP response code 429 Too Many Requests. In such cases it is the responsibility of the client application to implement appropriate retry logic for requests that are rejected due to rate limiting.</p>
 
 <h3 id="limit">Limit</h3>
 
-<p>The Intelex Platform API Rate limit is <strong>2 requests per second</strong>.</p>
+<p>The Intelex Platform API Rate limit is <strong>6 requests per second</strong>.</p>
 
 <h3 id="quota-headers">Quota headers</h3>
 
@@ -437,26 +437,18 @@ Select the secured API from the API Access page; the endpoint, client id and cli
 </tr>
 </thead><tbody>
 <tr>
-<td>X-RateLimit-Limit</td>
-<td>The request limit per specified unit of time.</td>
-<td>100</td>
-</tr>
-<tr>
-<td>X-RateLimit-Remaining</td>
-<td>The remaining number of requests that API consumers can send in the current time window.</td>
-<td>75</td>
-</tr>
-<tr>
-<td>X-RateLimit-Reset</td>
-<td>The UTC epoch timestamp indicating the time of the next quota reset. Sent only when quota remains.</td>
-<td>1521214822</td>
-</tr>
-<tr>
-<td>X-RateLimit-Next</td>
-<td>The UTC epoch timestamp indicating the time of the next quota reset. Sent only when quota is full.</td>
-<td>1521215291</td>
+<td>Retry-After</td>
+<td>Time in seconds to wait before retrying the request after rate limit is exceeded.</td>
+<td>600</td>
 </tr>
 </tbody></table>
+
+<h3 id="best-practices">Best Practices</h3>
+
+<ul>
+<li>Use HTTP clients that support automatic retries with an exponential back-off strategy when receiving 429 (Too Many Requests) responses.</li>
+<li>Avoid spikes of traffic by spreading out API calls over time wherever possible.</li>
+</ul>
 
           <h1 id="object-data-api">Object Data API</h1>
 
