@@ -17,7 +17,7 @@ jobs:
         bundle install --jobs 4 --retry 3
         bundle exec middleman build --clean
     - name: GitHub Pages Deploy
-      uses: JamesIves/github-pages-deploy-action@master
+      uses: JamesIves/github-pages-deploy-action@v4
       env:
         BRANCH: "gh-pages"
         FOLDER: "build"
