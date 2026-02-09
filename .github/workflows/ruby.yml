@@ -14,12 +14,12 @@ jobs:
           bundler-cache: true
     - name: Build and test with Rake
       run: |
-        gem install bundler -v 2.3.26
+        gem install bundler
         bundle install --jobs 4 --retry 3
         bundle exec middleman build --clean
     - name: GitHub Pages Deploy
       uses: JamesIves/github-pages-deploy-action@v4
-      env:
+      with:
         BRANCH: "gh-pages"
         FOLDER: "build"
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
