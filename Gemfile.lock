@@ -120,7 +120,6 @@ DEPENDENCIES
   middleman-syntax (~> 3.0.0)
   redcarpet (~> 3.4.0)
   rouge (~> 2.0.5)
-  wdm (~> 0.1.1)
 
 BUNDLED WITH
    2.4.22
