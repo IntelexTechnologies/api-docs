@@ -18,7 +18,7 @@ jobs:
                 name: Build static html
                 command: bundle exec middleman build --clean
             - persist_to_workspace:
-                root: /root/project
+                root: ~/project
                 paths:
                     - build
     deploy:
@@ -34,7 +34,7 @@ jobs:
                 fingerprints:
                     - "72:81:e7:4d:d2:d4:0d:7f:59:6b:e1:74:57:3d:36:12"
             - attach_workspace:
-                at: /root/project
+                at: ~/project
             - run:
                 name: Install and configure dependencies
                 command: |
