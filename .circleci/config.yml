@@ -3,7 +3,7 @@ jobs:
     build:
         working_directory: ~/project
         docker:
-            - image: ruby:2.7.8-node
+            - image: cimg/ruby:2.7.8-node
               auth:
                   username: intelexdocker
                   password: $DOCKERHUB_PASSWORD
@@ -24,7 +24,7 @@ jobs:
     deploy:
         working_directory: ~/project
         docker:
-            - image: ruby:2.7.8-node
+            - image: cimg/ruby:2.7.8-node
               auth:
                   username: intelexdocker
                   password: $DOCKERHUB_PASSWORD
