@@ -10,18 +10,79 @@
 
 <ul>
 <li>Analysis</li>
+<li>Analysis Attribute</li>
 <li>Analysis Compound</li>
+<li>Analysis Value</li>
 <li>Emission Factor</li>
 <li>Equipment Analysis</li>
+<li>Equipment Requirement</li>
+<li>Facility Analysis</li>
+<li>Facility Regulation</li>
 <li>Operation</li>
 <li>Regulation</li>
+<li>Regulation Attribute</li>
 <li>Requirement</li>
 <li>Requirement Limit</li>
+<li>Requirement Person</li>
 </ul>
 
 <p>DELETE requests to these endpoints should be formatted in JSON.</p>
 
-<h3 id="1-analysis-table">1. Analysis Table</h3>
+<h3 id="1-analysis-attribute-table">1. Analysis Attribute Table</h3>
+
+<p>This section guides you through the process of removing/deleting the existing records from the Analysis Attribute table using the designated API endpoint.</p>
+
+<p><strong>Analysis Attribute DELETE endpoint</strong></p>
+
+<p><code class="prettyprint">DELETE</code> /actsapi/v1/analysisattribute</p>
+
+<blockquote>
+<p>Example Request &amp; JSON Input Body </p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'DELETE'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://[tenant].actsapi.intelex.com/actsapi/v1/analysisattribute'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span> <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span>
+   <span class="p">{</span> 
+    <span class="p">[</span><span class="nx">analysisAttributeId1</span><span class="p">,</span> <span class="nx">analysisAttributeId2</span><span class="p">,</span> <span class="nx">analysisAttributeId3</span><span class="p">....]</span>
+      <span class="p">},</span>
+  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code>
+<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://[tenant].actsapi.intelex.com/actsapi/v1/analysisattribute"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">DELETE</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"{\r\n    [analysisAttributeId1, analysisAttributeId2, analysisAttributeId3....] \r\n}"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Input JSON Body</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="p">[</span><span class="err">analysisAttributeId</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="err">analysisAttributeId</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="err">analysisAttributeId</span><span class="mi">3</span><span class="err">....</span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"deletedRowCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"notFoundCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"failureCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"errorMessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<h3 id="2-analysis-table">2. Analysis Table</h3>
 
 <p>This section guides you through the process of removing/deleting the existing records from the Analysis table using the designated API endpoint.</p>
 
@@ -75,7 +136,7 @@
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<h3 id="2-analysis-compound-table">2. Analysis Compound Table</h3>
+<h3 id="3-analysis-compound-table">3. Analysis Compound Table</h3>
 
 <p>This section guides you through the process of removing/deleting the existing records from the Analysis Compound table using the designated API endpoint.</p>
 
@@ -129,7 +190,61 @@
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<h3 id="3-emission-factor-table">3. Emission Factor Table</h3>
+<h3 id="4-analysis-value-table">4. Analysis Value Table</h3>
+
+<p>This section guides you through the process of removing/deleting the existing records from the Analysis Value table using the designated API endpoint.</p>
+
+<p><strong>Analysis Value DELETE endpoint</strong></p>
+
+<p><code class="prettyprint">DELETE</code> /actsapi/v1/analysisvalue</p>
+
+<blockquote>
+<p>Example Request &amp; JSON Input Body </p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'DELETE'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://[tenant].actsapi.intelex.com/actsapi/v1/analysisvalue'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span> <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span>
+   <span class="p">{</span> 
+    <span class="p">[</span><span class="nx">analysisValueId1</span><span class="p">,</span> <span class="nx">analysisValueId2</span><span class="p">,</span> <span class="nx">analysisValueId3</span><span class="p">....]</span>
+      <span class="p">},</span>
+  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code>
+<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://[tenant].actsapi.intelex.com/actsapi/v1/analysisvalue"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">DELETE</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"{\r\n    [analysisValueId1, analysisValueId2, analysisValueId3....] \r\n}"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Input JSON Body</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="p">[</span><span class="err">analysisValueId</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="err">analysisValueId</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="err">analysisValueId</span><span class="mi">3</span><span class="err">....</span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"deletedRowCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"notFoundCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"failureCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"errorMessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<h3 id="5-emission-factor-table">5. Emission Factor Table</h3>
 
 <p>This section guides you through the process of removing/deleting the existing records from the Emission Factor table using the designated API endpoint.</p>
 
@@ -184,7 +299,7 @@
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<h3 id="4-equipment-analysis-table">4. Equipment Analysis Table</h3>
+<h3 id="6-equipment-analysis-table">6. Equipment Analysis Table</h3>
 
 <p>This section guides you through the process of removing/deleting the existing records from the Equipment Analysis table using the designated API endpoint.</p>
 
@@ -202,7 +317,7 @@
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span> <span class="p">},</span>
   <span class="na">body</span><span class="p">:</span>
    <span class="p">{</span> 
-    <span class="p">[</span><span class="nx">equipmentanalysisId1</span><span class="p">,</span> <span class="nx">equipmentanalysisId2</span><span class="p">,</span> <span class="nx">equipmentanalysisId3</span><span class="p">....]</span>
+    <span class="p">[</span><span class="nx">equipmentAnalysisId1</span><span class="p">,</span> <span class="nx">equipmentAnalysisId2</span><span class="p">,</span> <span class="nx">equipmentAnalysisId3</span><span class="p">....]</span>
       <span class="p">},</span>
   <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
 
@@ -215,7 +330,7 @@
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://[tenant].actsapi.intelex.com/actsapi/v1/equipmentanalysis"</span><span class="p">);</span>
 <span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">DELETE</span><span class="p">);</span>
 <span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
-<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"{\r\n    [equipmentanalysisId1, equipmentanalysisId2, equipmentanalysisId3....] \r\n}"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"{\r\n    [equipmentAnalysisId1, equipmentAnalysisId2, equipmentAnalysisId3....] \r\n}"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
 <span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
 </code></pre>
 <blockquote>
@@ -223,7 +338,7 @@
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="p">[</span><span class="err">equipmentanalysisId</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="err">equipmentanalysisId</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="err">equipmentanalysisId</span><span class="mi">3</span><span class="err">....</span><span class="p">]</span><span class="w">
+    </span><span class="p">[</span><span class="err">equipmentAnalysisId</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="err">equipmentAnalysisId</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="err">equipmentAnalysisId</span><span class="mi">3</span><span class="err">....</span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
@@ -238,7 +353,169 @@
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<h3 id="5-operation-table">5. Operation Table</h3>
+<h3 id="7-equipment-requirement-table">7. Equipment Requirement Table</h3>
+
+<p>This section guides you through the process of removing/deleting the existing records from the Equipment Requirement table using the designated API endpoint.</p>
+
+<p><strong>Equipment Requirement DELETE endpoint</strong></p>
+
+<p><code class="prettyprint">DELETE</code> /actsapi/v1/equipmentrequirement</p>
+
+<blockquote>
+<p>Example Request &amp; JSON Input Body </p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'DELETE'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://[tenant].actsapi.intelex.com/actsapi/v1/equipmentrequirement'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span> <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span>
+   <span class="p">{</span> 
+    <span class="p">[</span><span class="nx">equipmentRequirementId1</span><span class="p">,</span> <span class="nx">equipmentRequirementId2</span><span class="p">,</span> <span class="nx">equipmentRequirementId3</span><span class="p">....]</span>
+      <span class="p">},</span>
+  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code>
+<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://[tenant].actsapi.intelex.com/actsapi/v1/equipmentrequirement"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">DELETE</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"{\r\n    [equipmentRequirementId1, equipmentRequirementId2, equipmentRequirementId3....] \r\n}"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Input JSON Body</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="p">[</span><span class="err">equipmentRequirementId</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="err">equipmentRequirementId</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="err">equipmentRequirementId</span><span class="mi">3</span><span class="err">....</span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"deletedRowCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"notFoundCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"failureCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"errorMessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<h3 id="8-facility-analysis-table">8. Facility Analysis Table</h3>
+
+<p>This section guides you through the process of removing/deleting the existing records from the Facility Analysis table using the designated API endpoint.</p>
+
+<p><strong>Facility Analysis DELETE endpoint</strong></p>
+
+<p><code class="prettyprint">DELETE</code> /actsapi/v1/facilityanalysis</p>
+
+<blockquote>
+<p>Example Request &amp; JSON Input Body </p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'DELETE'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://[tenant].actsapi.intelex.com/actsapi/v1/facilityanalysis'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span> <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span>
+   <span class="p">{</span> 
+    <span class="p">[</span><span class="nx">facilityAnalysisId1</span><span class="p">,</span> <span class="nx">facilityAnalysisId2</span><span class="p">,</span> <span class="nx">facilityAnalysisId3</span><span class="p">....]</span>
+      <span class="p">},</span>
+  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code>
+<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://[tenant].actsapi.intelex.com/actsapi/v1/facilityanalysis"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">DELETE</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"{\r\n    [facilityAnalysisId1, facilityAnalysisId2, facilityAnalysisId3....] \r\n}"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Input JSON Body</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="p">[</span><span class="err">facilityAnalysisId</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="err">facilityAnalysisId</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="err">facilityAnalysisId</span><span class="mi">3</span><span class="err">....</span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"deletedRowCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"notFoundCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"failureCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"errorMessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<h3 id="9-facility-regulation-table">9. Facility Regulation Table</h3>
+
+<p>This section guides you through the process of removing/deleting the existing records from the Facility Regulation table using the designated API endpoint.</p>
+
+<p><strong>Facility Regulation DELETE endpoint</strong></p>
+
+<p><code class="prettyprint">DELETE</code> /actsapi/v1/facilityregulation</p>
+
+<blockquote>
+<p>Example Request &amp; JSON Input Body </p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'DELETE'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://[tenant].actsapi.intelex.com/actsapi/v1/facilityregulation'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span> <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span>
+   <span class="p">{</span> 
+    <span class="p">[</span><span class="nx">facilityRegulationId1</span><span class="p">,</span> <span class="nx">facilityRegulationId2</span><span class="p">,</span> <span class="nx">facilityRegulationId3</span><span class="p">....]</span>
+      <span class="p">},</span>
+  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code>
+<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://[tenant].actsapi.intelex.com/actsapi/v1/facilityregulation"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">DELETE</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"{\r\n    [facilityRegulationId1, facilityRegulationId2, facilityRegulationId3....] \r\n}"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Input JSON Body</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="p">[</span><span class="err">facilityRegulationId</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="err">facilityRegulationId</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="err">facilityRegulationId</span><span class="mi">3</span><span class="err">....</span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"deletedRowCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"notFoundCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"failureCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"errorMessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<h3 id="10-operation-table">10. Operation Table</h3>
 
 <p>This section guides you through the process of removing/deleting the existing records from the Operation table using the designated API endpoint.</p>
 
@@ -291,7 +568,7 @@
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<h3 id="6-regulation-table">6. Regulation Table</h3>
+<h3 id="11-regulation-table">11. Regulation Table</h3>
 
 <p>This section guides you through the process of removing/deleting the existing records from the Regulation table using the designated API endpoint.</p>
 
@@ -340,7 +617,61 @@
   </span><span class="s2">"errorMessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="7-requirement-table">7. Requirement Table</h3>
+<h3 id="12-regulation-attribute-table">12. Regulation Attribute Table</h3>
+
+<p>This section guides you through the process of removing/deleting the existing records from the Regulation Attribute table using the designated API endpoint.</p>
+
+<p><strong>Regulation Attribute DELETE endpoint</strong></p>
+
+<p><code class="prettyprint">DELETE</code> /actsapi/v1/regulationattribute</p>
+
+<blockquote>
+<p>Example Request &amp; JSON Input Body </p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'DELETE'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://[tenant].actsapi.intelex.com/actsapi/v1/regulationattribute'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span> <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span>
+   <span class="p">{</span> 
+    <span class="p">[</span><span class="nx">regulationAttributeId1</span><span class="p">,</span> <span class="nx">regulationAttributeId2</span><span class="p">,</span> <span class="nx">regulationAttributeId3</span><span class="p">....]</span>
+      <span class="p">},</span>
+  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code>
+<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://[tenant].actsapi.intelex.com/actsapi/v1/regulationattribute"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">DELETE</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"{\r\n    [regulationAttributeId1, regulationAttributeId2, regulationAttributeId3....] \r\n}"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Input JSON Body</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="p">[</span><span class="err">regulationAttributeId</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="err">regulationAttributeId</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="err">regulationAttributeId</span><span class="mi">3</span><span class="err">....</span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"deletedRowCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"notFoundCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"failureCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"errorMessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<h3 id="13-requirement-table">13. Requirement Table</h3>
 
 <p>This section guides you through the process of removing/deleting the existing records from the Requirement table using the designated API endpoint.</p>
 
@@ -389,7 +720,7 @@
   </span><span class="s2">"errorMessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="8-requirement-limit-table">8. Requirement Limit Table</h3>
+<h3 id="14-requirement-limit-table">14. Requirement Limit Table</h3>
 
 <p>This section guides you through the process of removing/deleting the existing records from the Requirement Limit table using the designated API endpoint.</p>
 
@@ -437,4 +768,58 @@
   </span><span class="s2">"failureCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"errorMessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
 </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="15-requirement-person-table">15. Requirement Person Table</h3>
+
+<p>This section guides you through the process of removing/deleting the existing records from the Requirement Person table using the designated API endpoint.</p>
+
+<p><strong>Requirement Person DELETE endpoint</strong></p>
+
+<p><code class="prettyprint">DELETE</code> /actsapi/v1/requirementperson</p>
+
+<blockquote>
+<p>Example Request &amp; JSON Input Body </p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'DELETE'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://[tenant].actsapi.intelex.com/actsapi/v1/requirementperson'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span> <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span>
+   <span class="p">{</span> 
+    <span class="p">[</span><span class="nx">requirementPersonId1</span><span class="p">,</span> <span class="nx">requirementPersonId2</span><span class="p">,</span> <span class="nx">requirementPersonId3</span><span class="p">....]</span>
+      <span class="p">},</span>
+  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code>
+<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://[tenant].actsapi.intelex.com/actsapi/v1/requirementperson"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">DELETE</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"{\r\n    [requirementPersonId1, requirementPersonId2, requirementPersonId3....] \r\n}"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Input JSON Body</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="p">[</span><span class="err">requirementPersonId</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="err">requirementPersonId</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="err">requirementPersonId</span><span class="mi">3</span><span class="err">....</span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"deletedRowCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"notFoundCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"failureCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"errorMessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
 </span></code></pre>
