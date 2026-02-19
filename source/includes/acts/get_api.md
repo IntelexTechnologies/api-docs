@@ -4,6 +4,10 @@ This section outlines the various GET APIs available for fetching data from diff
 
 As per the current release, GET APIs End points are provided to fetch from the following tables:
 
+* Analysis
+* Analysis Compound
+* Analysis Type
+* Analysis Value
 * Attribute Type
 * Compound
 * Emission
@@ -11,13 +15,16 @@ As per the current release, GET APIs End points are provided to fetch from the f
 * Emission Factor
 * Emission Type
 * Equipment
+* Equipment Analysis
 * Equipment Attribute
 * Equipment Status
 * Equipment Type
 * Facility
+* Facility Analysis
 * Facility Attribute
 * Operation
 * Operation Type
+* Person
 * Query
 * Regulation
 * Regulation Type
@@ -33,7 +40,331 @@ As per the current release, GET APIs End points are provided to fetch from the f
 * Workflow Question Category
 * Workflow Type
 
-### 1. Attribute Type Table 
+### 1. Analysis Table
+
+This section outlines the process of retrieving data from the Analysis table using the dedicated API endpoint. The endpoint facilitates the retrieval of all data from the Analysis table or enables the selection of specific information by including Analysis Ids, Analysis Type Ids, Analysis Status Ids, Vendor Ids, Vendor Analysis Numbers, Vendor Job Numbers, and date ranges. Additionally, the Analysis endpoint supports pagination to effectively manage larger datasets.
+
+> Example Request
+
+```javascript
+var request = require("request");
+
+var options = { method: 'GET',
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/analysis' };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+```csharp
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/analysis");
+var request = new RestRequest(Method.GET);
+IRestResponse response = client.Execute(request);
+```
+
+> Response Schema
+
+```json
+{
+    "currentPage": 1,
+    "totalPages": 3,
+    "currentPageSize": 500,
+    "maxAPIPageSize": 500,
+    "totalCount": 1346,
+    "hasPrevious": false,
+    "hasNext": true,
+    "data": [
+        {
+            "analysisId": "number",
+            "analysisName": "string",
+            "analysisDate": "2024-01-15T00:00:00",
+            "alternateName": "string",
+            "analysisTypeId": "number",
+            "analysisStatusId": "number",
+            "vendorId": "number",
+            "vendorId2": "number",
+            "vendorJobNumber": "string",
+            "vendorJobNumber2": "string",
+            "vendorAnalysisNumber": "string",
+            "vendorAnalysisNumber2": "string",
+            "reviewedById": "number",
+            "reviewedDate": "2024-01-15T00:00:00",
+            "dataLockTypeId": "number",
+            "submitDate": "2024-01-15T00:00:00",
+            "lastModifiedDate": "2024-01-15T00:00:00",
+            "externalIdentifier": "string",
+            "comments": "string"
+        }
+    ]
+}
+```
+
+**API Endpoints**
+
+`GET` /actsapi/v1/analysis
+
+**Query parameters**
+
+Attribute | Type | Description
+--------- | ---- | -----------
+PageNumber | int | Page number of the results to fetch.
+PageSize | int | The number of results per page
+analysisIds | int | Analysis ID is one of the unique identifiers for this analysis record
+analysisTypeIds | int | Analysis Type ID is the unique identifier of the associated analysis type
+analysisStatusIds | int | Analysis Status ID is the unique identifier of the associated analysis status
+vendorIds | int | Vendor ID is the unique identifier of the associated vendor
+vendorAnalysisNumbers | string | Vendor Analysis Number is the analysis number assigned by the vendor
+vendorJobNumbers | string | Vendor Job Number is the job number assigned by the vendor
+analysisStartDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+analysisEndDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+submitStartDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+submitEndDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+reviewedStartDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+reviewedEndDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+lastModifiedStartDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+lastModifiedEndDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+externalIdentifier | string | External Identifier is a unique identifier for this record to an external data system
+
+### 2. Analysis Compound Table
+
+This section outlines the process of retrieving data from the Analysis Compound table using the dedicated API endpoint. The endpoint facilitates the retrieval of all data from the Analysis Compound table or enables the selection of specific information by including Analysis Compound Ids, Analysis Ids, Compound Ids, Unit Ids, and date ranges. Additionally, the Analysis Compound endpoint supports pagination to effectively manage larger datasets.
+
+> Example Request
+
+```javascript
+var request = require("request");
+
+var options = { method: 'GET',
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/analysiscompound' };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+```csharp
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/analysiscompound");
+var request = new RestRequest(Method.GET);
+IRestResponse response = client.Execute(request);
+```
+
+> Response Schema
+
+```json
+{
+    "currentPage": 1,
+    "totalPages": 3,
+    "currentPageSize": 500,
+    "maxAPIPageSize": 500,
+    "totalCount": 1346,
+    "hasPrevious": false,
+    "hasNext": true,
+    "data": [
+        {
+            "analysisCompoundId": "number",
+            "analysisId": "number",
+            "analysisDate": "2024-01-15T00:00:00",
+            "compoundId": "number",
+            "analysisValue": "number",
+            "unitId": "number",
+            "operator": "string",
+            "resultText": "string",
+            "reportableInd": "string",
+            "reportingLimit": "number",
+            "method": "string",
+            "methodDetectionLimit": "number",
+            "qualifier": "string",
+            "dilutionFactor": "number",
+            "sortOrder": "number",
+            "dataLockTypeId": "number",
+            "lastModifiedDate": "2024-01-15T00:00:00",
+            "externalIdentifier": "string",
+            "comments": "string"
+        }
+    ]
+}
+```
+
+**API Endpoints**
+
+`GET` /actsapi/v1/analysiscompound
+
+**Query parameters**
+
+Attribute | Type | Description
+--------- | ---- | -----------
+PageNumber | int | Page number of the results to fetch.
+PageSize | int | The number of results per page
+analysisCompoundIds | int | Analysis Compound ID is one of the unique identifiers for this analysis compound record
+analysisIds | int | Analysis ID is the unique identifier of the associated analysis
+compoundIds | int | Compound ID is the unique identifier of the associated compound
+unitIds | int | Unit ID is the unique identifier of the associated unit
+analysisStartDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+analysisEndDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+lastModifiedStartDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+lastModifiedEndDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+externalIdentifier | string | External Identifier is a unique identifier for this record to an external data system
+
+### 3. Analysis Type Table
+
+This section outlines the process of retrieving data from the Analysis Type table using the dedicated API endpoint. The endpoint facilitates the retrieval of all data from the Analysis Type table or enables the selection of specific information by including Analysis Type Ids. Additionally, the Analysis Type endpoint supports pagination to effectively manage larger datasets.
+
+> Example Request
+
+```javascript
+var request = require("request");
+
+var options = { method: 'GET',
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/analysistype' };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+```csharp
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/analysistype");
+var request = new RestRequest(Method.GET);
+IRestResponse response = client.Execute(request);
+```
+
+> Response Schema
+
+```json
+{
+    "currentPage": 1,
+    "totalPages": 3,
+    "currentPageSize": 500,
+    "maxAPIPageSize": 500,
+    "totalCount": 1346,
+    "hasPrevious": false,
+    "hasNext": true,
+    "data": [
+        {
+            "analysisTypeId": "number",
+            "analysisType": "string",
+            "analysisAttributesInd": "string",
+            "analysisValuesInd": "string",
+            "analysisCompoundsInd": "string",
+            "areaAssociationsInd": "string",
+            "facilityAssociationsInd": "string",
+            "equipmentAssociationsInd": "string",
+            "fileAttachmentsInd": "string",
+            "taskCompletionCriteria": "string",
+            "sortOrder": "number",
+            "lastModifiedDate": "2024-01-15T00:00:00",
+            "externalIdentifier": "string",
+            "comments": "string",
+            "refId": "string"
+        }
+    ]
+}
+```
+
+**API Endpoints**
+
+`GET` /actsapi/v1/analysistype
+
+**Query parameters**
+
+Attribute | Type | Description
+--------- | ---- | -----------
+PageNumber | int | Page number of the results to fetch.
+PageSize | int | The number of results per page
+analysisTypeIds | int | Analysis Type ID is one of the unique identifiers for this analysis type record
+analysisTypes | string | Analysis Types is one of the filter option and the parameter is for the type of the analysis
+externalIdentifier | string | External Identifier is a unique identifier for this record to an external data system
+
+### 4. Analysis Value Table
+
+This section outlines the process of retrieving data from the Analysis Value table using the dedicated API endpoint. The endpoint facilitates the retrieval of all data from the Analysis Value table or enables the selection of specific information by including Analysis Value Ids, Analysis Ids, Unit Ids, and date ranges. Additionally, the Analysis Value endpoint supports pagination to effectively manage larger datasets.
+
+> Example Request
+
+```javascript
+var request = require("request");
+
+var options = { method: 'GET',
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/analysisvalue' };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+```csharp
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/analysisvalue");
+var request = new RestRequest(Method.GET);
+IRestResponse response = client.Execute(request);
+```
+
+> Response Schema
+
+```json
+{
+    "currentPage": 1,
+    "totalPages": 3,
+    "currentPageSize": 500,
+    "maxAPIPageSize": 500,
+    "totalCount": 1346,
+    "hasPrevious": false,
+    "hasNext": true,
+    "data": [
+        {
+            "analysisValueId": "number",
+            "analysisId": "number",
+            "analysisValueName": "string",
+            "operator": "string",
+            "analysisValue": "number",
+            "unitId": "number",
+            "resultText": "string",
+            "analysisDate": "2024-01-15T00:00:00",
+            "dilutionFactor": "number",
+            "reportingLimit": "number",
+            "method": "string",
+            "methodDetectionLimit": "number",
+            "qualifier": "string",
+            "reportableInd": "string",
+            "dataLockTypeId": "number",
+            "sortOrder": "number",
+            "lastModifiedDate": "2024-01-15T00:00:00",
+            "externalIdentifier": "string",
+            "comments": "string"
+        }
+    ]
+}
+```
+
+**API Endpoints**
+
+`GET` /actsapi/v1/analysisvalue
+
+**Query parameters**
+
+Attribute | Type | Description
+--------- | ---- | -----------
+PageNumber | int | Page number of the results to fetch.
+PageSize | int | The number of results per page
+analysisValueIds | int | Analysis Value ID is one of the unique identifiers for this analysis value record
+analysisIds | int | Analysis ID is the unique identifier of the associated analysis
+unitIds | int | Unit ID is the unique identifier of the associated unit
+analysisValueNames | string | Analysis Value Names is one of the filter options for the name of the analysis value
+analysisStartDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+analysisEndDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+lastModifiedStartDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+lastModifiedEndDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+externalIdentifier | string | External Identifier is a unique identifier for this record to an external data system
+
+### 5. Attribute Type Table
 
 This section outlines the process of retrieving data from the Attribute Type table using the dedicated API endpoint. The endpoint facilitates the retrieval of all data from the Attribute Type table or enables the selection of specific information by including Attribute Ids and Attribute Types. Additionally, the Attribute Type endpoint supports pagination to effectively manage larger datasets.
 
@@ -111,7 +442,7 @@ PageSize | int | The number of results per page
 attributeTypeIds | int | Attribute ID is one of the filter parameter is a integer data type
 attributeTypes | string | Attribute Types is for the project detail type
 
-### 2. Compound Table
+### 6. Compound Table
 
 This section guides you through the process of fetching data from the Compound table using the dedicated API endpoint. The endpoint offers the flexibility to retrieve all data from the Compound table or selectively acquire information by including Compound Ids, Compound Type Ids, Compound Status Ids, Compound Names, External Identifiers, or CAS Numbers. Additionally, the Compound endpoint is equipped with pagination capabilities to facilitate efficient management of substantial datasets.
 
@@ -212,7 +543,7 @@ compoundNames | string | Compound Names The name of the compound which is a stri
 externalIdentifier | int | External Identifiers is a unique identifier for this record to an external data system
 cas | string | CAS Number is a Chemical Abstract Service number for the compound 
 
-### 3. Emission Table
+### 7. Emission Table
 
 This section elaborates on how to obtain data from the Emission table using the designated API endpoint. The endpoint allows you to retrieve all data from the Emission table or selectively acquire information by providing the Emission ID. Moreover, the Emission endpoint features pagination to facilitate efficient management of substantial datasets.
 
@@ -304,7 +635,7 @@ activeEndDate| datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2
 inactiveStartDate| datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 inactiveEndDate| datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 
-### 4. Emission Category Table
+### 8. Emission Category Table
 
 This section elaborates on how to obtain data from the Emission Category table using the designated API endpoint. The endpoint allows you to retrieve all data from the Emission Category table or selectively acquire information by providing the Emission Category ID. Moreover, the Emission Category endpoint features pagination to facilitate efficient management of substantial datasets.
 
@@ -364,7 +695,7 @@ PageSize | int | The number of results per page
 emissionCategoryIds | int | Emission Category ID is one of the unique identifier for this emission category record and is one of the filter option provided for Emission Category
 emissionCategoryTypes | string | Emission Category Types is for the project to emission category detail types
 
-### 5. Emission Factor Table
+### 9. Emission Factor Table
 
 This section elaborates on how to obtain data from the Emission Factor table using the designated API endpoint. The endpoint allows you to retrieve all data from the Emission Factor table or You can optionally fetch specific data by including the emission factor Ids, emission factor names, emission type Ids, emission category Ids, unit Ids, compound Ids, equipment Ids, last modified start date and last modified end date. The Emission Factor endpoint supports pagination.
 
@@ -441,7 +772,7 @@ equipmentIds | int | The unique identifier of the associated equipment
 lastModifiedStartDate | string | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 lastModifiedEndDate | string | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 
-### 6. Emission Type Table
+### 10. Emission Type Table
 
 This section guides you through the process of fetching data from the Emission Type table using the dedicated API endpoint. The endpoint enables you to retrieve data from the entire Emission Type table or selectively obtain information by including Emission Type Ids. Additionally, the Emission Type endpoint is equipped with pagination capabilities to facilitate the handling of extensive datasets.
 
@@ -505,7 +836,7 @@ emissionTypeIds | int | Emission Type ID is one of the type of emissions and is 
 emissionTypes | string | Emission Types is for the project to emission detail types
 
 
-### 7. Equipment Table
+### 11. Equipment Table
 
 This section provides guidance on retrieving data from the Equipment table using the designated API endpoint. The endpoint allows you to retrieve all data from the Equipment table or specify specific data based on equipment Ids. Additionally, the Equipment endpoint offers pagination support to facilitate the handling of substantial datasets.
 
@@ -592,7 +923,83 @@ lastModifiedEndDate | string | Date time format "yyyy/mm/dd T hours:min:secZ - E
 externalIdentifier | string | External Identifier a unique identifier for this record to an external data system
 
 
-### 8. Equipment Attribute Table
+### 12. Equipment Analysis Table
+
+This section outlines the process of retrieving data from the Equipment Analysis table using the dedicated API endpoint. The endpoint facilitates the retrieval of all data from the Equipment Analysis table or enables the selection of specific information by including Equipment Analysis Ids, Equipment Ids, Analysis Ids, Analysis Association Type Ids, and date ranges. Additionally, the Equipment Analysis endpoint supports pagination to effectively manage larger datasets.
+
+> Example Request
+
+```javascript
+var request = require("request");
+
+var options = { method: 'GET',
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/equipmentanalysis' };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+```csharp
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/equipmentanalysis");
+var request = new RestRequest(Method.GET);
+IRestResponse response = client.Execute(request);
+```
+
+> Response Schema
+
+```json
+{
+    "currentPage": 1,
+    "totalPages": 3,
+    "currentPageSize": 500,
+    "maxAPIPageSize": 500,
+    "totalCount": 1346,
+    "hasPrevious": false,
+    "hasNext": true,
+    "data": [
+        {
+            "equipmentAnalysisId": "number",
+            "equipmentId": "number",
+            "analysisId": "number",
+            "analysisAssociationTypeId": "number",
+            "dataLockTypeId": "number",
+            "activeDate": "2024-01-15T00:00:00",
+            "inactiveDate": "2024-01-15T00:00:00",
+            "lastModifiedDate": "2024-01-15T00:00:00",
+            "externalIdentifier": "string",
+            "comments": "string"
+        }
+    ]
+}
+```
+
+**API Endpoints**
+
+`GET` /actsapi/v1/equipmentanalysis
+
+**Query parameters**
+
+Attribute | Type | Description
+--------- | ---- | -----------
+PageNumber | int | Page number of the results to fetch.
+PageSize | int | The number of results per page
+equipmentAnalysisIds | int | Equipment Analysis ID is one of the unique identifiers for this equipment analysis record
+equipmentIds | int | Equipment ID is the unique identifier of the associated equipment
+analysisIds | int | Analysis ID is the unique identifier of the associated analysis
+analysisAssociationTypeIds | int | Analysis Association Type ID is the unique identifier of the associated analysis association type
+activeStartDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+activeEndDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+inactiveStartDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+inactiveEndDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+lastModifiedStartDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+lastModifiedEndDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+externalIdentifier | string | External Identifier is a unique identifier for this record to an external data system
+
+
+### 13. Equipment Attribute Table
 
 All data from the Equipment Attribute table will be returned from the endpoint below. You can optionally fetch specific data by including the facility attribute Ids, facility names, emission type Ids, facility type Ids, unit Ids, equipment Ids, last modified start date and last modified end date. The facility attribute endpoint supports pagination.
 
@@ -662,7 +1069,7 @@ lastModifiedStartDate | string | Date time format "yyyy/mm/dd T hours:min:secZ -
 lastModifiedEndDate | string | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 
 
-### 9. Equipment Status Table
+### 14. Equipment Status Table
 
 All data from the Equipment Status table will be returned from the endpoint below. You can optionally fetch specific data by including the equipment status ID and equipment status value. The Equipment Status endpoint supports pagination.
 
@@ -727,7 +1134,7 @@ equipmentStatus | string | Equipment Status is one of the identifier for the sta
 
 
 
-### 10. Equipment Type Table
+### 15. Equipment Type Table
 
 All data from the Equipment Type table will be returned from the endpoint below. You can optionally fetch specific data by including the equipment type ID and equipment types value. The Equipment type endpoint supports pagination.
 
@@ -812,7 +1219,7 @@ equipmentTypeIds | int | Equipment Type ID is one of the unique identifier for t
 equipmentTypes | string | Equipment Types is one of the filter option and the parameter is for the type of the equipment
 
 
-### 11. Facility Table
+### 16. Facility Table
 
 All data from the Facility table will be returned from the endpoint below. You can optionally fetch specific data by including the facility Ids, facility names, emission type Ids, facility type Ids, facility status Ids, county Ids, last modified start date and last modified end date. The facility endpoint supports pagination.
 
@@ -905,7 +1312,83 @@ lastModifiedStartDate | string | Date time format "yyyy/mm/dd T hours:min:secZ -
 lastModifiedEndDate | string | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 
 
-### 12. Facility Attribute Table
+### 17. Facility Analysis Table
+
+This section outlines the process of retrieving data from the Facility Analysis table using the dedicated API endpoint. The endpoint facilitates the retrieval of all data from the Facility Analysis table or enables the selection of specific information by including Facility Analysis Ids, Facility Ids, Analysis Ids, Analysis Association Type Ids, and date ranges. Additionally, the Facility Analysis endpoint supports pagination to effectively manage larger datasets.
+
+> Example Request
+
+```javascript
+var request = require("request");
+
+var options = { method: 'GET',
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/facilityanalysis' };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+```csharp
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/facilityanalysis");
+var request = new RestRequest(Method.GET);
+IRestResponse response = client.Execute(request);
+```
+
+> Response Schema
+
+```json
+{
+    "currentPage": 1,
+    "totalPages": 3,
+    "currentPageSize": 500,
+    "maxAPIPageSize": 500,
+    "totalCount": 1346,
+    "hasPrevious": false,
+    "hasNext": true,
+    "data": [
+        {
+            "facilityAnalysisId": "number",
+            "facilityId": "number",
+            "analysisId": "number",
+            "analysisAssociationTypeId": "number",
+            "dataLockTypeId": "number",
+            "activeDate": "2024-01-15T00:00:00",
+            "inactiveDate": "2024-01-15T00:00:00",
+            "lastModifiedDate": "2024-01-15T00:00:00",
+            "externalIdentifier": "string",
+            "comments": "string"
+        }
+    ]
+}
+```
+
+**API Endpoints**
+
+`GET` /actsapi/v1/facilityanalysis
+
+**Query parameters**
+
+Attribute | Type | Description
+--------- | ---- | -----------
+PageNumber | int | Page number of the results to fetch.
+PageSize | int | The number of results per page
+facilityAnalysisIds | int | Facility Analysis ID is one of the unique identifiers for this facility analysis record
+facilityIds | int | Facility ID is the unique identifier of the associated facility
+analysisIds | int | Analysis ID is the unique identifier of the associated analysis
+analysisAssociationTypeIds | int | Analysis Association Type ID is the unique identifier of the associated analysis association type
+activeStartDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+activeEndDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+inactiveStartDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+inactiveEndDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+lastModifiedStartDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+lastModifiedEndDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+externalIdentifier | string | External Identifier is a unique identifier for this record to an external data system
+
+
+### 18. Facility Attribute Table
 
 All data from the Facility Attribute table will be returned from the endpoint below. You can optionally fetch specific data by including the facility attribute Ids, facility names, emission type Ids, facility type Ids, facility attribute and last modified end date. The facility attribute endpoint supports pagination.
 
@@ -978,7 +1461,7 @@ externalidentifier | string | External Identifier a unique identifier for this r
 comments | string | Comments any comments associated with this record
 
 
-### 13. Operation Table
+### 19. Operation Table
 
 All data from the Operation table will be returned from the endpoint below. You can optionally fetch specific data by including the operation Ids, operation type Ids, emission type Ids, emission category Ids, unit Ids, equipment Ids, last modified start date and last modified end date. The Operation endpoint supports pagination.
 
@@ -1061,7 +1544,7 @@ lastModifiedStartDate | string | Date time format "yyyy/mm/dd T hours:min:secZ -
 lastModifiedEndDate | string | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 
 
-### 14. Operation Type Table
+### 20. Operation Type Table
 
 All data from the Operation Type table will be returned from the endpoint below. You can optionally fetch specific data by including the operation type ids, operation types . The Operation Type endpoint supports pagination.
 
@@ -1128,7 +1611,101 @@ PageSize | int | The number of results per page
 operationTypeIDs | int | The unique identifier for this operation type record
 operationTypes | int | The type of operational data
 
-### 15. Query Results
+### 21. Person Table
+
+This section outlines the process of retrieving data from the Person table using the dedicated API endpoint. The endpoint facilitates the retrieval of all data from the Person table or enables the selection of specific information by including Person Ids, Person Type Ids, Person Status Ids, and name filters. Additionally, the Person endpoint supports pagination to effectively manage larger datasets.
+
+> Example Request
+
+```javascript
+var request = require("request");
+
+var options = { method: 'GET',
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/person' };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+```csharp
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/person");
+var request = new RestRequest(Method.GET);
+IRestResponse response = client.Execute(request);
+```
+
+> Response Schema
+
+```json
+{
+    "currentPage": 1,
+    "totalPages": 3,
+    "currentPageSize": 500,
+    "maxAPIPageSize": 500,
+    "totalCount": 1346,
+    "hasPrevious": false,
+    "hasNext": true,
+    "data": [
+        {
+            "personId": "number",
+            "lastName": "string",
+            "firstName": "string",
+            "middleName": "string",
+            "alternateName": "string",
+            "title": "string",
+            "personTypeId": "number",
+            "personStatusId": "number",
+            "managerId": "number",
+            "location": "string",
+            "department": "string",
+            "sortOrder": "number",
+            "databaseUsername": "string",
+            "passwordExpirationDate": "2024-01-15T00:00:00",
+            "passwordFailedAttempts": "number",
+            "connectCount": "number",
+            "connectSeconds": "number",
+            "lastConnectDate": "2024-01-15T00:00:00",
+            "lastConnectApplication": "string",
+            "lastConnectTerminal": "string",
+            "lastActivityDate": "2024-01-15T00:00:00",
+            "intelexId": "string",
+            "actsAccessInd": "boolean",
+            "activeDate": "2024-01-15T00:00:00",
+            "inactiveDate": "2024-01-15T00:00:00",
+            "lastModifiedDate": "2024-01-15T00:00:00",
+            "externalIdentifier": "string",
+            "comments": "string"
+        }
+    ]
+}
+```
+
+**API Endpoints**
+
+`GET` /actsapi/v1/person
+
+**Query parameters**
+
+Attribute | Type | Description
+--------- | ---- | -----------
+PageNumber | int | Page number of the results to fetch.
+PageSize | int | The number of results per page
+personIds | int | Person ID is one of the unique identifiers for this person record
+personTypeIds | int | Person Type ID is the unique identifier of the associated person type
+personStatusIds | int | Person Status ID is the unique identifier of the associated person status
+lastNames | string | Last Names is one of the filter options for the last name of the person
+firstNames | string | First Names is one of the filter options for the first name of the person
+lastModifiedStartDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+lastModifiedEndDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+activeStartDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+activeEndDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+inactiveStartDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+inactiveEndDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
+externalIdentifier | string | External Identifier is a unique identifier for this record to an external data system
+
+### 22. Query Results
 
 The QueryResults API end point will allow the user to run the views saved in Query view tables and returns the dynamic results based on the specific query view id value. The QueryResults endpoint supports pagination.
 Request must contain exactly one single queryViewId as a query parameter.
@@ -1214,7 +1791,7 @@ PageNumber | int | No | Page number of the results to fetch.
 PageSize | int | No | The number of results per page
 queryViewId | int | Yes | The unique identifier for this query view record
 
-### 16. Regulation Table
+### 23. Regulation Table
 This section elaborates on how to obtain data from the Regulation table using the designated API endpoint. The endpoint allows you to retrieve all data from the Regulation table or selectively acquire information by providing the Regulation ID. Moreover, the Regulation endpoint features pagination to facilitate efficient management of substantial datasets.
 
 > Example Request
@@ -1313,7 +1890,7 @@ inactiveStartDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - E
 inactiveEndDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 
 
-### 17. Regulation Type Table
+### 24. Regulation Type Table
 This section elaborates on how to obtain data from the Regulation Type table using the designated API endpoint. The endpoint allows you to retrieve all data from the Regulation Type table or selectively acquire information by providing the Regulation Type ID. Moreover, the Regulation Type endpoint features pagination to facilitate efficient management of substantial datasets.
 
 > Example Request
@@ -1394,7 +1971,7 @@ externalIdentifier| string | External Identifier is a unique identifier for this
 lastModifiedStartDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 lastModifiedEndDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 
-### 18. Requirement Table
+### 25. Requirement Table
 This section elaborates on how to obtain data from the Requirement table using the designated API endpoint. The endpoint allows you to retrieve all data from the Requirement table or selectively acquire information by providing the Requirement ID. Moreover, the Requirement endpoint features pagination to facilitate efficient management of substantial datasets.
 
 > Example Request
@@ -1487,7 +2064,7 @@ activeEndDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 
 inactiveStartDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 inactiveEndDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 
-### 19. Requirement Limit Table
+### 26. Requirement Limit Table
 This section elaborates on how to obtain data from the Requirement Limit table using the designated API endpoint. The endpoint allows you to retrieve all data from the Requirement Limit table or selectively acquire information by providing the Requirement Limit ID. Moreover, the Requirement Limit endpoint features pagination to facilitate efficient management of substantial datasets.
 
 > Example Request
@@ -1582,7 +2159,7 @@ activeEndDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 
 inactiveStartDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 inactiveEndDate | datetime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 
-### 20. Unit Table
+### 27. Unit Table
 
 This section outlines how to retrieve data from the Unit table using the provided endpoint. You have the flexibility to fetch specific data by including unit Ids, unit type Ids, and units. The Unit type endpoint also supports pagination for managing large datasets effectively.
 
@@ -1650,7 +2227,7 @@ unitIds | int | Unit ID is one of the unique identifier for this Unit record
 unitTypeIds | int | Unit Type Ids is the unique identifier of the associated unit type
 units | string | Units is one of the filter option and the parameter is for the Name of the Unit
 
-### 21. Workflow Table
+### 28. Workflow Table
 
 This section outlines how to retrieve data from the Workflow table using the provided endpoint. You have the flexibility to fetch specific data by including workflow Ids, workflow type Ids, workflow date for both start date and end date along with the last modified date. The workflow endpoint also supports pagination for managing large datasets effectively.
 
@@ -1720,7 +2297,7 @@ lastModifiedEndDate | dateTime | Date time format "yyyy/mm/dd T hours:min:secZ -
 externalIdentifier | string | External Identifier a unique identifier for this record to an external data system
 
 
-### 22. Workflow Answer Table
+### 29. Workflow Answer Table
 
 This section outlines how to retrieve data from the Workflow Answer table using the provided endpoint. You have the flexibility to fetch specific data by including workflow Answer Ids, workflow Ids, workflow question Ids, category Answer Index, category Revision Index, question Answer Index, question Revision Index, workflow Answer, lastModifiedStartDate and lastModifiedEndDate. The Workflow Answer endpoint also supports pagination for managing large datasets effectively.
 
@@ -1798,7 +2375,7 @@ workflowAnswer | string | Wokflow Answer is the answer to the question..
 lastModifiedStartDate | dateTime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 lastModifiedEndDate | dateTime | Date time format "yyyy/mm/dd T hours:min:secZ - Ex : 2017-02-13T22:15:30Z"
 
-### 23. Workflow Equipment Table
+### 30. Workflow Equipment Table
 
 This section outlines how to retrieve data from the Workflow Equipment table using the provided endpoint. Equipment workflows are typically labeled Inspection. You have the flexibility to fetch specific data by including workflow Equipment Ids, workflow Ids, and Equipment Ids. The Workflow Equipment endpoint also supports pagination for managing large datasets effectively.
 
@@ -1863,7 +2440,7 @@ workflowEquipmentIds | int | Workflow Equipment ID is the unique identifier for 
 workflowIds | int | Workflow Ids is the unique identifier of the associated workflow.
 equipmentIds | string | Equipment IDs are the unique identifier of the associated equipment.
 
-### 24. Workflow Facility Table
+### 31. Workflow Facility Table
 
 This section outlines how to retrieve data from the Workflow Facility table using the provided endpoint. Facility workflows are typically labeled Inspection. You have the flexibility to fetch specific data by including workflow Facility Ids, workflow Ids and facility Ids. The Workflow Facility endpoint also supports pagination for managing large datasets effectively.
 
@@ -1930,7 +2507,7 @@ facilityIds | int | Facility IDs are the unique identifier for the associated fa
 
 
 
-### 25. Workflow Person Table
+### 32. Workflow Person Table
 
 This section outlines how to retrieve data from the Workflow Person table using the provided endpoint. You have the flexibility to fetch specific data by including workflow person Ids, workflow Ids and person Ids. The Unit type endpoint also supports pagination for managing large datasets effectively.
 
@@ -1995,7 +2572,7 @@ workflowPersonIds | int | Workflow Person ID is the unique identifier for the as
 workflowIds | int | Workflow IDs are the unique identifier for workflows (the named form or workflow type+date completed).
 personIds | int | Person IDs are the assigned values for associated person(s) and can be used as a filter.
 
-### 26. Workflow Question Table
+### 33. Workflow Question Table
 
 This section outlines how to retrieve data from the Workflow Question table using the provided endpoint. You have the flexibility to fetch specific data by including workflow Question Ids, workflow question categoy Ids, data type Ids, required Inds and questions. The Workflow Question endpoint also supports pagination for managing large datasets effectively.
 
@@ -2088,7 +2665,7 @@ dataTypeIds | int | Data Type IDs are the unique identifiers for the associated 
 requiredInds | string | Required Inds is the value if an answer is required before saving the form.
 questions | string | Questions are the question content values included on the form.
 
-### 27. Workflow Question Category Table
+### 34. Workflow Question Category Table
 
 This section outlines how to retrieve data from the Workflow Question Category table using the provided endpoint. You have the flexibility to fetch specific data by including workflow question category Ids, workflow type Ids and workflow question category. The Workflow Question Category endpoint also supports pagination for managing large datasets effectively.
 
@@ -2166,7 +2743,7 @@ workflowTypeIds | int | Workflow Type IDs are the unique identifiers for the ass
 workflow question category | string | Workflow Question Category is the category of the form type.
 
 
-### 28. Workflow Type Table
+### 35. Workflow Type Table
 
 This section outlines how to retrieve data from the Workflow Type table using the provided endpoint. You have the flexibility to fetch specific data by including workflow Ids, workflow type Ids, and workflows. The Unit type endpoint also supports pagination for managing large datasets effectively.
 
