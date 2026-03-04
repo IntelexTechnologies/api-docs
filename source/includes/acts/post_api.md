@@ -887,7 +887,6 @@ var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/equ
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", " [\r\n  { \r\n    \"equipmentAnalysisId\": \"number\",\r\n    \"equipmentId\": \"number\",\r\n    \"analysisId\": \"number\",\r\n    \"analysisAssociationTypeId\": \"number\",\r\n    \"activeDate\": \"2014-04-01T00:00:00z\",\r\n    \"inactiveDate\": \"2025-04-01T00:00:00z\",\r\n    \"dataLockTypeId\": \"number\",\r\n    \"externalIdentifier\": \"string\",\r\n    \"comments\": \"string\" \r\n  }\r\n]", 
-request.AddParameter("application/json", " [\r\n  { \r\n    \"equipmentAnalysisId\": \"number\",\r\n    \"equipmentId\": \"number\",\r\n    \"analysisId\": \"number\",\r\n    \"analysisAssociationTypeId\": \"number\",\r\n    \"activeDate\": \"2014-04-01T00:00:00z\",\r\n    \"inactiveDate\": \"2025-04-01T00:00:00z\",\r\n    \"dataLockTypeId\": \"number\",\r\n    \"externalIdentifier\": \"string\",\r\n    \"comments\": \"string\" \r\n  }\r\n]", 
     ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
