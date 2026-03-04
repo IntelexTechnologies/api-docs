@@ -31,6 +31,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 <li>Facility Analysis</li>
 <li>Facility Attribute</li>
 <li>Facility Regulation</li>
+<li>Job</li>
 <li>Operation</li>
 <li>Regulation</li>
 <li>Regulation Attribute</li>
@@ -1453,7 +1454,73 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<h3 id="16-operation-table">16. Operation Table</h3>
+<h3 id="16-job-run">16. Job Run</h3>
+
+<p>This section outlines how to trigger a job run using the designated API endpoint. The endpoint runs a job for a specified tenant and returns a response indicating whether the job was successfully initiated.</p>
+
+<p><strong>Job Run POST Endpoint</strong></p>
+
+<p><code class="prettyprint">POST</code> /actsapi/v1/job/run</p>
+
+<blockquote>
+<p>Example Request &amp; JSON Input Body </p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://[tenant].actsapi.intelex.com/actsapi/v1/job/run'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span> <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span>
+    <span class="p">{</span>
+      <span class="s2">"jobType"</span><span class="p">:</span> <span class="s2">"JOB_TYPE"</span><span class="p">,</span> <span class="c1">// DATA_IMPORT,DATA_EXPORT,BATCH_JOB</span>
+      <span class="s2">"jobIds"</span><span class="p">:</span> <span class="p">[</span><span class="mi">25</span><span class="p">]</span>
+    <span class="p">},</span>
+  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://[tenant].actsapi.intelex.com/actsapi/v1/job/run"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"{\"jobType\":\"BATCH_JOB\",\"jobIds\":[25]}"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Input JSON Body</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"jobType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BATCH_JOB"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"jobIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">25</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"insertedRowCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updatedRowCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"deletedRowCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"failureCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"errorMessage"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Example Output For When Job Fails To Run</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"insertedRowCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updatedRowCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"deletedRowCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"failureCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"errorMessage"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Job ID : 25, Error: An error occurred while running the job. See the inner exception for details."</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="17-operation-table">17. Operation Table</h3>
 
 <p>This section outlines the process of adding new entries or modifying existing records within the Operation table using the dedicated API endpoint.</p>
 
@@ -1560,7 +1627,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<h3 id="17-regulation-table">17. Regulation Table</h3>
+<h3 id="18-regulation-table">18. Regulation Table</h3>
 
 <p>This section outlines the process of adding new entries or modifying existing records within the Regulation table using the dedicated API endpoint.</p>
 
@@ -1663,7 +1730,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="18-regulation-attribute-table">18. Regulation Attribute Table</h3>
+<h3 id="19-regulation-attribute-table">19. Regulation Attribute Table</h3>
 
 <p>This section guides you through the process of modifying existing Regulation Attribute records or adding new entries to the Regulation Attribute table using the designated API endpoint. For inserting a new record, please pass the primary key field RegulationAttributeId as 0 in the request body.</p>
 
@@ -1744,7 +1811,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<h3 id="19-requirement-table">19. Requirement Table</h3>
+<h3 id="20-requirement-table">20. Requirement Table</h3>
 
 <p>This section outlines the process of adding new entries or modifying existing records within the Requirement table using the dedicated API endpoint.</p>
 
@@ -1862,7 +1929,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<h3 id="20-requirement-limit-table">20. Requirement Limit Table</h3>
+<h3 id="21-requirement-limit-table">21. Requirement Limit Table</h3>
 
 <p>This section outlines the process of adding new entries or modifying existing records within the Requirement Limit table using the dedicated API endpoint.</p>
 
@@ -1973,7 +2040,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="21-requirement-person-table">21. Requirement Person Table</h3>
+<h3 id="22-requirement-person-table">22. Requirement Person Table</h3>
 
 <p>This section guides you through the process of modifying existing Requirement Person records or adding new entries to the Requirement Person table using the designated API endpoint. For inserting a new record, please pass the primary key field RequirementPersonId as 0 in the request body.</p>
 
@@ -2060,7 +2127,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<h3 id="22-workflow-table">22. Workflow Table</h3>
+<h3 id="23-workflow-table">23. Workflow Table</h3>
 
 <p>This section outlines the process of adding new entries or modifying existing records within the Workflow table using the dedicated API endpoint.</p>
 
@@ -2140,7 +2207,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<h3 id="23-workflow-answer-table">23. Workflow Answer Table</h3>
+<h3 id="24-workflow-answer-table">24. Workflow Answer Table</h3>
 
 <p>This section outlines the process of adding new entries or modifying existing records within the Workflow Answer table using the dedicated API endpoint.</p>
 
@@ -2228,7 +2295,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<h3 id="24-workflow-equipment-table">24. Workflow Equipment Table</h3>
+<h3 id="25-workflow-equipment-table">25. Workflow Equipment Table</h3>
 
 <p>This section outlines the process of adding new entries or modifying existing records within the Workflow Equipment table using the dedicated API endpoint.</p>
 
@@ -2308,7 +2375,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<h3 id="25-workflow-facility-table">25. Workflow Facility Table</h3>
+<h3 id="26-workflow-facility-table">26. Workflow Facility Table</h3>
 
 <p>This section outlines the process of adding new entries or modifying existing records within the Workflow Facility table using the dedicated API endpoint.</p>
 
@@ -2389,7 +2456,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<h3 id="26-workflow-person-table">26. Workflow Person Table</h3>
+<h3 id="27-workflow-person-table">27. Workflow Person Table</h3>
 
 <p>This section outlines the process of adding new entries or modifying existing records within the Workflow Person table using the dedicated API endpoint.</p>
 
