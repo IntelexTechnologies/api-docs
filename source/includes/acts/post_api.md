@@ -43,104 +43,7 @@ As per the current release, POST APIs End points are provided to add or update t
  
 POST requests to these endpoints should be formatted in JSON.
 
-### 1. Analysis Attribute Table 
-
-This section guides you through the process of modifying existing Analysis Attribute records or adding new entries to the Analysis Attribute table using the designated API endpoint. For inserting a new record, please pass the primary key field AnalysisAttributeId as 0 in the request body.
-
-**Analysis Attribute POST endpoint**
-
-`POST` /actsapi/v1/analysisattribute
-
-> Example Request & JSON Input Body 
-
-```javascript
-var request = require("request");
-
-var options = { method: 'POST',
-  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/analysisattribute',
-  headers: { 'content-type': 'application/json' },
-  body:
-    [
-      {
-        "analysisAttributeId": "number",
-        "analysisId": "number",
-        "attributeTypeId": "number",
-        "analysisAttribute": "string",
-        "dataLockTypeId": "number",
-        "externalIdentifier": "string",
-        "comments": "string"
-      }
-    ],
-  json: true };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-```
-
-```csharp
-var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/analysisattribute");
-var request = new RestRequest(Method.POST);
-request.AddHeader("content-type", "application/json");
-request.AddParameter("application/json", "[{\"analysisAttributeId\":\"number\",\"analysisId\":\"number\",\"attributeTypeId\":\"number\",\"analysisAttribute\":\"string\",\"dataLockTypeId\":\"number\",\"externalIdentifier\":\"string\",\"comments\":\"string\"}]", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-> Input JSON Body 
-
-```json
-[
-  {
-    "analysisAttributeId": "number",
-    "analysisId": "number",
-    "attributeTypeId": "number",
-    "analysisAttribute": "string",
-    "dataLockTypeId": "number",
-    "externalIdentifier": "string",
-    "comments": "string"
-  }
-]
-```
-
-> Example Response
-
-```json
-{
-  "insertedRowCount": 1,
-  "updatedRowCount": 0,
-  "failureCount": 0,
-  "errorMessage": []
-}
-```
-
-> Example Output For When Data Get's Failed To Insert or Update
-
-```json
-{
-  "insertedRowCount": 0,
-  "updatedRowCount": 0,
-  "failureCount": 1,
-  "errorMessage": [
-    "AnalysisAttribute ID : 0, Error: An error occurred while saving the entity changes. See the inner exception for details"
-  ]
-}
-```
-
-**JSON Body Parameters**
-
-Attribute | Type | Description
---------- | ---- | -----------
-analysisAttributeId | int | Analysis Attribute ID is the unique identifier for this analysis attribute record. Pass 0 to insert a new record.
-analysisId | int | Analysis ID is the unique identifier of the associated analysis
-attributeTypeId | int | Attribute Type ID is the unique identifier of the associated attribute type
-analysisAttribute | string | Analysis Attribute is the value of the attribute
-dataLockTypeId | int | Data Lock Type ID is the unique identifier for the data lock type
-externalIdentifier | string | External Identifier is a unique identifier for this record to an external data system
-comments | string | Comments for the analysis attribute record
-
-### 2. Analysis Table 
+### 1. Analysis Table 
 
 This section guides you through the process of modifying existing Analysis records or adding new entries to the Analysis table using the designated API endpoint. For inserting a new record, please pass the primary key field AnalysisId as 0 in the request body.
 
@@ -255,6 +158,103 @@ IRestResponse response = client.Execute(request);
 }
 
 ```
+
+### 2. Analysis Attribute Table 
+
+This section guides you through the process of modifying existing Analysis Attribute records or adding new entries to the Analysis Attribute table using the designated API endpoint. For inserting a new record, please pass the primary key field AnalysisAttributeId as 0 in the request body.
+
+**Analysis Attribute POST endpoint**
+
+`POST` /actsapi/v1/analysisattribute
+
+> Example Request & JSON Input Body 
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/analysisattribute',
+  headers: { 'content-type': 'application/json' },
+  body:
+    [
+      {
+        "analysisAttributeId": "number",
+        "analysisId": "number",
+        "attributeTypeId": "number",
+        "analysisAttribute": "string",
+        "dataLockTypeId": "number",
+        "externalIdentifier": "string",
+        "comments": "string"
+      }
+    ],
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+```csharp
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/analysisattribute");
+var request = new RestRequest(Method.POST);
+request.AddHeader("content-type", "application/json");
+request.AddParameter("application/json", "[{\"analysisAttributeId\":\"number\",\"analysisId\":\"number\",\"attributeTypeId\":\"number\",\"analysisAttribute\":\"string\",\"dataLockTypeId\":\"number\",\"externalIdentifier\":\"string\",\"comments\":\"string\"}]", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+```
+
+> Input JSON Body 
+
+```json
+[
+  {
+    "analysisAttributeId": "number",
+    "analysisId": "number",
+    "attributeTypeId": "number",
+    "analysisAttribute": "string",
+    "dataLockTypeId": "number",
+    "externalIdentifier": "string",
+    "comments": "string"
+  }
+]
+```
+
+> Example Response
+
+```json
+{
+  "insertedRowCount": 1,
+  "updatedRowCount": 0,
+  "failureCount": 0,
+  "errorMessage": []
+}
+```
+
+> Example Output For When Data Get's Failed To Insert or Update
+
+```json
+{
+  "insertedRowCount": 0,
+  "updatedRowCount": 0,
+  "failureCount": 1,
+  "errorMessage": [
+    "AnalysisAttribute ID : 0, Error: An error occurred while saving the entity changes. See the inner exception for details"
+  ]
+}
+```
+
+**JSON Body Parameters**
+
+Attribute | Type | Description
+--------- | ---- | -----------
+analysisAttributeId | int | Analysis Attribute ID is the unique identifier for this analysis attribute record. Pass 0 to insert a new record.
+analysisId | int | Analysis ID is the unique identifier of the associated analysis
+attributeTypeId | int | Attribute Type ID is the unique identifier of the associated attribute type
+analysisAttribute | string | Analysis Attribute is the value of the attribute
+dataLockTypeId | int | Data Lock Type ID is the unique identifier for the data lock type
+externalIdentifier | string | External Identifier is a unique identifier for this record to an external data system
+comments | string | Comments for the analysis attribute record
 
 ### 3. Analysis Compound Table 
 
