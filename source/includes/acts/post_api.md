@@ -28,6 +28,7 @@ As per the current release, POST APIs End points are provided to add or update t
 * Facility Analysis
 * Facility Attribute
 * Facility Regulation
+* Job
 * Operation
 * Regulation
 * Regulation Attribute
@@ -1512,7 +1513,80 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 16. Operation Table 
+### 16. Job Run
+
+This section outlines how to trigger a job run using the designated API endpoint. The endpoint runs a job for a specified tenant and returns a response indicating whether the job was successfully initiated.
+
+**Job Run POST Endpoint**
+
+`POST` /actsapi/v1/job/run
+
+> Example Request & JSON Input Body 
+
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/job/run',
+  headers: { 'content-type': 'application/json' },
+  body:
+    {
+      "jobType": "JOB_TYPE", // DATA_IMPORT,DATA_EXPORT,BATCH_JOB
+      "jobIds": [25]
+    },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+```csharp
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/job/run");
+var request = new RestRequest(Method.POST);
+request.AddHeader("content-type", "application/json");
+request.AddParameter("application/json", "{\"jobType\":\"BATCH_JOB\",\"jobIds\":[25]}", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+```
+
+> Input JSON Body
+
+```json
+{
+  "jobType": "BATCH_JOB",
+  "jobIds": [25]
+}
+```
+
+> Example Response
+
+```json
+{
+  "insertedRowCount": 0,
+  "updatedRowCount": 1,
+  "deletedRowCount": 0,
+  "failureCount": 0,
+  "errorMessage": []
+}
+```
+
+> Example Output For When Job Fails To Run
+
+```json
+{
+  "insertedRowCount": 0,
+  "updatedRowCount": 0,
+  "deletedRowCount": 0,
+  "failureCount": 1,
+  "errorMessage": [
+    "Job ID : 25, Error: An error occurred while running the job. See the inner exception for details."
+  ]
+}
+```
+
+### 17. Operation Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Operation table using the dedicated API endpoint.
 
@@ -1625,7 +1699,7 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 17. Regulation Table 
+### 18. Regulation Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Regulation table using the dedicated API endpoint.
 
@@ -1734,7 +1808,7 @@ IRestResponse response = client.Execute(request);
 }
 ```
 
-### 18. Regulation Attribute Table 
+### 19. Regulation Attribute Table 
 
 This section guides you through the process of modifying existing Regulation Attribute records or adding new entries to the Regulation Attribute table using the designated API endpoint. For inserting a new record, please pass the primary key field RegulationAttributeId as 0 in the request body.
 
@@ -1821,7 +1895,7 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 19. Requirement Table 
+### 20. Requirement Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Requirement table using the dedicated API endpoint.
 
@@ -1945,7 +2019,7 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 20. Requirement Limit Table 
+### 21. Requirement Limit Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Requirement Limit table using the dedicated API endpoint.
 
@@ -2062,7 +2136,7 @@ IRestResponse response = client.Execute(request);
 }
 ```
 
-### 21. Requirement Person Table 
+### 22. Requirement Person Table 
 
 This section guides you through the process of modifying existing Requirement Person records or adding new entries to the Requirement Person table using the designated API endpoint. For inserting a new record, please pass the primary key field RequirementPersonId as 0 in the request body.
 
@@ -2155,7 +2229,7 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 22. Workflow Table 
+### 23. Workflow Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Workflow table using the dedicated API endpoint.
 
@@ -2241,7 +2315,7 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 23. Workflow Answer Table 
+### 24. Workflow Answer Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Workflow Answer table using the dedicated API endpoint.
 
@@ -2335,7 +2409,7 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 24. Workflow Equipment Table 
+### 25. Workflow Equipment Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Workflow Equipment table using the dedicated API endpoint.
 
@@ -2421,7 +2495,7 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 25. Workflow Facility Table 
+### 26. Workflow Facility Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Workflow Facility table using the dedicated API endpoint.
 
@@ -2508,7 +2582,7 @@ IRestResponse response = client.Execute(request);
 
 ```
 
-### 26. Workflow Person Table 
+### 27. Workflow Person Table 
 
 This section outlines the process of adding new entries or modifying existing records within the Workflow Person table using the dedicated API endpoint.
 
