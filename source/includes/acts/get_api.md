@@ -17,15 +17,18 @@ As per the current release, GET APIs End points are provided to fetch from the f
 * Emission Type
 * Equipment
 * Equipment Analysis
+* Equipment Analysis
 * Equipment Attribute
 * Equipment Status
 * Equipment Type
 * Facility
 * Facility Analysis
+* Facility Analysis
 * Facility Attribute
 * Facility Regulation
 * Operation
 * Operation Type
+* Person
 * Person
 * Query
 * Regulation
