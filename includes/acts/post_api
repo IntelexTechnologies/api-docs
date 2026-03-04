@@ -18,9 +18,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 <ul>
 <li>Analysis</li>
 <li>Analysis Attribute</li>
-<li>Analysis Attribute</li>
 <li>Analysis Compound</li>
-<li>Analysis Value</li>
 <li>Analysis Value</li>
 <li>Emission Factor</li>
 <li>Emissions Recalculate By Equipment</li>
@@ -29,9 +27,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 <li>Equipment Analysis</li>
 <li>Equipment Attribute</li>
 <li>Equipment Requirement</li>
-<li>Equipment Requirement</li>
 <li>Facility</li>
-<li>Facility Analysis</li>
 <li>Facility Analysis</li>
 <li>Facility Attribute</li>
 <li>Facility Regulation</li>
@@ -39,10 +35,8 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 <li>Operation</li>
 <li>Regulation</li>
 <li>Regulation Attribute</li>
-<li>Regulation Attribute</li>
 <li>Requirement</li>
 <li>Requirement Limit</li>
-<li>Requirement Person</li>
 <li>Requirement Person</li>
 <li>Workflow</li>
 <li>Workflow Answer</li>
@@ -53,131 +47,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 
 <p>POST requests to these endpoints should be formatted in JSON.</p>
 
-<h3 id="1-analysis-attribute-table">1. Analysis Attribute Table</h3>
-
-<p>This section guides you through the process of modifying existing Analysis Attribute records or adding new entries to the Analysis Attribute table using the designated API endpoint. For inserting a new record, please pass the primary key field AnalysisAttributeId as 0 in the request body.</p>
-
-<p><strong>Analysis Attribute POST endpoint</strong></p>
-
-<p><code class="prettyprint">POST</code> /actsapi/v1/analysisattribute</p>
-
-<blockquote>
-<p>Example Request &amp; JSON Input Body </p>
-</blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
-
-<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://[tenant].actsapi.intelex.com/actsapi/v1/analysisattribute'</span><span class="p">,</span>
-  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span> <span class="p">},</span>
-  <span class="na">body</span><span class="p">:</span>
-    <span class="p">[</span>
-      <span class="p">{</span>
-        <span class="s2">"analysisAttributeId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
-        <span class="s2">"analysisId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
-        <span class="s2">"attributeTypeId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
-        <span class="s2">"analysisAttribute"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
-        <span class="s2">"dataLockTypeId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
-        <span class="s2">"externalIdentifier"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
-        <span class="s2">"comments"</span><span class="p">:</span> <span class="s2">"string"</span>
-      <span class="p">}</span>
-    <span class="p">],</span>
-  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
-
-<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
-<span class="p">});</span>
-</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://[tenant].actsapi.intelex.com/actsapi/v1/analysisattribute"</span><span class="p">);</span>
-<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>
-<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
-<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"[{\"analysisAttributeId\":\"number\",\"analysisId\":\"number\",\"attributeTypeId\":\"number\",\"analysisAttribute\":\"string\",\"dataLockTypeId\":\"number\",\"externalIdentifier\":\"string\",\"comments\":\"string\"}]"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
-<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
-</code></pre>
-<blockquote>
-<p>Input JSON Body </p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"analysisAttributeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"analysisId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"attributeTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"analysisAttribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"dataLockTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"externalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-<blockquote>
-<p>Example Response</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"insertedRowCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"updatedRowCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"failureCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"errorMessage"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<blockquote>
-<p>Example Output For When Data Get&rsquo;s Failed To Insert or Update</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"insertedRowCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"updatedRowCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"failureCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"errorMessage"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"AnalysisAttribute ID : 0, Error: An error occurred while saving the entity changes. See the inner exception for details"</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p><strong>JSON Body Parameters</strong></p>
-
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>analysisAttributeId</td>
-<td>int</td>
-<td>Analysis Attribute ID is the unique identifier for this analysis attribute record. Pass 0 to insert a new record.</td>
-</tr>
-<tr>
-<td>analysisId</td>
-<td>int</td>
-<td>Analysis ID is the unique identifier of the associated analysis</td>
-</tr>
-<tr>
-<td>attributeTypeId</td>
-<td>int</td>
-<td>Attribute Type ID is the unique identifier of the associated attribute type</td>
-</tr>
-<tr>
-<td>analysisAttribute</td>
-<td>string</td>
-<td>Analysis Attribute is the value of the attribute</td>
-</tr>
-<tr>
-<td>dataLockTypeId</td>
-<td>int</td>
-<td>Data Lock Type ID is the unique identifier for the data lock type</td>
-</tr>
-<tr>
-<td>externalIdentifier</td>
-<td>string</td>
-<td>External Identifier is a unique identifier for this record to an external data system</td>
-</tr>
-<tr>
-<td>comments</td>
-<td>string</td>
-<td>Comments for the analysis attribute record</td>
-</tr>
-</tbody></table>
-
-<h3 id="2-analysis-table">2. Analysis Table</h3>
+<h3 id="1-analysis-table">1. Analysis Table</h3>
 
 <p>This section guides you through the process of modifying existing Analysis records or adding new entries to the Analysis table using the designated API endpoint. For inserting a new record, please pass the primary key field AnalysisId as 0 in the request body.</p>
 
@@ -628,113 +498,6 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span></code></pre>
 <h3 id="5-emission-factor-table">5. Emission Factor Table</h3>
 
-<h3 id="4-analysis-value-table">4. Analysis Value Table</h3>
-
-<p>This section guides you through the process of modifying existing Analysis Value records or adding new entries to the Analysis Value table using the designated API endpoint. For inserting a new record, please pass the primary key field AnalysisValueId as 0 in the request body.</p>
-
-<p><strong>Analysis Value POST endpoint</strong></p>
-
-<p><code class="prettyprint">POST</code> /actsapi/v1/analysisvalue</p>
-
-<blockquote>
-<p>Example Request &amp; JSON Input Body </p>
-</blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
-
-<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://[tenant].actsapi.intelex.com/actsapi/v1/analysisvalue'</span><span class="p">,</span>
-  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span> <span class="p">},</span>
-  <span class="na">body</span><span class="p">:</span>
-    <span class="p">[</span>
-  <span class="p">{</span>
-    <span class="s2">"analysisValueId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
-    <span class="s2">"analysisId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
-    <span class="s2">"analysisValueName"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
-    <span class="s2">"operator"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
-    <span class="s2">"analysisValue"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
-    <span class="s2">"unitId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
-    <span class="s2">"resultText"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
-    <span class="s2">"analysisDate"</span><span class="p">:</span> <span class="s2">"2024-11-01T12:58:49Z"</span><span class="p">,</span>
-    <span class="s2">"dilutionFactor"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
-    <span class="s2">"reportingLimit"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
-    <span class="s2">"method"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
-    <span class="s2">"methodDetectionLimit"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
-    <span class="s2">"qualifier"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
-    <span class="s2">"reportableInd"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
-    <span class="s2">"dataLockTypeId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
-    <span class="s2">"sortOrder"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
-    <span class="s2">"externalIdentifier"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
-    <span class="s2">"comments"</span><span class="p">:</span> <span class="s2">"string"</span>
-  <span class="p">}</span>
-<span class="p">],</span>
-  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
-
-<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
-<span class="p">});</span>
-</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://[tenant].actsapi.intelex.com/actsapi/v1/analysisvalue"</span><span class="p">);</span>
-<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>
-<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
-<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"[  {\r\n    \"analysisValueId\": \"number\",\r\n    \"analysisId\": \"number\",\r\n    \"analysisValueName\": \"string\",\r\n    \"operator\": \"string\",\r\n    \"analysisValue\": \"number\",\r\n    \"unitId\": \"number\",\r\n    \"resultText\": \"string\",\r\n    \"analysisDate\": \"2024-11-01T12:58:49Z\",\r\n    \"dilutionFactor\": \"number\",\r\n    \"reportingLimit\": \"number\",\r\n    \"method\": \"string\",\r\n    \"methodDetectionLimit\": \"number\",\r\n    \"qualifier\": \"string\",\r\n    \"reportableInd\": \"string\",\r\n    \"dataLockTypeId\": \"number\",\r\n    \"sortOrder\": \"number\",\r\n    \"externalIdentifier\": \"string\",\r\n    \"comments\": \"string\"\r\n  }\r\n]"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
-<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
-</code></pre>
-<blockquote>
-<p>Input JSON Body</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"analysisValueId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"analysisId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"analysisValueName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"analysisValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"unitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resultText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"analysisDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-11-01T12:58:49Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"dilutionFactor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"reportingLimit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"methodDetectionLimit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"qualifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"reportableInd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"dataLockTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"sortOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"externalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-<blockquote>
-<p>Example Response</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"insertedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"updatedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">,</span><span class="w">
-    </span><span class="s2">"deletedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w">
-    </span><span class="s2">"failureCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w">
-    </span><span class="s2">"errorMessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
-
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
-<blockquote>
-<p>Example Output For When Data Get&rsquo;s Failed To Insert or Update due to invalid analysisValueId</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"insertedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"updatedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w"> 
-  </span><span class="s2">"deletedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w">
-    </span><span class="s2">"failureCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">,</span><span class="w">
-    </span><span class="s2">"errorMessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-     </span><span class="s2">"External Identifier : , Error: An error occurred while saving the entity changes. See the inner exception for details. "</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
-<h3 id="5-emission-factor-table">5. Emission Factor Table</h3>
-
 <p>This section guides you through the process of modifying existing Emission Factor records or adding new entries to the Emission Factor table using the designated API endpoint. For inserting a new record, please pass the primary key field emissionFactorId as 0 in the request body.</p>
 
 <p><strong>Emission Factor POST endpoint</strong></p>
@@ -832,8 +595,6 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span></code></pre>
 <h3 id="6-emissions-recalculate-by-equipment">6. Emissions Recalculate By Equipment</h3>
 
-<h3 id="6-emissions-recalculate-by-equipment">6. Emissions Recalculate By Equipment</h3>
-
 <p>This section guides you through the process of an on-demand update to the emissions calculation for a specific equipment using the designated API endpoint. While this API endpoint is a child of the Equipment table, adding or updating an equipment will not cause an update on its own. </p>
 
 <p><strong>Equipment/EmissionCalculation POST endpoint</strong></p>
@@ -900,8 +661,6 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span></code></pre>
 <h3 id="7-emissions-recalculate-by-operation">7. Emissions Recalculate By Operation</h3>
 
-<h3 id="7-emissions-recalculate-by-operation">7. Emissions Recalculate By Operation</h3>
-
 <p>This section guides you through the process of an on-demand update to the emissions calculation for a specific operation using the designated API endpoint. While this API endpoint is a child of the Operation table, adding or updating an operation with the API will not cause an update on its own. </p>
 
 <p><strong>Operation/EmissionCalculation POST endpoint</strong></p>
@@ -966,8 +725,6 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<h3 id="8-equipment-table">8. Equipment Table</h3>
-
 <h3 id="8-equipment-table">8. Equipment Table</h3>
 
 <p>This section guides you through the process of modifying existing equipment records or adding new entries to the Equipment table using the designated API endpoint.</p>
@@ -1075,8 +832,6 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span></code></pre>
 <h3 id="9-equipment-analysis-table">9. Equipment Analysis Table</h3>
 
-<h3 id="9-equipment-analysis-table">9. Equipment Analysis Table</h3>
-
 <p>This section outlines the process of adding new entries or modifying existing records within the Equipment Analysis table using the dedicated API endpoint.</p>
 
 <p><strong>Equipment Analysis POST Endpoint</strong></p>
@@ -1166,8 +921,6 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span></code></pre>
 <h3 id="10-equipment-attribute-table">10. Equipment Attribute Table</h3>
 
-<h3 id="10-equipment-attribute-table">10. Equipment Attribute Table</h3>
-
 <p>This section outlines the process of adding new entries or modifying existing records within the Equipment Attribute table using the dedicated API endpoint.</p>
 
 <p><strong>Equipment Attribute POST Endpoint</strong></p>
@@ -1249,91 +1002,6 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<h3 id="11-equipment-requirement-table">11. Equipment Requirement Table</h3>
-
-<p>This section guides you through the process of modifying existing Equipment Requirement records or adding new entries to the Equipment Requirement table using the designated API endpoint. For inserting a new record, please pass the primary key field EquipmentRequirementId as 0 in the request body.</p>
-
-<p><strong>Equipment Requirement POST endpoint</strong></p>
-
-<p><code class="prettyprint">POST</code> /actsapi/v1/equipmentrequirement</p>
-
-<blockquote>
-<p>Example Request &amp; JSON Input Body </p>
-</blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
-
-<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://[tenant].actsapi.intelex.com/actsapi/v1/equipmentrequirement'</span><span class="p">,</span>
-  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span> <span class="p">},</span>
-  <span class="na">body</span><span class="p">:</span>
-    <span class="p">[</span>
-  <span class="p">{</span>
-    <span class="s2">"equipmentRequirementId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
-    <span class="s2">"equipmentId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
-    <span class="s2">"requirementId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
-    <span class="s2">"activeDate"</span><span class="p">:</span> <span class="s2">"2024-11-01T12:58:49Z"</span><span class="p">,</span>
-    <span class="s2">"inactiveDate"</span><span class="p">:</span> <span class="s2">"2024-11-01T12:58:49Z"</span><span class="p">,</span>
-    <span class="s2">"externalIdentifier"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
-    <span class="s2">"comments"</span><span class="p">:</span> <span class="s2">"string"</span>
-  <span class="p">}</span>
-<span class="p">],</span>
-  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
-
-<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
-<span class="p">});</span>
-</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://[tenant].actsapi.intelex.com/actsapi/v1/equipmentrequirement"</span><span class="p">);</span>
-<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>
-<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
-<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"[  {\r\n    \"equipmentRequirementId\": \"number\",\r\n    \"equipmentId\": \"number\",\r\n    \"requirementId\": \"number\",\r\n    \"activeDate\": \"2024-11-01T12:58:49Z\",\r\n    \"inactiveDate\": \"2024-11-01T12:58:49Z\",\r\n    \"externalIdentifier\": \"string\",\r\n    \"comments\": \"string\"\r\n  }\r\n]"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
-<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
-</code></pre>
-<blockquote>
-<p>Input JSON Body</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"equipmentRequirementId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"equipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requirementId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"activeDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-11-01T12:58:49Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"inactiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-11-01T12:58:49Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"externalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-<blockquote>
-<p>Example Response</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"insertedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"updatedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">,</span><span class="w">
-    </span><span class="s2">"deletedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w">
-    </span><span class="s2">"failureCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w">
-    </span><span class="s2">"errorMessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
-
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
-<blockquote>
-<p>Example Output For When Data Get&rsquo;s Failed To Insert or Update due to invalid equipmentRequirementId</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"insertedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"updatedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w"> 
-  </span><span class="s2">"deletedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w">
-    </span><span class="s2">"failureCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">,</span><span class="w">
-    </span><span class="s2">"errorMessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-     </span><span class="s2">"External Identifier : , Error: An error occurred while saving the entity changes. See the inner exception for details. "</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
-<h3 id="12-facility-table">12. Facility Table</h3>
-
 <h3 id="11-equipment-requirement-table">11. Equipment Requirement Table</h3>
 
 <p>This section guides you through the process of modifying existing Equipment Requirement records or adding new entries to the Equipment Requirement table using the designated API endpoint. For inserting a new record, please pass the primary key field EquipmentRequirementId as 0 in the request body.</p>
@@ -1536,95 +1204,6 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<h3 id="13-facility-analysis-table">13. Facility Analysis Table</h3>
-
-<p>This section guides you through the process of modifying existing Facility Analysis records or adding new entries to the Facility Analysis table using the designated API endpoint. For inserting a new record, please pass the primary key field FacilityAnalysisId as 0 in the request body.</p>
-
-<p><strong>Facility Analysis POST endpoint</strong></p>
-
-<p><code class="prettyprint">POST</code> /actsapi/v1/facilityanalysis</p>
-
-<blockquote>
-<p>Example Request &amp; JSON Input Body </p>
-</blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
-
-<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://[tenant].actsapi.intelex.com/actsapi/v1/facilityanalysis'</span><span class="p">,</span>
-  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span> <span class="p">},</span>
-  <span class="na">body</span><span class="p">:</span>
-    <span class="p">[</span>
-  <span class="p">{</span>
-    <span class="s2">"facilityAnalysisId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
-    <span class="s2">"facilityId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
-    <span class="s2">"analysisId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
-    <span class="s2">"analysisAssociationTypeId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
-    <span class="s2">"dataLockTypeId"</span><span class="p">:</span> <span class="s2">"number"</span><span class="p">,</span>
-    <span class="s2">"activeDate"</span><span class="p">:</span> <span class="s2">"2024-11-01T12:58:49Z"</span><span class="p">,</span>
-    <span class="s2">"inactiveDate"</span><span class="p">:</span> <span class="s2">"2024-11-01T12:58:49Z"</span><span class="p">,</span>
-    <span class="s2">"externalIdentifier"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
-    <span class="s2">"comments"</span><span class="p">:</span> <span class="s2">"string"</span>
-  <span class="p">}</span>
-<span class="p">],</span>
-  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
-
-<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
-<span class="p">});</span>
-</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://[tenant].actsapi.intelex.com/actsapi/v1/facilityanalysis"</span><span class="p">);</span>
-<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>
-<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
-<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"[  {\r\n    \"facilityAnalysisId\": \"number\",\r\n    \"facilityId\": \"number\",\r\n    \"analysisId\": \"number\",\r\n    \"analysisAssociationTypeId\": \"number\",\r\n    \"dataLockTypeId\": \"number\",\r\n    \"activeDate\": \"2024-11-01T12:58:49Z\",\r\n    \"inactiveDate\": \"2024-11-01T12:58:49Z\",\r\n    \"externalIdentifier\": \"string\",\r\n    \"comments\": \"string\"\r\n  }\r\n]"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
-<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
-</code></pre>
-<blockquote>
-<p>Input JSON Body</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"facilityAnalysisId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"facilityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"analysisId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"analysisAssociationTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"dataLockTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"activeDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-11-01T12:58:49Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"inactiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-11-01T12:58:49Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"externalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-<blockquote>
-<p>Example Response</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"insertedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"updatedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">,</span><span class="w">
-    </span><span class="s2">"deletedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w">
-    </span><span class="s2">"failureCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w">
-    </span><span class="s2">"errorMessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
-
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
-<blockquote>
-<p>Example Output For When Data Get&rsquo;s Failed To Insert or Update due to invalid facilityAnalysisId</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"insertedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"updatedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w"> 
-  </span><span class="s2">"deletedRowCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">,</span><span class="w">
-    </span><span class="s2">"failureCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">,</span><span class="w">
-    </span><span class="s2">"errorMessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-     </span><span class="s2">"External Identifier : , Error: An error occurred while saving the entity changes. See the inner exception for details. "</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
-<h3 id="14-facility-attribute-table">14. Facility Attribute Table</h3>
-
 <h3 id="13-facility-analysis-table">13. Facility Analysis Table</h3>
 
 <p>This section guides you through the process of modifying existing Facility Analysis records or adding new entries to the Facility Analysis table using the designated API endpoint. For inserting a new record, please pass the primary key field FacilityAnalysisId as 0 in the request body.</p>
