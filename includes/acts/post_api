@@ -1456,7 +1456,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 </span></code></pre>
 <h3 id="16-job-run">16. Job Run</h3>
 
-<p>This section outlines how to trigger a job run using the designated API endpoint. The endpoint runs a job for a specified tenant and returns a response indicating whether the job was successfully initiated.</p>
+<p>This section outlines how to trigger a job run for Batch Job, Data Import Job, or Data Export Job using the designated API endpoint. The endpoint sets run_now_ind = Yes for a job for a specified tenant and returns a response indicating whether the job record was successfully updated.</p>
 
 <p><strong>Job Run POST Endpoint</strong></p>
 
