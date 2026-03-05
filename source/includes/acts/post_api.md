@@ -1514,7 +1514,7 @@ IRestResponse response = client.Execute(request);
 
 ### 16. Job Run
 
-This section outlines how to trigger a job run using the designated API endpoint. The endpoint runs a job for a specified tenant and returns a response indicating whether the job was successfully initiated.
+This section outlines how to trigger a job run for Batch Job, Data Import Job, or Data Export Job using the designated API endpoint. The endpoint sets run_now_ind = Yes for a job for a specified tenant and returns a response indicating whether the job record was successfully updated.
 
 **Job Run POST Endpoint**
 
