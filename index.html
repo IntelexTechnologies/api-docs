@@ -11636,13 +11636,9 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 
 <p>This section outlines how to trigger a job run for Batch Job, Data Import Job, or Data Export Job using the designated API endpoint. The endpoint sets run_now_ind = Yes for a job for a specified tenant and returns a response indicating whether the job record was successfully updated.</p>
 
-<aside class="notice">
-<b>Known Limitation:</b> The Job Run endpoint requires the tenant name to be included in both the subdomain and the URL path. This is a known limitation and will be fixed in a future release.
-</aside>
-
 <p><strong>Job Run POST Endpoint</strong></p>
 
-<p><code class="prettyprint">POST</code> /actsapi/v1/job/[tenant]/run</p>
+<p><code class="prettyprint">POST</code> /actsapi/v1/job/run</p>
 
 <blockquote>
 <p>Example Request &amp; JSON Input Body </p>
@@ -11650,7 +11646,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 <pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
 
 <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://[tenant].actsapi.intelex.com/actsapi/v1/job/[tenant]/run'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://[tenant].actsapi.intelex.com/actsapi/v1/job/run'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span> <span class="p">},</span>
   <span class="na">body</span><span class="p">:</span>
     <span class="p">{</span>
@@ -11664,7 +11660,7 @@ Note that excessively large batch POSTs may encounter throttling or failure, dep
 
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
 <span class="p">});</span>
-</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://[tenant].actsapi.intelex.com/actsapi/v1/job/[tenant]/run"</span><span class="p">);</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://[tenant].actsapi.intelex.com/actsapi/v1/job/run"</span><span class="p">);</span>
 <span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>
 <span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
 <span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"{\"jobType\":\"BATCH_JOB\",\"jobIds\":[25]}"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
