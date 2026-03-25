@@ -1516,13 +1516,9 @@ IRestResponse response = client.Execute(request);
 
 This section outlines how to trigger a job run for Batch Job, Data Import Job, or Data Export Job using the designated API endpoint. The endpoint sets run_now_ind = Yes for a job for a specified tenant and returns a response indicating whether the job record was successfully updated.
 
-<aside class="notice">
-<b>Known Limitation:</b> The Job Run endpoint requires the tenant name to be included in both the subdomain and the URL path. This is a known limitation and will be fixed in a future release.
-</aside>
-
 **Job Run POST Endpoint**
 
-`POST` /actsapi/v1/job/[tenant]/run
+`POST` /actsapi/v1/job/run
 
 > Example Request & JSON Input Body 
 
@@ -1530,7 +1526,7 @@ This section outlines how to trigger a job run for Batch Job, Data Import Job, o
 var request = require("request");
 
 var options = { method: 'POST',
-  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/job/[tenant]/run',
+  url: 'https://[tenant].actsapi.intelex.com/actsapi/v1/job/run',
   headers: { 'content-type': 'application/json' },
   body:
     {
@@ -1547,7 +1543,7 @@ request(options, function (error, response, body) {
 ```
 
 ```csharp
-var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/job/[tenant]/run");
+var client = new RestClient("https://[tenant].actsapi.intelex.com/actsapi/v1/job/run");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{\"jobType\":\"BATCH_JOB\",\"jobIds\":[25]}", ParameterType.RequestBody);
