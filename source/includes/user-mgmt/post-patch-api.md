@@ -180,6 +180,14 @@ Some settings flags may be ignored if the flag is not relevant to the request ty
       <li>This field is still respected if <code>DoNotAddGroupAssignments</code> is set.</li>
     </td>
   </tr>
+  <tr>
+    <td>RemoveFromUnlistedBusinessHierarchies</td>
+    <td>
+      <li>Existing users only.</li>
+      <li>Boolean. Optional. Default value: false.</li>
+      <li>Remove user hierarchies that are not specified in the <code>BusinessHierarchyCodes</code> field.</li>
+    </td>
+  </tr>
 </table>
 
 #### Employee Fields
@@ -560,6 +568,26 @@ Payload fields that are associated with the user record to be created or updated
     <td>ShortTime</td>
     <td>
       <li>h, hh = hour (12-hour format); H, HH = hour (24-hour format); m = minutes; s = seconds; tt = A.M. or P.M.</li>
+    </td>
+  </tr>
+  <tr>
+    <td>LogonBusinessHierarchyCode</td>
+    <td>
+      <li>Set to unique code of the Business Hierarchy.</li>
+      <li>Optional. String.</li>
+      <li>Return error if code does not exists.</li>
+      <li>Set to null, empty or whitespaces to clear it.</li>
+    </td>
+  </tr>
+  <tr>
+    <td>BusinessHierarchyCodes</td>
+    <td>
+      <li>Semicolon-separated list of business hierarchy codes</li>
+      <li>Optional. String.</li>
+      <li>Return error if any code does not exists.</li>
+      <li>If not present then will do nothing.</li>
+      <li>Duplicates will be ignored.</li>
+      <li>Work with setting RemoveFromUnlistedBusinessHierarchies.</li>
     </td>
   </tr>
 </table>
