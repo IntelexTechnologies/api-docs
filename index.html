@@ -417,13 +417,99 @@ Select the secured API from the API Access page; the endpoint, client id and cli
 
 <p>When we make backwards-incompatible changes to the API, we release new versions. The current version is <strong>v2</strong> and can be determined with our API base path <strong>/api/v2/</strong>. Read our <a href="https://community.intelex.com/library/knowledgebase/release-notes">Intelex platform release notes</a> to see our API changelog.</p>
 
+<h2 id="intended-use">Intended Use</h2>
+
+<p>The Intelex API is designed for system integrations that operate at the pace of human activity, such as syncing records between systems, pulling reports, and connecting workflows.</p>
+
+<p>It is not designed for AI chatbots, autonomous agents, or automated systems that generate records at high volume. One example is a computer-vision feed that continuously creates observations.</p>
+
+<p>This matters for two reasons:</p>
+
+<ul>
+<li><strong>Platform performance.</strong> High-volume automated traffic can affect performance for every user on the platform.</li>
+<li><strong>Data quality.</strong> Records created at machine scale can distort the reporting and analytics your programme relies on. A single event captured hundreds of times by a camera looks very different in your data from the same event reported once by a person.</li>
+</ul>
+
+<p>If you have, or are planning, an integration that involves AI agents, automated record creation, or high-volume data extraction, see <a href="#ai-agents-and-automated-integrations">AI Agents and Automated Integrations</a> and talk to us before you build it.</p>
+
 <h2 id="api-rate-limiting-quotas">API Rate Limiting / Quotas</h2>
 
-<p>To ensure Intelex Platform is reliable and has the expected performance for all users, we limit the number of API calls an API user (or application) can make within a given time period. If the limit is exceeded, the API user may be throttled and subsequent requests will be rejected, returning HTTP response code 429 Too Many Requests. In such cases it is the responsibility of the client application to implement appropriate retry logic for requests that are rejected due to rate limiting.</p>
+<p>To keep the Intelex Platform reliable and performing as expected for all users, we limit the number of API calls that can be made within a given time period. If a limit is exceeded, subsequent requests are rejected with HTTP response code 429 Too Many Requests. The client application is responsible for implementing retry logic for requests that are rejected due to rate limiting.</p>
 
-<h3 id="limit">Limit</h3>
+<h3 id="limits">Limits</h3>
 
-<p>The Intelex Platform API Rate limit is <strong>6 requests per second</strong>.</p>
+<p>Limits are applied by operation type. Each operation type has a rate limit and a daily cap.</p>
+
+<table><thead>
+<tr>
+<th>Operation</th>
+<th>Rate limit</th>
+<th>Daily cap</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Read (GET)</td>
+<td>20 per second</td>
+<td>20,000</td>
+</tr>
+<tr>
+<td>Update (PATCH)</td>
+<td>4 per second</td>
+<td>4,000</td>
+</tr>
+<tr>
+<td>Create (POST)</td>
+<td>2 per second</td>
+<td>2,000</td>
+</tr>
+<tr>
+<td>Delete (DELETE)</td>
+<td>2 per second</td>
+<td>2,000</td>
+</tr>
+<tr>
+<td>Workflow actions</td>
+<td>2 per second</td>
+<td>2,000</td>
+</tr>
+<tr>
+<td>Attachments (file upload)</td>
+<td>12 per minute</td>
+<td>200</td>
+</tr>
+<tr>
+<td>Reports (per page of results)</td>
+<td>6 per minute</td>
+<td>100</td>
+</tr>
+</tbody></table>
+
+<p>Daily caps reset every 24 hours.</p>
+
+<aside class="notice">
+The per-second rate limits are a shared budget, not separate allowances. You can make <b>20 reads or 2 creates</b> in a second, not 20 reads and 2 creates. Combining operations uses up the same budget: for example, 10 reads and 1 create in the same second reaches the limit.
+</aside>
+
+<h3 id="how-requests-are-counted">How requests are counted</h3>
+
+<ul>
+<li><strong>Per tenant.</strong> Limits apply to your whole Intelex tenant, whether you run one integration or several. All integrations and users in the tenant share the same limits.</li>
+<li><strong>Batch requests.</strong> Each operation inside a <a href="#object-batch-requests">batch request</a> counts against the limits individually. A <code class="prettyprint">$batch</code> request that contains 10 creates counts as 10 creates, not 1 request.</li>
+<li><strong>Reports.</strong> Each page of report results counts as one report request.</li>
+</ul>
+
+<h3 id="integration-users">Integration users</h3>
+
+<p>Use a dedicated integration user for integrations, not an individual user&rsquo;s account. Lower limits apply to requests made with individual user accounts, for example a person connecting an AI assistant such as Claude or ChatGPT to the API with their own credentials.</p>
+
+<h3 id="exceptions">Exceptions</h3>
+
+<p>The following are not counted towards these limits:</p>
+
+<ul>
+<li><strong>Officially supported integrations.</strong> Integrations that Intelex officially supports, such as 3E and Enhesa.</li>
+<li><strong>Initial data import.</strong> The initial import of data for new customers. Talk to your Intelex contact to plan your import.</li>
+</ul>
 
 <h3 id="quota-headers">Quota headers</h3>
 
@@ -433,13 +519,11 @@ Select the secured API from the API Access page; the endpoint, client id and cli
 <tr>
 <th>Header</th>
 <th>Description</th>
-<th>Sample value</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>Retry-After</td>
-<td>Time in seconds to wait before retrying the request after rate limit is exceeded.</td>
-<td>600</td>
+<td>Time in seconds to wait before retrying the request after a rate limit or daily cap is exceeded. The value is set dynamically based on current usage, so always read it from the response rather than using a fixed wait time.</td>
 </tr>
 </tbody></table>
 
@@ -448,7 +532,27 @@ Select the secured API from the API Access page; the endpoint, client id and cli
 <ul>
 <li>Use HTTP clients that support automatic retries with an exponential back-off strategy when receiving 429 (Too Many Requests) responses.</li>
 <li>Avoid spikes of traffic by spreading out API calls over time wherever possible.</li>
+<li>Request only the data you need. Use filtering and field selection rather than repeatedly reading full record sets.</li>
+<li>Track your daily usage so that scheduled jobs do not reach a daily cap partway through a run.</li>
 </ul>
+
+<h2 id="ai-agents-and-automated-integrations">AI Agents and Automated Integrations</h2>
+
+<p>The Intelex API was built for system integrations operating at the pace of human activity. It was not designed for AI chatbots, autonomous agents, or automated systems that create records at high volume, such as computer-vision feeds that create observations continuously.</p>
+
+<p>High-volume automated traffic can affect platform performance for everyone. Records created at machine scale can also distort your reporting and analytics: a single event captured hundreds of times by a camera looks very different in your data from the same event reported once by a person.</p>
+
+<p>If you have, or are planning, an integration that involves AI agents, automated record creation, or high-volume data extraction:</p>
+
+<ul>
+<li><strong>Talk to us before you build it.</strong> We want to support these use cases, and we can help you design them so they work reliably and keep your data meaningful. Your Customer Success Manager is the best starting point.</li>
+<li><strong>Use an integration user.</strong> Do not connect AI assistants or agents using an individual user&rsquo;s credentials. Lower limits apply to individual user accounts.</li>
+<li><strong>Stay within the limits.</strong> AI agents and automated systems are subject to the same <a href="#api-rate-limiting-quotas">rate limits and daily caps</a> as any other integration.</li>
+</ul>
+
+<aside class="notice">
+Intelex is working on a Model Context Protocol (MCP) server for connecting AI assistants and agents to the Intelex Platform. It is not available today.
+</aside>
 
           <h1 id="object-data-api">Object Data API</h1>
 
@@ -3403,6 +3507,8 @@ Content-Transfer-Encoding:binary
 
 <p>The Batch service has its limits.  The maximum number of operations or changesets that can be included in the body of a $batch request is 100. The maximum number of operations inside a changeset is 1000. The size of the payload for a $batch request cannot exceed 1MB.</p>
 
+<p>Each operation inside a $batch request counts individually against the <a href="#api-rate-limiting-quotas">API rate limits and daily caps</a>.</p>
+
           <h1 id="task-api">Task API</h1>
 
 <p>The Task API gives you the ability to retrieve your Intelex tasks. These tasks can be found in the My Tasks Summary application in your Intelex platform. Tasks are object data records that are assigned to an employee in the Intelex system. You can create tasks by <a href="#create-a-record">creating records</a> and setting the workflow&rsquo;s person responsible or re-assign tasks by <a href="#updating-person-responsible">updating a record&rsquo;s person responsible</a></p>
@@ -4941,16 +5047,6 @@ Content-Transfer-Encoding:binary
       <li>This field is still respected if <code>DoNotAddGroupAssignments</code> is set.</li>
     </td>
   </tr>
-  <tr>
-    <td>RemoveFromUnlistedBusinessHierarchies</td>
-    <td>
-      <li>Required Platform Version: V6.6.30.0 or higher.</li>
-      <li>Existing users only.</li>
-      <li>Type = Boolean.</li>
-      <li>Default value = false.</li>
-      <li>Remove user hierarchies that are not specified in the <code>BusinessHierarchyCodes</code> field.</li>
-    </td>
-  </tr>
 </table>
 
 <h4 id="employee-fields">Employee Fields</h4>
@@ -5333,26 +5429,6 @@ Content-Transfer-Encoding:binary
       <li>h, hh = hour (12-hour format); H, HH = hour (24-hour format); m = minutes; s = seconds; tt = A.M. or P.M.</li>
     </td>
   </tr>
-  <tr>
-    <td>LogonBusinessHierarchyCode</td>
-    <td>
-      <li>Required Platform Version: V6.6.30.0 or higher.</li>
-      <li>Set to unique code of the Business Hierarchy.</li>
-      <li>Return error if code does not exists.</li>
-      <li>Set to null, empty or whitespaces to clear it.</li>
-    </td>
-  </tr>
-  <tr>
-    <td>BusinessHierarchyCodes</td>
-    <td>
-      <li>Required Platform Version: V6.6.30.0 or higher.</li>
-      <li>Semicolon-separated list of business hierarchy codes</li>
-      <li>Return error if any code does not exists.</li>
-      <li>If not present then will do nothing.</li>
-      <li>Duplicates will be ignored.</li>
-      <li>Work with setting RemoveFromUnlistedBusinessHierarchies.</li>
-    </td>
-  </tr>
 </table>
 
 <blockquote>
@@ -5413,10 +5489,7 @@ Content-Transfer-Encoding:binary
   </span><span class="s2">"ShortDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M/d/yyyy"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"ShortTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"h:mm tt"</span><span class="p">,</span><span class="w">
 
-  </span><span class="s2">"Groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Claims Administrator(01E4C606-2F03-4044-B6B1-079AE288D82A);7F50AC4D-93F4-4DF9-90AF-00D7DF663720"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"LogonBusinessHierarchyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TopBH"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"BusinessHierarchyCodes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NA;US;CA;MX"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"RemoveFromUnlistedBusinessHierarchies"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="s2">"Groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Claims Administrator(01E4C606-2F03-4044-B6B1-079AE288D82A);7F50AC4D-93F4-4DF9-90AF-00D7DF663720"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id="payload-validation">Payload Validation</h3>

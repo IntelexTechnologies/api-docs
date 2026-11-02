@@ -194,16 +194,6 @@
       <li>This field is still respected if <code>DoNotAddGroupAssignments</code> is set.</li>
     </td>
   </tr>
-  <tr>
-    <td>RemoveFromUnlistedBusinessHierarchies</td>
-    <td>
-      <li>Required Platform Version: V6.6.30.0 or higher.</li>
-      <li>Existing users only.</li>
-      <li>Type = Boolean.</li>
-      <li>Default value = false.</li>
-      <li>Remove user hierarchies that are not specified in the <code>BusinessHierarchyCodes</code> field.</li>
-    </td>
-  </tr>
 </table>
 
 <h4 id="employee-fields">Employee Fields</h4>
@@ -586,26 +576,6 @@
       <li>h, hh = hour (12-hour format); H, HH = hour (24-hour format); m = minutes; s = seconds; tt = A.M. or P.M.</li>
     </td>
   </tr>
-  <tr>
-    <td>LogonBusinessHierarchyCode</td>
-    <td>
-      <li>Required Platform Version: V6.6.30.0 or higher.</li>
-      <li>Set to unique code of the Business Hierarchy.</li>
-      <li>Return error if code does not exists.</li>
-      <li>Set to null, empty or whitespaces to clear it.</li>
-    </td>
-  </tr>
-  <tr>
-    <td>BusinessHierarchyCodes</td>
-    <td>
-      <li>Required Platform Version: V6.6.30.0 or higher.</li>
-      <li>Semicolon-separated list of business hierarchy codes</li>
-      <li>Return error if any code does not exists.</li>
-      <li>If not present then will do nothing.</li>
-      <li>Duplicates will be ignored.</li>
-      <li>Work with setting RemoveFromUnlistedBusinessHierarchies.</li>
-    </td>
-  </tr>
 </table>
 
 <blockquote>
@@ -666,10 +636,7 @@
   </span><span class="s2">"ShortDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M/d/yyyy"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"ShortTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"h:mm tt"</span><span class="p">,</span><span class="w">
 
-  </span><span class="s2">"Groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Claims Administrator(01E4C606-2F03-4044-B6B1-079AE288D82A);7F50AC4D-93F4-4DF9-90AF-00D7DF663720"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"LogonBusinessHierarchyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TopBH"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"BusinessHierarchyCodes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NA;US;CA;MX"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"RemoveFromUnlistedBusinessHierarchies"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="s2">"Groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Claims Administrator(01E4C606-2F03-4044-B6B1-079AE288D82A);7F50AC4D-93F4-4DF9-90AF-00D7DF663720"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id="payload-validation">Payload Validation</h3>
