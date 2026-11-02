@@ -265,6 +265,21 @@
 <li>A basic understanding of the <a href="https://community.intelex.com/library/knowledgebase/help/Content/Getting%20Started/Application%20Builder.htm">Intelex Application model</a>. </li>
 </ul>
 
+<h2 id="intended-use">Intended Use</h2>
+
+<p>The Intelex API is designed for system integrations that operate at the pace of human activity, such as syncing records between systems, pulling reports, and connecting workflows.</p>
+
+<p>It is not designed for AI chatbots, autonomous agents, or automated systems that generate records at high volume. One example is a computer-vision feed that continuously creates observations.</p>
+
+<p>This matters for two reasons:</p>
+
+<ul>
+<li><strong>Platform performance.</strong> High-volume automated traffic can affect performance for every user on the platform.</li>
+<li><strong>Data quality.</strong> Records created at machine scale can distort the reporting and analytics your programme relies on. A single event captured hundreds of times by a camera looks very different in your data from the same event reported once by a person.</li>
+</ul>
+
+<p>If you have, or are planning, an integration that involves AI agents, automated record creation, or high-volume data extraction, see <a href="#ai-agents-and-automated-integrations">AI Agents and Automated Integrations</a> and talk to us before you build it.</p>
+
 <h2 id="authentication">Authentication</h2>
 
 <blockquote>
@@ -416,21 +431,6 @@ Select the secured API from the API Access page; the endpoint, client id and cli
 <h2 id="versioning">Versioning</h2>
 
 <p>When we make backwards-incompatible changes to the API, we release new versions. The current version is <strong>v2</strong> and can be determined with our API base path <strong>/api/v2/</strong>. Read our <a href="https://community.intelex.com/library/knowledgebase/release-notes">Intelex platform release notes</a> to see our API changelog.</p>
-
-<h2 id="intended-use">Intended Use</h2>
-
-<p>The Intelex API is designed for system integrations that operate at the pace of human activity, such as syncing records between systems, pulling reports, and connecting workflows.</p>
-
-<p>It is not designed for AI chatbots, autonomous agents, or automated systems that generate records at high volume. One example is a computer-vision feed that continuously creates observations.</p>
-
-<p>This matters for two reasons:</p>
-
-<ul>
-<li><strong>Platform performance.</strong> High-volume automated traffic can affect performance for every user on the platform.</li>
-<li><strong>Data quality.</strong> Records created at machine scale can distort the reporting and analytics your programme relies on. A single event captured hundreds of times by a camera looks very different in your data from the same event reported once by a person.</li>
-</ul>
-
-<p>If you have, or are planning, an integration that involves AI agents, automated record creation, or high-volume data extraction, see <a href="#ai-agents-and-automated-integrations">AI Agents and Automated Integrations</a> and talk to us before you build it.</p>
 
 <h2 id="api-rate-limiting-quotas">API Rate Limiting / Quotas</h2>
 
