@@ -17,6 +17,19 @@ To begin using the Intelex API you will need:
 * The full URL to your Intelex system
 * A basic understanding of the [Intelex Application model](https://community.intelex.com/library/knowledgebase/help/Content/Getting%20Started/Application%20Builder.htm). 
 
+## Intended Use
+
+The Intelex API is designed for system integrations that operate at the pace of human activity, such as syncing records between systems, pulling reports, and connecting workflows.
+
+It is not designed for AI chatbots, autonomous agents, or automated systems that generate records at high volume. One example is a computer-vision feed that continuously creates observations.
+
+This matters for two reasons:
+
+* **Platform performance.** High-volume automated traffic can affect performance for every user on the platform.
+* **Data quality.** Records created at machine scale can distort the reporting and analytics your programme relies on. A single event captured hundreds of times by a camera looks very different in your data from the same event reported once by a person.
+
+If you have, or are planning, an integration that involves AI agents, automated record creation, or high-volume data extraction, see [AI Agents and Automated Integrations](#ai-agents-and-automated-integrations) and talk to us before you build it.
+
 ## Authentication
 
 > Example Requests:
@@ -137,19 +150,6 @@ Response Code | Meaning
 ## Versioning
 
 When we make backwards-incompatible changes to the API, we release new versions. The current version is **v2** and can be determined with our API base path **/api/v2/**. Read our [Intelex platform release notes](https://community.intelex.com/library/knowledgebase/release-notes) to see our API changelog.
-
-## Intended Use
-
-The Intelex API is designed for system integrations that operate at the pace of human activity, such as syncing records between systems, pulling reports, and connecting workflows.
-
-It is not designed for AI chatbots, autonomous agents, or automated systems that generate records at high volume. One example is a computer-vision feed that continuously creates observations.
-
-This matters for two reasons:
-
-* **Platform performance.** High-volume automated traffic can affect performance for every user on the platform.
-* **Data quality.** Records created at machine scale can distort the reporting and analytics your programme relies on. A single event captured hundreds of times by a camera looks very different in your data from the same event reported once by a person.
-
-If you have, or are planning, an integration that involves AI agents, automated record creation, or high-volume data extraction, see [AI Agents and Automated Integrations](#ai-agents-and-automated-integrations) and talk to us before you build it.
 
 ## API Rate Limiting / Quotas
 To keep the Intelex Platform reliable and performing as expected for all users, we limit the number of API calls that can be made within a given time period. If a limit is exceeded, subsequent requests are rejected with HTTP response code 429 Too Many Requests. The client application is responsible for implementing retry logic for requests that are rejected due to rate limiting.
